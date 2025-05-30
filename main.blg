@@ -1,0 +1,68 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 12 items.
+The style file: coppe-unsrt.bst
+Reallocating 'name_of_file' (item size: 1) to 4 items.
+Database file #1: bib.bib
+Warning--I'm ignoring Sun2023's extra "url" field
+--line 879 of file bib.bib
+Warning--I'm ignoring Qin2022's extra "doi" field
+--line 1405 of file bib.bib
+Warning--empty journal in Wu2023
+Warning--empty journal in Eckroth2023
+Warning--empty booktitle in Singh2023
+Warning--empty journal in Hadi2023
+Warning--empty booktitle in Khan2024
+Warning--empty journal in Castineira2018
+Warning--empty journal in OpenAI2023
+Warning--empty journal in Qin2022
+Warning--empty journal in Deng2021
+Warning--empty journal in Deng2023
+Warning--empty journal in Li2024
+Warning--empty journal in Li2023
+Warning--empty journal in Carraro2024
+Warning--empty journal in Sun2023
+Warning--empty journal in Shinn2023
+You've used 40 entries,
+            2630 wiz_defined-function locations,
+            844 strings with 20126 characters,
+and the built_in function-call counts, 20737 in all, are:
+= -- 1346
+> -- 1814
+< -- 20
++ -- 680
+- -- 600
+* -- 2159
+:= -- 3558
+add.period$ -- 182
+call.type$ -- 40
+change.case$ -- 41
+chr.to.int$ -- 40
+cite$ -- 55
+duplicate$ -- 941
+empty$ -- 1542
+format.name$ -- 648
+if$ -- 4144
+int.to.chr$ -- 1
+int.to.str$ -- 41
+missing$ -- 35
+newline$ -- 233
+num.names$ -- 120
+pop$ -- 388
+preamble$ -- 1
+purify$ -- 40
+quote$ -- 0
+skip$ -- 483
+stack$ -- 0
+substring$ -- 352
+swap$ -- 279
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 268
+warning$ -- 15
+while$ -- 96
+width$ -- 0
+write$ -- 569
+(There were 17 warnings)

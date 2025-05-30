@@ -1,0 +1,32 @@
+\babel@toc {brazilian}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {brazilian}{}\relax 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Amostra de lição aprendida de perfuração e completação. Documento parcial de uma grande empresa de petróleo. (traduzido do português)}}{3}{figure.1.1}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Esquemático do agente baseado em LLM interagindo com um ambiente contendo ferramentas para operações específicas de tarefas, e a interface do Agente Humano para interação e feedback do usuário.}}{11}{figure.3.1}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Configuração do chat com um User Proxy \cite {Wu2023} e um Assistente.}}{12}{figure.3.2}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Processo de decisão do agente.}}{12}{figure.3.3}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Configuração de chat com um Gerenciador de Chat e um grupo de agentes LLM.}}{14}{figure.3.4}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Processo de decisão multi-agente.}}{14}{figure.3.5}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Veracidade e desvio padrão em tarefas de Q\&A por modelo LLM e configuração de agente. \\ }}{15}{figure.3.6}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Veracidade e desvio padrão em tarefas de Text-to-SQL por modelo LLM e configuração de agente.}}{15}{figure.3.7}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Desempenho e desvio padrão em tarefas de Q\&A por modelo LLM e configuração de agente.\\}}{16}{figure.3.8}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Desempenho e desvio padrão em tarefas de Text-to-SQL por modelo LLM e configuração de agente.}}{16}{figure.3.9}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Custos médios de LLM e Veracidade por tarefa concluída de acordo com a configuração e modelo.}}{17}{figure.3.10}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Precisão, recall e f1 por configuração. [GERAR GRÁFICO NOVO AQUI]}}{38}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Image 1 caption}}{38}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Image 2 caption}}{38}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces F1 Score distribution by model and configuration of agents}}{39}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Enter Caption}}{40}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Enter Caption}}{40}{figure.4.6}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Precisão por modelo e configuração.}}{41}{figure.4.7}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Precisão por pergunta e configuração.}}{41}{figure.4.8}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Recall por modelo e configuração.}}{42}{figure.4.9}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Recall por pergunta e configuração.}}{42}{figure.4.10}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
