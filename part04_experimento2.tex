@@ -144,37 +144,73 @@
 
             \textit{<insert system architecture diagram here>}
 
-        \subsection{5. Experimental Setups}
+        \subsection{Experimental Setups}
 
-            To comprehensively evaluate language model performance in oil well operations, the experiment employed multiple agent architectures and model configurations. This subsection details the different experimental setups, highlighting their design principles, operational characteristics, and the rationale behind their selection. The experimental design deliberately incorporates contrasting approaches to agent architecture, enabling comparative analysis of different strategies for complex question answering in specialized domains.
+            To comprehensively evaluate language model performance in well construction operations, the experiment employed multiple agent architectures and model configurations. This subsection details the different experimental setups, highlighting their design principles, operational characteristics, and the rationale behind their selection. The experimental design deliberately incorporates contrasting approaches to agent architecture, enabling comparative analysis of different strategies for complex question answering in specialized domains.
+            
 
-            \subsubsection{5.1 Agent Architecture Variations}
+            \subsubsection{Linear-Flow}
 
-            \subsubsection{5.1.1 Linear-Flow with Router}
+                The Linear-Flow architecture represents the simplest RAG design, where user input is processed in a strictly sequential manner. 
 
-            The Linear-Flow with Router architecture implements a sequential processing pipeline with intelligent routing capabilities. In this setup, questions first pass through a central router component that analyzes the query content and determines the most appropriate specialized pathway for processing. Based on this analysis, the question is directed to domain-specific agents or tools optimized for particular categories of questions (e.g., safety incidents, technical specifications, or operational procedures). This architecture leverages the principle of specialization, allowing each component in the pipeline to focus on a specific aspect of the question-answering process. The router's decision-making is guided by semantic understanding of the question, ensuring that queries are matched with the most relevant knowledge sources and processing strategies.
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=0.8\textwidth]{images_exp2/diagrama_linear_flow.png}
+                    \caption{Linear-Flow architecture. PT1 indicates Prompt for Tool 1 and so on.}
+                    \label{fig:diagrama_linear_flow}
+                \end{figure}
+           
 
-            \subsubsection{5.1.2 Single-Agent Approach}
+            \subsubsection{Linear-Flow with Router}
 
-            The Single-Agent approach represents a centralized architecture where a single language model agent handles the entire question-answering process. This agent has access to the full suite of retrieval tools and knowledge sources, making independent decisions about which tools to invoke and how to synthesize information into coherent answers. The design emphasizes end-to-end reasoning within a unified context, allowing the model to maintain a consistent understanding throughout the process. This approach tests the capability of language models to manage complex workflows autonomously, balancing between exploration of different knowledge sources and focused answer generation without the overhead of inter-agent communication.
+                The Linear-Flow with Router paradigm extends the basic linear flow by introducing a routing mechanism that enables the distribution of tool instruction prompts. As illustrated in Figure~\ref{fig:diagrama_linear_w_router}, instead of a single chatbot generating one query and invoking a single tool, the router decomposes the user input into multiple sub-queries. Each sub-query is then processed independently, often in parallel, by separate tool invocations.
+                    
+                This approach offers several advantages:
+                \begin{itemize}
+                    \item \textbf{Increased Throughput:} By distributing sub-tasks across multiple tools, the system can handle more complex or multi-faceted user requests efficiently.
+                    \item \textbf{Specialization:} Each tool can be tailored to address a specific aspect of the user's query, allowing for more accurate and relevant results.
+                    \item \textbf{Scalability:} The architecture naturally supports scaling, as additional tools can be added to handle more sub-queries or specialized tasks.
+                \end{itemize}
+                
+                In practice, the router acts as an orchestrator, analyzing the user input and generating multiple targeted queries (PT1*, PT2*, PT3*, PT4* in the figure). These queries are dispatched to their respective tools, and the results are aggregated to form the final answer. This method is particularly effective for tasks that can be decomposed into independent components, such as multi-part questions or workflows requiring different types of expertise.
+                
+                Compared to the standard linear flow, the use of a router introduces additional complexity in query generation and result aggregation but enables a significant boost in system flexibility and performance.
 
-            \subsubsection{5.1.3 Multi-Agent Supervisor Framework}
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=0.8\textwidth]{images_exp2/diagrama_linear_w_router.png}
+                    \caption{Linear-Flow with Router architecture.}
+                    \label{fig:diagrama_linear_w_router}
+                \end{figure}
+                
+                
 
-            The Multi-Agent Supervisor framework implements a collaborative approach where multiple specialized agents work together under the coordination of a supervisor agent. Each specialized agent focuses on a specific domain of knowledge or reasoning skill, such as retrieval, analysis, or explanation generation. The supervisor agent orchestrates the collaboration, delegating subtasks to appropriate specialized agents, integrating their contributions, and ensuring coherence in the final answer. This architecture explores the potential benefits of distributed cognition, where complex reasoning is decomposed into manageable components handled by purpose-built agents. The framework includes mechanisms for resolving conflicts between agents and synthesizing potentially divergent perspectives into unified responses.
+                
+            \subsubsection{Single-Agent}
 
-            \subsubsection{5.2 Language Model Configurations}
+                The Single-Agent approach represents a centralized architecture where a single language model agent handles the entire question-answering process. This agent has access to the full suite of retrieval tools and knowledge sources, making independent decisions about which tools to invoke and how to synthesize information into coherent answers. The design emphasizes end-to-end reasoning within a unified context, allowing the model to maintain a consistent understanding throughout the process. This approach tests the capability of language models to manage complex workflows autonomously, balancing between exploration of different knowledge sources and focused answer generation without the overhead of inter-agent communication.
+                
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=0.8\textwidth]{images_exp2/diagrama_single_agent.png}
+                    \caption{Single-Agent architecture}
+                    \label{fig:diagrama_single_agent}
+                \end{figure}
 
-            Each agent architecture was evaluated using multiple language model configurations to assess how model capabilities influence performance across different agent designs. The experiment employed two primary model variants:
 
-            \subsubsection{5.2.1 Compact Performance-Optimized Models}
+            \subsubsection{Multi-Agent Supervisor}
 
-            The experiment utilized compact, performance-optimized language models that balance computational efficiency with reasoning capabilities. These models, exemplified by the gpt-4o-mini variant, are designed for deployment scenarios where resource constraints may be present. Testing with these models provides insights into the minimum viable model capabilities required for effective question answering in the oil well operations domain, and helps identify which agent architectures are most resilient to limitations in model capacity.
+                The Multi-Agent Supervisor setup implements a collaborative approach where multiple specialized agents work together under the coordination of a supervisor agent. Each specialized agent focuses on a specific domain of knowledge or reasoning skill, such as retrieval, analysis, or explanation generation. The supervisor agent orchestrates the collaboration, delegating subtasks to appropriate specialized agents, integrating their contributions, and ensuring coherence in the final answer. This architecture explores the potential benefits of distributed cognition, where complex reasoning is decomposed into manageable components handled by purpose-built agents. The framework includes mechanisms for resolving conflicts between agents and synthesizing potentially divergent perspectives into unified responses.
 
-            \subsubsection{5.2.2 Advanced Reasoning-Focused Models}
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=0.8\textwidth]{images_exp2/diagrama_multiagente_supervisor.png}
+                    \caption{Multi-Agent setup with one supervisor and 4 specialist agents.}
+                    \label{fig:diagrama_multiagente_supervisor}
+                \end{figure}
 
-            At the higher end of the capability spectrum, the experiment employed advanced reasoning-focused models with enhanced capacity for complex inference and contextual understanding. These models, represented by the gpt-4o variant, offer superior performance in tasks requiring nuanced interpretation of domain-specific terminology and multi-step reasoning. The inclusion of these models enables assessment of how increased model capabilities interact with different agent architectures, potentially revealing diminishing returns or synergistic effects that inform optimal system design.
 
-            \textit{<insert table summarizing experimental setups and models here>}
+                \textit{<insert table summarizing experimental setups and models here>}
 
         \subsection{6. Execution Details}
 
@@ -213,10 +249,12 @@
             This methodology provides a systematic framework for comparing different agent architectures and large language models in the context of complex question answering for oil well operations. By integrating rigorous evaluation metrics, robust reproducibility practices, and a clear acknowledgment of limitations, the approach enables meaningful insights into the strengths and weaknesses of various system designs. The findings derived from this methodology can inform both the deployment of language model agents in operational settings and the ongoing development of more capable and reliable AI systems for specialized industrial domains.
 
 
-    \section{Resultados 2}
-        
-        \subsubsection{Geral}
+    \section{Resultados e Discussão}
 
+        
+        \subsection{Performance}
+
+        
             [GERAR TEXTO AQUI]
 
             ...
@@ -241,99 +279,215 @@
 
             ...
         
-        \subsubsection{F1 Score}
-        
+            \subsubsection{F1 Score}
             
-            [GERAR TEXTO AQUI]
-
-            ...
-
-            ...
-
-            ...
-            
-            % \begin{figure}
-            %     \centering
-            %     \includegraphics[width=0.5\linewidth]{images_exp2/bar_avg_f1_by_configuration.png}
-            %     \caption{Average F1 by RAG architecture.}
-            %     \label{fig:enter-label}
-            % \end{figure}
-
-            % \begin{figure}
-            %     \centering
-            %     \includegraphics[width=0.5\linewidth]{images_exp2/bar_avg_f1_by_model.png}
-            %     \caption{Average F1 Score by language model.}
-            %     \label{fig:enter-label}
-            % \end{figure}            
-            \begin{figure}[h]
-              \centering
-              \begin{minipage}{0.45\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{images_exp2/bar_avg_f1_by_configuration.png}
-                \caption{Image 1 caption}
-                \label{fig:image1}
-              \end{minipage}
-              \hfill
-              \begin{minipage}{0.45\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{images_exp2/bar_avg_f1_by_model.png}
-                \caption{Image 2 caption}
-                \label{fig:image2}
-              \end{minipage}
-            \end{figure}
-            
-            
-            [GERAR TEXTO AQUI]
-
-            ...
-
-            ...
-
-            ...
-            % \begin{figure}[h!]
-            %     \centering              
-            %     \includegraphics[width=0.75\textwidth]{images_part_2/model_f1_model_configuration.png}
-            %     \caption{F1 Score por modelo e configuração.}
-            %     \label{fig:aaaa}
-            % \end{figure}
-            \begin{figure}
-                % \centering
-                \includegraphics[width=1.1\linewidth]{images_exp2/f1_score_by_model_and_configuration.png}
-                \caption{F1 Score distribution by model and configuration of agents}
-                \label{fig:f1_score_by_model_and_configuration}
-            \end{figure}
                 
-            [GERAR TEXTO AQUI]
+                [GERAR TEXTO AQUI]
 
-            ...
+                ...
 
-            ...
+                ...
 
-            ...
-            
-            
-            \begin{figure}
+                ...
+                
+                % \begin{figure}
+                %     \centering
+                %     \includegraphics[width=0.5\linewidth]{images_exp2/bar_avg_f1_by_configuration.png}
+                %     \caption{Average F1 by RAG architecture.}
+                %     \label{fig:enter-label}
+                % \end{figure}
+
+                % \begin{figure}
+                %     \centering
+                %     \includegraphics[width=0.5\linewidth]{images_exp2/bar_avg_f1_by_model.png}
+                %     \caption{Average F1 Score by language model.}
+                %     \label{fig:enter-label}
+                % \end{figure}            
+                \begin{figure}[h]
                 \centering
-                \includegraphics[width=1\linewidth]{images_exp2/best_f1_by_question_index_and_configuration.png}
-                \caption{Enter Caption}
-                \label{fig:enter-label}
-            \end{figure}
+                \begin{minipage}{0.45\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{images_exp2/bar_avg_f1_by_configuration.png}
+                    \caption{Image 1 caption}
+                    \label{fig:image1}
+                \end{minipage}
+                \hfill
+                \begin{minipage}{0.45\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{images_exp2/bar_avg_f1_by_model.png}
+                    \caption{Image 2 caption}
+                    \label{fig:image2}
+                \end{minipage}
+                \end{figure}
+                
+                
+                [GERAR TEXTO AQUI]
+
+                ...
+
+                ...
+
+                ...
+                % \begin{figure}[h!]
+                %     \centering              
+                %     \includegraphics[width=0.75\textwidth]{images_part_2/model_f1_model_configuration.png}
+                %     \caption{F1 Score por modelo e configuração.}
+                %     \label{fig:aaaa}
+                % \end{figure}
+                \begin{figure}
+                    % \centering
+                    \includegraphics[width=1.1\linewidth]{images_exp2/f1_score_by_model_and_configuration.png}
+                    \caption{F1 Score distribution by model and configuration of agents}
+                    \label{fig:f1_score_by_model_and_configuration}
+                \end{figure}
+                    
+                [GERAR TEXTO AQUI]
+
+                ...
+
+                ...
+
+                ...
+                
+                
+                \begin{figure}
+                    \centering
+                    \includegraphics[width=1\linewidth]{images_exp2/best_f1_by_question_index_and_configuration.png}
+                    \caption{Enter Caption}
+                    \label{fig:enter-label}
+                \end{figure}
+                
+                [GERAR TEXTO AQUI]
+
+                ...
+
+                ...
+
+                ...
+                
+                % \begin{figure}[h!]
+                %     \centering              
+                %     \includegraphics[width=0.75\textwidth]{images_part_2/question_f1_question_index_configuration.png}
+                %     \caption{F1 Score por pergunta e configuração.}
+                %     \label{fig:aaaa}
+                % \end{figure}
+
+
+                [GERAR TEXTO AQUI]
+
+                ...
+
+                ...
+                
+                ...
+
+                
+                \begin{figure}
+                    \centering
+                    \includegraphics[width=1\linewidth]{images_exp2/best_f1_by_question_index_and_model.png}
+                    \caption{Enter Caption}
+                    \label{fig:enter-label}
+                \end{figure}
+
+
+            \subsubsection{Precisão}
+
+                [GERAR TEXTO AQUI]
+
+                ...
+
+                ...
+
+                ...
+
+                \begin{figure}[h!]
+                    \centering              
+                    \includegraphics[width=0.75\textwidth]{images_part_2/model_precision_model_configuration.png}
+                    \caption{Precisão por modelo e configuração.}
+                    \label{fig:aaaa}
+                \end{figure}
+                
+                [GERAR TEXTO AQUI]
+
+                ...
+
+                ...
+
+                ...
+
+                \begin{figure}[h!]
+                    \centering              
+                    \includegraphics[width=0.75\textwidth]{images_part_2/question_precision_question_index_configuration.png}
+                    \caption{Precisão por pergunta e configuração.}
+                    \label{fig:aaaa}
+                \end{figure}    
+
+                [GERAR TEXTO AQUI]
+
+                ...
+
+                ...
+
             
+            \subsubsection{Recall}
+            
+                [GERAR TEXTO AQUI]
+
+                ...
+
+                ...
+                
+                \begin{figure}[h!]
+                    \centering              
+                    \includegraphics[width=0.75\textwidth]{images_part_2/model_recall_model_configuration.png}
+                    \caption{Recall por modelo e configuração.}
+                    \label{fig:aaaa}
+                \end{figure}
+
+                [GERAR TEXTO AQUI]
+
+                ...
+
+                ...
+
+                ...
+                
+                \begin{figure}[h!]
+                    \centering              
+                    \includegraphics[width=0.75\textwidth]{images_part_2/question_recall_question_index_configuration.png}
+                    \caption{Recall por pergunta e configuração.}
+                    \label{fig:aaaa}
+                \end{figure}
+
+                [GERAR TEXTO AQUI]
+
+                ...
+
+                ...
+            
+
+        \subsection{Linear-Flow}
+
+
+            In this setup, the user’s query is handled by a single LLM step, which carries all the instructions (PT1, PT2, PT3 and PT4, as depicted in \ref{fig:diagrama_linear_flow}) required for the generation of various types of search queries. These instruction prompts are often quite long, as they are carefully crafted to produce high-quality queries for the vector store. Due to the aggregation of all instruction prompts within a single LLM invocation, the resulting context becomes notably extensive. This can lead to performance degradation as the context length increases [O QUE PODE SER VISTO NO GRAFICO TAL EM CONTRASTE COM O SETUP TAL QUE DIVIDE OS PROMPTS EM PARTES]. 
+            
+            ...
+
+            ...
+            
+            ...
+
+        \subsection{Linear-Flow with Router}
+
             [GERAR TEXTO AQUI]
 
             ...
 
             ...
-
-            ...
             
-            % \begin{figure}[h!]
-            %     \centering              
-            %     \includegraphics[width=0.75\textwidth]{images_part_2/question_f1_question_index_configuration.png}
-            %     \caption{F1 Score por pergunta e configuração.}
-            %     \label{fig:aaaa}
-            % \end{figure}
+            ...
 
+        \subsection{Single-Agent}
 
             [GERAR TEXTO AQUI]
 
@@ -342,127 +496,13 @@
             ...
             
             ...
-
-            
-            \begin{figure}
-                \centering
-                \includegraphics[width=1\linewidth]{images_exp2/best_f1_by_question_index_and_model.png}
-                \caption{Enter Caption}
-                \label{fig:enter-label}
-            \end{figure}
-
-
-        \subsubsection{Precisão}
-
-            [GERAR TEXTO AQUI]
-
-            ...
-
-            ...
-
-            ...
-
-            \begin{figure}[h!]
-                \centering              
-                \includegraphics[width=0.75\textwidth]{images_part_2/model_precision_model_configuration.png}
-                \caption{Precisão por modelo e configuração.}
-                \label{fig:aaaa}
-            \end{figure}
-            
-            [GERAR TEXTO AQUI]
-
-            ...
-
-            ...
-
-            ...
-
-            \begin{figure}[h!]
-                \centering              
-                \includegraphics[width=0.75\textwidth]{images_part_2/question_precision_question_index_configuration.png}
-                \caption{Precisão por pergunta e configuração.}
-                \label{fig:aaaa}
-            \end{figure}    
-
-            [GERAR TEXTO AQUI]
-
-            ...
-
-            ...
-
         
-        \subsubsection{Recall}
-        
-            [GERAR TEXTO AQUI]
-
-            ...
-
-            ...
-            
-            \begin{figure}[h!]
-                \centering              
-                \includegraphics[width=0.75\textwidth]{images_part_2/model_recall_model_configuration.png}
-                \caption{Recall por modelo e configuração.}
-                \label{fig:aaaa}
-            \end{figure}
-
-            [GERAR TEXTO AQUI]
-
-            ...
-
-            ...
-
-            ...
-            
-            \begin{figure}[h!]
-                \centering              
-                \includegraphics[width=0.75\textwidth]{images_part_2/question_recall_question_index_configuration.png}
-                \caption{Recall por pergunta e configuração.}
-                \label{fig:aaaa}
-            \end{figure}
-
-            [GERAR TEXTO AQUI]
-
-            ...
-
-            ...
-        
-    \section{Discussão 2}
-        
-            [GERAR TEXTO AQUI]
-
-            ...
-            
-            ...
-        
-        \subsection{aaaa}
+        \subsection{Multi-Agent}
 
             [GERAR TEXTO AQUI]
 
             ...
             
-            ...
-        
-        \subsection{aaaa}
-        
-            [GERAR TEXTO AQUI]
-
-            ...
-            
-            ...
-            
-        \subsection{aaaa}
-        
-            [GERAR TEXTO AQUI]
-
-            ...
-            
-            ...
-            
-        \subsection{aaaa}
-        
-            [GERAR TEXTO AQUI]
-
             ...
             
             ...
