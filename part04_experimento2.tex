@@ -2,7 +2,7 @@
 \chapter{Experimento 2}
     
 
-    \section{Methodology (generated)}
+    \section{Methodology}
 
         \subsection{Overview}
 
@@ -214,12 +214,6 @@
 
             For questions that are open-ended or less amenable to binary correctness, the evaluation framework employs a confusion matrix approach. This allows for a more nuanced assessment, capturing partial correctness and the degree to which the system’s response overlaps with the expected content. Additionally, the methodology includes the calculation of the answer size ratio, which measures the verbosity of the generated answer relative to the ground truth. This metric helps to identify tendencies toward overly concise or excessively verbose responses, offering further insight into the models’ behavior and suitability for practical deployment.
 
-        \subsection{Reproducibility}
-
-            Ensuring reproducibility is a cornerstone of the experimental methodology. To this end, every aspect of the computational environment is meticulously documented. This includes recording the exact Python version used, as well as all package dependencies and their respective versions. Hardware specifications, such as processor type and available memory, are also logged to account for any potential influence on experimental outcomes.
-
-            Beyond the environment, the system systematically records all configuration parameters relevant to each experimental run. This encompasses model names, hyperparameters, and dataset paths, as well as any other settings that might affect the results. By maintaining this comprehensive record, the methodology enables other researchers to replicate the experiments precisely or to build upon them with confidence that baseline conditions are well understood and controlled.
-
         \subsection{Limitations}
 
             While the experimental methodology strives for rigor and comprehensiveness, several limitations must be acknowledged. One key limitation concerns the coverage of the dataset: although the question set is carefully curated to represent a broad range of operational scenarios, it may not capture the full diversity of real-world challenges encountered in oil well operations. Similarly, the models and agent architectures evaluated are constrained by the available computational resources and the current state of language modeling technology, which may limit their ability to generalize beyond the scenarios tested.
@@ -237,30 +231,19 @@
         \subsection{Performance}
 
         
-            [GERAR TEXTO AQUI]
-
-            ... \cite{Antoniak2016}
-
-            ...
+            In this section, the F1-score charts are presented, which is the main metric for performance evaluation in this work. The corresponding charts for the precision and recall metrics are available in Appendix~\ref{sec:exp2_appendix}.
             
+            É importante ressaltar que todos os resultados apresentados correspondem à melhor performance obtida em três execuções independentes para cada configuração de agente e modelo. A adoção desta metodologia visa mitigar a variabilidade inerente aos processos estocásticos presentes em muitos algoritmos de aprendizado de máquina. Fatores como a inicialização aleatória de pesos ou a aleatorização de dados podem levar a resultados distintos a cada execução. Ao selecionar o melhor resultado, busca-se apresentar o potencial máximo de cada configuração, reduzindo a chance de que uma performance inferior, causada por um ótimo local ou uma inicialização desfavorável, seja erroneamente interpretada como a capacidade real do modelo.
+
             \begin{figure}[h]
                 \centering              
                 \includegraphics[width=0.50\textwidth]{images_exp2/bar_best_f1_by_model_and_configuration.png}
-                \caption{Best F1 score by model and configuration.}
+                \caption{F1 score by model and configuration.}
                 \label{fig:best_f1_by_model_and_configuration}
             \end{figure}
 
 
             ...
-
-            
-            \begin{figure}[h!]
-                \centering              
-                \includegraphics[width=0.75\textwidth]{images_part_2/media_geral_por_configuracao.png}
-                \caption{Precisão, recall e f1 por configuração.             [GERAR GRÁFICO NOVO AQUI]}
-                \label{fig:media_geral_por_configuracao}
-            \end{figure}
-
 
             ...
             
@@ -279,33 +262,20 @@
 
                 ...
                 
-                % \begin{figure}
-                %     \centering
-                %     \includegraphics[width=0.5\linewidth]{images_exp2/bar_avg_f1_by_configuration.png}
-                %     \caption{Average F1 by RAG architecture.}
-                %     \label{fig:enter-label}
-                % \end{figure}
-
-                % \begin{figure}
-                %     \centering
-                %     \includegraphics[width=0.5\linewidth]{images_exp2/bar_avg_f1_by_model.png}
-                %     \caption{Average F1 Score by language model.}
-                %     \label{fig:enter-label}
-                % \end{figure}            
                 \begin{figure}[h]
                 \centering
                 \begin{minipage}{0.45\textwidth}
                     \centering
                     \includegraphics[width=\textwidth]{images_exp2/bar_avg_f1_by_configuration.png}
-                    \caption{Image 1 caption}
-                    \label{fig:image1}
+                    \caption{Average F1 score by configuration.}
+                    \label{fig:bar_avg_f1_by_configuration}
                 \end{minipage}
                 \hfill
                 \begin{minipage}{0.45\textwidth}
                     \centering
                     \includegraphics[width=\textwidth]{images_exp2/bar_avg_f1_by_model.png}
-                    \caption{Image 2 caption}
-                    \label{fig:image2}
+                    \caption{Average F1 score by model.}
+                    \label{fig:bar_avg_f1_by_model}
                 \end{minipage}
                 \end{figure}
                 
@@ -317,12 +287,7 @@
                 ...
 
                 ...
-                % \begin{figure}[h!]
-                %     \centering              
-                %     \includegraphics[width=0.75\textwidth]{images_part_2/model_f1_model_configuration.png}
-                %     \caption{F1 Score por modelo e configuração.}
-                %     \label{fig:aaaa}
-                % \end{figure}
+                
                 \begin{figure}
                     % \centering
                     \includegraphics[width=1.1\linewidth]{images_exp2/f1_score_by_model_and_configuration.png}
@@ -342,7 +307,7 @@
                 \begin{figure}
                     \centering
                     \includegraphics[width=1\linewidth]{images_exp2/best_f1_by_question_index_and_configuration.png}
-                    \caption{Enter Caption}
+                    \caption{Best F1 score by question index and configuration.}
                     \label{fig:best_f1_by_question_index_and_configuration}
                 \end{figure}
                 
@@ -354,13 +319,6 @@
 
                 ...
                 
-                % \begin{figure}[h!]
-                %     \centering              
-                %     \includegraphics[width=0.75\textwidth]{images_part_2/question_f1_question_index_configuration.png}
-                %     \caption{F1 Score por pergunta e configuração.}
-                %     \label{fig:aaaa}
-                % \end{figure}
-
 
                 [GERAR TEXTO AQUI]
 
@@ -374,7 +332,7 @@
                 \begin{figure}
                     \centering
                     \includegraphics[width=1\linewidth]{images_exp2/best_f1_by_question_index_and_model.png}
-                    \caption{Enter Caption}
+                    \caption{Best F1 score by question index and model.}
                     \label{fig:best_f1_by_question_index_and_model}
                 \end{figure}
 
@@ -429,8 +387,8 @@
                 \begin{figure}[h!]
                     \centering              
                     \includegraphics[width=0.75\textwidth]{images_part_2/model_recall_model_configuration.png}
-                    \caption{Recall por modelo e configuração.}
-                    \label{fig:aaaa}
+                    \caption{Recall by model and configuration.}
+                    \label{fig:model_recall_model_configuration}
                 \end{figure}
 
                 [GERAR TEXTO AQUI]
