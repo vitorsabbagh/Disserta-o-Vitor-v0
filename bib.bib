@@ -837,3 +837,80 @@ doi={10.48550/arXiv.2303.11366}
  title = {Optimizing Well Design and Operation with Technology: The Role of Machine Learning, Artificial Intelligence, Data Governance and Standardization},
  year = {2024}
 }
+
+
+@misc{li2025generationjudgmentopportunitieschallenges,
+      title={From Generation to Judgment: Opportunities and Challenges of LLM-as-a-judge}, 
+      author={Dawei Li and Bohan Jiang and Liangjie Huang and Alimohammad Beigi and Chengshuai Zhao and Zhen Tan and Amrita Bhattacharjee and Yuxuan Jiang and Canyu Chen and Tianhao Wu and Kai Shu and Lu Cheng and Huan Liu},
+      year={2025},
+      eprint={2411.16594},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2411.16594}, 
+}
+
+@misc{sollenberger2024llm4vvexploringllmasajudgevalidation,
+      title={LLM4VV: Exploring LLM-as-a-Judge for Validation and Verification Testsuites}, 
+      author={Zachariah Sollenberger and Jay Patel and Christian Munley and Aaron Jarmusch and Sunita Chandrasekaran},
+      year={2024},
+      eprint={2408.11729},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE},
+      url={https://arxiv.org/abs/2408.11729}, 
+}
+
+@misc{shi2025optimizationbasedpromptinjectionattack,
+      title={Optimization-based Prompt Injection Attack to LLM-as-a-Judge}, 
+      author={Jiawen Shi and Zenghui Yuan and Yinuo Liu and Yue Huang and Pan Zhou and Lichao Sun and Neil Zhenqiang Gong},
+      year={2025},
+      eprint={2403.17710},
+      archivePrefix={arXiv},
+      primaryClass={cs.CR},
+      url={https://arxiv.org/abs/2403.17710}, 
+}
+
+@misc{jeong2025agentasjudgefactualsummarizationlong,
+      title={Agent-as-Judge for Factual Summarization of Long Narratives}, 
+      author={Yeonseok Jeong and Minsoo Kim and Seung-won Hwang and Byung-Hak Kim},
+      year={2025},
+      eprint={2501.09993},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2501.09993}, 
+}
+
+@article{Gu2025,
+   abstract = {Accurate and consistent evaluation is crucial for decision-making across numerous fields, yet it remains a challenging task due to inherent subjectivity, variability, and scale. Large Language Models (LLMs) have achieved remarkable success across diverse domains, leading to the emergence of "LLM-as-a-Judge," where LLMs are employed as evaluators for complex tasks. With their ability to process diverse data types and provide scalable, cost-effective, and consistent assessments, LLMs present a compelling alternative to traditional expert-driven evaluations. However, ensuring the reliability of LLM-as-a-Judge systems remains a significant challenge that requires careful design and standardization. This paper provides a comprehensive survey of LLM-as-a-Judge, addressing the core question: How can reliable LLM-as-a-Judge systems be built? We explore strategies to enhance reliability, including improving consistency, mitigating biases, and adapting to diverse assessment scenarios. Additionally, we propose methodologies for evaluating the reliability of LLM-as-a-Judge systems, supported by a novel benchmark designed for this purpose. To advance the development and real-world deployment of LLM-as-a-Judge systems, we also discussed practical applications, challenges, and future directions. This survey serves as a foundational reference for researchers and practitioners in this rapidly evolving field.},
+   author = {Jiawei Gu and Xuhui Jiang and Zhichao Shi and Hexiang Tan and Xuehao Zhai and Chengjin Xu and Wei Li and Yinghan Shen and Shengjie Ma and Honghao Liu and Saizhuo Wang and Kun Zhang and Yuanzhuo Wang and Wen Gao and Lionel Ni and Jian Guo},
+   month = {3},
+   title = {A Survey on LLM-as-a-Judge},
+   url = {http://arxiv.org/abs/2411.15594},
+   year = {2025}
+}
+@article{Zheng2023,
+   abstract = {Evaluating large language model (LLM) based chat assistants is challenging due to their broad capabilities and the inadequacy of existing benchmarks in measuring human preferences. To address this, we explore using strong LLMs as judges to evaluate these models on more open-ended questions. We examine the usage and limitations of LLM-as-a-judge, including position, verbosity, and self-enhancement biases, as well as limited reasoning ability, and propose solutions to mitigate some of them. We then verify the agreement between LLM judges and human preferences by introducing two benchmarks: MT-bench, a multi-turn question set; and Chatbot Arena, a crowdsourced battle platform. Our results reveal that strong LLM judges like GPT-4 can match both controlled and crowdsourced human preferences well, achieving over 80% agreement, the same level of agreement between humans. Hence, LLM-as-a-judge is a scalable and explainable way to approximate human preferences, which are otherwise very expensive to obtain. Additionally, we show our benchmark and traditional benchmarks complement each other by evaluating several variants of LLaMA and Vicuna. The MT-bench questions, 3K expert votes, and 30K conversations with human preferences are publicly available at https://github.com/lm-sys/FastChat/tree/main/fastchat/llm_judge.},
+   author = {Lianmin Zheng and Wei-Lin Chiang and Ying Sheng and Siyuan Zhuang and Zhanghao Wu and Yonghao Zhuang and Zi Lin and Zhuohan Li and Dacheng Li and Eric P. Xing and Hao Zhang and Joseph E. Gonzalez and Ion Stoica},
+   month = {12},
+   title = {Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena},
+   url = {http://arxiv.org/abs/2306.05685},
+   year = {2023}
+}
+
+@misc{li2024llmsasjudgescomprehensivesurveyllmbased,
+      title={LLMs-as-Judges: A Comprehensive Survey on LLM-based Evaluation Methods}, 
+      author={Haitao Li and Qian Dong and Junjie Chen and Huixue Su and Yujia Zhou and Qingyao Ai and Ziyi Ye and Yiqun Liu},
+      year={2024},
+      eprint={2412.05579},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2412.05579}, 
+}
+
+@article{Kim2024,
+   abstract = {Recently, using a powerful proprietary Large Language Model (LLM) (e.g., GPT-4) as an evaluator for long-form responses has become the de facto standard. However, for practitioners with large-scale evaluation tasks and custom criteria in consideration (e.g., child-readability), using proprietary LLMs as an evaluator is unreliable due to the closed-source nature, uncontrolled versioning, and prohibitive costs. In this work, we propose Prometheus, a fully open-source LLM that is on par with GPT-4's evaluation capabilities when the appropriate reference materials (reference answer, score rubric) are accompanied. We first construct the Feedback Collection, a new dataset that consists of 1K fine-grained score rubrics, 20K instructions, and 100K responses and language feedback generated by GPT-4. Using the Feedback Collection, we train Prometheus, a 13B evaluator LLM that can assess any given long-form text based on customized score rubric provided by the user. Experimental results show that Prometheus scores a Pearson correlation of 0.897 with human evaluators when evaluating with 45 customized score rubrics, which is on par with GPT-4 (0.882), and greatly outperforms ChatGPT (0.392). Furthermore, measuring correlation with GPT-4 with 1222 customized score rubrics across four benchmarks (MT Bench, Vicuna Bench, Feedback Bench, Flask Eval) shows similar trends, bolstering Prometheus's capability as an evaluator LLM. Lastly, Prometheus achieves the highest accuracy on two human preference benchmarks (HHH Alignment & MT Bench Human Judgment) compared to open-sourced reward models explicitly trained on human preference datasets, highlighting its potential as an universal reward model. We open-source our code, dataset, and model at https://kaistai.github.io/prometheus/.},
+   author = {Seungone Kim and Jamin Shin and Yejin Cho and Joel Jang and Shayne Longpre and Hwaran Lee and Sangdoo Yun and Seongjin Shin and Sungdong Kim and James Thorne and Minjoon Seo},
+   month = {3},
+   title = {Prometheus: Inducing Fine-grained Evaluation Capability in Language Models},
+   url = {http://arxiv.org/abs/2310.08491},
+   year = {2024}
+}
