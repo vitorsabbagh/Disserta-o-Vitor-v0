@@ -124,7 +124,8 @@
 
             \subsubsection{Linear-Flow}
 
-                The Linear-Flow architecture represents the simplest RAG design, where user input is processed in a strictly sequential manner. 
+                The Linear-Flow architecture represents the simplest RAG design, where user input is processed in a strictly sequential manner. In this setup, the user’s query is handled by a single LLM step, which carries all the instructions (PT1, PT2, PT3 and PT4, as depicted in \ref{fig:diagrama_linear_flow}) required for the generation of various types of search queries. These instruction prompts are often quite long, as they are carefully crafted to produce high-quality queries for the vector store. Due to the aggregation of all instruction prompts within a single LLM invocation, the resulting context becomes notably extensive. This can lead to performance degradation as the context length increases [O QUE PODE SER VISTO NO GRAFICO TAL EM CONTRASTE COM O SETUP TAL QUE DIVIDE OS PROMPTS EM PARTES]. 
+            
 
                 \begin{figure}[h]
                     \centering
@@ -412,44 +413,3 @@
 
                 ...
             
-
-        \subsection{Linear-Flow}
-
-
-            In this setup, the user’s query is handled by a single LLM step, which carries all the instructions (PT1, PT2, PT3 and PT4, as depicted in \ref{fig:diagrama_linear_flow}) required for the generation of various types of search queries. These instruction prompts are often quite long, as they are carefully crafted to produce high-quality queries for the vector store. Due to the aggregation of all instruction prompts within a single LLM invocation, the resulting context becomes notably extensive. This can lead to performance degradation as the context length increases [O QUE PODE SER VISTO NO GRAFICO TAL EM CONTRASTE COM O SETUP TAL QUE DIVIDE OS PROMPTS EM PARTES]. 
-            
-            ...
-
-            ...
-            
-            ...
-
-        \subsection{Linear-Flow with Router}
-
-            [GERAR TEXTO AQUI]
-
-            ...
-
-            ...
-            
-            ...
-
-        \subsection{Single-Agent}
-
-            [GERAR TEXTO AQUI]
-
-            ...
-
-            ...
-            
-            ...
-        
-        \subsection{Multi-Agent}
-
-            [GERAR TEXTO AQUI]
-
-            ...
-            
-            ...
-            
-            ...
