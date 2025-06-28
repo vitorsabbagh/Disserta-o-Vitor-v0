@@ -1,10 +1,21 @@
 \chapter{Experiment 2}
+
+\xexeo{Tem muito LLMnismos aqui, como adjetivos desnecessários propagandísticos. Tá muito genérico, falta dados e deixa muita pergunta. Parece mais um plano do que algo feito. Você já fez e falta escrever?}
+
+
     
-    This chapter describes the second experimental methodology used to evaluate LLM agents and workflows for answering questions in the well engineering domain. The experiment integrates multiple LLM configurations, agent architectures, and RAG tools, leveraging Petrobras datasets.
+    This chapter describes the second experiment used to evaluate LLM agents and workflows to answer questions in the well engineering domain. 
+    The experiment integrates multiple LLM configurations, agent architectures, and RAG tools, leveraging Petrobras\xexeo{OPA, escapou um Petrobras aqui} datasets.
 
-    To achieve these objectives, this research was conducted through two distinct experimental phases. The first, carried out in 2024, focused on a foundational comparison between single and multi-agent architectures, revealing key insights into their performance, cost, and limitations such as hallucination and context interpretation. The rapid evolution of generative AI frameworks and models prompted a second, more up-to-date experiment in 2025. This second phase built upon the initial findings, also employing non-agentic workflows as baseline and a more rigorous, quantitative evaluation methodology to address the challenges identified in the first experiment and automated evaluation based on the concept commonly reffered to as "LLM-as-a-judge" (\cite{Gu2025}).
+    To achieve these objectives, this research was conducted through two distinct experimental phases. The first, carried out in 2024, focused on a foundational comparison between single and multi-agent architectures, revealing key insights into their performance, cost, and limitations such as hallucination and context interpretation. \xexeo{não é o capítulo anterior? Acho que pode tirar}
+    The rapid evolution of generative AI frameworks and models prompted a second, more up-to-date experiment in 2025. 
+    This second phase built upon the initial findings, also employing non-agentic workflows as a baseline and a more rigorous, quantitative evaluation methodology to address the challenges identified in the first experiment and automated evaluation based on the concept commonly referred to as ``LLM-as-a-judge'' \citep{Gu2025}.
 
-    The use of "LLM-as-a-judge" was driven by the sheer volume of responses to be evaluated. With four configurations, two models, and three executions for each, a total of 24 responses were generated for every question in the dataset. Manually assessing this volume of data would have been impractical. Furthermore, previously used metrics like `truthfulness` had become obsolete. This metric was highly relevant when models frequently hallucinated, a problem that is far less prevalent in the current generation of LLMs. 
+    The use of \enquote{LLM-as-a-judge} was driven by the sheer volume of responses to be evaluated. 
+    With four configurations, two models, and three executions for each, a total of 24 responses were generated for every question in the dataset.
+    Manually assessing this volume of data would have been impractical.
+    Furthermore, previously used metrics like `truthfulness` had become obsolete. 
+    This metric was highly relevant when models frequently hallucinated, a problem that is far less prevalent in the current generation of LLMs. 
 
     \section{Methodology}
 
@@ -12,15 +23,24 @@
 
             \subsubsection{Dataset Preparation}
 
-                The experimental workflow was designed to provide a thorough and reproducible evaluation of language model agents within oil well operations. The process begins with the careful preparation of the dataset, which is composed of questions and corresponding ground truth answers derived from a diverse range of operational records, incident reports, and lessons learned. To ensure the quality and relevance of the data, questions undergo a filtering and preprocessing phase where clarity, diversity, and alignment with real-world scenarios are prioritized. This includes removing duplicates, standardizing terminology, and confirming that each question is properly paired with an accurate answer. The dataset is further validated for completeness and consistency, ensuring it represents the full spectrum of operational challenges, such as safety, cementing, and intervention scenarios.
+                The experimental workflow was designed to provide a thorough and reproducible evaluation of language model agents within oil well operations. 
+                The process begins with the careful preparation of the dataset, which is composed of questions and corresponding ground truth answers derived from a diverse range of operational records, incident reports, and lessons learned. To ensure the quality and relevance of the data, questions undergo a filtering and preprocessing phase where clarity, diversity, and alignment with real-world scenarios are prioritized. 
+                This includes removing duplicates, standardizing terminology, and confirming that each question is properly paired with an accurate answer. 
+                The dataset is further validated for completeness and consistency, ensuring it represents the full spectrum of operational challenges, such as safety, cementing, and intervention scenarios.
 
             \subsubsection{Model and Setup Selection}
 
-                Following dataset preparation, the experimental design incorporates a variety of agent architectures. These include approaches where questions are routed to specialized agents, single-agent systems that centralize all reasoning and retrieval, and multi-agent frameworks that leverage collaboration among specialized agents under a supervisory structure. Each of these configurations is evaluated using different language models, allowing for a comprehensive assessment of how model choice and agent setup influence performance. The agents are also provided with access to advanced retrieval tools and domain-specific knowledge bases, enabling them to draw on a broad foundation of operational expertise.
+                Following dataset preparation, the experimental design incorporates a variety of agent architectures.
+                These include approaches where questions are routed to specialized agents, single-agent systems that centralize all reasoning and retrieval, and multi-agent frameworks that leverage collaboration among specialized agents under a supervisory structure. Each of these configurations is evaluated using different language models, allowing for a comprehensive assessment of how model choice and agent setup influence performance.
+                The agents are also provided with access to advanced retrieval tools and domain-specific knowledge bases, enabling them to draw on a broad foundation of operational expertise.
 
             \subsubsection{Execution Loop}
 
-                The core of the experimental workflow is an execution loop depicted in Algorithm~\ref{alg:execution_loop}. For each combination of question, agent setup, and language model, the system systematically loads the relevant data, configures the agent, and executes the workflow. Throughout this process, all responses and intermediate reasoning steps are meticulously logged. This approach not only ensures systematic coverage of all experimental conditions but also provides full traceability for subsequent analysis. The automation of these procedures guarantees consistency and reproducibility, while the comprehensive logging facilitates in-depth evaluation and comparison of agent performance across a range of operational scenarios.
+                The core of the experimental workflow is an execution loop depicted in Algorithm~\ref{alg:execution_loop}. 
+                For each combination of question, agent setup, and language model, the system systematically loads the relevant data, configures the agent, and executes the workflow. 
+                Throughout this process, all responses and intermediate reasoning steps are meticulously logged. 
+                This approach not only ensures systematic coverage of all experimental conditions but also provides full traceability for subsequent analysis. 
+                The automation of these procedures guarantees consistency and reproducibility, while the comprehensive logging facilitates in-depth evaluation and comparison of agent performance across a range of operational scenarios.
 
             
                 \begin{algorithm}
@@ -53,17 +73,25 @@
             
             \subsubsection{Evaluation and Metrics}
 
-                Following the execution of all experimental combinations, a comprehensive evaluation framework is applied to assess agent performance. The system calculates a suite of quantitative metrics for each question, setup, and model combination by comparing the generated answers against the established ground truth. These metrics include standard performance indicators such as accuracy, precision, recall, and F1 score, which provide a multifaceted view of response quality. For open-ended questions where binary correctness measures are insufficient, a confusion matrix approach is implemented to capture nuances in answer quality and content coverage. Additionally, the system measures answer size ratio relative to ground truth, offering insights into model verbosity and conciseness. These metrics are then aggregated across different dimensions to enable meaningful comparisons between agent architectures and language models, revealing patterns in performance across various operational scenarios and question types.
+                Following the execution of all experimental combinations, a comprehensive evaluation framework is applied to assess agent performance. 
+                The system calculates a suite of quantitative metrics for each question, setup, and model combination by comparing the generated answers against the established ground truth. 
+                These metrics include standard performance indicators such as accuracy, precision, recall, and F1 score, which provide a multifaceted view of response quality. For open-ended questions where binary correctness measures are insufficient, a confusion matrix approach is implemented to capture nuances in answer quality and content coverage. Additionally, the system measures answer size ratio relative to ground truth, offering insights into model verbosity and conciseness. 
+                These metrics are then aggregated across different dimensions to enable meaningful comparisons between agent architectures and language models, revealing patterns in performance across various operational scenarios and question types.
 
             \subsubsection{Reproducibility and Quality Control}
 
-                To ensure scientific rigor and reproducibility, the experimental methodology incorporates robust tracking of all environmental variables and configuration parameters. The system maintains detailed logs of the computational environment, including software versions, dependency specifications, and hardware characteristics that might influence results. All experimental parameters, from model identifiers to dataset specifications, are systematically recorded alongside the results they generate. Throughout the experimental process, periodic validation checks are performed to maintain data integrity and result consistency, with anomalies flagged for investigation. This comprehensive approach to reproducibility not only facilitates verification of findings but also enables future extensions of the research with comparable baselines. The quality control measures embedded in the workflow ensure that conclusions drawn from the experiments rest on a foundation of methodological soundness and data reliability.
+                To ensure scientific rigor and reproducibility, the experimental methodology incorporates robust tracking of all environmental variables and configuration parameters. 
+                The system maintains detailed logs of the computational environment, including software versions, dependency specifications, and hardware characteristics that might influence results. 
+                All experimental parameters, from model identifiers to dataset specifications, are systematically recorded alongside the results they generate. Throughout the experimental process, periodic validation checks are performed to maintain data integrity and result consistency, with anomalies flagged for investigation. This comprehensive approach to reproducibility not only facilitates verification of findings but also enables future extensions of the research with comparable baselines. The quality control measures embedded in the workflow ensure that conclusions drawn from the experiments rest on a foundation of methodological soundness and data reliability.
 
-                \textit{<insert workflow diagram or pseudocode here to illustrate the above stages>}
+                \textit{<insert workflow diagram or pseudocode here to illustrate the above stages>}\xexeo{OPA! }
 
         \subsection{Data Sources}
 
-                The experimental evaluation relies on a carefully curated collection of data sources that represent the diverse knowledge domains relevant to oil well operations. At the core of the experiment is a comprehensive questions dataset containing structured entries that simulate real-world queries an operator might encounter. This dataset was developed through extensive collaboration with domain experts and analysis of historical operational records. Each entry in the dataset contains a question formulated in natural language, a unique identifier, categorical metadata to facilitate analysis, and a corresponding ground truth answer validated by subject matter experts. The questions span various complexity levels, from factual inquiries to complex reasoning scenarios that require integration of multiple knowledge sources.
+                The experimental evaluation relies on a  curated collection of data sources that represent the diverse knowledge domains relevant to oil well operations. 
+                At the core of the experiment is a comprehensive questions dataset containing structured entries that simulate real-world queries an operator might encounter. 
+                This dataset was developed through extensive collaboration with domain experts and analysis of historical operational records.
+                Each entry in the dataset contains a question formulated in natural language, a unique identifier, categorical metadata to facilitate analysis, and a corresponding ground truth answer validated by subject matter experts. The questions span various complexity levels, from factual inquiries to complex reasoning scenarios that require integration of multiple knowledge sources.
 
             To provide the language models with the necessary domain knowledge, the experiment incorporates several specialized knowledge bases that reflect different aspects of oil well operations:
 
@@ -83,11 +111,14 @@
 
         \subsection{System Architecture}
 
-                The experimental system was implemented using modern Python frameworks specialized for language model orchestration and agent workflows. The architecture leverages the LangChain and LangGraph ecosystems, which provide robust foundations for building complex language model applications with multiple components and state management. This subsection details the modular design of the system, highlighting how different components interact to enable systematic evaluation of language model agents in oil well operations.
+                The experimental system was implemented using modern Python frameworks specialized for language model orchestration and agent workflows. 
+                The architecture leverages the LangChain and LangGraph ecosystems, which provide robust foundations for building complex language model applications with multiple components and state management.
+                This subsection details the modular design of the system, highlighting how different components interact to enable systematic evaluation of language model agents in oil well operations.
 
             \subsubsection{Experiment Orchestration}
 
-                At the core of the system architecture is an experiment orchestration layer responsible for coordinating the entire evaluation process. This component manages the loading of questions from the dataset, systematically iterates through different model and setup combinations, and ensures proper logging of results. The orchestrator maintains experiment state across multiple runs, handles error recovery, and implements checkpointing to allow for resumption of long-running experiments. By centralizing control flow, this component ensures that all experimental conditions are tested consistently and that results are captured in a standardized format for subsequent analysis.
+                At the core of the system architecture is an experiment orchestration layer responsible for coordinating the entire evaluation process. 
+                This component manages the loading of questions from the dataset, systematically iterates through different model and setup combinations, and ensures proper logging of results. The orchestrator maintains experiment state across multiple runs, handles error recovery, and implements checkpointing to allow for resumption of long-running experiments. By centralizing control flow, this component ensures that all experimental conditions are tested consistently and that results are captured in a standardized format for subsequent analysis.
 
             \subsubsection{Agent Workflow Frameworks}
 
@@ -219,7 +250,7 @@
         \subsection{Quality Assessment with LLM-as-a-Judge}
             \label{sec:llm_judge_evaluation}
 
-            To evaluate the quality of the responses generated by the RAG system, an automated evaluation approach known as \textit{LLM-as-a-Judge} \cite{Zheng2023} was adopted. This method uses a large language model (LLM) as an impartial judge to compare the system-generated response with a reference response, known as the \textit{Ground Truth} (GT). Using an LLM for evaluation allows for a more granular and scalable analysis than manual human evaluation, while also capturing nuances of semantics and content.
+            To evaluate the quality of the responses generated by the RAG system, an automated evaluation approach known as \textit{LLM-as-a-Judge} \citep{Zheng2023} was adopted. This method uses a large language model (LLM) as an impartial judge to compare the system-generated response with a reference response, known as the \textit{Ground Truth} (GT). Using an LLM for evaluation allows for a more granular and scalable analysis than manual human evaluation, while also capturing nuances of semantics and content.
 
             The evaluation process was implemented through a structured \textit{prompt} that instructs the LLM-judge to perform an analysis based on the concepts of a confusion matrix. The evaluation flow for each question-answer pair is as follows:
 

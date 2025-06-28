@@ -207,9 +207,9 @@
 
             \begin{itemize}
                 
-                \item \textbf{Truthfulness:} a metric to gauge the extent of divergence from factual accuracy.
+                \item \textbf{Truthfulness:} a metric to gauge the extent of divergence from factual accuracy.\xexeo{tem que descrever em mais detalhes e de onde tirou}
         
-                \item  \textbf{Performance:} encompasses the overall quality of responses, considering linguistic coherence, logical reasoning, diversity, and the presence of corroborative evidence.
+                \item  \textbf{Performance:} encompasses the overall quality of responses, considering linguistic coherence, logical reasoning, diversity, and the presence of corroborative evidence.\xexeo{tem que descrever em mais detalhes e de onde tirou}
                 
             \end{itemize}
             
@@ -227,20 +227,20 @@
             
     \section{Results}
 
-    \todo[inline]{Em vez de Results, evaluatio, e você descreve como os artefatos foram avaliados, o texto que tem está bom, é só reorganizar}
+    \todo[inline]{Em vez de Results, evaluation?, e você descreve como os artefatos foram avaliados, o texto que tem está bom, é só reorganizar}
 
-    \subsection{Data Set Creation}
+\subsection{Data Set Creation}
 
 \todo[inline]{Aqui descreve todo o seu processo de criação das perguntas e todas elas, que tipo são, faz o máximo que puder. Isso é bem legal.}
 
 \subsection{Metrics}
 
-\todo[inline]{Aqui descreve as métricas, pode descrever na revisão da literatura de forma geral, mas se forem diferentes por experimento, tem que revisar aqui as que vai usar.}
+\todo[inline]{Tem que descrever na revisão da literatura de forma geral, mas se forem diferentes por experimento, tem que explicitar aqui as que vai usar.}
 
 
         This section provides an analysis of the data collected and answers the research questions. The results are presented in \autoref{tab:tabela_resultados} and are organized according to the objectives of the study, with each objective being addressed in detail.
 
-        The third metric, LLM Cost\xexeo{Isso aqui é uma pergunta de pesquisa tem que entrar de alguma maneira na definição do DSR, lembrando que as avaliações do DSR podem ser mais de uma}, represents\xexeo{Não é represents, já que é o custo mesmo, acho que  corresponds to, ou mesmo só is } the financial cost associated with using OpenAI's API for the language models in each configuration. This metric is measured in US dollars and reflects the computational resources required for each task.\xexeo{Tem que falar alguma coisa que não é o único custo, e quais são os outros e porque esse é importante, isso pode estar descrito no modelo DSR, antes}
+        The third metric, LLM Cost\xexeo{Isso aqui é uma pergunta de pesquisa tem que entrar de alguma maneira na definição do DSR, lembrando que as avaliações do DSR podem ser mais de uma}, represents\xexeo{Não é represents, já que é o custo mesmo, acho que  corresponds to, ou mesmo só is } the financial cost associated with using OpenAI's API for the language models in each configuration. This metric is measured in US dollars and reflects the computational resources required for each task.\xexeo{Tem que falar alguma coisa que não é o único custo, e quais são os outros e porque esse é importante, isso pode estar descrito no modelo DSR, antes}\xexeo{Esse parágrafo tipicamente aparece na revisão}
                 
             
         \begin{table}[h]
@@ -266,7 +266,7 @@
         The comparative analysis between single and multi-agent setups for RAG, using GPT-3.5-turbo and GPT-4 models, revealed insights regarding the metrics of truthfulness, performance, and costs of the language model.
 
         
-        \subsection{Truthfulness.} 
+        \subsection{Truthfulness} 
             % Na avaliação da métrica truthfulness, observa-se diferenças significativas entre as configurações de agente único e multi-agente em ambas as tarefas de Q\&A e Text-to-SQL. Os resultados são ilustrados nas Figuras ~\ref{fig:truthfulness_QA} e ~\ref{fig:truthfulness_text2sql}.
             In assessing the truthfulness metric, significant differences are noted between the single and multi-agent settings in both Q\&A and Text-to-SQL tasks. The results are illustrated in Figures \ref{fig:truthfulness_QA} and \ref{fig:truthfulness_text2sql}.
             For Q\&A tasks, GPT-4 in a multi-agent configuration significantly exceeded the performance of the single-agent with a truthfulness score of 4.57 compared to 3.88. The GPT-3.5-turbo model showed distinct results between the two configurations, with the multi-agent surpassing the single-agent with scores of 4.09 and 2.94, respectively.
@@ -299,9 +299,11 @@
             
             
             
-        \subsection{Performance.}        
-            The evaluation of LLM performance \citep{Li2023} in the tasks of Q\&A and Text-to-SQL reveals trends which are similar to the truthfulness results. As shown in Figure \ref{fig:performance_QA} and \ref{fig:performance_text2sql} and summarized in \ref{tab:tabela_resultados}, the text performance in single and multi-agent setups were compared using GPT-3.5-turbo and GPT-4 models.        
-            For Q\&A tasks, the multi-agent setup shows a performance boost compared to the single-agent. Notably, the multi-agent GPT-4 achieves a performance score of 4.43, which is higher than the single-agent GPT-4’s score of 4.06. This pattern is consistent with the GPT-3.5-turbo, where the multi-agent system also surpasses the single-agent system, scoring 3.82 and 3.94, respectively. These findings emphasize the effectiveness of the multi-agent approach in handling technical user queries.
+        \subsection{Performance}        
+        
+            The evaluation of LLM performance \citep{Li2023} in the tasks of Q\&A and Text-to-SQL reveals trends which are similar to the truthfulness results. 
+            As shown in Figures \ref{fig:performance_QA} and \ref{fig:performance_text2sql} and summarized in \ref{tab:tabela_resultados}, the text performance in single and multi-agent setups was compared using the GPT-3.5-turbo and GPT-4 models.        
+            For Q\&A tasks, the multi-agent setup shows a performance boost compared to the single-agent setup. In particular, the multi-agent GPT-4 achieves a performance score of 4.43, which is higher than the single-agent GPT-4 score of 4.06. This pattern is consistent with the GPT-3.5-turbo, where the multi-agent system also surpasses the single-agent system, scoring 3.82 and 3.94, respectively. These findings emphasize the effectiveness of the multi-agent approach in handling technical user queries.
                     
             \begin{figure}[h]
                 \centering
@@ -353,38 +355,56 @@
         The comparison between single and multi-agent systems revealed significant differences in terms of performance and cost:
         
         \subsection{General Performance.}     
-            The results indicate that for Q\&A tasks in the context of O\&G, truthfulness measure was 28\% higher with the multi-agent architecture compared to single. However, for Text-to-SQL tasks, this trend was inverted, where the single-agent scored 15\% higher.
+            The results indicate that for Q\&A tasks in the context of O\&G, truthfulness measure was 28\% higher with the multi-agent architecture compared to single. 
+            However, for Text-to-SQL tasks, this trend was inverted, where the single-agent scored 15\% higher.
 
-            These findings suggest that for Q\&A tasks, the multi-agent setup may be more advantageous in terms of providing truthful information, particularly when utilizing the more advanced GPT-4 model. Conversely, in Text-to-SQL tasks, the GPT-4 model in a single-agent configuration proved more effective. This might imply that the added complexity of managing multiple agents in some tasks does not necessarily lead to improved performance in responses, underscoring the importance of carefully selecting the agent configuration based on the task type and specific features of the language model used.
+            These findings suggest that for Q\&A tasks, the multi-agent setup may be more advantageous in terms of providing truthful information, particularly when utilizing the more advanced GPT-4 model. 
+            Conversely, in Text-to-SQL tasks, the GPT-4 model in a single-agent configuration proved more effective. 
+            This might imply that the added complexity of managing multiple agents in some tasks does not necessarily lead to improved performance in responses, underscoring the importance of carefully selecting the agent configuration based on the task type and specific features of the language model used.
                 
         \subsection{Cost-Performance Analysis.}
             While the multi-agent system shows higher truthfulness in Q\&A tasks, it is crucial to consider the associated costs. 
             % For instance, a truthfulness score of 3.8 in a multi-agent setup might be acceptable if the cost is significantly lower than achieving a 4.5 score with a single-agent system. 
             % Based on our analysis, we recommend using a multi-agent system for Q\&A tasks when the budget allows for it and truthfulness is a critical factor. For Text-to-SQL tasks, a single-agent system is preferable due to its higher performance and potentially lower cost. Decision-makers should consider setting a cost-performance threshold to guide the choice of system configuration, ensuring that the benefits justify the expenses involved.
-            To provide a clearer comparison, let's consider the score/cost ratios. For Q\&A tasks using GPT-4, the single-agent configuration yields a ratio of 32.33 truthfulness points per dollar, compared to 10.16 for the multi-agent setup. This indicates that while the multi-agent system shows a 17.8\% improvement in truthfulness, it comes at a 275\% increase in cost.
+            To provide a clearer comparison, let us consider the score/cost ratios. For Q\&A tasks using GPT-4, the single-agent configuration yields a ratio of 32.33 truthfulness points per dollar, compared to 10.16 for the multi-agent setup. This indicates that while the multi-agent system shows a 17.8\% improvement in truthfulness, it comes at a 275\% increase in cost.
             
-            Based on our analysis, we recommend using a multi-agent system for Q\&A tasks when the budget allows for it and accuracy is a critical factor. However, decision-makers should consider setting a cost-performance threshold to guide the choice of system configuration, ensuring that the benefits justify the expenses involved.
+            Based on our analysis, we recommend using a multi-agent system for Q\&A tasks when the budget allows for it and accuracy is a critical factor. 
+            However, decision-makers should consider setting a cost-performance threshold to guide the choice of system configuration, ensuring that the benefits justify the expenses involved.\xexeo{TEm que deduzir a necessidade de fazer um experimento antes levando essas coisas em consideração}
 
 
         \subsection{Model Performance Variations.}
-            Interestingly, our results show that GPT-3.5-turbo outperforms GPT-4 in certain tasks, particularly in the Text-to-SQL multi-agent configuration, despite GPT-4's larger size and more extensive training. This unexpected performance could be attributed to several factors. First, GPT-3.5-turbo may have undergone more specific fine-tuning for structured query tasks, allowing it to excel in Text-to-SQL scenarios. Additionally, GPT-3.5-turbo's training data might be more recent or more relevant to the specific domain of our study. Another possibility is that the smaller model size of GPT-3.5-turbo allows for faster processing and more efficient handling of the multi-agent setup, resulting in better performance in some contexts.
+            Interestingly, our results show that GPT-3.5-turbo outperforms GPT-4 in certain tasks, particularly in the Text-to-SQL multi-agent configuration, despite GPT-4's larger size and more extensive training. 
+            This unexpected performance could be attributed to several factors. 
+            First, GPT-3.5-turbo may have undergone more specific fine-tuning for structured query tasks, allowing it to excel in Text-to-SQL scenarios. 
+            Additionally, GPT-3.5-turbo's training data might be more recent or more relevant to the specific domain of our study. 
+            Another possibility is that the smaller model size of GPT-3.5-turbo allows for faster processing and more efficient handling of the multi-agent setup, resulting in better performance in some contexts.
 
-            However, it is important to note that GPT-4, when used in a multi-agent setup, demonstrated more consistent truthfulness and performance, as evidenced by its reduced standard deviation in results. This consistency can be particularly advantageous in applications where reliability and accuracy are critical. Multi-agent systems have the advantage of maintaining separate contexts for different aspects of a task. This compartmentalization can lead to better handling of complex, multi-faceted queries, as each agent can focus on its specific context without being overwhelmed by irrelevant information. However, this advantage may be offset in tasks like Text-to-SQL, where maintaining a unified context of the database schema and query structure is crucial, possibly explaining the better performance of single-agent setups in this task.
-            The multi-agent architecture inherently involves multiple stages of information processing, which can serve as natural filtering mechanisms. As information passes from one agent to another, irrelevant or low-quality data may be naturally filtered out, leading to more refined and accurate final outputs. This could explain the superior performance in filtering irrelevant information observed in multi-agent setups.
+            However, it is important to note that GPT-4, when used in a multi-agent setup, demonstrated more consistent truthfulness and performance, as evidenced by its reduced standard deviation in results. 
+            This consistency can be particularly advantageous in applications where reliability and accuracy are critical. 
+            Multi-agent systems have the advantage of maintaining separate contexts for different aspects of a task. \xexeo{Você pode suportar essa afirmação com uma citação?}
+            This compartmentalization can lead to better handling of complex, multi-faceted queries, as each agent can focus on its specific context without being overwhelmed by irrelevant information. However, this advantage may be offset in tasks like Text-to-SQL, where maintaining a unified context of the database schema and query structure is crucial, possibly explaining the better performance of single-agent setups in this task.
+            Furthermore, the multi-agent architecture inherently involves multiple stages of information processing, which can serve as natural filtering mechanisms.
+            As information passes from one agent to another, irrelevant or low-quality data may be naturally filtered out, leading to more refined and accurate final outputs. 
+            This could explain the superior performance in filtering irrelevant information observed in multi-agent setups.
         
         
         \subsection{Economic Efficiency.} 
             % The multi-agent architecture demonstrated a cost, on average, 3.7 times higher than that of the single-agent. This increase is due to the addition of intermediate calls to the language model, for instance, in the Speaker Selection phase, where a request is necessary to select the next agent for dialogue. Additionally, more than one iteration between agents for action planning and tool use can occur. From the model standpoint, the average cost of completed tasks (from user question to final answer) using GPT-4 was 21 times higher than those performed with GPT-3.5-turbo, an expected difference due to the varying costs of each service.
-            The multi-agent architecture incurs significantly higher costs compared to the single-agent system, primarily due to additional intermediate calls to the language model and multiple iterations between agents for action planning. The cost differences between using GPT-4 and GPT-3.5-turbo are substantial, with GPT-4 being notably more expensive.
+            The multi-agent architecture incurs significantly higher costs compared to the single-agent system, primarily due to additional intermediate calls to the language model and multiple iterations between agents for action planning. 
+            Also, the cost differences between using GPT-4 and GPT-3.5-turbo are substantial, with GPT-4 being notably more expensive\xexeo{Dizer x vezes mais caro em julho de 2025}.
             As detailed in the Cost-Performance Analysis section, the truthfulness per dollar ratio highlights the economic trade-offs between single-agent and multi-agent systems. While the multi-agent system offers improvements in truthfulness, this comes at a considerable increase in cost, impacting the overall economic efficiency.
             
             % To provide a clearer picture of economic efficiency for a large company with 40.000 knowledge workers, using GPT-4 could result in an annual cost of approximately \$5M, while GPT-3.5-turbo would cost around \$500.000. These estimates assume an average usage pattern of 10.000 tokens per worker per day and highlight the significant impact of model choice on operational costs.
             % To provide a clearer picture of economic efficiency, we can examine the truthfulness per dollar ratio. The single-agent system yields 32.33 truthfulness points per dollar, whereas the multi-agent system yields 10.16 truthfulness points per dollar. This comparison highlights that, although the multi-agent system shows a 17.8\% improvement in truthfulness, it comes at a 275\% increase in cost, resulting in a lower truthfulness per dollar ratio compared to the single-agent system.
 
             % For a large company with 40,000 knowledge workers, using GPT-4 could result in an annual cost of approximately \$5M, while GPT-3.5-turbo would cost around \$500,000. These estimates assume an average usage pattern of 10,000 tokens per worker per day and highlight the significant impact of model choice on operational costs.
-            For a large company with 40,000 knowledge workers, the choice of model and architecture significantly impacts annual costs. Using GPT-4 in a single-agent configuration could result in an annual cost of approximately \$4.38 million, while GPT-3.5 would cost around \$438,000. However, when employing a multi-agent architecture, the costs increase substantially. The multi-agent configuration with GPT-4 would escalate the annual cost to \$16.425 million, representing a dramatic increase due to the 3.75 times higher token usage. Similarly, GPT-3.5 in a multi-agent setup would cost \$1.642 million. These estimates assume an average usage pattern of 10,000 tokens per worker per day and underscore the significant financial implications of adopting a multi-agent system, which, while potentially offering performance benefits, comes with a considerable increase in LLM costs.
+            For a large company with 40,000 knowledge workers, the choice of model and architecture significantly impacts annual costs. 
+            Using GPT-4 in a single-agent configuration could result in an annual cost of approximately \$4.38 million, while GPT-3.5 would cost around \$438,000. However, when employing a multi-agent architecture, the costs increase substantially. \xexeo{Pulou como você chegou a esses números, eu estou achando até baixos, qual a conta que você fez (empregados x consultas x etc...)}
+            The multi-agent configuration with GPT-4 would escalate the annual cost to \$16.425 million, representing a dramatic increase due to the 3.75 times higher token usage. 
+            Similarly, GPT-3.5 in a multi-agent setup would cost \$1.642 million. 
+            These estimates assume an average usage pattern of 10,000 tokens per worker per day and underscore the significant financial implications of adopting a multi-agent system, which, while potentially offering performance benefits, comes with a considerable increase in LLM costs.\xexeo{Ah! Tá no fim do parágrafo e precisa ser no início. Além disso tem que dizer quantos dias de trabalho por ano, e o custo de cada token em uma data}
 
-            In summary, while multi-agent systems and more advanced models like GPT-4 offer improvements in performance, the economic efficiency, as measured by truthfulness per dollar, may favor single-agent systems and less costly models like GPT-3.5-turbo, depending on the specific application and budget constraints.
+            In summary, while multi-agent systems and more advanced models like GPT-4 offer improvements in performance, the economic efficiency, as measured by truthfulness per dollar, may favor single-agent systems and less costly models like GPT-3.5-turbo, depending on the specific application and budget constraints.\xexeo{In summary é o parágrafo típico das LLMs... Mas é isso mesmo. Porém tem que colocar um ponto: o custo dos modelos está caindo barbaramente com o aparecimento de novos modelos no topo de desempenho e novas tecnologias tem permitido alcançar resultados de ótima qualidade com máquinas muito menores, o que também derruba o custo. Pode até citar o exemplo do DeepSeek (buscando na literatura o desempenho x custo dele}
             
         % \subsection{Challenges and Limitations}
         
@@ -393,17 +413,26 @@
 
             \setlength{\parindent}{1em}
             \textbf{\textit{Contextualization and Interpretation.}} 
-                In many cases, the single-agent solution had difficulties understanding the context of the question. For instance, a question about cementing was interpreted in the context of the construction industry, a theme to which the language models were more exposed during the training phase. However, the multi-agent structure, with its well-defined roles, better understood the questions and showed superior performance in Q\&A tasks, corroborating the findings of \citep{Li2024}.
+                In many cases, the single-agent solution had difficulty understanding the context of the question. For example, a question about cementing was interpreted in the context of the construction industry, a theme to which the language models were more exposed during the training phase. 
+                However, the multi-agent structure, with its well-defined roles, better understood the questions and showed superior performance in Q\&A tasks, corroborating the findings of \citep{Li2024}.
             
             \setlength{\parindent}{1em}
             \textbf{\textit{Filtering Irrelevant Information.}} 
-                The agent often receives irrelevant documents along with important ones in the prompt context, and it is up to the LLM to ignore these. For example, when asked about alternatives to accelerate the curing time of cement paste without compromising its integrity at high temperatures, the RAG system retrieved a document that included information about batch cementing to ensure homogeneity during manufacturing and pumping. While this information is true, it was not relevant to the specific question asked. In this aspect, the multi-agent solution performed better at discarding such irrelevant information, focusing more accurately on the task at hand. Other possible solutions include improving the accuracy of semantic search by adjusting a minimum threshold for similarity measures or through re-ranking techniques such as those proposed by \citep{Carraro2024} and \citep{Sun2023}.
+                The agent often receives irrelevant documents along with important ones in the prompt context, and it is up to the LLM to ignore these. 
+                For example, when asked about alternatives to accelerate the curing time of cement paste without compromising its integrity at high temperatures, the RAG system retrieved a document that included information about batch cementing to ensure homogeneity during manufacturing and pumping. 
+                While this information is true, it was not relevant to the specific question asked. 
+                In this aspect, the multi-agent solution performed better at discarding such irrelevant information, focusing more accurately on the task at hand. 
+                Other possible solutions include improving the accuracy of semantic search by adjusting a minimum threshold for similarity measures or through re-ranking techniques such as those proposed by \citep{Carraro2024} and \citep{Sun2023}.
             
             \setlength{\parindent}{1em}
             \textbf{\textit{Hallucination.}} 
-                During the evaluation of our system, we encountered instances where the agent produced hallucinated information instead of utilizing the appropriate tool to retrieve accurate data, as in \citep{Bilbao2023}. For example, when asked, "How many anomalies occurred on rig number 05 during August 2023?" the agent was expected to use the Text-to-SQL tool to query the database. However, it bypassed this tool and generated a fabricated response, stating that 5 anomalies occurred, along with detailed descriptions of fictional events. The correct answer, as retrieved from the database, was that 7 anomalies occurred. This hallucination likely resulted from the agent's reliance on its internal knowledge rather than external data retrieval. 
+                During the evaluation of our system, we encountered instances where the agent produced hallucinated information instead of utilizing the appropriate tool to retrieve accurate data, as in \citep{Bilbao2023}. 
+                For example, when asked, "How many anomalies occurred on rig number 05 during August 2023?" the agent was expected to use the Text-to-SQL tool to query the database. 
+                However, it bypassed this tool and generated a fabricated response, stating that 5 anomalies occurred, along with detailed descriptions of fictional events. The correct answer, as retrieved from the database, was that 7 anomalies occurred. This hallucination likely resulted from the agent's reliance on its internal knowledge rather than external data retrieval. 
 
-                In terms of hallucination statistics, our analysis revealed that for Q\&A tasks, hallucinations occurred in 9.6\% of cases and 3.8\% for partially hallucinated. In contrast, Text-to-SQL tasks exhibited a lower hallucination rate, with only 3.6\% of responses containing hallucinated information and 96.4\% being accurate. These findings highlight the varying susceptibility to hallucination across different task types, emphasizing the need for targeted strategies to mitigate this issue.
+                In terms of hallucination statistics, our analysis revealed that for Q\&A tasks, hallucinations occurred in 9.6\% of cases and 3.8\% for partially hallucinated. 
+                In contrast, Text-to-SQL tasks exhibited a lower hallucination rate, with only 3.6\% of responses containing hallucinated information and 96.4\% being accurate. 
+                These findings highlight the variation of susceptibility to hallucination in different types of tasks, highlighting the need for targeted strategies to mitigate this problem.
             
             \setlength{\parindent}{1em}
             \textbf{\textit{Industry Jargon:}}
@@ -413,13 +442,21 @@
             
             \setlength{\parindent}{1em}
             \textbf{\textit{Tools vs. Performance:}} 
-                It was identified during the experiments that agents with a high amount of tools showed a decline in overall performance. This can be attributed to the added context to the prompts. As the context length increases, the model's ability to accurately interpret and respond diminishes. This is a limitation of current language models, where longer contexts can lead to a dilution of relevant information and increased difficulty in maintaining coherence and accuracy. This conclusion is currently qualitative, as these metrics were not addressed in this experiment.
+                It was identified during the experiments that agents with a high amount of tools showed a decline in overall performance. 
+                This can be attributed to the added context to the prompts. 
+                As the context length increases, the model's ability to accurately interpret and respond diminishes.
+                This is a limitation of current language models, where longer contexts can lead to a dilution of relevant information and increased difficulty in maintaining coherence and accuracy. 
+                This conclusion is currently qualitative, as these metrics were not addressed in this experiment.
 
             
             \setlength{\parindent}{1em}
             \textbf{\textit{Queries Involving Proper Names:}}
-                In queries involving people's names, it was not possible to retrieve relevant documents using semantic search. For example, when asked to identify the employee associated with a specific key and list knowledge items they registered in the system, the RAG system incorrectly attributed knowledge items to the wrong author. This highlights the difficulty in accurately retrieving information based on proper names, which can be complicated by variations in accentuation, abbreviation, and formatting.
-                A potential solution to be explored is the use of Self-Query Retriever \citep{LangchainSelfQuery2023}, implementing a hybrid search with metadata filters (including proper names) and semantic retrieval of the rest of the query. It is also suggested, in these cases, to use the \citep{Levenshtein1966} distance to handle possible variations in the spelling of names. This approach could improve the accuracy of retrieving documents related to specific individuals, ensuring that the correct information is associated with the right person.
+                In queries involving people's names, it was not possible to retrieve relevant documents using semantic search. 
+                For example, when asked to identify the employee associated with a specific key and list knowledge items they registered in the system, the RAG system incorrectly attributed knowledge items to the wrong author\xexeo{O RAG ou a LLM usando o RAG, não ficou claro}. 
+                This highlights the difficulty in accurately retrieving information based on proper names, which can be complicated by variations in accentuation, abbreviation, and formatting.\xexeo{tem evidências disso em outros artigos?}
+                A potential solution to be explored is the use of Self-Query Retriever \citep{LangchainSelfQuery2023}, implementing a hybrid search with metadata filters (including proper names) and semantic retrieval of the rest of the query. 
+                It is also suggested, in these cases, to use the \citep{Levenshtein1966} distance to handle possible variations in the spelling of names. 
+                This approach could improve the accuracy of retrieving documents related to specific individuals, ensuring that the correct information is associated with the right person.
                 
         
         % \subsection{Practical Implications}
