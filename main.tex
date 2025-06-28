@@ -3,8 +3,15 @@
 \usepackage{booktabs}% tabelas mais bonitas
 \usepackage{rotating}% rodando coisas, como tabelas
 \usepackage{longtable} % tabelas longas
+\usepackage{rotating}
 \usepackage[most]{tcolorbox} % caixas de texto
 \usepackage{amsmath,amssymb}
+\usepackage[editing]{coop-writing}
+\usepackage{marvosym}
+\cwsetcommwarn{\Lightning}
+\cwnamedef{xexeo}{red}{X}
+\cwnamedef{vitor}{blue}{X}
+\usepackage{xurl}
 \usepackage{hyperref}
 
 \usepackage{multirow}
@@ -67,11 +74,9 @@
 \author{Vitor}{Brandão Sabbagh}
 \advisor{Prof.}{Geraldo}{Bonorino Xexéo}{D.Sc.}
 
-\examiner{Prof.}{Nome do Primeiro Examinador Sobrenome}{D.Sc.}
-\examiner{Prof.}{Nome do Segundo Examinador Sobrenome}{Ph.D.}
+\examiner{Prof.}{Geraldo Bonorino Xexéo}{D.Sc.}
+\examiner{Prof.}{Jano Moreira de Souza}{Ph.D.}
 \examiner{Prof.}{Nome do Terceiro Examinador Sobrenome}{D.Sc.}
-\examiner{Prof.}{Nome do Quarto Examinador Sobrenome}{Ph.D.}
-\examiner{Prof.}{Nome do Quinto Examinador Sobrenome}{Ph.D.}
 \department{PESC}
 \date{07}{2025}
 
@@ -87,13 +92,14 @@
 \chapter*{Acknowledgements}
 
 I would like to thank everyone. [family, friends, etc]
+\xexeo{melhora isso, né? A banca gosta de ver}
 
 I extend my gratitude to the well construction engineering experts, Marcelo Grimberg, Rafael Peralta, and Lorenzo Simonassi, whose expertise and dedication significantly contributed to this research.
 
 
 \begin{abstract}
 
-Apresenta-se, nesta tese, a aplicação de grandes modelos de linguagem (LLM) no setor de petróleo e gás, especificamente em tarefas de construção e manutenção de poços. O estudo avalia o desempenho de uma arquitetura baseada em LLM de agente único e de múltiplos agentes no processamento de diferentes tarefas, oferecendo uma perspectiva comparativa sobre sua precisão e as implicações de custo de sua implementação. Os resultados indicam que sistemas multiagentes oferecem desempenho melhorado em tarefas de perguntas e respostas, com uma medida de veracidade 28\% maior do que os sistemas de agente único, mas a um custo financeiro mais alto. Especificamente, a arquitetura multiagente incorre em custos que são, em média, 3,7 vezes maiores do que os da configuração de agente único, devido ao aumento do número de tokens processados. Por outro lado, os sistemas de agente único se destacam em tarefas de texto para SQL (Linguagem de Consulta Estruturada), especialmente ao usar o Transformador Pré-Treinado Generativo 4 (GPT-4), alcançando uma pontuação 15\% maior em comparação com as configurações multiagentes, sugerindo que arquiteturas mais simples podem, às vezes, superar a complexidade. A novidade deste trabalho reside em seu exame original dos desafios específicos apresentados pelos dados complexos, técnicos e não estruturados inerentes às operações de construção de poços, contribuindo para o planejamento estratégico da adoção de aplicações de IA generativa, fornecendo uma base para otimizar soluções contra parâmetros econômicos e tecnológicos.
+\xexeoswap[busque sempre que possível a voz passiva]{Apresenta-se, nesta tese,}{Esta tese apresenta } a aplicação de grandes modelos de linguagem (LLM) no setor de petróleo e gás, especificamente em tarefas de construção e manutenção de poços. O estudo avalia o desempenho de uma arquitetura baseada em LLM de agente único e de múltiplos agentes no processamento de diferentes tarefas, oferecendo uma perspectiva comparativa sobre sua precisão e as implicações de custo de sua implementação. Os resultados indicam que sistemas multiagentes oferecem desempenho melhorado em tarefas de perguntas e respostas, com uma medida de veracidade 28\% maior do que os sistemas de agente único, mas a um custo financeiro mais alto. Especificamente, a arquitetura multiagente incorre em custos que são, em média, 3,7 vezes maiores do que os da configuração de agente único, devido ao aumento do número de tokens processados. Por outro lado, os sistemas de agente único se destacam em tarefas de texto para SQL (Linguagem de Consulta Estruturada), especialmente ao usar o Transformador Pré-Treinado Generativo 4 (GPT-4), alcançando uma pontuação 15\% maior em comparação com as configurações multiagentes, sugerindo que arquiteturas mais simples podem, às vezes, superar a complexidade. A novidade deste trabalho reside em seu exame original dos desafios específicos apresentados pelos dados complexos, técnicos e não estruturados inerentes às operações de construção de poços, contribuindo para o planejamento estratégico da adoção de aplicações de IA generativa, fornecendo uma base para otimizar soluções contra parâmetros econômicos e tecnológicos.
 
 \end{abstract}
 
@@ -141,6 +147,8 @@ This article explores the application of large language models (LLM) in the oil 
 \appendix
 
 % \input{part11_anexo.tex}
+
+\listofcomments
 
 \end{document}
 

@@ -1,81 +1,88 @@
 
-\chapter{Experimento 1}
+\chapter{First Experiment}
+
+\todo[inline]{Todo capítulo deve ter uma introdução explanatória. "This chapter describes"}
+
+\todo[inline]{Acho que pode até ser Primeiro Ciclo, ou pode ter um nome como ``Efetividada das LLMs na Solução..''  vai ter que quebrar esse capítulo, que tem muita informação nos conceitos da DSR: no mínimo nos quatro principais: Contexto, Problema, Artefato, Avaliação. Grande parte do contexto e problema já devem ser descritos no capitulo que eu pedi para criar e aqui só faz referência.}
+
+
+\todo[inline]{Ok, você foi direto para o experimento mas não disse o que ia fazer. Aqui exatamente cabe o quadro da DSR que eu te mandei: qual o contexto, qual o problema, qual a suposição (de utilidade ou de mundança de contexto), qual os quadro teóricos, qual o(s) artefato(s) proposto(s) e como serão avaliados, vai fechar muito bem.}
     
 
     \section{Methodology}
 
-            This section describes the approach and tools employed to investigate the effectiveness of a language model-based agent in responding to specific queries within the domain of well construction and maintenance. 
+            This section describes the approach and tools employed to investigate the effectiveness of a language model-based agent in responding to specific queries within the domain of well construction and maintenance\xexeo{isso aqui é a validação, mas qual é o problema, qual a proposta, são essas informações que faltam para ficar bem organizado}. 
             Firstly, the preparation, selection, and utilization of the data sources are described, explaining how each contributes to the knowledge base from which the agent derives its responses. 
-
+\todo{inline}{Aqui seria bom fazer um BPMN do passo a passo do seu experimento, veja a figura 4.1 de\url{https://www.cos.ufrj.br/uploadfile/publicacao/3172.pdf}}
 
         \vspace{5mm}
         \subsection{Data Preparation.} 
 
-            This experiment was conducted in the well construction department of a major oil company. The choice of tasks was focused in technical knowledge management and data analysis. Examples of queries used in the experiment are listed in Table~\ref{table:question_examples}.        
+            This experiment was carried out in the well construction department of a major oil company\xexeo{Olha o contexto aqui}.
+            The choice of tasks focused on technical knowledge management and data analysis\xexeo{Contexto e problema?}. 
+            Examples\xexeo{Exemplos? Não são todas? Quantas foram? Por que foram escolhidas? Tem que explicar como foram criadas essas queries, do jeito mais honesto possível, mesmo que seja pela experiência do autor, por pergunta a colega ou consulta uma coleção de documentos com perguntas e respostas. Tem que listar todas. Se foram MUITAS mesmo, coloca em apêndice.} of queries used in the experiment are listed in Table~\ref{table:question_examples}\xexeo{Isso aqui é a exemplificação do problema, aliás, dava até para falar um pouco da criação de datasets de teste lá na revisão da literatura}.        
+
+
+            
             The data sources for executing such tasks were chosen to cover a range of operational scenarios in the activity of well construction and maintenance: Operational Knowledge Items, Operational NPTs (Non-Productive Time), and a Collaborator Finder. 
+
+\xexeo{para claridade, eu  separei as linhas da tabela 3.1 com linhas físicas, mas mudei a forma que você estava formatando.}
 
             % [TENTAR INCLUIR EXEMPLOS DE PERGUNTAS]
             \begin{table}[h]
                 \centering
                 \sloppy
-                \begin{tabular}{|p{2cm}|l|}
+                \begin{tabular}{|p{.2\linewidth}|p{.8\linewidth}|}
                     \hline
-                    \textbf{Task category} & \textbf{Query example} \\ \hline
-                    Q\&A & How does the presence of silica in the composition of cement \\
-                    & paste affect its thermal stability at high temperatures? \\ 
-                    & What are the main challenges and risks associated with through \\
-                    & tubing plug and abandonment in highly deviated wells? \\ 
-                    
-                    & What can cause hydrate formation in the Tree Running Tool \\
-                    & connector during the HCR (High Collapse Resistance) hose flush \\
-                    & before connecting to the Wet Christmas Tree? \\ 
-                    & What can cause the Down Hole Safety Valve to remain open \\
-                    & due to hydrate formation in the control lines? \\ 
-                    & What can cause damage to thread protectors and sealing \\
-                    & areas of pin ends of pipes stored at the coating yard? \\ 
-                    & What can cause high drag and torque off-bottom during \\
-                    & the drilling of a well with high deviation? \\ 
-                    & What precautions should be taken when performing a top check \\
-                    & of the abandonment plug in wells with higher inclination? \\ 
-                    & What are the critical factors to consider when choosing a base \\
-                    & fluid for manufacturing a viscous support plug? \\ 
-                    & What are the best practices for managing drilling parameters \\
-                    & during cement cutting to avoid premature bit wear? \\ 
-                    \hline
-                    
-                    Text-to-SQL & What was the longest-lasting NPT on rig number 05? \\ 
+                    \textbf{Task category} & \textbf{Query example} \\   \hline
+                    \multirow{9}{*}{Q\&A} & How does the presence of silica in the composition of cement 
+                    paste affect its thermal stability at high temperatures? \\ \cline{2-2}
+                    & What are the main challenges and risks associated with through tubing plug and abandonment in highly deviated wells? \\ \cline{2-2}
+                    & What can cause hydrate formation in the Tree Running Tool  connector during the HCR (High Collapse Resistance) hose flush  before connecting to the Wet Christmas Tree? \\ \cline{2-2}
+                    & What can cause the Down Hole Safety Valve to remain open  due to hydrate formation in the control lines? \\ \cline{2-2}
+                    & What can cause damage to thread protectors and sealing  areas of pin ends of pipes stored at the coating yard? \\ \cline{2-2}
+                    & What can cause high drag and torque off-bottom during  the drilling of a well with high deviation? \\ \cline{2-2}
+                    & What precautions should be taken when performing a top check  of the abandonment plug in wells with higher inclination? \\ \cline{2-2}
+                    & What are the critical factors to consider when choosing a base  fluid for manufacturing a viscous support plug? \\ \cline{2-2}
+                    & What are the best practices for managing drilling parameters  during cement cutting to avoid premature bit wear? \\ 
+                    \hline                
+                    \multirow{2}{*}{Text-to-SQL} & What was the longest-lasting NPT on rig number 05? \\ \cline{2-2}
                     & How many NPTs occurred on rig number 06 during August 2023? \\ 
                     \hline
                 \end{tabular}
                 \fussy
-                \caption{Query examples used in this study. }
+                \caption[Query examples used in first cycle.]{Query examples used in first cycle. }
                 \label{table:question_examples}
             \end{table}
 
+
+
+
             \emph{Operational Knowledge Items}: during drilling, completion, and workover interventions, documents called Knowledge Items are written by specialists, as depicted in Fig~\ref{fig:report_example}, which can be of 4 types: Technical Alert, Learned Lesson, Good Practice, and Well Observation. 
-            This is a tool for knowledge management, considering the large number and variety of specialists involved and well operations performed.
+            This is a tool for knowledge management, considering the large number and variety of specialists involved and well operations performed.\xexeo{\textbf{Essas explicações sobre o que são os documentos podem vir no capítulo que explica a área e configurar o contexto do DSR}}
             
             \emph{Operational NPTs (Non-Productive Time)}: the second data source refers to data on anomalies that occurred during well interventions, containing information such as the title, description of the event, the well where it occurred, type of operation, responsible sector, involved rig, lost time in hours, and start and end dates of the event. 
-            These data are critical for the industry, as NPTs represent periods when the operation of drilling, completion or maintenance is interrupted due to some technical or logistical problem. The identification and analysis of these events are essential for continuous process improvement, cost reduction, and increased operational efficiency. By understanding the causes and circumstances of these incidents, organizations can develop strategies to prevent them in the future, optimizing operation time.
+            These data are critical for the industry, as NPTs represent periods when the operation of drilling, completion or maintenance is interrupted due to some technical or logistical problem. The identification and analysis of these events are essential for continuous process improvement, cost reduction, and increased operational efficiency. By understanding the causes and circumstances of these incidents, organizations can develop strategies to prevent them in the future, optimizing operation time.\xexeo{capitulo da area}
             
             \emph{Collaborator Finder}: the third data source used in the experiment is a collaborator finder, an important tool within an organization for consulting and managing employee data. 
-            This system allows for quick search and identification of employees through information such as name, workplace, company, registration, and role. The importance of this tool for the experiment lies in the possibility of cross-referencing employee data with other information sources for a more complete response by the agent.
+            This system allows for quick search and identification of employees through information such as name, workplace, company, registration, and role. The importance of this tool for the experiment lies in the possibility of cross-referencing employee data with other information sources for a more complete response by the agent.\xexeo{capitulo da area}
             
             Each of these sources provides inputs for the agent to offer a more accurate and updated view of operations and organizational structure.
-            A set of documents and records was randomly selected from each database, over which questions were formulated. For each document, up to 3 questions were generated, resulting in a dataset of tasks of the Q\&A and Text-to-SQL types. Some examples are described in Table \ref{table:question_examples}.
+            A set of documents and records was randomly selected from each database, over which questions were formulated. For each document, up to 3 questions were generated, resulting in a dataset of tasks of the Q\&A and Text-to-SQL types. Some examples are described in Table \ref{table:question_examples}.\xexeo{revisar para fazer sentido as coisas virem de outro capítulo}
 
 
         % \vspace{5mm}
         % \textbf{Document Embedding and Semantic Information Retrieval.} 
         %     One data source used by the agent in this experiment is accessed through semantic retrieval.
-        %     For this purpose, each document is subjected to an embedding model, text-embedding-ada-002 \cite{OpenAI2023}, which generates a vector with 1536 dimensions that semantically represents the content of the document.
-        %     Each document, along with its semantic vector, is saved in a Vector Store database called \cite{Qdrant2024}.
+        %     For this purpose, each document is subjected to an embedding model, text-embedding-ada-002 \citep{OpenAI2023}, which generates a vector with 1536 dimensions that semantically represents the content of the document.
+        %     Each document, along with its semantic vector, is saved in a Vector Store database called \citep{Qdrant2024}.
         %     This tool, when presented with a new semantic vector related to the user's query, retrieves the N documents with the highest similarity, i.e., those whose vector is closest to the vector of the content being searched.
 
         % \subsection{Single-Agent Architecture with Multiple Tools}
         % \vspace{5mm}
         % \textbf{Single-Agent with Multiple Tools.}   
-            In this work, a goal-based agent \cite{Russell2020} was implemented with the goal of accurately responding to various queries. The agent operates within an environment equipped with multiple tools for task-specific operations, as shown in Figure~\ref{fig:agent_environment}, and interfaces with users to receive queries.
+            In this work, a goal-based agent\xexeo{Se certificar que estão descritos na revisão da literatura, caso contrário descrever lá} \citep{Russell2020} was implemented with the goal of accurately responding to various queries. 
+            The agent operates within an environment equipped with multiple tools for task-specific operations, as shown in Figure~\ref{fig:agent_environment}, and interfaces with users to receive queries.
             
             \begin{figure}[h]
                 \centering
@@ -84,12 +91,12 @@
                 \label{fig:agent_environment}
             \end{figure}           
             
-            Initially, a configuration of agents was implemented as described in Figure~\ref{fig:agent_config_1} using AutoGen Framework \cite{Wu2023} with an architecture that allows information retrieval and user interaction. This system consists of:
+            Initially, a configuration of agents was implemented as described in Figure~\ref{fig:agent_config_1} using AutoGen Framework \citep{Wu2023} with an architecture that allows information retrieval and user interaction. This system consists of\xexeo{of ... melhor dizer two alguma coisa?}:
 
             \begin{figure}[h]
                 \centering
                 \includegraphics[width=.5\textwidth]{images/agent_config_1.png}
-                \caption{Chat setup with one User Proxy \cite{Wu2023} and one Assistant.}
+                \caption{Chat setup with one User Proxy \citep{Wu2023} and one Assistant.}
                 \label{fig:agent_config_1}
             \end{figure}
             
@@ -98,12 +105,12 @@
                         
                 \item \textbf{User Proxy:} represents the interface with the user and with tools to access external databases. The modular nature of the tools allows the User Proxy to be customized and expanded based on the variety of data sources and the specific requirements of the application domain.
 
-                \item \textbf{Agent:} powered by LLMs such as GPT-4 and GPT-3, is the analytical engine of the system. This agent interprets the queries received from the User Proxy and formulates responses.
+                \item \textbf{Agent:} powered by LLMs such as GPT-4 and GPT-3\xexeo{Aqui tem que dizer que é configurável, só ficou claro para mim mais tarde na leitura}, is the analytical engine of the system. This agent interprets the queries received from the User Proxy and formulates responses.
                                     
             \end{itemize}
 
             
-            For each question in the dataset, the agent's decision-making process is executed as described in Figure~\ref{fig:diagrama_agente_1}, initially selecting the appropriate tool to respond to a query and, finally, compiling the retrieved information to provide a final answer.
+            For each question in the data set, the agent's decision-making process is executed as described in Figure~\ref{fig:diagrama_agente_1}, initially selecting the appropriate tool to respond to a query and, finally, compiling the retrieved information to provide a final answer.
             
             \begin{figure}[h]
                 \centering
@@ -117,18 +124,22 @@
             \begin{itemize}
             
                 
-                \item \textbf{Tool 1 - Knowledge Items Search:} a tool for searching for learned lessons that may be relevant to the query. 
+                \item \textbf{Tool 1 - Knowledge Items Search:} a tool to search for learned lessons that may be relevant to the query. 
                 \label{Tool1}
         
                 \item \label{Tool2} \textbf{Tool 2 - Employee Search:} functionality that allows the search for information related to collaborators of an organization.
         
-                \item \label{Tool3} \textbf{Tool 3 - NPT SQL Query:} interface for executing SQL queries on a database of operational NPTs.    
+                \item \label{Tool3} \textbf{Tool 3 - NPT SQL Query:} Interface for executing SQL queries on a database of operational NPTs.    
                 
             \end{itemize}
 
-            In parallel, there is a pathway that allows the LLM Agent to provide a direct response, without the need to resort to other tools, presumably used when the agent already possesses the necessary information. Finally, the agent presents the final response to the user, which is the product of a language model processing, taking as inputs the user's query and relevant information retrieved and included in the context of the prompt.
+            In parallel, there is a pathway that allows the LLM Agent to provide a direct response, without the need to resort to other tools, presumably used when the agent already possesses the necessary information. 
+            Finally, the agent presents the final response to the user, which is the product of a language model processing, taking as input the user's query and relevant information retrieved and included in the context of the prompt.
 
-            The Table~\ref{tab:tabela_inputs} provides a detailed analysis of the performance and accuracy of different models, specifically GPT-3.5-turbo and GPT-4, when queried about the impact of silica on the thermal stability of cement paste at high temperatures. The table compares both single-agent and multi-agent setups, evaluating the final outputs based on truthfulness, performance, and specialist comments. For each query, the table highlights the relevance and accuracy of the information provided by the models, including any extraneous or unrelated sections noted by the specialists. This comprehensive comparison allows for an in-depth assessment of the models' capabilities in generating accurate and relevant responses to technical questions.
+             Table~\ref{tab:tabela_inputs} provides a detailed analysis of the performance and accuracy of different models, specifically GPT-3.5-turbo and GPT-4, when queried about the impact of silica on the thermal stability of cement paste at high temperatures.\xexeo{Por que essa pergunta? Isso é um exemplo? Como o multi agente entrou aqui se ainda não falou de multi agente? Melhor deixar para mais tarde ou mostrar só para single-agent?} 
+             The table compares both single-agent and multi-agent setups, evaluating the final outputs based on truthfulness, performance, and specialist comments. 
+             For each query, the table highlights the relevance and accuracy of the information provided by the models, including any extraneous or unrelated sections noted by the specialists. 
+             This \xexeorem[comprehensive]{OLHA UMA PALAVRA INÚTIL TÍPICA DE LLM} comparison allows for an \xexeorem[in-depth]{Outra} assessment of the models' capabilities in generating accurate and relevant responses to technical questions.
 
             \begin{landscape}
                 \begin{table}[h]
@@ -191,7 +202,8 @@
             
         \subsection{Evaluation.}             
 
-            For the evaluation process, in line with the evaluation conducted by \cite{Li2023}, a group of 3 specialist engineers analyzed 33 questions and their corresponding answers for each configuration. The experts assessed each Q\&A pair based on the following predefined metrics:
+            For the evaluation process, in line with the evaluation conducted by \citep{Li2023}, a group of 3 specialist engineers analyzed 33 questions\xexeo{Coloca todas na tabela! E faz uma seção de criação de perguntas, ou subseção} and their corresponding answers for each configuration. 
+            The experts assessed each Q\&A pair based on the following predefined metrics:
 
             \begin{itemize}
                 
@@ -203,12 +215,32 @@
             
             The final grade was determined by averaging the scores of the all entries for each configuration. This evaluation ensured a comprehensive assessment of the models' capabilities.
 
+
+
+
+
+\section{Proposed Artefacts}
+\todo[inline]{Nessa seção descreve as soluções que você criou (pega do texto que já tem}
+\subsection{Single-Agent Solution}
+\subsection{Multi-Agent Solution}
+
             
     \section{Results}
 
+    \todo[inline]{Em vez de Results, evaluatio, e você descreve como os artefatos foram avaliados, o texto que tem está bom, é só reorganizar}
+
+    \subsection{Data Set Creation}
+
+\todo[inline]{Aqui descreve todo o seu processo de criação das perguntas e todas elas, que tipo são, faz o máximo que puder. Isso é bem legal.}
+
+\subsection{Metrics}
+
+\todo[inline]{Aqui descreve as métricas, pode descrever na revisão da literatura de forma geral, mas se forem diferentes por experimento, tem que revisar aqui as que vai usar.}
+
+
         This section provides an analysis of the data collected and answers the research questions. The results are presented in \autoref{tab:tabela_resultados} and are organized according to the objectives of the study, with each objective being addressed in detail.
 
-        The third metric, LLM Cost, represents the financial cost associated with using OpenAI's API for the language models in each configuration. This metric is measured in US dollars and reflects the computational resources required for each task.
+        The third metric, LLM Cost\xexeo{Isso aqui é uma pergunta de pesquisa tem que entrar de alguma maneira na definição do DSR, lembrando que as avaliações do DSR podem ser mais de uma}, represents\xexeo{Não é represents, já que é o custo mesmo, acho que  corresponds to, ou mesmo só is } the financial cost associated with using OpenAI's API for the language models in each configuration. This metric is measured in US dollars and reflects the computational resources required for each task.\xexeo{Tem que falar alguma coisa que não é o único custo, e quais são os outros e porque esse é importante, isso pode estar descrito no modelo DSR, antes}
                 
             
         \begin{table}[h]
@@ -268,7 +300,7 @@
             
             
         \subsection{Performance.}        
-            The evaluation of LLM performance \cite{Li2023} in the tasks of Q\&A and Text-to-SQL reveals trends which are similar to the truthfulness results. As shown in Figure \ref{fig:performance_QA} and \ref{fig:performance_text2sql} and summarized in \ref{tab:tabela_resultados}, the text performance in single and multi-agent setups were compared using GPT-3.5-turbo and GPT-4 models.        
+            The evaluation of LLM performance \citep{Li2023} in the tasks of Q\&A and Text-to-SQL reveals trends which are similar to the truthfulness results. As shown in Figure \ref{fig:performance_QA} and \ref{fig:performance_text2sql} and summarized in \ref{tab:tabela_resultados}, the text performance in single and multi-agent setups were compared using GPT-3.5-turbo and GPT-4 models.        
             For Q\&A tasks, the multi-agent setup shows a performance boost compared to the single-agent. Notably, the multi-agent GPT-4 achieves a performance score of 4.43, which is higher than the single-agent GPT-4’s score of 4.06. This pattern is consistent with the GPT-3.5-turbo, where the multi-agent system also surpasses the single-agent system, scoring 3.82 and 3.94, respectively. These findings emphasize the effectiveness of the multi-agent approach in handling technical user queries.
                     
             \begin{figure}[h]
@@ -301,7 +333,7 @@
         
         \subsection{LLM Cost} 
             Language model services are typically composed by a values per token. For instance, GPT-4 model costs US\$30.00 (input) and US\$60.00 (output) per 1 million tokens received and sent, respectively.        
-            The single-agent architecture demonstrated substantially lower costs for both Q\&A and Text-to-SQL tasks compared to the multi-agent setup as shown in Figure~\ref{fig:truthfulness_vs_cost_vs_config_model}. For instance, the average cost of the GPT-4 model \cite{OpenAI2023} for a Q\&A task was \$0.12 per processed question for the single-agent, while the multi-agent recorded an average cost of \$0.45. This trend of higher costs for the multi-agent architecture was also maintained for Text-to-SQL tasks, with an average cost of \$0.51 for the multi-agent architecture in contrast to \$0.10 for the single agent.
+            The single-agent architecture demonstrated substantially lower costs for both Q\&A and Text-to-SQL tasks compared to the multi-agent setup as shown in Figure~\ref{fig:truthfulness_vs_cost_vs_config_model}. For instance, the average cost of the GPT-4 model \citep{OpenAI2023} for a Q\&A task was \$0.12 per processed question for the single-agent, while the multi-agent recorded an average cost of \$0.45. This trend of higher costs for the multi-agent architecture was also maintained for Text-to-SQL tasks, with an average cost of \$0.51 for the multi-agent architecture in contrast to \$0.10 for the single agent.
             The higher token count and cost for multi-agent setting is due to the inclusion of intermediate calls, for example, when the "Agent Selector" needs to decide which agent to pass the turn to. All the message history is passed to the LLM at this stage, substantially increasing the number of tokens submitted and response time.
         
 
@@ -361,15 +393,15 @@
 
             \setlength{\parindent}{1em}
             \textbf{\textit{Contextualization and Interpretation.}} 
-                In many cases, the single-agent solution had difficulties understanding the context of the question. For instance, a question about cementing was interpreted in the context of the construction industry, a theme to which the language models were more exposed during the training phase. However, the multi-agent structure, with its well-defined roles, better understood the questions and showed superior performance in Q\&A tasks, corroborating the findings of \cite{Li2024}.
+                In many cases, the single-agent solution had difficulties understanding the context of the question. For instance, a question about cementing was interpreted in the context of the construction industry, a theme to which the language models were more exposed during the training phase. However, the multi-agent structure, with its well-defined roles, better understood the questions and showed superior performance in Q\&A tasks, corroborating the findings of \citep{Li2024}.
             
             \setlength{\parindent}{1em}
             \textbf{\textit{Filtering Irrelevant Information.}} 
-                The agent often receives irrelevant documents along with important ones in the prompt context, and it is up to the LLM to ignore these. For example, when asked about alternatives to accelerate the curing time of cement paste without compromising its integrity at high temperatures, the RAG system retrieved a document that included information about batch cementing to ensure homogeneity during manufacturing and pumping. While this information is true, it was not relevant to the specific question asked. In this aspect, the multi-agent solution performed better at discarding such irrelevant information, focusing more accurately on the task at hand. Other possible solutions include improving the accuracy of semantic search by adjusting a minimum threshold for similarity measures or through re-ranking techniques such as those proposed by \cite{Carraro2024} and \cite{Sun2023}.
+                The agent often receives irrelevant documents along with important ones in the prompt context, and it is up to the LLM to ignore these. For example, when asked about alternatives to accelerate the curing time of cement paste without compromising its integrity at high temperatures, the RAG system retrieved a document that included information about batch cementing to ensure homogeneity during manufacturing and pumping. While this information is true, it was not relevant to the specific question asked. In this aspect, the multi-agent solution performed better at discarding such irrelevant information, focusing more accurately on the task at hand. Other possible solutions include improving the accuracy of semantic search by adjusting a minimum threshold for similarity measures or through re-ranking techniques such as those proposed by \citep{Carraro2024} and \citep{Sun2023}.
             
             \setlength{\parindent}{1em}
             \textbf{\textit{Hallucination.}} 
-                During the evaluation of our system, we encountered instances where the agent produced hallucinated information instead of utilizing the appropriate tool to retrieve accurate data, as in \cite{Bilbao2023}. For example, when asked, "How many anomalies occurred on rig number 05 during August 2023?" the agent was expected to use the Text-to-SQL tool to query the database. However, it bypassed this tool and generated a fabricated response, stating that 5 anomalies occurred, along with detailed descriptions of fictional events. The correct answer, as retrieved from the database, was that 7 anomalies occurred. This hallucination likely resulted from the agent's reliance on its internal knowledge rather than external data retrieval. 
+                During the evaluation of our system, we encountered instances where the agent produced hallucinated information instead of utilizing the appropriate tool to retrieve accurate data, as in \citep{Bilbao2023}. For example, when asked, "How many anomalies occurred on rig number 05 during August 2023?" the agent was expected to use the Text-to-SQL tool to query the database. However, it bypassed this tool and generated a fabricated response, stating that 5 anomalies occurred, along with detailed descriptions of fictional events. The correct answer, as retrieved from the database, was that 7 anomalies occurred. This hallucination likely resulted from the agent's reliance on its internal knowledge rather than external data retrieval. 
 
                 In terms of hallucination statistics, our analysis revealed that for Q\&A tasks, hallucinations occurred in 9.6\% of cases and 3.8\% for partially hallucinated. In contrast, Text-to-SQL tasks exhibited a lower hallucination rate, with only 3.6\% of responses containing hallucinated information and 96.4\% being accurate. These findings highlight the varying susceptibility to hallucination across different task types, emphasizing the need for targeted strategies to mitigate this issue.
             
@@ -377,7 +409,7 @@
             \textbf{\textit{Industry Jargon:}}
                 Specifically analyzing the activity of drilling and completion of offshore wells, the main challenge is the inherently complex and technical nature of the data involved. 
                 There were instances of incorrect interpretation of information, likely due to the use of terms, expressions, and themes specific to well construction, to which the language model had little or no exposure during training phase. 
-                A possible solution is the implementation of specialized models, which has been pointed out in gray literature as a trend for the coming years \cite{Shah2024, Meena2023, Ghosh2023}.
+                A possible solution is the implementation of specialized models, which has been pointed out in gray literature as a trend for the coming years \citep{Shah2024, Meena2023, Ghosh2023}.
             
             \setlength{\parindent}{1em}
             \textbf{\textit{Tools vs. Performance:}} 
@@ -387,7 +419,7 @@
             \setlength{\parindent}{1em}
             \textbf{\textit{Queries Involving Proper Names:}}
                 In queries involving people's names, it was not possible to retrieve relevant documents using semantic search. For example, when asked to identify the employee associated with a specific key and list knowledge items they registered in the system, the RAG system incorrectly attributed knowledge items to the wrong author. This highlights the difficulty in accurately retrieving information based on proper names, which can be complicated by variations in accentuation, abbreviation, and formatting.
-                A potential solution to be explored is the use of Self-Query Retriever \cite{LangchainSelfQuery2023}, implementing a hybrid search with metadata filters (including proper names) and semantic retrieval of the rest of the query. It is also suggested, in these cases, to use the \cite{Levenshtein1966} distance to handle possible variations in the spelling of names. This approach could improve the accuracy of retrieving documents related to specific individuals, ensuring that the correct information is associated with the right person.
+                A potential solution to be explored is the use of Self-Query Retriever \citep{LangchainSelfQuery2023}, implementing a hybrid search with metadata filters (including proper names) and semantic retrieval of the rest of the query. It is also suggested, in these cases, to use the \citep{Levenshtein1966} distance to handle possible variations in the spelling of names. This approach could improve the accuracy of retrieving documents related to specific individuals, ensuring that the correct information is associated with the right person.
                 
         
         % \subsection{Practical Implications}
@@ -408,7 +440,7 @@
                         % These quantitative insights emphasize the need for careful consideration of task requirements and budget constraints when choosing between single and multi-agent configurations.
                         
                     \item \textbf{Reflection and Critic Agents:}
-                        A promising approach to enhance the performance of these agents is the use of reflection \cite{Shinn2023}, a method where agents verbally reflect on task feedback signals and maintain this reflective text in an episodic memory buffer to improve decision-making in subsequent trials. Critic agents are a way to implement reflection in a multi-agent setup. This type of agent is challenging to apply in Q\&A tasks over private technical data, as commercial LLMs (OpenAI, Google Bard, and others) have not been deeply trained in the domain and struggle to provide relevant and precise critiques, reinforcing the trend toward increased use of domain-specific models \cite{Shah2024, Meena2023, Ghosh2023}.                
+                        A promising approach to enhance the performance of these agents is the use of reflection \citep{Shinn2023}, a method where agents verbally reflect on task feedback signals and maintain this reflective text in an episodic memory buffer to improve decision-making in subsequent trials. Critic agents are a way to implement reflection in a multi-agent setup. This type of agent is challenging to apply in Q\&A tasks over private technical data, as commercial LLMs (OpenAI, Google Bard, and others) have not been deeply trained in the domain and struggle to provide relevant and precise critiques, reinforcing the trend toward increased use of domain-specific models \citep{Shah2024, Meena2023, Ghosh2023}.                
                         
                     \item \textbf{Task-Specific Agent Configuration:}
                         The study highlights that the complexity of managing multiple agents does not always lead to better performance. In some cases, a single-agent setup might be more effective.
@@ -431,13 +463,13 @@
                     There is a critical need to develop more sophisticated semantic search technologies. Future efforts should focus on enhancing the precision of information retrieval by filtering out irrelevant content more effectively. This will ensure that agents can provide more accurate and contextually appropriate responses, crucial for technical domains such as O\&G.
                     
                 \item \textbf{Development of Domain-Specific Models:}
-                    Specialized models tailored specifically to the O\&G and other domains, such as biomedical engineering \cite{Pal2024}, could significantly improve the handling of specific jargon and complex technical data, while reducing LLM costs \cite{Arefeen2024}. Future research should aim to develop and train these models to better understand and interpret the unique language and data types found in O\&G, enhancing the overall accuracy of agent responses.
+                    Specialized models tailored specifically to the O\&G and other domains, such as biomedical engineering \citep{Pal2024}, could significantly improve the handling of specific jargon and complex technical data, while reducing LLM costs \citep{Arefeen2024}. Future research should aim to develop and train these models to better understand and interpret the unique language and data types found in O\&G, enhancing the overall accuracy of agent responses.
                     
                 \item \textbf{Optimization of Tool Use in Agent Performance:}
                     The relationship between the quantity of tools available to an agent and its performance needs further exploration. Future studies should quantify the impact of tool availability on agent efficacy and efficiency, aiming to optimize tool use without overwhelming the agent or diluting performance quality.
                     
                 \item \textbf{Integration of Advanced Name Recognition Techniques:}
-                    Queries involving proper names pose a significant challenge in semantic search. Integrating advanced retrieval techniques, such as Self-Query Retrievers \cite{LangchainSelfQuery2023} and \cite{Levenshtein1966} distance algorithms, could improve the handling of these queries. Future research should focus on enhancing name recognition capabilities to ensure that agents can accurately retrieve and utilize correct information, especially in scenarios where precision is paramount.
+                    Queries involving proper names pose a significant challenge in semantic search. Integrating advanced retrieval techniques, such as Self-Query Retrievers \citep{LangchainSelfQuery2023} and \citep{Levenshtein1966} distance algorithms, could improve the handling of these queries. Future research should focus on enhancing name recognition capabilities to ensure that agents can accurately retrieve and utilize correct information, especially in scenarios where precision is paramount.
                     
                 \item \textbf{Extension to Other Complex Domains:}
                     The potential applications of multi-agent systems are not limited to the O\&G sector. Future research should explore the adaptation and implementation of these systems in other complex and technical domains, such as aerospace, pharmaceuticals, and renewable energy. Investigating how these systems can support decision-making in these areas will provide valuable insights into their versatility and adaptability.
