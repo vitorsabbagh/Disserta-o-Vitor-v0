@@ -1,15 +1,12 @@
-
-\chapter{Experimento 2}
+\chapter{Experiment 2}
     
+    This chapter describes the second experimental methodology used to evaluate LLM agents and workflows for answering questions in the well engineering domain. The experiment integrates multiple LLM configurations, agent architectures, and RAG tools, leveraging Petrobras datasets.
+
+    To achieve these objectives, this research was conducted through two distinct experimental phases. The first, carried out in 2024, focused on a foundational comparison between single and multi-agent architectures, revealing key insights into their performance, cost, and limitations such as hallucination and context interpretation. The rapid evolution of generative AI frameworks and models prompted a second, more up-to-date experiment in 2025. This second phase built upon the initial findings, also employing non-agentic workflows as baseline and a more rigorous, quantitative evaluation methodology to address the challenges identified in the first experiment and automated evaluation based on the concept commonly reffered to as "LLM-as-a-judge" (\cite{Gu2025}).
+
+    The use of "LLM-as-a-judge" was driven by the sheer volume of responses to be evaluated. With four configurations, two models, and three executions for each, a total of 24 responses were generated for every question in the dataset. Manually assessing this volume of data would have been impractical. Furthermore, previously used metrics like `truthfulness` had become obsolete. This metric was highly relevant when models frequently hallucinated, a problem that is far less prevalent in the current generation of LLMs. 
 
     \section{Methodology}
-
-        \subsection{Overview}
-
-            This chapter describes the experimental methodology used to evaluate large language model (LLM) agents and workflows for answering questions in the oil well operations domain. The experiment integrates multiple LLM configurations, agent architectures, and retrieval-augmented generation (RAG) tools, leveraging Petrobras datasets.
-
-            [POR ÚLTIMO, INSERIR OBJETIVOS DO EXPERIMENTO E HIPOTESES]
-            \textit{<insert brief summary of research objectives and hypotheses here>}
 
         \subsection{Experimental Workflow}
 
@@ -30,21 +27,16 @@
                     \caption{Experiment Execution Loop}
                     \begin{algorithmic}[1]
                     \Require questions, setups, models
-                    \Ensure results
-                    
+                    \Ensure results                    
                     \Function{RunExperiment}{}
-                        \State $results \gets \{\}$
-                        
+                        \State $results \gets \{\}$     
                         \ForAll{$question \in questions$}
-                            \State $ground\_truth \gets question.ground\_truth$
-                            
+                            \State $ground\_truth \gets question.ground\_truth$                            
                             \ForAll{$setup \in setups$}
                                 \ForAll{$model \in models$}
                                     \State $agent \gets \text{InitializeAgent}(setup, model)$
-                                    \State $response \gets agent.\text{ProcessQuestion}(question)$
-                                    
-                                    \State $metrics \gets \text{EvaluateResponse}(response, ground\_truth)$
-                                    
+                                    \State $response \gets agent.\text{ProcessQuestion}(question)$                                    
+                                    \State $metrics \gets \text{EvaluateResponse}(response, ground\_truth)$                                    
                                     \State $results[question, setup, model] \gets \{$
                                     \State \hspace{1cm} $"response": response,$
                                     \State \hspace{1cm} $"metrics": metrics,$
@@ -53,10 +45,8 @@
                                 \EndFor
                             \EndFor
                         \EndFor
-                        
                         \State \Return $\text{AggregateResults}(results)$
-                    \EndFunction
-                    
+                    \EndFunction                    
                     \end{algorithmic}
                     \label{alg:execution_loop}
                 \end{algorithm}
@@ -69,7 +59,7 @@
 
                 To ensure scientific rigor and reproducibility, the experimental methodology incorporates robust tracking of all environmental variables and configuration parameters. The system maintains detailed logs of the computational environment, including software versions, dependency specifications, and hardware characteristics that might influence results. All experimental parameters, from model identifiers to dataset specifications, are systematically recorded alongside the results they generate. Throughout the experimental process, periodic validation checks are performed to maintain data integrity and result consistency, with anomalies flagged for investigation. This comprehensive approach to reproducibility not only facilitates verification of findings but also enables future extensions of the research with comparable baselines. The quality control measures embedded in the workflow ensure that conclusions drawn from the experiments rest on a foundation of methodological soundness and data reliability.
 
-            \textit{<insert workflow diagram or pseudocode here to illustrate the above stages>}
+                \textit{<insert workflow diagram or pseudocode here to illustrate the above stages>}
 
         \subsection{Data Sources}
 
@@ -226,11 +216,44 @@
             This methodology provides a systematic framework for comparing different agent architectures and large language models in the context of complex question answering for oil well operations. By integrating rigorous evaluation metrics, robust reproducibility practices, and a clear acknowledgment of limitations, the approach enables meaningful insights into the strengths and weaknesses of various system designs. The findings derived from this methodology can inform both the deployment of language model agents in operational settings and the ongoing development of more capable and reliable AI systems for specialized industrial domains.
 
 
-    \section{Resultados e Discussão}
+        \subsection{Quality Assessment with LLM-as-a-Judge}
+            \label{sec:llm_judge_evaluation}
+
+            To evaluate the quality of the responses generated by the RAG system, an automated evaluation approach known as \textit{LLM-as-a-Judge} \cite{Zheng2023} was adopted. This method uses a large language model (LLM) as an impartial judge to compare the system-generated response with a reference response, known as the \textit{Ground Truth} (GT). Using an LLM for evaluation allows for a more granular and scalable analysis than manual human evaluation, while also capturing nuances of semantics and content.
+
+            The evaluation process was implemented through a structured \textit{prompt} that instructs the LLM-judge to perform an analysis based on the concepts of a confusion matrix. The evaluation flow for each question-answer pair is as follows:
+
+            \begin{enumerate}
+                \item \textbf{Decomposition into Statements:} The LLM-judge is instructed to decompose both the system's response and the \textit{Ground Truth} response into a set of atomic and objective statements. This allows for a detailed comparison, rather than a holistic and subjective evaluation.
+
+                \item \textbf{Classification of Statements:} Based on the comparison between the statements, the LLM-judge classifies them into three categories, following the logic of a confusion matrix:
+                \begin{itemize}
+                    \item \textbf{True Positive (TP):} Correct statements made by the system that are also present in the \textit{Ground Truth} response.
+                    \item \textbf{False Positive (FP):} Incorrect, irrelevant, or hallucinated statements made by the system that are not in the \textit{Ground Truth} response.
+                    \item \textbf{False Negative (FN):} Statements present in the \textit{Ground Truth} response that were omitted by the system.
+                \end{itemize}
+                The True Negative (TN) category is not applicable in this context, as the goal is to measure the precision and completeness of the information provided.
+
+                \item \textbf{Calculation of Metrics:} Based on the count of statements in each category (TP, FP, FN), the following information retrieval metrics are calculated:
+                \begin{itemize}
+                    \item \textbf{Precision:} Measures the proportion of correct statements among all statements made by the system. It is calculated as:
+                    $$ \text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}} $$
+                    \item \textbf{Recall:} Measures the proportion of correct statements that the system managed to retrieve compared to the total number of statements in the \textit{Ground Truth} response. It is calculated as:
+                    $$ \text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}} $$
+                    \item \textbf{F1-Score:} Is the harmonic mean of Precision and Recall, providing a single metric that balances both values:
+                    $$ \text{F1-Score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}} $$
+                \end{itemize}
+            \end{enumerate}
+
+            This methodology allows for a quantitative and objective evaluation of the accuracy and completeness of the system's responses, providing valuable \textit{insights} into its performance in different scenarios.
+
+
+
+            
+    \section{Results and Discussion}
 
         
         \subsection{Performance}
-
         
             In this section, the F1-score charts are presented, which is the main metric for performance evaluation in this work. The corresponding charts for the precision and recall metrics are available in Appendix~\ref{sec:exp2_appendix}.
             

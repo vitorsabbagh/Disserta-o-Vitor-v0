@@ -68,10 +68,10 @@
 \RequirePackage{ltxcmds}
 \RequirePackage[T1]{fontenc}
 
-% \RequirePackage[a4paper,bindingoffset=0.0cm,vcentering=true,%
-% top=2.5cm,bottom=2.5cm,left=3.0cm,right=3.0cm]{geometry}
 \RequirePackage[a4paper,bindingoffset=0.0cm,vcentering=true,%
-top=0.5cm,bottom=1.5cm,left=0.5cm,right=0.5cm]{geometry}
+top=2.5cm,bottom=2.5cm,left=3.0cm,right=3.0cm]{geometry}
+% \RequirePackage[a4paper,bindingoffset=0.0cm,vcentering=true,%
+% top=0.5cm,bottom=1.5cm,left=0.5cm,right=0.5cm]{geometry}
 
 \def\CoppeTeX{{\rm C\kern-.05em{\sc o\kern-.025em p\kern-.025em
 p\kern-.025em e}}\kern-.08em

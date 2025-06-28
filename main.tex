@@ -18,7 +18,7 @@
 %%   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %%   Right brace   \}     Tilde         \~}
 %%
-\documentclass[msc]{coppe}
+\documentclass[msc,english]{coppe}
 
 \usepackage{booktabs}% tabelas mais bonitas
 \usepackage{rotating}% rodando coisas, como tabelas
@@ -45,9 +45,33 @@
 \usepackage{silence}
 % \WarningFilter{latex}{Overfull}
 \WarningFilter{latex}{Underfull}
+\WarningFilter{latex}{empty journal}
 
 % \usepackage{float}
 \usepackage{pdflscape} % in preamble
+
+\usepackage{listings}
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{keywordgreen}{rgb}{0.1,0.4,0.2}
+
+\lstdefinestyle{mystyle}{ 
+    commentstyle=\color{codegray},
+    keywordstyle=\color{keywordgreen}\bfseries,
+    numberstyle=\color{codegray},
+    stringstyle=\color{purple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=10pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
 
 % \usepackage[a4paper,margin=1.5cm]{geometry}
 
@@ -72,19 +96,19 @@
 \date{07}{2025}
 
 \keyword{Large Language Models}
-\keyword{Agentes}
-\keyword{Construção de Poços de Petroleo}
+\keyword{Agents}
+\keyword{Oil Well Construction}
 
 \maketitle
 
 \frontmatter
-\dedication{Para Carolina, minha companheira de vida.}
+\dedication{To Carolina, my life partner.}
 
-\chapter*{Agradecimentos}
+\chapter*{Acknowledgements}
 
-Gostaria de agradecer a todos. [família, amigos, etc]
+I would like to thank everyone. [family, friends, etc]
 
-Estendo minha gratidão aos especialistas em engenharia de poços, Marcelo Grimberg, Rafael Peralta e Lorenzo Simonassi, cuja expertise e dedicação contribuíram significativamente para esta pesquisa.
+I extend my gratitude to the well construction engineering experts, Marcelo Grimberg, Rafael Peralta, and Lorenzo Simonassi, whose expertise and dedication significantly contributed to this research.
 
 
 \begin{abstract}
@@ -109,7 +133,6 @@ This article explores the application of large language models (LLM) in the oil 
 \mainmatter
 
 
-
 \input{part01_introducao.tex}
 
 % \input{part01a_introducao2.tex}
@@ -126,20 +149,15 @@ This article explores the application of large language models (LLM) in the oil 
 
 \input{part05a_conclusao2.tex}
 
-
-
-    
-
 \backmatter
-\bibliographystyle{coppe-unsrt}
+\bibliographystyle{en-coppe-unsrt}
 \bibliography{bib}
 
 \appendix
 
 \input{part10_apendice.tex}
 
-
-\renewcommand{\appendixname}{Anexo}
+\renewcommand{\appendixname}{Appendix}
 \appendix
 
 % \input{part11_anexo.tex}
