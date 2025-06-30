@@ -1,0 +1,49 @@
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        node distance=2.5cm and 1.5cm,
+        every node/.style={
+            shape=rectangle,
+            rounded corners,
+            draw,
+            align=center,
+            minimum height=1.2cm,
+            minimum width=2.5cm,
+            thick
+        },
+        arrow/.style={
+            ->,
+            >=stealth,
+            thick
+        },
+        io/.style={
+            shape=rectangle,
+            draw=none,
+            align=center
+        }
+    ]
+        % Nodes
+        \node[io] (user) {User};
+        \node (query) [below=0.5cm of user] {User Query};
+        \node (retriever) [right=of query] {Retriever};
+        \node (knowledge) [above=of retriever] {Knowledge Base};
+        \node (generator) [right=of retriever, text width=3cm] {Generator (LLM)};
+        \node (response) [right=of generator] {Generated Response};
+        \node[io] (output_user) [below=0.5cm of response] {User};
+
+        % Arrows
+        \draw[arrow] (user) -- (query);
+        \draw[arrow] (query) -- (retriever);
+        \draw[arrow] (knowledge) -- (retriever) node[midway, right, text width=2cm] {Relevant Documents};
+        
+        % Augmented Prompt
+        \draw[arrow] (retriever.east) -- ++(0.75,0) -- ++(0,1.25) -| (generator.north) node[midway, above] {Context};
+        \draw[arrow] (query.east) -- ++(0.75,0) -- ++(0,-1.25) -| (generator.south) node[midway, below] {Query};
+        
+        \draw[arrow] (generator) -- (response);
+        \draw[arrow] (response) -- (output_user);
+
+    \end{tikzpicture}
+    \caption{Diagram of the Retrieval-Augmented Generation (RAG) process.}
+    \label{fig:rag_diagram}
+\end{figure}

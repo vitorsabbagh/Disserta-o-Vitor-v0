@@ -6,7 +6,10 @@
 \usepackage{rotating}
 \usepackage[most]{tcolorbox} % caixas de texto
 \usepackage{amsmath,amssymb}
+
 \usepackage[editing]{coop-writing}
+% \usepackage[publish]{coop-writing}
+
 \usepackage{marvosym}
 \cwsetcommwarn{\Lightning}
 \cwnamedef{xexeo}{red}{X}
@@ -19,7 +22,7 @@
 
 \usepackage{adjustbox} 
 
-\usepackage{xcolor, colortbl} % For more complex coloring of cells
+\usepackage{xcolor, colortbl}
 \usepackage{hhline} % For double lines
 
 \usepackage{algorithm}
@@ -38,6 +41,10 @@
 \usepackage{pdflscape} % in preamble
 
 \usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta}
+
+
 
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{keywordgreen}{rgb}{0.1,0.4,0.2}
@@ -76,7 +83,7 @@
 
 \examiner{Prof.}{Geraldo Bonorino Xexéo}{D.Sc.}
 \examiner{Prof.}{Jano Moreira de Souza}{Ph.D.}
-\examiner{Prof.}{Nome do Terceiro Examinador Sobrenome}{D.Sc.}
+\examiner{Prof.}{Arnaldo Cândido Júnior}{D.Sc.}
 \department{PESC}
 \date{07}{2025}
 
@@ -91,24 +98,37 @@
 
 \chapter*{Acknowledgements}
 
-I would like to thank everyone. [family, friends, etc]
-\xexeo{melhora isso, né? A banca gosta de ver}
+To my daughter, Marina, who came into the world just two months ago, bringing a new light and a new purpose to my life. I dedicate every page of this work to you, with the hope of building a bright future for you.
+
+To my parents, Vera and Nicolau, for all the love, unconditional support, and for always believing in me. Your faith in my abilities was the foundation for this achievement.
+
+To my beloved wife, Carolina, my gratitude for all the patience, understanding, and love, especially during the most challenging moments of this journey. Without your support, this work would not have been possible.
+
+To my stepson, Filipe, thank you for the moments of joy and relaxation that helped me maintain balance, especially during our Minecraft adventures. May our friendship continue to grow.
+
+I express my deep gratitude to my mentor, Claudio, for his unwavering support and trust since the beginning of my career in digital transformation. His mentorship was fundamental to my professional development.
+
+To my advisor, Xexéo, thank you for the wise guidance, academic rigor, and patience throughout this entire process. Your teachings were crucial to the quality of this work.
 
 I extend my gratitude to the well construction engineering experts, Marcelo Grimberg, Rafael Peralta, and Lorenzo Simonassi, whose expertise and dedication significantly contributed to this research.
 
+I also want to thank Ashish Vaswani. His work on "Attention Is All You Need" paved the way for the Large Language Models that were not only the subject of this dissertation but also an invaluable tool that helped me put ideas into words.
+
+Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Institute. Our daily discussions about Gen-AI were an inexhaustible source of inspiration and knowledge, immensely enriching this dissertation.
 
 \begin{abstract}
 
-\xexeoswap[busque sempre que possível a voz passiva]{Apresenta-se, nesta tese,}{Esta tese apresenta } a aplicação de grandes modelos de linguagem (LLM) no setor de petróleo e gás, especificamente em tarefas de construção e manutenção de poços. O estudo avalia o desempenho de uma arquitetura baseada em LLM de agente único e de múltiplos agentes no processamento de diferentes tarefas, oferecendo uma perspectiva comparativa sobre sua precisão e as implicações de custo de sua implementação. Os resultados indicam que sistemas multiagentes oferecem desempenho melhorado em tarefas de perguntas e respostas, com uma medida de veracidade 28\% maior do que os sistemas de agente único, mas a um custo financeiro mais alto. Especificamente, a arquitetura multiagente incorre em custos que são, em média, 3,7 vezes maiores do que os da configuração de agente único, devido ao aumento do número de tokens processados. Por outro lado, os sistemas de agente único se destacam em tarefas de texto para SQL (Linguagem de Consulta Estruturada), especialmente ao usar o Transformador Pré-Treinado Generativo 4 (GPT-4), alcançando uma pontuação 15\% maior em comparação com as configurações multiagentes, sugerindo que arquiteturas mais simples podem, às vezes, superar a complexidade. A novidade deste trabalho reside em seu exame original dos desafios específicos apresentados pelos dados complexos, técnicos e não estruturados inerentes às operações de construção de poços, contribuindo para o planejamento estratégico da adoção de aplicações de IA generativa, fornecendo uma base para otimizar soluções contra parâmetros econômicos e tecnológicos.
-
-\end{abstract}
-
+    Esta dissertação apresenta a aplicação de modelos de linguagem (LLM) no setor de petróleo e gás, especificamente em tarefas de construção e manutenção de poços. O estudo avalia o desempenho de uma arquitetura baseada em LLM de agente único e de múltiplos agentes no processamento de diferentes tarefas, oferecendo uma perspectiva comparativa sobre sua precisão e as implicações de custo de sua implementação. Os resultados indicam que sistemas multiagentes oferecem desempenho melhorado em tarefas de perguntas e respostas, com uma medida de veracidade 28\% maior do que os sistemas de agente único, mas a um custo financeiro mais alto. Especificamente, a arquitetura multiagente incorre em custos que são, em média, 3,7 vezes maiores do que os da configuração de agente único, devido ao aumento do número de tokens processados. Por outro lado, os sistemas de agente único se destacam em tarefas de texto para SQL (Linguagem de Consulta Estruturada), especialmente ao usar o Transformador Pré-Treinado Generativo 4 (GPT-4), alcançando uma pontuação 15\% maior em comparação com as configurações multiagentes, sugerindo que arquiteturas mais simples podem, às vezes, superar a complexidade. A novidade deste trabalho reside em seu exame original dos desafios específicos apresentados pelos dados complexos, técnicos e não estruturados inerentes às operações de construção de poços, contribuindo para o planejamento estratégico da adoção de aplicações de IA generativa, fornecendo uma base para otimizar soluções contra parâmetros econômicos e tecnológicos.
+    
+    \end{abstract}
+    
 \begin{foreignabstract}
 
 
-This article explores the application of large language models (LLM) in the oil and gas  sector, specifically within well construction and maintenance tasks. The study evaluates the performances of a single-agent and a multi-agent LLM-based architecture in processing different tasks, offering a comparative perspective on their accuracy and the cost implications of their implementation. The results indicate that multi-agent systems offer improved performance in question and answer tasks, with a truthfulness measure 28\% higher than single-agent systems, but at a higher financial cost. Specifically, the multi-agent architecture incurs costs that are, on average, 3.7 times higher than those of the single-agent setup due to the increased number of tokens processed. Conversely, single-agent systems excel in text-to-SQL (Structured Query Language) tasks, particularly when using Generative Pre-Trained Transformer 4 (GPT-4), achieving a 15\% higher score compared to multi-agent configurations, suggesting that simpler architectures can sometimes outpace complexity. The novelty of this work lies in its original examination of the specific challenges presented by the complex, technical, unstructured data inherent in well construction operations, contributing to strategic planning for adopting generative AI applications, providing a basis for optimizing solutions against economic and technological parameters. 
-
+    This article explores the application of large language models (LLM) in the oil and gas  sector, specifically within well construction and maintenance tasks. The study evaluates the performances of a single-agent and a multi-agent LLM-based architecture in processing different tasks, offering a comparative perspective on their accuracy and the cost implications of their implementation. The results indicate that multi-agent systems offer improved performance in question and answer tasks, with a truthfulness measure 28\% higher than single-agent systems, but at a higher financial cost. Specifically, the multi-agent architecture incurs costs that are, on average, 3.7 times higher than those of the single-agent setup due to the increased number of tokens processed. Conversely, single-agent systems excel in text-to-SQL (Structured Query Language) tasks, particularly when using Generative Pre-Trained Transformer 4 (GPT-4), achieving a 15\% higher score compared to multi-agent configurations, suggesting that simpler architectures can sometimes outpace complexity. The novelty of this work lies in its original examination of the specific challenges presented by the complex, technical, unstructured data inherent in well construction operations, contributing to strategic planning for adopting generative AI applications, providing a basis for optimizing solutions against economic and technological parameters. 
+    
 \end{foreignabstract}
+
 
 \tableofcontents
 \listoffigures
@@ -121,11 +141,7 @@ This article explores the application of large language models (LLM) in the oil 
 
 \input{part01_introducao.tex}
 
-% \input{part01a_introducao2.tex}
-
 \input{part02_revisao.tex}
-
-% \input{part02a_revisao2.tex}
 
 \input{part03_experimento1.tex}
 
@@ -133,7 +149,7 @@ This article explores the application of large language models (LLM) in the oil 
 
 \input{part05_conclusao.tex}
 
-\input{part05a_conclusao2.tex}
+% \input{part05a_conclusao2.tex}
 
 \backmatter
 \bibliographystyle{en-coppe-unsrt}

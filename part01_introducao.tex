@@ -6,7 +6,9 @@
 
 
     % [IA-GEN NA INDUSTRIA] 
-    In the dynamic changing of the oil and gas (O\&G) industry\xexeo{eu acho que aqui falta alto. TEm um pouco há ver com o uso do "in the dynamic changing of the" não ser realmente muito adequado a "oil and gas industry", falta algo, um qualificador a mais (mercado? . Minha IA sugeriu mudar para "In the dynamic and ever-changing oil and gas (O\&G) industry", o que eu achei muito melhor}, 
+    In the dynamic and ever-changing oil and gas (O\&G) industry,
+    \xexeo{eu acho que aqui falta alto. TEm um pouco há ver com o uso do "in the dynamic changing of the" não ser realmente muito adequado a "oil and gas industry", falta algo, um qualificador a mais (mercado? . Minha IA sugeriu mudar para "In the dynamic and ever-changing oil and gas (O\&G) industry", o que eu achei muito melhor}
+    \vitor{feito}
     \abbrev{O\&G}{oil and gas} 
     digital transformation has emerged as a key element to achieve operational efficiency, sustainability, and competitiveness. 
     At the forefront of this transformation are Large Language Models (LLMs), which have the potential to process unstructured queries, map out alternatives, and advise users on possible actions \citep{Kar2023}. 
@@ -16,8 +18,8 @@
     % [ESTUDO AUMENTO PRODUTIVIDADE] 
     A study conducted by \citet{Dellacqua2023}, in collaboration with the Boston Consulting Group, shows that in knowledge-intensive tasks, consultants equipped with access to LLMs such as GPT-4 not only completed tasks more efficiently (25.1\% more quickly on average) but also with substantially higher quality, achieving results more than 40\% better compared to those without AI assistance \citep{Dellacqua2023}.
     Increase in productivity of knowledge workers was 12\% on average.    
-    A major oil company spent in 2023 \$2.8B with employee compensation.
-    A potential increase of 12\% in knowledge workers productivity, given they represent 60\% of all employee, could represent \$204M annual savings in this scenario. \xexeo{Aqui está um problema clássico. Você quer fornecer um dado mas provavelmente não quer dizer que é a Petrobras. Mas provavelmente esse dado está em algum relatório público. Não consegue ele de algum lugar e aí pode citar?}    
+    A major oil company spent in 2023 \$2.8B with employee compensation \citep{Petrobras2024}.
+    A potential increase of 12\% in knowledge workers productivity, given they represent 60\% of all employee, could represent \$204M annual savings in this scenario. \xexeo{Aqui está um problema clássico. Você quer fornecer um dado mas provavelmente não quer dizer que é a Petrobras. Mas provavelmente esse dado está em algum relatório público. Não consegue ele de algum lugar e aí pode citar?} \vitor{feito}   
     
     % [AUMENTO DO PIB DEVIDO A GEN AI] 
     Broader economic indicators predict significant transformations due to generative AI (Gen-AI) across various industries.
@@ -81,22 +83,160 @@
 
     To achieve these objectives, this research was conducted through two distinct experimental phases. The first, carried out in 2024, focused on a foundational comparison between single and multi-agent architectures, revealing key insights into their performance, cost, and limitations such as hallucination and context interpretation. The rapid evolution of generative AI frameworks and models prompted a second, more advanced experiment in 2025. This second phase built upon the initial findings, also employing non-agentic workflows as baseline and a more rigorous, quantitative evaluation methodology to address the challenges identified in the first experiment and automated evaluation based on the concept commonly reffered to as "LLM-as-judge" (\citep{Gu2025}).\xexeo{Acho que pode aumentar um pouco isso, já falar dos resultados (dissertação tem spoiler), motivar o segundo a partir dos resutlados do primeiro e botar depois das questões de pesquisa (leia o todo), sempre alinhando tudo (questão de pesquisa - experimento - conclusões}
 
-\todo[inline]{Ok, está bom, porém seria melhor para dissertação se agora você definisse questões de pesquisa. Essas questões de pesquisa serão respondidas na conclusão, a partir do que você fez. Eu só li até aqui, então não tenho sugestões fortes agora, mas as questões podem ser coisas coisa: Qual a eficácia e eficiência de LLMs para extrair dados de bases .... Como sistemas single e multi agentes se comparam... Elas podem ser bem melhores e bem mais objetivas e ao longo do texto, se eu detectar alguma , escrevo. A questão é perguntar aqui no fim da introdução e responder na conclusão, caracterizando a colaboração}
+\todo[inline]{Ok, está bom, porém seria melhor para dissertação se agora você definisse questões de pesquisa. Essas questões de pesquisa serão respondidas na conclusão, a partir do que você fez. Eu só li até aqui, então não tenho sugestões fortes agora, mas as questões podem ser coisas coisa: Qual a eficácia e eficiência de LLMs para extrair dados de bases .... Como sistemas single e multi agentes se comparam... Elas podem ser bem melhores e bem mais objetivas e ao longo do texto, se eu detectar alguma , escrevo. A questão é perguntar aqui no fim da introdução e responder na conclusão, caracterizando a colaboração
+\newline \newline SERÁ FEITO NO FIM}
 
 
+% \todo[inline]{\textbf{VITOR: CONCLUÍDO} \newline \newline 
+%     Ok, faltou a metodologia e tem que ter. Tem que explicar a metodologia genérica de sua pesquisa. Eu agora não sei bem o que se ajeita, mas vejo que talvez possa descrever como DSR ou outro método que implique em ações reais em um local. É importante notar que você descreve uma metodologia nos seus experimentos que é um processo de pesquisa (e isso não está errado), porém aqui há deve ser usado um conceito de metodologia mais amplo, ligado a epistemologia. Argumentos em função da DSR: Design Science Research (DSR) [sim, pedi para o ChatGPT, mas eu já meio que concordava]
+%     A Design Science Research é a classificação mais apropriada para a metodologia empregada, pelos seguintes motivos:
+%     \textbf{Artefato proposto}: A pesquisa visa comparar e melhorar arquiteturas de sistemas baseadas em LLMs aplicadas a tarefas específicas de engenharia de poços, o que se alinha à criação e avaliação de artefatos — elemento central da DSR.
+%     \textbf{Avaliação empírica}: Foram realizados dois ciclos de experimentos com diferentes configurações de agente único e multiagente, com dados reais da indústria de O\&G e validação por especialistas.
+%     \textbf{Ciclos iterativos}: O segundo experimento se baseia explicitamente nos resultados do primeiro, sugerindo um processo iterativo de refinamento de artefatos — outro elemento típico de DSR.
+%     \textbf{Relevância prática + rigor científico}: O trabalho visa resolver um problema concreto de empresas do setor de petróleo e gás, mas com critérios e métricas de avaliação quantitativas rigorosas.
+%     \textbf{Conclusão}: Mesmo sem ter sido explicitamente rotulada como DSR na dissertação, a estrutura e objetivos da pesquisa indicam fortemente que ela segue os princípios dessa metodologia.
+%     \newline \newline \textbf{VITOR: CONCLUÍDO}}
 
-\section{Metodology}
-
-\todo[inline]{Ok, faltou a metodologia e tem que ter. Tem que explicar a metodologia genérica de sua pesquisa. Eu agora não sei bem o que se ajeita, mas vejo que talvez possa descrever como DSR ou outro método que implique em ações reais em um local. É importante notar que você descreve uma metodologia nos seus experimentos que é um processo de pesquisa (e isso não está errado), porém aqui há deve ser usado um conceito de metodologia mais amplo, ligado a epistemologia. Argumentos em função da DSR: Design Science Research (DSR) [sim, pedi para o ChatGPT, mas eu já meio que concordava]
-A Design Science Research é a classificação mais apropriada para a metodologia empregada, pelos seguintes motivos:
-\textbf{Artefato proposto}: A pesquisa visa comparar e melhorar arquiteturas de sistemas baseadas em LLMs aplicadas a tarefas específicas de engenharia de poços, o que se alinha à criação e avaliação de artefatos — elemento central da DSR.
-\textbf{Avaliação empírica}: Foram realizados dois ciclos de experimentos com diferentes configurações de agente único e multiagente, com dados reais da indústria de O\&G e validação por especialistas.
-\textbf{Ciclos iterativos}: O segundo experimento se baseia explicitamente nos resultados do primeiro, sugerindo um processo iterativo de refinamento de artefatos — outro elemento típico de DSR.
-\textbf{Relevância prática + rigor científico}: O trabalho visa resolver um problema concreto de empresas do setor de petróleo e gás, mas com critérios e métricas de avaliação quantitativas rigorosas.
-\textbf{Conclusão}: Mesmo sem ter sido explicitamente rotulada como DSR na dissertação, a estrutura e objetivos da pesquisa indicam fortemente que ela segue os princípios dessa metodologia.}
-
-
-
+\section{Research Methodology}
+  
+    This research follows the Design Science Research (DSR) methodology, a framework particularly suited for studies that develop and evaluate technological artifacts to address specific organizational problems. DSR provides a structured approach for creating innovative solutions while maintaining scientific rigor through empirical validation \citep{hevner2007three}.
+    
+    \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/dsr-model.png}
+    \caption{Main elements of DSR-Model \citep{Oswald2023}.}
+    \label{fig:dsr-model}
+    \end{figure}
+    
+    \subsection{Design Science Research Framework}
+    
+        The DSR methodology employed in this study consists of four interconnected elements, as illustrated in Figure~\ref{fig:dsr-model}:
+        
+        \begin{enumerate}
+        \item \textbf{Problem in Context}: Identifying and defining a relevant organizational challenge within its specific environment
+        \item \textbf{Artifact}: Designing and developing a technological solution to address the identified problem
+        \item \textbf{Behavioral Conjectures}: Formulating hypotheses about how the artifact will function and impact the problem space
+        \item \textbf{Empirical Evaluation}: Systematically testing the artifact to validate its effectiveness and the underlying conjectures
+        \end{enumerate}
+        
+        This cyclical framework guides both the research design and execution, ensuring that the developed artifacts are not only technically sound but also practically relevant.
+    
+    \subsection{Application of DSR in This Research}
+        
+        \subsubsection{Problem in Context}
+        
+        This study addresses the challenge of efficiently extracting relevant information from extensive technical databases in the oil and gas industry, specifically in well construction and maintenance operations. 
+        
+        \begin{table}[h]
+            \centering
+            \caption{Characteristics of the Problem Context}
+            \begin{tabular}{|p{0.45\textwidth}|p{0.45\textwidth}|}
+            \hline
+            \textbf{Challenge Aspect} & \textbf{Description} \\
+            \hline
+            Data Structure & Large volumes of unstructured data (operational reports, lessons learned documents, NPT reports) \\
+            \hline
+            Technical Complexity & Domain-specific terminology and complex relationships \\
+            \hline
+            Operational Constraints & Time-critical decision-making requirements in operational settings \\
+            \hline
+            Business Impact & Significant potential economic impact from improved knowledge access \\
+            \hline
+            \end{tabular}
+            \label{tab:problem-context}
+        \end{table}
+        
+        \subsubsection{Artifacts}
+        
+        Two primary artifacts were designed and implemented, illustrated in Figure~\ref{fig:artifacts}, using state-of-the-art language models (GPT-3.5-turbo and GPT-4) and integrated with domain-specific knowledge bases through various retrieval mechanisms.
+        
+        \begin{figure}[h]
+        \centering
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \fbox{\begin{tabular}{c}
+            \textbf{Single-Agent LLM System} \\
+            \small A centralized architecture where one \\
+            \small language model agent handles the entire \\
+            \small question-answering process with \\
+            \small access to multiple tools
+            \end{tabular}}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \fbox{\begin{tabular}{c}
+            \textbf{Multi-Agent LLM System} \\
+            \small A collaborative architecture where \\
+            \small multiple specialized agents work together \\
+            \small under coordination to process queries \\
+            \small  
+            \end{tabular}}
+        \end{minipage}
+        \caption{Primary Artifacts Developed in This Research}
+        \label{fig:artifacts}
+        \end{figure}
+        
+        
+        \subsubsection{Behavioral Conjectures}
+        
+        The research was guided by several key conjectures:
+        
+        \begin{tcolorbox}[colback=gray!10, colframe=gray!40, title=Key Research Conjectures]
+            \begin{itemize}
+            \item Multi-agent systems will demonstrate higher accuracy in complex technical queries due to their ability to distribute cognitive load and specialize in different aspects of the problem
+            \item The performance advantages of multi-agent systems will vary by task type (Q\&A vs. Text-to-SQL)
+            \item More advanced language models will yield better performance but at significantly higher computational costs
+            \item The economic efficiency (performance-to-cost ratio) will be a critical factor in determining practical implementation viability
+            \end{itemize}
+        \end{tcolorbox}
+        
+        \subsubsection{Empirical Evaluation}
+        
+        The evaluation was conducted through two distinct experimental phases (summarized in Table~\ref{tab:experiments}), allowing for iterative refinement of both the artifacts and the evaluation methodology, addressing limitations identified in the first experiment while adapting to the rapid evolution of language model capabilities.
+        
+        \begin{table}[h]
+        \centering
+        \caption{Comparison of Experimental Phases}
+        \begin{tabular}{|p{0.15\textwidth}|p{0.38\textwidth}|p{0.38\textwidth}|}
+        \hline
+        \textbf{Aspect} & \textbf{First Experiment (2024)} & \textbf{Second Experiment (2025)} \\
+        \hline
+        Focus & Comparative analysis of single and multi-agent architectures & Extended evaluation incorporating non-agentic workflows as baseline \\
+        \hline
+        Evaluation Methods & Expert validation by domain specialists & Automated assessment using "LLM-as-judge" approach \\
+        \hline
+        Metrics & Truthfulness, performance, and LLM cost & Precision, recall, and F1-score \\
+        \hline
+        Outcomes & Identification of key challenges and limitations & More rigorous quantitative evaluation methodology \\
+        \hline
+        \end{tabular}
+        \label{tab:experiments}
+        \end{table}
+        
+    
+    \subsection{Research Quality and Validity}
+    
+        To ensure research quality and validity, several measures were implemented, as shown in Figure~\ref{fig:research-quality}. 
+        By adhering to the DSR methodology, this research maintains a balance between practical utility and scientific rigor, producing artifacts that address real organizational needs while contributing to the theoretical understanding of multi-agent LLM systems in specialized technical domains.
+        
+        \begin{figure}[h]
+            \centering
+            \begin{tikzpicture}
+            \node[draw, rounded corners, fill=blue!10, text width=0.3\textwidth, align=center] (a) at (0,0) {\textbf{Triangulation}\\\small Using multiple data sources, evaluation methods, and expert perspectives};
+            \node[draw, rounded corners, fill=blue!10, text width=0.3\textwidth, align=center] (b) at (6,0) {\textbf{Reproducibility}\\\small Detailed documentation of experimental procedures, prompts, and configurations};
+            \node[draw, rounded corners, fill=blue!10, text width=0.3\textwidth, align=center] (c) at (0,-4) {\textbf{Practical Relevance}\\\small Direct application to real-world operational challenges};
+            \node[draw, rounded corners, fill=blue!10, text width=0.3\textwidth, align=center] (d) at (6,-4) {\textbf{Theoretical Contribution}\\\small Insights into comparative advantages of different agent architectures};
+            \draw[->] (a) -- (b);
+            \draw[->] (b) -- (d);
+            \draw[->] (a) -- (c);
+            \draw[->] (c) -- (d);
+            \end{tikzpicture}
+            \caption{Research Quality Assurance Framework}
+            \label{fig:research-quality}
+        \end{figure}
+        
+        
 
 \section{Thesis Structure}
 

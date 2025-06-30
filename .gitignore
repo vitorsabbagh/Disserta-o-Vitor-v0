@@ -10,6 +10,8 @@ main.out
 main.synctex.gz
 main.syx
 main.toc
+main.abx
+main.ccc
 images_exp2/OLD1/
 images_exp2/OLD2/
 stuff/example.aux
@@ -17,3 +19,4 @@ stuff/example.fdb_latexmk
 stuff/example.fls
 stuff/example.log
 _OLD
+concatenated.tex

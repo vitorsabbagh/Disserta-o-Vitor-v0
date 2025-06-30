@@ -70,17 +70,7 @@
             Each of these sources provides inputs for the agent to offer a more accurate and updated view of operations and organizational structure.
             A set of documents and records was randomly selected from each database, over which questions were formulated. For each document, up to 3 questions were generated, resulting in a dataset of tasks of the Q\&A and Text-to-SQL types. Some examples are described in Table \ref{table:question_examples}.\xexeo{revisar para fazer sentido as coisas virem de outro capítulo}
 
-
-        % \vspace{5mm}
-        % \textbf{Document Embedding and Semantic Information Retrieval.} 
-        %     One data source used by the agent in this experiment is accessed through semantic retrieval.
-        %     For this purpose, each document is subjected to an embedding model, text-embedding-ada-002 \citep{OpenAI2023}, which generates a vector with 1536 dimensions that semantically represents the content of the document.
-        %     Each document, along with its semantic vector, is saved in a Vector Store database called \citep{Qdrant2024}.
-        %     This tool, when presented with a new semantic vector related to the user's query, retrieves the N documents with the highest similarity, i.e., those whose vector is closest to the vector of the content being searched.
-
-        % \subsection{Single-Agent Architecture with Multiple Tools}
-        % \vspace{5mm}
-        % \textbf{Single-Agent with Multiple Tools.}   
+        
             In this work, a goal-based agent\xexeo{Se certificar que estão descritos na revisão da literatura, caso contrário descrever lá} \citep{Russell2020} was implemented with the goal of accurately responding to various queries. 
             The agent operates within an environment equipped with multiple tools for task-specific operations, as shown in Figure~\ref{fig:agent_environment}, and interfaces with users to receive queries.
             
