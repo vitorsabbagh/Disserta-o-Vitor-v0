@@ -132,9 +132,61 @@
             \citet{Li2024} demonstrated that, through a sampling and voting method, the performance of LLMs scales with the number of instantiated agents.
             Another open-source framework is AutoGen \citep{Wu2023}, that enables the creation of LLM multi-agent applications, allowing for customization across various modes including. It supports diverse applications in fields such as mathematics, coding, and operations research, demonstrating its effectiveness through empirical studies \citep{Wu2023}.
 
-        \section{LLM-as-judge}
+            
+        \section{Evaluation}
 
-        \xexeo{Òk, essa seção eu não gostei muito, apesar de não ter nenhum erro. Primeiro tem que fazer uma seção de avaliação com as medidas, onde devem estar todas as medidas que você usar na dissertação (não li ainda, estou indo na ordem). Aí então você pode falar disso, mas apenas se usou}
+            \subsection{Truthfulness}
+
+                In the evaluation of RAG systems, ensuring the truthfulness of the generated output is a primary concern. \citet{Lin2022} introduces a framework for this purpose. The authors define a truthful answer as one that aligns with literal truth about the real world. This is particularly relevant for RAG systems, which can retrieve and incorporate information from vast and varied sources. An answer is considered truthful if it does not assert any false statements, and informative if it provides relevant information that addresses the user's query.
+                
+                In \citet{Li2023}, the authors conducted an evaluation to determine the effectiveness of their proposed prompts on the performance of various LLMs. The evaluation employed both automated standard experiments and human studies to assess the impact of emotional stimuli on task performance, truthfulness, and responsibility.
+
+                In the first experiment of this study, human experts assessed each Q\&A pair based on the definitions:
+
+                \begin{quoting}[font={small,itshape},indentfirst=false]
+                    \begin{itemize}
+                    \item \textbf{Truthfulness}: a metric to gauge the extent of divergence from factual accuracy, otherwise referred to as hallucination \citep{Lin2021}.
+                        \subitem 1=“The response promulgates incorrect information, detrimentally influencing the ultimate interpretation”
+                        \subitem 2=“A segment of the response deviates from factual accuracy; however,this deviation does not materially affect the ultimate interpretation”
+                        \subitem 3=“The response predominantly adheres to factual accuracy, with potential for minor discrepancies that do not substantially influence the final interpretation”
+                        \subitem 4=“The response is largely in consonance with factual evidence, albeit with insignificant deviations that remain inconsequential to the final interpretation”
+                        \subitem 5=“The response is in meticulous alignment with the facts, exhibiting no deviations”
+                                
+                    \item \textbf{Performance}: encompasses the overall quality of responses, considering linguistic coherence, logical reasoning, diversity, and the presence of corroborative evidence.
+                        \subitem 1 = “The response fails to address the question adequately”
+                        \subitem 2 =“The response addresses the question; however, its linguistic articulation is sub-optimal, and the logical structure is ambiguous”
+                        \subitem 3 = “The response sufficiently addresses the question, demonstrating clear logical coherence”
+                        \subitem 4 = “Beyond merely addressing the question, the response exhibits superior linguistic clarity and robust logical reasoning”
+                        \subitem 5 = “The response adeptly addresses the question, characterized by proficient linguistic expression, lucid logic, and bolstered by illustrative examples”\citep{Lin2021}.         
+                    \end{itemize}
+                \end{quoting}
+
+            \subsection{Precision, Recall, and F1-Score}
+                Precision, recall, and F1-score are fundamental metrics for evaluating classification tasks, particularly in scenarios with imbalanced datasets. These metrics provide a more nuanced understanding of a model's performance than accuracy alone.
+
+                \textbf{Precision} measures the accuracy of positive predictions. It is the ratio of correctly predicted positive observations to the total predicted positive observations. A high precision relates to a low false positive rate.
+                \begin{equation}
+                    \text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}
+                    \label{eq:precision}
+                \end{equation}
+
+                \textbf{Recall} (or Sensitivity) measures the ability of the model to find all the relevant cases within a dataset. It is the ratio of correctly predicted positive observations to all observations in the actual class.
+                \begin{equation}
+                    \text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}
+                    \label{eq:recall}
+                \end{equation}
+
+                The \textbf{F1-score} is the weighted average of Precision and Recall. Therefore, this score takes both false positives and false negatives into account. It is the harmonic mean of the two and is a good way to show that a model has a good performance on both metrics.
+                \begin{equation}
+                    \text{F1-score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
+                    \label{eq:f1-score}
+                \end{equation}
+
+
+        \subsection{LLM-as-judge}
+
+            \xexeo{Òk, essa seção eu não gostei muito, apesar de não ter nenhum erro. Primeiro tem que fazer uma seção de avaliação com as medidas, onde devem estar todas as medidas que você usar na dissertação (não li ainda, estou indo na ordem). Aí então você pode falar disso, mas apenas se usou}
+            \vitor{Feito. Fiz a inclusão das demais métricas utilizadas antes desta seção.}
 
             The LLM-as-Judge paradigm represents a significant shift in the evaluation of NLP systems in general, using a language model as a scalable proxy for human evaluators (\citep{li2024llmsasjudgescomprehensivesurveyllmbased}). 
             This approach was developed to overcome the semantic shallowness of traditional metrics like BLEU or ROUGE and the logistical challenges of extensive human annotation (\citep{Zheng2023}). 
@@ -145,23 +197,9 @@
             In this application, the judge LLM is tasked with comparing the RAG-generated answer against a ground-truth dataset.
             By leveraging a meticulously crafted prompt that defines the classification criteria, the judge can systematically categorize each output into classes such as True Positive (TP) (factually consistent with the ground truth), False Positive (FP) (introduces unsupported information), True Negative (TN) (a correct refusal to answer), or False Negative (FN) (missing relevant information). This structured approach moves beyond subjective scoring towards a more objective, task-specific evaluation, similar to methodologies that use specialized judge models trained on fine-grained feedback for enhanced reliability (\citep{Kim2024}).
 
-            The primary advantage of this methodology is its ability to translate qualitative, AI-driven judgments directly into a confusion matrix. By aggregating the classifications across an entire evaluation dataset, it becomes possible to calculate standard, interpretable metrics such as precision (Equation~\ref{eq:precision}), recall (Equation~\ref{eq:recall}), and F1-score (Equation~\ref{eq:f1-score}). This process establishes a robust and replicable pipeline for benchmarking the factual accuracy of a RAG system at scale. While it is important to acknowledge the potential for inherent biases in LLM judges (\citep{Gu2025}), studies show high correlation with human-expert evaluations (\citep{li2024llmsasjudgescomprehensivesurveyllmbased}), making it a powerful tool for iterative development and system comparison.
-
-            \begin{equation}
-                \text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}
-                \label{eq:precision}
-            \end{equation}
-
-            \begin{equation}
-                \text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}
-                \label{eq:recall}
-            \end{equation}
-
-            \begin{equation}
-                \text{F1-score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
-                \label{eq:f1-score}
-            \end{equation}
+            The primary advantage of this methodology is its ability to translate qualitative, AI-driven judgments directly into a confusion matrix. By aggregating the classifications across an entire evaluation dataset, it becomes possible to calculate standard, interpretable metrics such as precision (Equation~\ref{eq:precision}), recall (Equation~\ref{eq:recall}), and F1-score (Equation~\ref{eq:f1-score}). This process establishes a replicable pipeline for benchmarking the factual accuracy of a RAG system at scale. While it is important to acknowledge the potential for inherent biases in LLM judges (\citep{Gu2025}), studies show high correlation with human-expert evaluations (\citep{li2024llmsasjudgescomprehensivesurveyllmbased}), making it a useful tool for iterative development and system comparison.
 
 \todo[inline]{Como você criou um dataset de teste para uma tarefa, seria bom falar disso. Mas essa é uma coisa adicional a outras mudanças que pedi, seria bom, mas se não der tempo, não deu.}
 
-\todo[inline]{Você usou no prmeiro experimento outras métricas, tem que descreve-las aqui: Truthfulness, Performance, LLMCost}
+\xexeo{Você usou no prmeiro experimento outras métricas, tem que descreve-las aqui: Truthfulness, Performance, LLMCost}
+\vitor{Feito}
