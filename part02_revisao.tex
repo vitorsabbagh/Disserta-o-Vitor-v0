@@ -73,9 +73,14 @@
 
     \section{Retrieval-Augmented Generation (RAG)}
 
-        A RAG consists of two main components: a retriever and a generator. The retriever is responsible for finding relevant information from a knowledge base, and the generator uses that information to create a human-like response. This approach has revolutionized natural language processing (NLP), allowing users to interact with databases using plain language rather than needing to know how to write complex SQL queries.
+        A RAG consists of two main components: a retriever and a generator, as illustrated in Figure~\ref{fig:rag_diagram}. The retriever is responsible for finding relevant information from a knowledge base, and the generator uses that information to create a human-like response. This approach has revolutionized natural language processing (NLP), allowing users to interact with databases using plain language rather than needing to know how to write complex SQL queries.
 
-        \input{images_part_2/rag_diagram.tex}         
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\textwidth]{images/rag_diagram_vertical.png}
+            \caption{A diagram illustrating the RAG process.}
+            \label{fig:rag_diagram}
+        \end{figure}         
         
         The arrival of advanced language models like GPT-3 and GPT-4 \citep{OpenAImodels} has marked a significant leap in Text-to-SQL applications \citep{Singh2023}, demonstrating remarkable capabilities in handling these tasks. 
         This can be attributed to their extensive training on diverse datasets \citep{Deng2021}, which include not only large amounts of text but also structured data like tables and code, enabling the model to understand the intricate relationships between language and data structures. 
