@@ -43,35 +43,6 @@
 
 
 
-    \section{Large Language Models}         
-
-        Large Language Models (LLMs) are advanced neural network-based models designed to understand and generate human-like text. 
-        They leverage the Transformer architecture introduced in the seminal paper \enquote{Attention is All You Need} by \citet{Vaswani2017}. 
-        This architecture relies on self-attention mechanisms, allowing the model to weigh the importance of different words in a sentence effectively. 
-
-        The emergence of LLMs has made it possible to understand and produce textual information. 
-        These systems are expected to revolutionize various industries by supporting complex decision-making processes. GPT models \citep{OpenAI2023}, in particular, take advantage of its vast training data to provide human-like responses \citep{Mosser2024}, which can be highly beneficial in contexts requiring natural language understanding and generation. The exponential growth in the size and capability of LLMs in recent years has been remarkable. Models like OpenAI's GPT series have shown significant advancements, moving from millions to hundreds of billions of parameters, which gives them increasingly sophisticated natural language understanding and generation. This advancement is illustrated in Figure~\ref{fig:llm_evolution}.
-
-        \xexeo{Acho que aqui merecia um gráfico do crescimento do tamanho das LLMs e um parágrafo sobre esse crescimento}
-        \vitor{Feito}
-
-        \begin{figure}[ht]
-            \centering
-            \includegraphics[width=0.8\textwidth]{images/llm_evolution.png}
-            \caption{The evolution of LLMs.}
-            \label{fig:llm_evolution}
-        \end{figure}
-        
-        As highlighted by \citet{Singh2023}, the integration of LLM-based solutions, such as conversational chatbots, offers an approach to optimizing operations across various business segments, including drilling, completion, and production.
-        \citet{Singh2023} uses LLMs models to extract, analyze, and interpret datasets, enabling generation of insights and recommendations. 
-
-        Despite its widespread impact, language models are not without its limitations. 
-        In many industry-specific applications, the critical information required is often proprietary, not shared with third parties, and thus absent from the training data of these LLMs \citep{Mosser2024}. 
-        This gap means that GPT models might not have access to the most up-to-date or sensitive information needed for certain tasks. 
-        Moreover, due to their probabilistic nature, LLMs can experience hallucinations, producing confident yet incorrect or nonsensical responses based on user input \citep{OpenAI2023}. 
-
-
-
 
     \section{Intelligent Agents}         
         % \xexeo{Agentes existem antes das LLMs, logo essa seção deve vir antes, inclusive já transformei em seção}
@@ -93,18 +64,53 @@
             The structure of a MAS can vary, with different organizational paradigms such as hierarchical structures or coalitions being employed depending on the application \citep{Gokulan2010}. A practical example of a MAS architecture is demonstrated in power system restoration, where a system can be composed of multiple "bus agents" and a single "facilitator agent" \citep{Nagata2002}. In this setup, each bus agent works to restore its local area by negotiating with neighboring agents based on locally available information, while the facilitator agent manages the overall decision-making process, showcasing how a collection of agents with simple, local strategies can cooperate to achieve a complex, global goal \citep{Nagata2002}.
 
 
-    \section{LLM applications}
 
-    % \todo[inline]{Precisa de um texto aqui}
+    \section{Large Language Models}         
 
-        LLM applications have witnessed a dramatic surge in development and adoption, reshaping the landscape of AI. This growth is fueled by continuous advancements in model architectures, training techniques, and the availability of vast datasets. The proliferation of LLMs has led to a diverse array of applications that leverage their remarkable ability to understand, generate, and process human language.
+        Large Language Models (LLMs) are advanced neural network-based models designed to understand and generate human-like text. 
+        They leverage the Transformer architecture introduced in the seminal paper \enquote{Attention is All You Need} by \citet{Vaswani2017}. 
+        This architecture relies on self-attention mechanisms, allowing the model to weigh the importance of different words in a sentence effectively. 
 
-        The expansion of the LLM application ecosystem is evident in the significant market growth projections. For instance, one report projects the global LLM market to grow from \$5.62 billion in 2024 to \$35.43 billion by 2030, with a compound annual growth rate (CAGR) of 36.9\% \citep{GrandViewResearch2025}. This rapid expansion is indicative of the immense value and potential that organizations across industries see in these technologies. The applications themselves are becoming increasingly sophisticated, evolving from simple text generation to complex, multimodal systems capable of processing and integrating text, images, and other data formats \citep{Kaddour2023}.
-        
-        The spectrum of LLM-based applications is broad and continually expanding. Early applications focused on tasks such as text summarization, translation, and sentiment analysis. However, the current generation of LLMs powers a much wider range of  tools. These can be broadly categorized into several key areas. Conversational AI, in the form of advanced chatbots and virtual assistants, represents a significant segment of the market, enhancing customer service and user engagement \citep{GrandViewResearch2025}. Content creation is another major application area, where LLMs are employed to generate a variety of materials, from marketing copy and social media posts to technical documentation and even creative writing \citep{V7Labs2025}.
-        
-        
-        Furthermore, LLMs are being integrated into more specialized and high-stakes domains. In the legal field, they assist with tasks like contract analysis and legal research. The financial sector utilizes them for fraud detection and market analysis \citep{V7Labs2025}. In software development, LLM-powered tools for code generation and debugging are becoming increasingly prevalent, accelerating development cycles and improving programmer productivity. A key innovation driving the utility of these applications is the advent of techniques like Retrieval-Augmented Generation (RAG), which allows LLMs to retrieve and incorporate information from external knowledge bases, thereby improving the accuracy and relevance of their outputs \citep{KeywordsAI2025}. The ongoing development of multimodal LLMs is further pushing the boundaries of what is possible, enabling applications that can understand and reason about the world in a more holistic manner \citep{Kaddour2023}.
+        The emergence of LLMs has made it possible to understand and produce textual information. 
+        These systems are expected to revolutionize various industries by supporting complex decision-making processes. GPT models \citep{OpenAI2023}, in particular, take advantage of its vast training data to provide human-like responses \citep{Mosser2024}, which can be highly beneficial in contexts requiring natural language understanding and generation. The exponential growth in the size and capability of LLMs in recent years has been remarkable. Models like OpenAI's GPT series have shown significant advancements, moving from millions to hundreds of billions of parameters, which gives them increasingly sophisticated natural language understanding and generation. This advancement is illustrated in Figure~\ref{fig:llm_evolution}. For new models (released after jan/2025), including OpenAI's o3 series and GPT-4.5, Anthropic's Claude 3.7 and 4, and Google's Gemini 2.5 Pro, the exact parameter counts have not been publicly disclosed. 
+
+        \xexeo{Acho que aqui merecia um gráfico do crescimento do tamanho das LLMs e um parágrafo sobre esse crescimento}
+        \vitor{Feito}
+
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=0.8\textwidth]{images/llm_evolution.png}
+            \caption{The evolution of LLMs.}
+            \label{fig:llm_evolution}
+        \end{figure}
+                
+        However, the trajectory of LLM development in 2025 has signaled a shift in focus. While previous advancements were often marked by an exponential increase in parameter counts, the latest generation of models emphasizes sophisticated reasoning capabilities over sheer size. 
+        This move away from parameter size as the primary metric of progress underscores a new trend: enhancing the models' ability to perform complex, multi-step reasoning. 
+        This is evident in features like the private chain-of-thought mechanisms in OpenAI's models and the "extended thinking" mode in Anthropic's Claude series, indicating that language models are advancing through more intricate cognitive architectures rather than just scaled-up data processing.
+
+        As highlighted by \citet{Singh2023}, the integration of LLM-based solutions, such as conversational chatbots, offers an approach to optimizing operations across various business segments, including drilling, completion, and production.
+        \citet{Singh2023} uses LLMs models to extract, analyze, and interpret datasets, enabling generation of insights and recommendations. 
+
+        Despite its widespread impact, language models are not without its limitations. 
+        In many industry-specific applications, the critical information required is often proprietary, not shared with third parties, and thus absent from the training data of these LLMs \citep{Mosser2024}. 
+        This gap means that GPT models might not have access to the most up-to-date or sensitive information needed for certain tasks. 
+        Moreover, due to their probabilistic nature, LLMs can experience hallucinations, producing confident yet incorrect or nonsensical responses based on user input \citep{OpenAI2023}. 
+    
+    
+        \subsection{LLM applications}
+
+        \xexeo{Precisa de um texto aqui}
+        \vitor{Feito}
+
+            % LLM applications have witnessed a dramatic surge in development and adoption, reshaping the landscape of AI. 
+            % This growth is fueled by continuous advancements in model architectures, training techniques, and the availability of vast datasets. 
+            The proliferation of LLMs has led to a diverse array of applications that leverage their ability to understand, generate, and process human language.
+
+            The expansion of the LLM application ecosystem is evident in the significant market growth projections. For instance, one report projects the global LLM market to grow from \$5.62 billion in 2024 to \$35.43 billion by 2030, with a compound annual growth rate (CAGR) of 36.9\% \citep{GrandViewResearch2025}. This rapid expansion is indicative of the immense value and potential that organizations across industries see in these technologies. The applications themselves are becoming increasingly sophisticated, evolving from simple text generation to complex, multimodal systems capable of processing and integrating text, images, and other data formats \citep{Kaddour2023}.
+            
+            The spectrum of LLM-based applications is broad and continually expanding. Early applications focused on tasks such as text summarization, translation, and sentiment analysis. However, the current generation of LLMs powers a much wider range of tools. These can be broadly categorized into several key areas. Conversational AI, in the form of advanced chatbots and virtual assistants, represents a significant segment of the market, enhancing customer service and user engagement \citep{GrandViewResearch2025}. Content creation is another major application area, where LLMs are employed to generate a variety of materials, from marketing copy and social media posts to technical documentation and even creative writing \citep{V7Labs2025}.            
+            
+            Furthermore, LLMs are being integrated into more specialized and high-stakes domains. In the legal field, they assist with tasks like contract analysis and legal research. The financial sector utilizes them for fraud detection and market analysis \citep{V7Labs2025}. In software development, LLM-powered tools for code generation and debugging are becoming increasingly prevalent, accelerating development cycles and improving programmer productivity. A key innovation driving the utility of these applications is the advent of techniques like Retrieval-Augmented Generation (RAG), which allows LLMs to retrieve and incorporate information from external knowledge bases, thereby improving the accuracy and relevance of their outputs \citep{KeywordsAI2025}. The ongoing development of multimodal LLMs is further pushing the boundaries of what is possible, enabling applications that can understand and reason about the world in a more holistic manner \citep{Kaddour2023}.
         
         \subsection{Retrieval-Augmented Generation (RAG)} 
 
@@ -131,7 +137,8 @@
             
         \subsection{Multi-Agent Setup} 
 
-        \xexeo{Isso aqui seria uma seção de multi agentes dentro da LLM, mas você precisa escrever pelo menos um parágrafo de multi agentes gerais na seção agentes}      
+            \xexeo{Isso aqui seria uma seção de multi agentes dentro da LLM, mas você precisa escrever pelo menos um parágrafo de multi agentes gerais na seção agentes}      
+            \vitor{Feito. Inclui uma subseção sobre MAS.}
 
             As demonstrated by \citet{xi2023rise}, the pursuit of Artificial General Intelligence (AGI) has significantly benefited from the development of LLM-based agents, capable of sensing, decision-making, and acting across diverse scenarios.  
             His study outline a foundational framework for such agents, consisting of brain, perception, and action components, which can be customized for various applications including single-agent scenarios, multi-agent systems, and human-agent collaboration . 
@@ -207,7 +214,8 @@
 
             The advantage of this methodology is its ability to translate qualitative judgments directly into a confusion matrix, allowing the calculation of standard metrics such as precision (Equation~\ref{eq:precision}), recall (Equation~\ref{eq:recall}), and F1-score (Equation~\ref{eq:f1-score}). This process establishes a replicable pipeline for benchmarking the factual accuracy of a RAG system at scale. While it is important to acknowledge the potential for inherent biases in LLM judges (\citep{Gu2025}), studies show high correlation with human-expert evaluations (\citep{li2024llmsasjudgescomprehensivesurveyllmbased}), making it a useful tool for iterative development and system comparison.
 
-\todo[inline]{Como você criou um dataset de teste para uma tarefa, seria bom falar disso. Mas essa é uma coisa adicional a outras mudanças que pedi, seria bom, mas se não der tempo, não deu.}
+\todo[inline]{Como você criou um dataset de teste para uma tarefa, seria bom falar disso. Mas essa é uma coisa adicional a outras mudanças que pedi, seria bom, mas se não der tempo, não deu.
+\newline \newline VITOR: O DATASET ENTRARIA NO CAP. 3 E 4 OU AQUI MESMO?}
 
 \xexeo{Você usou no prmeiro experimento outras métricas, tem que descreve-las aqui: Truthfulness, Performance, LLMCost}
 \vitor{Feito}
