@@ -1,31 +1,32 @@
 
-\chapter{First Experiment}
+\chapter{First Experimental Evaluation Cycle}
 
     \xexeo{Todo capítulo deve ter uma introdução explanatória. "This chapter describes"}
     \vitor{Feito.}
 
-    This chapter describes the first experimental cycle of this research, structured according to the Design Science Research (DSR) methodology. It situates the experiment within the established \textbf{context} of knowledge management in the well construction and maintenance domain of a major oil company. The core \textbf{problem} this experiment addresses is the need for an effective mechanism to query complex technical and operational data. As a solution, this work proposes and implements two distinct \textbf{artifacts}: a single-agent system and a multi-agent architecture, both designed to leverage LLMs for responding to specialized user queries. Finally, the chapter details the \textbf{evaluation} of these artifacts, outlining the methodology, the dataset creation process, and the metrics (Truthfulness, Performance, and LLM Cost) used to assess their capabilities and limitations.
-
+    This chapter describes the first experimental cycle of this research, structured according to the DSR methodology, as detailed in Section~\ref{sec:dsr-application}. It situates the experiment within the established \textbf{context} of knowledge management in the well construction and maintenance domain of a major oil company. The core \textbf{problem} this experiment addresses is the need for an effective mechanism to query complex technical and operational information within large volumes of unstructured data. As a solution, this experiment proposes and implements two distinct \textbf{artifacts}: a single-agent system and a multi-agent architecture, both designed to leverage LLMs for responding to specialized user queries. Finally, the chapter details the \textbf{evaluation} of these artifacts, outlining the methodology, the dataset creation process, and the metrics (Truthfulness, Performance, and LLM Cost) used to assess their capabilities and limitations.
 
     \todo[inline]{Acho que pode até ser Primeiro Ciclo, ou pode ter um nome como ``Efetividada das LLMs na Solução..''  vai ter que quebrar esse capítulo, que tem muita informação nos conceitos da DSR: no mínimo nos quatro principais: Contexto, Problema, Artefato, Avaliação. Grande parte do contexto e problema já devem ser descritos no capitulo que eu pedi para criar e aqui só faz referência.}
-
 
     \todo[inline]{Ok, você foi direto para o experimento mas não disse o que ia fazer. Aqui exatamente cabe o quadro da DSR que eu te mandei: qual o contexto, qual o problema, qual a suposição (de utilidade ou de mundança de contexto), qual os quadro teóricos, qual o(s) artefato(s) proposto(s) e como serão avaliados, vai fechar muito bem.}
     
 
-    \section{Methodology}
+    \section{Experimental Methodology}
 
         This section describes the approach and tools employed to investigate the effectiveness of a language model-based agent in responding to specific queries within the domain of well construction and maintenance.
         \xexeo{isso aqui é a validação, mas qual é o problema, qual a proposta, são essas informações que faltam para ficar bem organizado} 
         Firstly, the preparation, selection, and utilization of the data sources are described, explaining how each contributes to the knowledge base from which the agent derives its responses.
-
+        
         \todo{inline}{Aqui seria bom fazer um BPMN do passo a passo do seu experimento, veja a figura 4.1 de\url{https://www.cos.ufrj.br/uploadfile/publicacao/3172.pdf}}
 
         \subsection{Data Preparation.} 
 
-            This experiment was carried out in the well construction department of a major oil company\xexeo{Olha o contexto aqui}.
-            The choice of tasks focused on technical knowledge management and data analysis\xexeo{Contexto e problema?}. 
+            This experiment was carried out in the well construction department of a major oil company
+            \xexeo{Olha o contexto aqui}.
+            The choice of tasks focused on technical knowledge management and data analysis
+            \xexeo{Contexto e problema?}. 
             Examples of queries used in the experiment are listed in Table~\ref{table:question_examples}. 
+
             \xexeo{Exemplos? Não são todas? Quantas foram? Por que foram escolhidas? Tem que explicar como foram criadas essas queries, do jeito mais honesto possível, mesmo que seja pela experiência do autor, por pergunta a colega ou consulta uma coleção de documentos com perguntas e respostas. Tem que listar todas. Se foram MUITAS mesmo, coloca em apêndice.}
             \xexeo{Isso aqui é a exemplificação do problema, aliás, dava até para falar um pouco da criação de datasets de teste lá na revisão da literatura}
             
