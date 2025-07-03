@@ -71,21 +71,6 @@
         Moreover, due to their probabilistic nature, LLMs can experience hallucinations, producing confident yet incorrect or nonsensical responses based on user input \citep{OpenAI2023}. 
 
 
-    \section{Retrieval-Augmented Generation (RAG)}
-
-        A RAG consists of two main components: a retriever and a generator, as illustrated in Figure~\ref{fig:rag_diagram}. The retriever is responsible for finding relevant information from a knowledge base, and the generator uses that information to create a human-like response. This approach has revolutionized natural language processing (NLP), allowing users to interact with databases using plain language rather than needing to know how to write complex SQL queries.
-
-        \begin{figure}[h!]
-            \centering
-            \includegraphics[width=0.4\textwidth]{images/rag_diagram_vertical.png}
-            \caption{A diagram illustrating the RAG process.}
-            \label{fig:rag_diagram}
-        \end{figure}         
-        
-        The arrival of advanced language models like GPT-3 and GPT-4 \citep{OpenAImodels} has marked a significant leap in Text-to-SQL applications \citep{Singh2023}, demonstrating remarkable capabilities in handling these tasks. 
-        This can be attributed to their extensive training on diverse datasets \citep{Deng2021}, which include not only large amounts of text but also structured data like tables and code, enabling the model to understand the intricate relationships between language and data structures. 
-        The study by \citep{Deng2023} introduces a pre-training framework for text to SQL translation, emphasizing the alignment between text and tables in Text-to-SQL tasks.
-
 
 
     \section{Intelligent Agents}         
@@ -95,6 +80,18 @@
         The agent program implements the agent function.
         There is a variety of basic agent program designs that vary in efficiency, compactness, and flexibility. The appropriate design of the agent program depends on the nature of the environment. In this work, a goal-based agent design was implemented, which acts to achieve defined goals \citep{Russell2020}.
         Other possible types include simple reflex agents, which directly respond to perceptions, while model-based reflex agents maintain an internal state to track aspects of the world that are not evident in the current perception. Finally, there are utility-based agents, which try to maximize their expected "happiness" \citep{Russell2020}.
+
+
+        \subsection{Multi-Agent Systems}
+
+            A Multi-Agent System (MAS) extends the concept of a single agent to a collection of agents that interact within a shared environment \citep{Gokulan2010}. A MAS is defined as a loosely coupled network of autonomous problem-solving entities that collaborate to find solutions to problems that are beyond the individual capabilities or knowledge of any single entity \citep{FloresMendez1999}. 
+            % These systems are characterized by having no global system control, decentralized data, and asynchronous computation, with each agent possessing only incomplete information or capabilities to solve the overall problem \citep{FloresMendez1999}. This distributed nature provides several advantages, including increased speed and efficiency through parallel computation, enhanced reliability and robustness due to graceful degradation if an agent fails, and greater scalability and flexibility, as new agents can be added to the system when necessary \citep{Gokulan2010}.
+            
+            % Despite these benefits, 
+            % The design of a MAS presents significant challenges, with coordination being the central issue \citep{Gokulan2010}. In a multi-agent environment, the action of one agent can modify the environment for others, necessitating that each agent attempts to predict the actions of its neighbors to make optimal, goal-directed decisions. This creates a complex dynamic where coordination is essential to prevent chaos, manage conflicts arising from limited individual perspectives, and meet global constraints \citep{Gokulan2010}. Effective interaction is therefore critical and typically requires mechanisms for agents to find each other, such as facilitators or brokers, and the use of a common agent communication language (ACL) and shared ontologies to ensure mutual understanding \citep{FloresMendez1999}.
+            
+            The structure of a MAS can vary, with different organizational paradigms such as hierarchical structures or coalitions being employed depending on the application \citep{Gokulan2010}. A practical example of a MAS architecture is demonstrated in power system restoration, where a system can be composed of multiple "bus agents" and a single "facilitator agent" \citep{Nagata2002}. In this setup, each bus agent works to restore its local area by negotiating with neighboring agents based on locally available information, while the facilitator agent manages the overall decision-making process, showcasing how a collection of agents with simple, local strategies can cooperate to achieve a complex, global goal \citep{Nagata2002}.
+
 
     \section{LLM applications}
 
@@ -111,10 +108,21 @@
         
         \subsection{Retrieval-Augmented Generation (RAG)} 
 
-            Retrieval-Augmented Generation (RAG) technique combines LLMs with information retrieval to generate accurate and up-to-date responses, as introduced by \citet{Lewis2020}. \xexeo{Aqui merece um desenho ilustrativo, até para quebrar tanto texto}
+            Retrieval-Augmented Generation (RAG) technique combines LLMs with information retrieval to generate accurate and up-to-date responses, as introduced by \citet{Lewis2020}. 
+            \xexeo{Aqui merece um desenho ilustrativo, até para quebrar tanto texto}
+            \vitor{Feito}
             It employs a search in a database to find relevant information, overcoming the inherent limitations of LLMs that rely solely on the prior knowledge embedded in the language model during the training phase. 
             With the ongoing evolution of information retrieval, which has moved from term-based methods to more semantic approaches leveraging deep learning and large datasets to tackle more complex challenges.
             
+            A RAG consists of two main components: a retriever and a generator, as illustrated in Figure~\ref{fig:rag_diagram}. The retriever is responsible for finding relevant information from a knowledge base, and the generator uses that information to create a human-like response. 
+            
+            \begin{figure}[h!]
+                \centering
+                \includegraphics[width=0.4\textwidth]{images/rag_diagram_vertical.png}
+                \caption{A diagram illustrating the RAG process.}
+                \label{fig:rag_diagram}
+            \end{figure}         
+
             As elucidated by \citet{Lewis2020}, RAG unites the strengths of pre-trained parametric and non-parametric memory, using a dense vector index and a semantic retriever. 
             As demonstrated by \citet{Li2022} in their analysis, RAG is surpassing traditional generative models in terms of performance across a variety of tasks. The study provides a detailed survey on this topic, emphasizing the fundamental concepts and its applicability in specific contexts.
 
