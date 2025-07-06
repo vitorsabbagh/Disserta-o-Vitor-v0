@@ -260,52 +260,11 @@ The use of "LLM-as-a-judge" was driven by the sheer volume of responses requirin
 
         The results presented in this section are derived from this set of runs. For each of the 136 unique combinations of question, model, and configuration, the best-performing run (out of three) was selected based on the F1-Score. The final metrics reported in Table \ref{tab:performance_metrics} represent the average of these best-run scores across all 17 questions for each of the eight model-configuration pairs. This approach presents a clear view of the potential of each setup, with the F1-Score serving as the primary metric for performance evaluation.
 
-        \begin{table}[h]
-            \centering
-            \caption{Detailed performance metrics by model and agent configuration.}
-            \label{tab:performance_metrics}
-            \begin{tabular}{llccc}
-                \toprule
-                \textbf{Model} & \textbf{Configuration} & \textbf{F1-Score} & \textbf{Precision} & \textbf{Recall} \\
-                \midrule
-                GPT-4o & Linear-Flow (Baseline) & 0.581 & 0.656 & 0.548 \\
-                GPT-4o & Linear-Flow w/ Router & 0.702 & 0.805 & 0.674 \\
-                GPT-4o & Single-Agent & 0.643 & 0.751 & 0.618 \\
-                GPT-4o & Multi-Agent & 0.664 & 0.746 & 0.630 \\
-                \midrule
-                GPT-4o-mini & Linear-Flow (Baseline) & 0.534 & 0.604 & 0.516 \\
-                GPT-4o-mini & Linear-Flow w/ Router & 0.604 & 0.676 & 0.602 \\
-                GPT-4o-mini & Single-Agent & 0.576 & 0.719 & 0.544 \\
-                GPT-4o-mini & Multi-Agent & 0.596 & 0.687 & 0.578 \\
-                \bottomrule
-            \end{tabular}
-        \end{table}
-
-        Figure \ref{fig:best_f1_by_model_and_configuration} shows the best F1-scores achieved by each model across the four configurations. The Multi-Agent Supervisor architecture consistently outperformed the other setups, especially when powered by the more capable GPT-4 model, reaching an F1-Score of nearly 0.7. The Single-Agent configuration also performed well, surpassing the non-agentic Linear-Flow approaches. This suggests that agentic reasoning—the ability to plan, execute tool calls iteratively, and reflect on results—provides a distinct advantage for these complex Q\&A tasks.
-
-        \begin{figure}[h]
-            \centering
-            \includegraphics[width=0.7\textwidth]{images_exp2/bar_best_f1_by_model_and_configuration.png}
-            \caption{Best F1-Score by model and configuration.}
-            \label{fig:best_f1_by_model_and_configuration}
-        \end{figure}
-
-        The distribution of F1-scores, shown in the boxplot in Figure \ref{fig:f1_score_by_model_and_configuration}, further reinforces this finding. The Multi-Agent and Single-Agent configurations not only achieve higher median scores but also exhibit less variance compared to the Linear-Flow setups, indicating more consistent and reliable performance across the diverse set of questions.
-
-        \begin{figure}[h]
-            \centering
-            \includegraphics[width=0.9\textwidth]{images_exp2/f1_score_by_model_and_configuration.png}
-            \caption{F1-Score distribution by model and agent configuration.}
-            \label{fig:f1_score_by_model_and_configuration}
-        \end{figure}
-
-        In addition to the F1-scores, a more detailed breakdown of performance, including precision and recall, is presented in Table \ref{tab:performance_metrics}. These metrics provide a more granular view of each configuration's strengths and weaknesses.
-
         \begin{landscape}
             \begin{table}[H]
             \centering
-            \caption{F1-Score, Precision and Recall statistics by model and configuration.}
-            \label{tab:stats_by_model_config}
+            \caption{Detailed performance metrics by model and agent configuration. The best result for each metric is highlighted in bold and underlined. For the inferior model, the best result is only underlined.}
+            \label{tab:performance_metrics}
             % \resizebox{\textwidth}{!}{%
             \begin{tabular}{@{}llcccccccccccc@{}}
                 \toprule
@@ -314,47 +273,57 @@ The use of "LLM-as-a-judge" was driven by the sheer volume of responses requirin
                 & & Mean & Std. Dev. & Min & Max & Mean & Std. Dev. & Min & Max & Mean & Std. Dev. & Min & Max \\
                 \midrule
                 \multirow{4}{*}{GPT-4o} & Linear-Flow (Baseline) & 0.581 & 0.204 & 0.000 & 1.000 & 0.656 & 0.262 & 0.000 & 1.000 & 0.548 & 0.201 & 0.000 & 1.000 \\
-                & Linear-Flow w/ Router & 0.702 & 0.202 & 0.333 & 1.000 & 0.805 & 0.185 & 0.400 & 1.000 & 0.674 & 0.242 & 0.286 & 1.000 \\
-                & Multi-Agent & 0.664 & 0.214 & 0.286 & 1.000 & 0.746 & 0.221 & 0.286 & 1.000 & 0.630 & 0.231 & 0.286 & 1.000 \\
+                & Linear-Flow w/ Router & \textbf{\underline{0.702}} & 0.202 & 0.333 & 1.000 & \textbf{\underline{0.805}} & 0.185 & 0.400 & 1.000 & \textbf{\underline{0.674}} & 0.242 & 0.286 & 1.000 \\
                 & Single-Agent & 0.643 & 0.213 & 0.364 & 1.000 & 0.751 & 0.198 & 0.400 & 1.000 & 0.618 & 0.240 & 0.294 & 1.000 \\
+                & Multi-Agent & 0.664 & 0.214 & 0.286 & 1.000 & 0.746 & 0.221 & 0.286 & 1.000 & 0.630 & 0.231 & 0.286 & 1.000 \\
                 \midrule
                 \multirow{4}{*}{GPT-4o-mini} & Linear-Flow (Baseline) & 0.534 & 0.208 & 0.000 & 0.923 & 0.604 & 0.262 & 0.000 & 1.000 & 0.516 & 0.216 & 0.000 & 0.923 \\
-                & Linear-Flow w/ Router & 0.604 & 0.155 & 0.333 & 1.000 & 0.676 & 0.196 & 0.300 & 1.000 & 0.602 & 0.206 & 0.267 & 1.000 \\
-                & Multi-Agent & 0.596 & 0.182 & 0.348 & 1.000 & 0.687 & 0.198 & 0.400 & 1.000 & 0.578 & 0.201 & 0.235 & 1.000 \\
+                & Linear-Flow w/ Router & \underline{0.604} & 0.155 & 0.333 & 1.000 & 0.676 & 0.196 & 0.300 & 1.000 & \underline{0.602} & 0.206 & 0.267 & 1.000 \\
                 & Single-Agent & 0.576 & 0.184 & 0.308 & 1.000 & 0.719 & 0.214 & 0.286 & 1.000 & 0.544 & 0.227 & 0.231 & 1.000 \\
+                & Multi-Agent & 0.596 & 0.182 & 0.348 & 1.000 & \underline{0.687} & 0.198 & 0.400 & 1.000 & 0.578 & 0.201 & 0.235 & 1.000 \\
                 \bottomrule
             \end{tabular}%
             % }
             \end{table}
-
         \end{landscape}
 
 
-
-
-
-
-
-
-
-
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.7\textwidth]{images_exp2/bar_best_f1_by_model_and_configuration.png}
+            \caption{Best F1-Score by model and configuration.}
+            \label{fig:best_f1_by_model_and_configuration}
+        \end{figure}
 
 
 
     \subsection{Discussion}
 
-        The results of this second experimental cycle provide clearer insights into the effectiveness of different LLM architectures.
-        \begin{itemize}
-            \item \textbf{Agentic Architectures are Superior:} Both the Single-Agent and Multi-Agent Supervisor setups significantly outperformed the non-agentic Linear-Flow baselines. This demonstrates that for complex, multi-faceted questions requiring information from diverse sources, a simple "retrieve-then-read" RAG pipeline is insufficient. The iterative reasoning, planning, and tool-use capabilities inherent to agentic frameworks are crucial for achieving high performance.
 
-            \item \textbf{Specialization and Collaboration Pay Off:} The Multi-Agent Supervisor architecture achieved the highest F1-score. This suggests that decomposing a complex problem and assigning sub-tasks to specialized agents is a highly effective strategy. The supervisor acts as a reasoning orchestrator, leveraging the focused expertise of each team member, which leads to more comprehensive and accurate answers.
 
-            \item \textbf{Model Capability Matters:} Across all architectures, the GPT-4 model consistently outperformed GPT-3.5-turbo. This is particularly evident in the more complex agentic setups, where the superior reasoning and instruction-following capabilities of the more advanced model can be fully leveraged.
 
-            \item \textbf{Limitations and Future Work:} While the automated evaluation methodology proved scalable and objective, it has its own limitations. The LLM-as-a-Judge is not infallible and can be influenced by its own internal biases or the phrasing of the evaluation prompt. Furthermore, the ground-truth answers, while expert-validated, represent just one possible correct response. Future work could explore ensemble judging methods to increase evaluation reliability and investigate more advanced agentic structures, such as those that allow for dynamic team formation or incorporate self-correction loops.
-        \end{itemize}
 
-        In summary, this second, more rigorous experimental cycle confirms that for complex, domain-specific tasks, sophisticated agentic architectures like a Multi-Agent Supervisor provide the best performance. Their ability to decompose problems and orchestrate specialized agents leads to more precise and complete answers than either non-agentic pipelines or monolithic single-agent systems.
+
+
+
+
+
+
+
+
+
+        % The results of this second experimental cycle provide clearer insights into the effectiveness of different LLM architectures.
+        % \begin{itemize}
+        %     \item \textbf{Agentic Architectures are Superior:} Both the Single-Agent and Multi-Agent Supervisor setups significantly outperformed the non-agentic Linear-Flow baselines. This demonstrates that for complex, multi-faceted questions requiring information from diverse sources, a simple "retrieve-then-read" RAG pipeline is insufficient. The iterative reasoning, planning, and tool-use capabilities inherent to agentic frameworks are crucial for achieving high performance.
+
+        %     \item \textbf{Specialization and Collaboration Pay Off:} The Multi-Agent Supervisor architecture achieved the highest F1-score. This suggests that decomposing a complex problem and assigning sub-tasks to specialized agents is a highly effective strategy. The supervisor acts as a reasoning orchestrator, leveraging the focused expertise of each team member, which leads to more comprehensive and accurate answers.
+
+        %     \item \textbf{Model Capability Matters:} Across all architectures, the GPT-4 model consistently outperformed GPT-3.5-turbo. This is particularly evident in the more complex agentic setups, where the superior reasoning and instruction-following capabilities of the more advanced model can be fully leveraged.
+
+        %     \item \textbf{Limitations and Future Work:} While the automated evaluation methodology proved scalable and objective, it has its own limitations. The LLM-as-a-Judge is not infallible and can be influenced by its own internal biases or the phrasing of the evaluation prompt. Furthermore, the ground-truth answers, while expert-validated, represent just one possible correct response. Future work could explore ensemble judging methods to increase evaluation reliability and investigate more advanced agentic structures, such as those that allow for dynamic team formation or incorporate self-correction loops.
+        % \end{itemize}
+
+        % In summary, this second, more rigorous experimental cycle confirms that for complex, domain-specific tasks, sophisticated agentic architectures like a Multi-Agent Supervisor provide the best performance. Their ability to decompose problems and orchestrate specialized agents leads to more precise and complete answers than either non-agentic pipelines or monolithic single-agent systems.
 
         
-        [TODO: FURTHER RESULTS WILL BE ADDED HERE]
+        % [TODO: FURTHER RESULTS WILL BE ADDED HERE]

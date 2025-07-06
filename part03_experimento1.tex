@@ -52,6 +52,19 @@
             % , listed in Appendix~\ref{app:dataset}, 
             provides a concrete exemplification of the problem space.
 
+        \subsection{Problem}
+
+            The central problem addressed in this experiment is the inefficiency of technical knowledge management and data analysis in the well construction domain. Specialists often struggle to find precise answers to their queries, which are typically buried in large volumes of unstructured or semi-structured documents. This leads to time-consuming manual searches and the risk of overlooking critical information.
+
+            This experiment investigates two primary task categories that exemplify this problem, as described in Section~\ref{sec:nlp-review} and summarized here:
+            
+            \begin{itemize}
+                \item \textbf{Q\&A Tasks:} Require the system to answer complex technical questions by synthesizing information from documents. For example: ``How does the presence of silica in the composition of cement paste affect its thermal stability at high temperatures?''
+                \item \textbf{Text-to-SQL Tasks:} Require the system to query structured databases using natural language. For example: ``What was the longest-lasting NPT on rig number 05?''
+            \end{itemize}
+            
+            The set of queries used to test the systems, listed in Appendix A, provides a concrete exemplification of the problem space.
+
     \section{Proposed Artifacts}
 
             To address the problem, we designed, built, and tested two distinct artifacts: a single-agent solution and a multi-agent solution. Both are goal-based agents designed to accurately respond to user queries by leveraging a suite of tools.
@@ -123,7 +136,7 @@
 
             \begin{itemize}            
                 
-                \item \textbf{Tool 1 - Knowledge Items Search:} a tool to search for learned lessons that may be relevant to the query. 
+                \item \textbf{Tool 1 - Learned Lessons Search:} a tool to search for learned lessons that may be relevant to the query. 
                 \label{Tool1}
         
                 \item \label{Tool2} \textbf{Tool 2 - Employee Search:} functionality that allows the search for information related to collaborators of an organization.
@@ -162,7 +175,7 @@
             A critical component of this evaluation is the test dataset. The dataset was meticulously created to reflect authentic information needs within the well construction domain. The process was as follows:
 
             \begin{description}
-                \item[Source Selection] We identified three primary internal data sources: a database of Operational Knowledge Items (lessons learned, alerts), a structured database of Non-Productive Time (NPT) incidents, and a Collaborator Finder tool, as described in Section~\ref{sec:information-sources}.
+                \item[Source Selection] We identified three primary internal data sources: a database of Operational Learned Lessons, a structured database of Non-Productive Time (NPT) incidents, and a Collaborator Finder tool, as described in Section~\ref{sec:information-sources}.
                 \item[Document Sampling] A random sample of documents and records was selected from each data source to ensure broad coverage of topics and scenarios.
                 \item[Query Formulation] This process was performed by the author, leveraging domain expertise and collaboration with colleagues to ensure the questions were realistic, relevant, and challenging.
                 \item[Dataset Composition] In total, a dataset of 33 unique queries was created. 
@@ -443,7 +456,7 @@
 
                 However, it is important to note that GPT-4, when used in a multi-agent setup, demonstrated more consistent truthfulness and performance, as evidenced by its reduced standard deviation in results. 
                 This consistency can be particularly advantageous in applications where reliability and accuracy are critical. 
-                Multi-agent systems have the advantage of maintaining separate contexts for different aspects of a task \citep{Langchain2025}. 
+                Multi-agent systems have the advantage of maintaining separate contexts for different aspects of a task \citep{Langchain2025blogmultiagent}. 
                 \xexeo{Você pode suportar essa afirmação com uma citação?}
                 \vitor{Feito.}
                 This compartmentalization can lead to better handling of complex, multi-faceted queries, as each agent can focus on its specific context without being overwhelmed by irrelevant information. However, this advantage may be offset in tasks like Text-to-SQL, where maintaining a unified context of the database schema and query structure is crucial, possibly explaining the better performance of single-agent setups in this task.
@@ -529,7 +542,10 @@
                 
                 \textbf{\textit{Queries Involving Proper Names:}}
                     In queries involving people's names, it was not possible to retrieve relevant documents using semantic search. 
-                    For example, when asked to identify the employee associated with a specific key and list knowledge items they registered in the system, the LLM incorrectly attributed knowledge items to the wrong author\xexeo{O RAG ou a LLM usando o RAG, não ficou claro}\vitor{OK}. 
+                    For example, when asked to identify the employee associated with a specific key and list knowledge items they registered in the system, the LLM incorrectly attributed such documents to the wrong author
+                    \xexeo{O RAG ou a LLM usando o RAG, não ficou claro}
+                    \vitor{Corrigido}
+                    . 
                     This highlights the difficulty in accurately retrieving information based on proper names, which can be complicated by variations in accentuation, abbreviation, and formatting.
                     \xexeo{tem evidências disso em outros artigos?}
                     \vitor{não encontrei}
