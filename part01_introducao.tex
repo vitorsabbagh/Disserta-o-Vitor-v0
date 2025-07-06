@@ -19,7 +19,9 @@
     A study conducted by \citet{Dellacqua2023}, in collaboration with the Boston Consulting Group, shows that in knowledge-intensive tasks, consultants equipped with access to LLMs such as GPT-4 not only completed tasks more efficiently (25.1\% more quickly on average) but also with substantially higher quality, achieving results more than 40\% better compared to those without AI assistance \citep{Dellacqua2023}.
     Increase in productivity of knowledge workers was 12\% on average.    
     A major oil company spent in 2023 \$2.8B with employee compensation \citep{Petrobras2024}.
-    A potential increase of 12\% in knowledge workers productivity, given they represent 60\% of all employee, could represent \$204M annual savings in this scenario. \xexeo{Aqui está um problema clássico. Você quer fornecer um dado mas provavelmente não quer dizer que é a Petrobras. Mas provavelmente esse dado está em algum relatório público. Não consegue ele de algum lugar e aí pode citar?} \vitor{feito}   
+    A potential increase of 12\% in knowledge workers productivity, given they represent 60\% of all employee, could represent \$204M annual savings in this scenario. 
+    \xexeo{Aqui está um problema clássico. Você quer fornecer um dado mas provavelmente não quer dizer que é a Petrobras. Mas provavelmente esse dado está em algum relatório público. Não consegue ele de algum lugar e aí pode citar?} 
+    \vitor{feito}   
     
     % [AUMENTO DO PIB DEVIDO A GEN AI] 
     Broader economic indicators predict significant transformations due to generative AI (Gen-AI) across various industries.
@@ -63,11 +65,17 @@
     Well construction is a highly specialized activity that involves drilling and completion of wells for hydrocarbon extraction \citep{Thomas2004}. In this context, Gen-AI can be applied in various ways. 
     For example, a chatbot could manage knowledge by answering queries about operations and well projects by retrieving information from the organization's databases. 
     Additionally, LLM-based agents could be used in executive project review to ensure that drilling or completion operations comply with the organization's standards and adhere to best operational practices. 
-    Moreover, Gen-AI could perform inference in unstructured databases to extract specific information from text reports and obtain structured data. 
-    
-    This business scope emphasizes the importance of Gen-AI in the construction and maintenance of wells.
+    Moreover, Gen-AI could perform inference in unstructured databases to extract specific information from text reports and obtain structured data. This business scope emphasizes the importance of Gen-AI in the construction and maintenance of wells.
 
+    \subsection{Key Information Sources in Well Engineering} \label{sec:information-sources}
 
+        To fully appreciate the challenges in this domain, it is important to understand the primary data sources that specialists interact with daily. The following sources, used in this research's experiments, exemplify the complex information landscape of well engineering:
+
+        \paragraph{Operational Knowledge Items} During drilling, completion, and workover interventions, documents called Knowledge Items are written by specialists, as depicted in Fig~\ref{fig:report_example}. These can be of four types: Technical Alert, Learned Lesson, Good Practice, and Well Observation. This system serves as a critical tool for knowledge management, considering the large number and variety of specialists involved and well operations performed.
+
+        \paragraph{Operational NPTs (Non-Productive Time)} This data source contains structured records of anomalies that occurred during well interventions, detailing the title, description, location, operation type, responsible sector, rig involved, time lost, and event dates. These data are critical for the industry, as NPTs represent periods when operations are interrupted. The identification and analysis of these events are essential for continuous process improvement, cost reduction, and increased operational efficiency.
+
+        \paragraph{Collaborator Finder} The third data source is a collaborator finder, an important internal tool for consulting and managing employee data. This system allows for the quick identification of employees through information such as name, workplace, and role. The importance of this tool lies in the ability to cross-reference employee data with operational events, enabling a more complete analysis by an intelligent agent.
 
 \section{Objectives}
 
@@ -207,7 +215,7 @@
             \begin{itemize}
             \item Multi-agent systems will demonstrate higher accuracy in complex technical queries due to their ability to distribute cognitive load and specialize in different aspects of the problem
             \item The performance advantages of multi-agent systems will vary by task type (Q\&A vs. Text-to-SQL)
-            \item More advanced language models will yield better performance but at significantly higher computational costs
+            \item More advanced language models will yield better performance but at significantly higher LLM financial costs
             \item The economic efficiency (performance-to-cost ratio) will be a critical factor in determining practical implementation viability
             \end{itemize}
         \end{tcolorbox}
