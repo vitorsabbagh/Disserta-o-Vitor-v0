@@ -1,26 +1,3 @@
-% \chapter{Second Experimental Evaluation Cycle}
-
-% \section{Design Science Research Framework}
-
-% \section{Context and Problem Statement}
-
-%     \subsection{Context}
-
-%     \subsection{Problem}
-
-% \section{Proposed Artifacts}
-
-% \section{Evaluation}
-
-% 	\subsection{Evaluation Methodology}
-
-% 	\subsection{Data Set Creation}
-
-% 	\subsection{Evaluation Metrics}
-
-%     \subsection{Results}
-
-%     \subsection{Discussion}
 
 
 \chapter{Second Experimental Evaluation Cycle}
@@ -62,9 +39,6 @@ The use of "LLM-as-a-judge" was driven by the sheer volume of responses requirin
 
     The first experimental cycle confirmed the potential of LLM-based agents but also highlighted key challenges. The manual, expert-led evaluation process was time-consuming and difficult to scale. Furthermore, the performance differences between single and multi-agent systems suggested that a more granular analysis was needed, including a comparison with non-agentic RAG workflows to establish a performance baseline. Therefore, the central problem for this second cycle is to design and execute a more rigorous, automated, and scalable evaluation to definitively compare the efficacy of various agentic and non-agentic architectures in this specialized domain.
 
-% \section{Proposed Artifacts}
-
-%     To address the research problem, four distinct artifacts were developed using the LangChain and LangGraph frameworks. These architectures represent a spectrum of complexity, from simple sequential pipelines to collaborative multi-agent systems.
 
 \section{Proposed Artifacts}
 
@@ -83,17 +57,6 @@ The use of "LLM-as-a-judge" was driven by the sheer volume of responses requirin
     \end{itemize}
 
 
-    % \subsection{Artifact 1: Linear-Flow}
-
-    %     The Linear-Flow architecture represents the simplest RAG design, where user input is processed in a strictly sequential manner, as shown in Figure \ref{fig:diagrama_linear_flow}. In this setup, a single LLM call handles the generation of search queries for all available tools. The prompts for each tool are concatenated, creating a large and complex context for the LLM. While straightforward, this can lead to performance degradation as the context length increases.
-
-    %     \begin{figure}[h]
-    %         \centering
-    %         \includegraphics[width=0.8\textwidth]{images_exp2/diagrams/diagrama_linear_flow.png}
-    %         \caption{Linear-Flow architecture. PTn indicates the prompt for Tool n.}
-    %         \label{fig:diagrama_linear_flow}
-    %     \end{figure}
-
     \subsection{Artifact 1: Linear-Flow}
 
         The \textbf{Linear-Flow} architecture represents the simplest non-agentic RAG design, serving as a performance baseline. As shown in Figure \ref{fig:diagrama_linear_flow}, user input is processed in a strictly sequential manner. The user's query is handled by a single LLM step, which contains all the instructions needed to generate search queries for every available tool.
@@ -107,18 +70,6 @@ The use of "LLM-as-a-judge" was driven by the sheer volume of responses requirin
 
         Because the instruction prompts for all tools are aggregated into a single call, the resulting context for the LLM becomes notably extensive and complex. While this approach is straightforward to implement, its primary drawback is the potential for performance degradation as the context length increases, which can dilute the model's focus and lead to less precise retrieval queries.
         
-
-    % \subsection{Artifact 2: Linear-Flow with Router}
-        
-    %     This architecture (Figure \ref{fig:diagrama_linear_w_router}) introduces a routing mechanism to improve upon the basic linear flow. A preliminary LLM call acts as a "router," analyzing the user's question and directing it to the most appropriate tool or sequence of tools. This allows for smaller, more specialized prompts for each tool, reducing context length and potentially improving the quality of the generated search queries.
-
-    %     \begin{figure}[h]
-    %         \centering
-    %         \includegraphics[width=0.8\textwidth]{images_exp2/diagrams/diagrama_linear_w_router.png}
-    %         \caption{Linear-Flow with Router architecture.}
-    %         \label{fig:diagrama_linear_w_router}
-    %     \end{figure}
-
 
     \subsection{Artifact 2: Linear-Flow with Router}
     
@@ -139,16 +90,6 @@ The use of "LLM-as-a-judge" was driven by the sheer volume of responses requirin
         \end{itemize}
 
 
-    % \subsection{Artifact 3: Single-Agent}
-
-    %     The Single-Agent architecture (Figure \ref{fig:diagrama_single_agent}) represents a centralized agentic approach. A single LLM agent manages the entire question-answering process, autonomously deciding which tools to use, in what order, and how to synthesize the information. This artifact tests the end-to-end reasoning capabilities of an LLM within a unified context, allowing it to perform multi-step reasoning without the overhead of inter-agent communication.
-
-    %     \begin{figure}[h]
-    %         \centering
-    %         \includegraphics[width=0.5\textwidth]{images_exp2/diagrams/diagrama_single_agent.png}
-    %         \caption{Single-Agent architecture.}
-    %         \label{fig:diagrama_single_agent}
-    %     \end{figure}
     \subsection{Artifact 3: Single-Agent}
 
         The \textbf{Single-Agent} architecture (Figure \ref{fig:diagrama_single_agent}) embodies a centralized agentic approach, building on the lessons from the first experimental cycle. In this setup, a single LLM agent manages the entire question-answering process. It has access to the full suite of tools and autonomously makes decisions about which to invoke, in what order, and how to synthesize the retrieved information into a final answer.
@@ -162,17 +103,6 @@ The use of "LLM-as-a-judge" was driven by the sheer volume of responses requirin
 
         The design emphasizes \textbf{end-to-end reasoning within a unified context}, allowing the model to maintain the same "thought process" from start to finish. This artifact tests the capability of a standalone LLM agent to manage a RAG workflow, balancing the tool calling for different knowledge sources, all without the communication overhead required by multi-agent systems.
         
-    
-    % \subsection{Artifact 4: Multi-Agent Supervisor}
-        
-    %     This setup (Figure \ref{fig:diagrama_multiagente_supervisor}) implements a collaborative, hierarchical agent system. A "supervisor" agent decomposes the user's query and delegates sub-tasks to a team of specialized agents, each with access to a specific tool (e.g., a "Knowledge Items Agent," "ESG Alert Agent"). The supervisor then integrates the findings from the specialists to generate a final, comprehensive answer. This architecture explores the benefits of distributed cognition and task specialization.
-
-    %     \begin{figure}[h]
-    %         \centering
-    %         \includegraphics[width=0.6\textwidth]{images_exp2/diagrams/diagrama_multiagente_supervisor.png}
-    %         \caption{Multi-Agent Supervisor architecture with four specialist agents.}
-    %         \label{fig:diagrama_multiagente_supervisor}
-    %     \end{figure}
 
     \subsection{Artifact 4: Multi-Agent Supervisor}
     
@@ -244,21 +174,19 @@ The use of "LLM-as-a-judge" was driven by the sheer volume of responses requirin
 
     \subsection{Evaluation Metrics}
 
-        To provide a quantitative and objective assessment, the following information retrieval metrics were calculated for each response based on the LLM-as-a-Judge's analysis:
+        To provide a quantitative and objective assessment, the following information retrieval metrics, detailed in Section~\ref{sec:precision_recall_f1_review}, were calculated for each response based on the LLM-as-a-Judge's analysis:
         \begin{itemize}
             \item \textbf{Precision:} Measures the accuracy of the information presented in the generated answer. It is the ratio of correct statements (True Positives) to the total number of statements made. 
-            $$ \text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}} $$
             \item \textbf{Recall:} Measures the completeness of the answer. It is the ratio of correct statements retrieved to the total number of statements available in the ground truth.
-            $$ \text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}} $$
             \item \textbf{F1-Score:} The harmonic mean of Precision and Recall, providing a single, balanced measure of overall performance.
-            $$ \text{F1-Score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}} $$
         \end{itemize}
 
     \subsection{Results}
 
+
         To ensure a robust evaluation and account for the inherent non-determinism of language models, each of the 17 questions in the dataset was processed three times for every model and configuration combination. This experimental design resulted in a total of 408 executions (17 questions $\times$ 2 models $\times$ 4 configurations $\times$ 3 runs). Each of the 408 generated answers was then compared to a ground truth answer to calculate performance metrics.
 
-        The results presented in this section are derived from this set of runs. For each of the 136 unique combinations of question, model, and configuration, the best-performing run (out of three) was selected based on the F1-Score. The final metrics reported in Table \ref{tab:performance_metrics} represent the average of these best-run scores across all 17 questions for each of the eight model-configuration pairs. This approach presents a clear view of the potential of each setup, with the F1-Score serving as the primary metric for performance evaluation.
+        The results presented in this section are derived from this set of runs. For each of the 136 unique combinations of question, model, and configuration, the best-performing run (out of three) was selected based on the F1-Score. The final metrics reported in Table~\ref{tab:performance_metrics} represent the average of these best-run scores across all 17 questions for each of the eight model-configuration pairs. This approach presents a clear view of the potential of each setup, with the F1-Score serving as the primary metric for performance evaluation.
 
         \begin{landscape}
             \begin{table}[H]
@@ -295,35 +223,48 @@ The use of "LLM-as-a-judge" was driven by the sheer volume of responses requirin
             \label{fig:best_f1_by_model_and_configuration}
         \end{figure}
 
-
-
-    \subsection{Discussion}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        % The results of this second experimental cycle provide clearer insights into the effectiveness of different LLM architectures.
-        % \begin{itemize}
-        %     \item \textbf{Agentic Architectures are Superior:} Both the Single-Agent and Multi-Agent Supervisor setups significantly outperformed the non-agentic Linear-Flow baselines. This demonstrates that for complex, multi-faceted questions requiring information from diverse sources, a simple "retrieve-then-read" RAG pipeline is insufficient. The iterative reasoning, planning, and tool-use capabilities inherent to agentic frameworks are crucial for achieving high performance.
-
-        %     \item \textbf{Specialization and Collaboration Pay Off:} The Multi-Agent Supervisor architecture achieved the highest F1-score. This suggests that decomposing a complex problem and assigning sub-tasks to specialized agents is a highly effective strategy. The supervisor acts as a reasoning orchestrator, leveraging the focused expertise of each team member, which leads to more comprehensive and accurate answers.
-
-        %     \item \textbf{Model Capability Matters:} Across all architectures, the GPT-4 model consistently outperformed GPT-3.5-turbo. This is particularly evident in the more complex agentic setups, where the superior reasoning and instruction-following capabilities of the more advanced model can be fully leveraged.
-
-        %     \item \textbf{Limitations and Future Work:} While the automated evaluation methodology proved scalable and objective, it has its own limitations. The LLM-as-a-Judge is not infallible and can be influenced by its own internal biases or the phrasing of the evaluation prompt. Furthermore, the ground-truth answers, while expert-validated, represent just one possible correct response. Future work could explore ensemble judging methods to increase evaluation reliability and investigate more advanced agentic structures, such as those that allow for dynamic team formation or incorporate self-correction loops.
-        % \end{itemize}
-
-        % In summary, this second, more rigorous experimental cycle confirms that for complex, domain-specific tasks, sophisticated agentic architectures like a Multi-Agent Supervisor provide the best performance. Their ability to decompose problems and orchestrate specialized agents leads to more precise and complete answers than either non-agentic pipelines or monolithic single-agent systems.
-
         
-        % [TODO: FURTHER RESULTS WILL BE ADDED HERE]
+        The analysis of the results presented in Table~\ref{tab:performance_metrics} and visualized in Figure~\ref{fig:best_f1_by_model_and_configuration} reveals several insights into the performance of the different models and configurations. A primary observation is the consistent performance superiority of the GPT-4o model over its counterpart, GPT-4o-mini, across all tested configurations. The most capable configuration for GPT-4o, \textit{Linear-Flow w/ Router}, achieved a mean F1-Score of 0.702. This represents a significant performance uplift of approximately 16.2\% compared to the best score achieved by GPT-4o-mini (0.604), which was also with the \textit{Linear-Flow w/ Router} configuration. This gap underscores the impact that the model's reasoning and instruction-following capabilities have on the overall performance of the system.
+
+        Furthermore, the results show that more complex configurations brought a notable improvement over the \textit{Linear-Flow (Baseline)} for both models. The \textit{Linear-Flow w/ Router} configuration emerged as the most effective architecture overall. For the superior GPT-4o model, this configuration boosted the mean F1-Score by a relative 20.8\% over the baseline (from 0.581 to 0.702). It also increased the mean precision by 22.7\% (from 0.656 to 0.805), indicating that the router is highly effective at selecting the correct reasoning path or tool, thereby reducing incorrect or irrelevant responses.
+
+        While the \textit{Single-Agent} and \textit{Multi-Agent} configurations also outperformed the baseline, they did not reach the performance level of the router-enhanced linear flow. For GPT-4o, the \textit{Multi-Agent} setup (F1-Score 0.664) slightly outperformed the \textit{Single-Agent} (F1-Score 0.643), but both fell short of the \textit{Linear-Flow w/ Router}. This suggests that for the tasks in this experiment, the added complexity of reflective agent loops or multi-agent collaboration did not yield a proportional benefit over a more direct, intelligent tool-routing approach.
+
+        A crucial aspect of the results is the high standard deviation observed across all configurations, typically around 0.20 for the F1-Score. The wide range between minimum and maximum scores indicates that performance is highly variable and question-dependent. This suggests that even the best-performing systems can fail completely on certain queries.
+
+
+
+    \subsection{Discussion} \label{sec:exp2-discussion}
+
+        % [DISCUSSION WILL ENTER HERE]
+        The results from this second experimental cycle present a series of compelling, and in some aspects, counter-intuitive insights into the application of LLM-based architectures in specialized technical domains. The most significant finding, which stands in contrast to the prevailing trends in agentic AI and some initial findings from our first experiment, is the superior performance of a non-agentic configuration (\textit{Linear-Flow w/ Router}) over its more complex, cyclical agentic counterparts. This outcome challenges the assumption that increased agent complexity, with its capacity for reflection and iterative refinement, universally leads to better performance. This discussion will explore the primary hypothesis for this phenomenon, explore other contributing factors, and consider the broader implications for designing AI systems in niche domains.
+
+        \subsubsection{The Domain Knowledge Deficit: Why Agentic Reflection Fails}
+
+            The core benefit of an agentic architecture, whether single or multi-agent, lies in its ability to perform cyclical reasoning. An agent can call a tool, assess the output, reflect on its progress, and decide on a new course of action, potentially correcting earlier mistakes or refining its strategy. This iterative process is a form of simulated cognition. However, we hypothesize that the effectiveness of this reflective capability is fundamentally contingent on the Large Language Model's pre-existing, foundational knowledge of the subject matter.
+            
+            For an LLM to effectively judge the output of a tool or the partial answer from a sub-agent, it must have a robust internal model of what constitutes a "good" or "correct" answer in that domain. Consider, for example, the domain of software engineering. LLMs like GPT-4o are extensively trained on vast repositories of code, documentation, and programming discussions. When an agent generates a piece of code, the LLM can "read" it, understand its logic, identify bugs, and suggest improvements because it has been trained on countless similar examples. In this context, a cyclical, reflective flow is highly effective because the LLM is a competent judge of its own (or its peers') output.
+            
+            The domain of this study---well construction engineering---presents a starkly different scenario. The knowledge is highly specialized, laden with niche terminology, and often contained within proprietary corporate documents that do not form a significant part of the public web crawl used to train general-purpose LLMs. Consequently, when an agent in our experiment retrieves a technical snippet from a lessons-learned document, the LLM lacks the deep, specialized knowledge required to effectively critique it. It cannot reliably discern subtle inaccuracies, determine if the context is fully appropriate, or judge whether a sub-agent's reasoning is sound from an engineering perspective.
+            
+            In this context of a "domain knowledge deficit," the cyclical flow of an agentic system becomes a liability rather than an asset. The reflective loop introduces computational and cost overhead (more LLM calls, more complex state management) without a corresponding improvement in the quality of reasoning. The agent may cycle, but it does so without true insight, making the additional complexity ineffective. This leads to the observed result: the more straightforward, non-agentic approach outperforms it.
+        
+        \subsubsection{The Unsurprising Efficacy of Intelligent Routing}
+            
+            While the agentic systems underperformed, the success of the \textit{Linear-Flow w/ Router} configuration is, in itself, a significant finding. Its superior performance can be attributed to its focused efficiency. Rather than engaging in a complex, multi-step reasoning process, this architecture excels at a single, critical task: upfront intent classification and tool selection.
+            
+            The initial "router" call is a highly targeted use of the LLM's reasoning power. Its sole purpose is to analyze the user's query and map it to the most appropriate knowledge base (tool). This is a task that even a general-purpose LLM can perform well, as it relies on semantic understanding rather than deep domain expertise. By correctly identifying the right tool from the outset, the router ensures that the subsequent retrieval step is already on the right path.
+            
+            This approach of "decide once, execute well" proved more effective for this dataset than the agents' "execute, reflect, re-execute" loop. It avoids the risk of error propagation inherent in cyclical systems. In an agentic loop, a minor misinterpretation in an early step can be amplified in subsequent cycles as the agent doubles down on a flawed path. The linear flow of the router configuration is immune to this, as there are no subsequent cycles to compound an error. The simplicity of its prompt and execution logic also reduces the chance of "meta-errors," where the LLM becomes confused by the complex state and instructions of a multi-turn agentic conversation.
+        
+        \subsubsection{Other Plausible Contributing Factors}
+        
+            Beyond the primary hypothesis of the domain knowledge deficit, several other factors likely contributed to the observed results:
+            
+            Nature of the Task: The questions in the experimental dataset, while technically complex, are primarily information retrieval tasks. They demand finding the correct facts from the knowledge base and synthesizing them into an answer. They do not necessarily require the kind of complex, multi-step deliberation or creative problem-solving where a reflective agent might theoretically excel. For such "retrieve-and-synthesize" queries, optimizing the retrieval step—as the router does—yields the greatest performance gain.
+            
+            Model Capabilities (GPT-4o vs. GPT-4o-mini): The consistent and significant performance gap between GPT-4o and GPT-4o-mini across all configurations underscores the critical importance of the underlying model's reasoning and instruction-following capabilities. The superior performance of the \textit{Linear-Flow w/ Router} on GPT-4o (F1-Score 0.702) compared to the same configuration on GPT-4o-mini (F1-Score 0.604) highlights that even the most effective architecture is gated by the power of the engine driving it.
+            
+            High Performance Variance: A crucial observation is the high standard deviation across all configurations. This indicates that performance is highly dependent on the specific question being asked. Even the best-performing system failed completely on some queries (minimum F1-Score of 0.333), while succeeding perfectly on others (maximum F1-Score of 1.000). This suggests that no single architecture is a panacea. Certain query structures or topics may inherently favor one approach over another, reinforcing the conclusion that the optimal architecture is task- and domain-dependent.
+            
+            In conclusion, this experiment provides strong evidence that for specialized domains where LLMs lack deep pre-existing knowledge, the architectural focus should be on optimizing the interface between the query and the external knowledge tools. A simple, intelligent routing mechanism that accurately directs a query to the correct source can be more robust and effective than a complex, cyclical agentic system that attempts to "reason" in a domain it does not truly understand. The assumption that more complexity equals better performance is a fallacy; true effectiveness comes from aligning the architectural design with both the nature of the task and the inherent capabilities and limitations of the language model itself.

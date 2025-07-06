@@ -245,7 +245,7 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
 
         To fully appreciate the challenges in this domain, it is important to understand the primary data sources that specialists interact with daily. The following sources, used in this research's experiments, exemplify the complex information landscape of well engineering:
 
-        \paragraph{Operational Knowledge Items} During drilling, completion, and workover interventions, documents called Knowledge Items are written by specialists, as depicted in Fig~\ref{fig:report_example}. These can be of four types: Technical Alert, Learned Lesson, Good Practice, and Well Observation. This system serves as a critical tool for knowledge management, considering the large number and variety of specialists involved and well operations performed.
+        \paragraph{Operational Learned Lessons} During drilling, completion, and workover interventions, documents called Knowledge Items are written by specialists, as depicted in Fig~\ref{fig:report_example}. These can be of four types: Technical Alert, Learned Lesson, Good Practice, and Well Observation. This system serves as a critical tool for knowledge management, considering the large number and variety of specialists involved and well operations performed.
 
         \paragraph{Operational NPTs (Non-Productive Time)} This data source contains structured records of anomalies that occurred during well interventions, detailing the title, description, location, operation type, responsible sector, rig involved, time lost, and event dates. These data are critical for the industry, as NPTs represent periods when operations are interrupted. The identification and analysis of these events are essential for continuous process improvement, cost reduction, and increased operational efficiency.
 
@@ -468,7 +468,7 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
         In the O\&G industry, the management of unstructured data, such as texts, images, and documents, is crucial, with Natural Language Processing (NLP) and Machine Learning playing key roles.
         Research by \citet{Antoniak2016} and \citet{Castineira2018} has explored the use of NLP to analyze risks and drilling reports.           
     
-    \section{Natural Language Processing}
+    \section{Natural Language Processing} \label{sec:nlp-review}
 
         NLP (Natural Language Processing) is a broad field that covers various tasks to enable computers to process and understand human language. These tasks, which represent specific problems or applications, have been the focus of research for decades, predating the recent surge in Large Language Models. They range from fundamental challenges like part-of-speech tagging to complex applications like machine translation. This section explores two tasks particularly relevant to this dissertation: Question Answering (Q\&A) and Text-to-SQL, both of which have been significantly advanced by recent developments in the field.
 
@@ -624,7 +624,7 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
                     \end{itemize}
                 \end{quoting}
 
-            \subsection{Precision, Recall, and F1-Score}
+            \subsection{Precision, Recall, and F1-Score} \label{sec:precision_recall_f1_review}
                 Precision, recall, and F1-score are fundamental metrics for evaluating classification tasks, particularly in scenarios with imbalanced datasets. These metrics provide a more nuanced understanding of a model's performance than accuracy alone.
 
                 \textbf{Precision} measures the accuracy of positive predictions. It is the ratio of correctly predicted positive observations to the total predicted positive observations. A high precision relates to a low false positive rate.
@@ -721,6 +721,19 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
             % , listed in Appendix~\ref{app:dataset}, 
             provides a concrete exemplification of the problem space.
 
+        \subsection{Problem}
+
+            The central problem addressed in this experiment is the inefficiency of technical knowledge management and data analysis in the well construction domain. Specialists often struggle to find precise answers to their queries, which are typically buried in large volumes of unstructured or semi-structured documents. This leads to time-consuming manual searches and the risk of overlooking critical information.
+
+            This experiment investigates two primary task categories that exemplify this problem, as described in Section~\ref{sec:nlp-review} and summarized here:
+            
+            \begin{itemize}
+                \item \textbf{Q\&A Tasks:} Require the system to answer complex technical questions by synthesizing information from documents. For example: ``How does the presence of silica in the composition of cement paste affect its thermal stability at high temperatures?''
+                \item \textbf{Text-to-SQL Tasks:} Require the system to query structured databases using natural language. For example: ``What was the longest-lasting NPT on rig number 05?''
+            \end{itemize}
+            
+            The set of queries used to test the systems, listed in Appendix A, provides a concrete exemplification of the problem space.
+
     \section{Proposed Artifacts}
 
             To address the problem, we designed, built, and tested two distinct artifacts: a single-agent solution and a multi-agent solution. Both are goal-based agents designed to accurately respond to user queries by leveraging a suite of tools.
@@ -792,7 +805,7 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
 
             \begin{itemize}            
                 
-                \item \textbf{Tool 1 - Knowledge Items Search:} a tool to search for learned lessons that may be relevant to the query. 
+                \item \textbf{Tool 1 - Learned Lessons Search:} a tool to search for learned lessons that may be relevant to the query. 
                 \label{Tool1}
         
                 \item \label{Tool2} \textbf{Tool 2 - Employee Search:} functionality that allows the search for information related to collaborators of an organization.
@@ -831,7 +844,7 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
             A critical component of this evaluation is the test dataset. The dataset was meticulously created to reflect authentic information needs within the well construction domain. The process was as follows:
 
             \begin{description}
-                \item[Source Selection] We identified three primary internal data sources: a database of Operational Knowledge Items (lessons learned, alerts), a structured database of Non-Productive Time (NPT) incidents, and a Collaborator Finder tool, as described in Section~\ref{sec:information-sources}.
+                \item[Source Selection] We identified three primary internal data sources: a database of Operational Learned Lessons, a structured database of Non-Productive Time (NPT) incidents, and a Collaborator Finder tool, as described in Section~\ref{sec:information-sources}.
                 \item[Document Sampling] A random sample of documents and records was selected from each data source to ensure broad coverage of topics and scenarios.
                 \item[Query Formulation] This process was performed by the author, leveraging domain expertise and collaboration with colleagues to ensure the questions were realistic, relevant, and challenging.
                 \item[Dataset Composition] In total, a dataset of 33 unique queries was created. 
@@ -1112,7 +1125,7 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
 
                 However, it is important to note that GPT-4, when used in a multi-agent setup, demonstrated more consistent truthfulness and performance, as evidenced by its reduced standard deviation in results. 
                 This consistency can be particularly advantageous in applications where reliability and accuracy are critical. 
-                Multi-agent systems have the advantage of maintaining separate contexts for different aspects of a task \citep{Langchain2025}. 
+                Multi-agent systems have the advantage of maintaining separate contexts for different aspects of a task \citep{Langchain2025blogmultiagent}. 
                 \xexeo{VocÃª pode suportar essa afirmaÃ§Ã£o com uma citaÃ§Ã£o?}
                 \vitor{Feito.}
                 This compartmentalization can lead to better handling of complex, multi-faceted queries, as each agent can focus on its specific context without being overwhelmed by irrelevant information. However, this advantage may be offset in tasks like Text-to-SQL, where maintaining a unified context of the database schema and query structure is crucial, possibly explaining the better performance of single-agent setups in this task.
@@ -1198,7 +1211,10 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
                 
                 \textbf{\textit{Queries Involving Proper Names:}}
                     In queries involving people's names, it was not possible to retrieve relevant documents using semantic search. 
-                    For example, when asked to identify the employee associated with a specific key and list knowledge items they registered in the system, the LLM incorrectly attributed knowledge items to the wrong author\xexeo{O RAG ou a LLM usando o RAG, nÃ£o ficou claro}\vitor{OK}. 
+                    For example, when asked to identify the employee associated with a specific key and list knowledge items they registered in the system, the LLM incorrectly attributed such documents to the wrong author
+                    \xexeo{O RAG ou a LLM usando o RAG, nÃ£o ficou claro}
+                    \vitor{Corrigido}
+                    . 
                     This highlights the difficulty in accurately retrieving information based on proper names, which can be complicated by variations in accentuation, abbreviation, and formatting.
                     \xexeo{tem evidÃªncias disso em outros artigos?}
                     \vitor{nÃ£o encontrei}
@@ -1268,596 +1284,243 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
                 
                 By pursuing these directions, future research can significantly advance the development of multi-agent systems, not only enhancing their application in the O\&G sector but also expanding their utility across various technologically intensive activities.
                     
-\chapter{Second Experiment}
-
-\xexeo{Tem muito LLMnismos aqui, como adjetivos desnecessÃ¡rios propagandÃ­sticos. TÃ¡ muito genÃ©rico, falta dados e deixa muita pergunta. Parece mais um plano do que algo feito. VocÃª jÃ¡ fez e falta escrever?}
 
 
+\chapter{Second Experimental Evaluation Cycle}
+\label{chap:second_experiment}
+
+This chapter describes the second experimental cycle of this research, building upon the findings of the first cycle detailed in Chapter 3. The rapid evolution of generative AI frameworks and models, along with the insights gained previously, prompted a more advanced and rigorous evaluation. This second phase employs non-agentic workflows as a baseline, introduces a more quantitative evaluation methodology, and leverages an automated assessment process based on the "LLM-as-judge" concept \citep{Gu2025}.
+
+The use of "LLM-as-a-judge" was driven by the sheer volume of responses requiring evaluation. With four configurations, two models, and three executions for each of the 33 [AJUSTAR] questions, a total of 792 [AJUSTAR] responses were generated. Manually assessing this volume of data would have been impractical. Furthermore, previously used metrics like `truthfulness` had become less critical. This metric was highly relevant when models frequently hallucinated, a problem that is far less prevalent in the current generation of LLMs, shifting the focus to precision and recall of factual information.
+
+[TODO: GERAR BPMN!!]
+
+\section{Design Science Research Framework}
+
+    This second experimental cycle adheres to the Design Science Research (DSR) methodology, focusing on refining the artifacts and evaluation based on the outcomes of the first cycle.
+
+    \begin{description}
+        \item[Context] The operational environment of well construction engineering, where practitioners require efficient and reliable access to vast amounts of technical and ESG-related information.
+
+        \item[Problem] The first experimental cycle revealed several limitations, including the subjective nature and scalability issues of expert-based evaluation, the need to compare agentic systems against simpler non-agentic baselines, and the challenge of ensuring consistent performance. This second cycle addresses the problem of developing a more robust, scalable, and objective method for evaluating and comparing different LLM-based architectures for domain-specific Q\&A.
+
+        \item[Proposed Artifacts] Four distinct architectures were designed and implemented to compare different strategies for information retrieval and reasoning:
+        \begin{itemize}
+            \item A non-agentic \textbf{Linear-Flow} RAG pipeline.
+            \item A non-agentic \textbf{Linear-Flow with a Router} to direct queries.
+            \item A \textbf{Single-Agent} architecture, refined from the first experiment.
+            \item A \textbf{Multi-Agent Supervisor} architecture for distributed reasoning.
+        \end{itemize}
+
+        \item[Evaluation] The artifacts are evaluated using an automated pipeline. An "LLM-as-a-judge" assesses the generated answers against a ground-truth dataset. The evaluation is based on quantitative information retrieval metrics: \textbf{Precision}, \textbf{Recall}, and \textbf{F1-Score}.
+    \end{description}
+
+\section{Context and Problem Statement}
+
+    \subsection{Context}
+
+    As established in the previous chapters, this research is situated within the oil and gas industry, specifically in the domain of well construction and maintenance. Engineers and specialists in this field must navigate a complex information landscape, drawing from operational reports, ESG alerts, and documented best practices (Learned Lessons) to make critical decisions. The effectiveness of these decisions hinges on the speed and accuracy with which relevant information can be retrieved and synthesized.
+
+    \subsection{Problem}
+
+    The first experimental cycle confirmed the potential of LLM-based agents but also highlighted key challenges. The manual, expert-led evaluation process was time-consuming and difficult to scale. Furthermore, the performance differences between single and multi-agent systems suggested that a more granular analysis was needed, including a comparison with non-agentic RAG workflows to establish a performance baseline. Therefore, the central problem for this second cycle is to design and execute a more rigorous, automated, and scalable evaluation to definitively compare the efficacy of various agentic and non-agentic architectures in this specialized domain.
+
+
+\section{Proposed Artifacts}
+
+    To address the research problem, four distinct artifacts were developed, representing a spectrum of complexity from simple sequential pipelines to collaborative multi-agent systems. 
     
-    This chapter describes the second experiment used to evaluate LLM agents and workflows to answer questions in the well engineering domain. 
-    The experiment integrates multiple LLM configurations, agent architectures, and RAG tools, leveraging Petrobras\xexeo{OPA, escapou um Petrobras aqui} datasets.
+    \subsection{System Architecture Overview}
 
-    To achieve these objectives, this research was conducted through two distinct experimental phases. The first, carried out in 2024, focused on a foundational comparison between single and multi-agent architectures, revealing key insights into their performance, cost, and limitations such as hallucination and context interpretation. \xexeo{nÃ£o Ã© o capÃ­tulo anterior? Acho que pode tirar}
-    The rapid evolution of generative AI frameworks and models prompted a second, more up-to-date experiment in 2025. 
-    This second phase built upon the initial findings, also employing non-agentic workflows as a baseline and a more rigorous, quantitative evaluation methodology to address the challenges identified in the first experiment and automated evaluation based on the concept commonly referred to as ``LLM-as-a-judge'' \citep{Gu2025}.
+    The experimental system was implemented using \citet{Langchain2025} and \citet{Langgraph2025} frameworks specialized in language model orchestration. This modular design allows for the systematic and reproducible evaluation of different components and workflows. Key layers of the architecture include:
 
-    The use of \enquote{LLM-as-a-judge} was driven by the sheer volume of responses to be evaluated. 
-    With four configurations, two models, and three executions for each, a total of 24 responses were generated for every question in the dataset.
-    Manually assessing this volume of data would have been impractical.
-    Furthermore, previously used metrics like `truthfulness` had become obsolete. 
-    This metric was highly relevant when models frequently hallucinated, a problem that is far less prevalent in the current generation of LLMs. 
+    \begin{itemize}
+        \item \textbf{Experiment Orchestration:} Manages the execution loop, iterating through all combinations of questions, models, and setups.
+        \item \textbf{Agent Workflow Frameworks:} Defines the logic for each of the four proposed artifacts using LangGraph to create cyclical graphs for agentic behavior.
+        \item \textbf{Tool Integration:} A standardized interface providing agents with access to external knowledge sources. This layer enables consistent semantic search over domain-specific vector stores, ensuring that performance differences are attributable to architectural choices rather than variations in data access.
+        \item \textbf{Prompt Engineering:} A library of system messages and prompt templates designed to guide the LLM's reasoning process for each specific task within the workflows.
+        \item \textbf{State Management and Logging:} Captures the complete execution trace of each run, including intermediate steps, tool calls, and final outputs. This observability is essential for understanding not just the final output, but the process by which each architecture arrived at its answer.
+    \end{itemize}
 
-    \section{Methodology}
 
-        \subsection{Experimental Workflow}
+    \subsection{Artifact 1: Linear-Flow}
 
-            \subsubsection{Dataset Preparation}
+        The \textbf{Linear-Flow} architecture represents the simplest non-agentic RAG design, serving as a performance baseline. As shown in Figure \ref{fig:diagrama_linear_flow}, user input is processed in a strictly sequential manner. The user's query is handled by a single LLM step, which contains all the instructions needed to generate search queries for every available tool.
+        
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.8\textwidth]{images_exp2/diagrams/diagrama_linear_flow.png}
+            \caption{Linear-Flow architecture. PTn indicates the prompt for Tool n.}
+            \label{fig:diagrama_linear_flow}
+        \end{figure}
 
-                The experimental workflow was designed to provide a thorough and reproducible evaluation of language model agents within oil well operations. 
-                The process begins with the careful preparation of the dataset, which is composed of questions and corresponding ground truth answers derived from a diverse range of operational records, incident reports, and lessons learned. To ensure the quality and relevance of the data, questions undergo a filtering and preprocessing phase where clarity, diversity, and alignment with real-world scenarios are prioritized. 
-                This includes removing duplicates, standardizing terminology, and confirming that each question is properly paired with an accurate answer. 
-                The dataset is further validated for completeness and consistency, ensuring it represents the full spectrum of operational challenges, such as safety, cementing, and intervention scenarios.
+        Because the instruction prompts for all tools are aggregated into a single call, the resulting context for the LLM becomes notably extensive and complex. While this approach is straightforward to implement, its primary drawback is the potential for performance degradation as the context length increases, which can dilute the model's focus and lead to less precise retrieval queries.
+        
 
-            \subsubsection{Model and Setup Selection}
+    \subsection{Artifact 2: Linear-Flow with Router}
+    
+        The \textbf{Linear-Flow with Router} paradigm (Figure \ref{fig:diagrama_linear_w_router}) extends the basic pipeline by introducing a routing mechanism to create a descentralized, non-agentic workflow. This architecture first directs a user's question to a "router" node, which is a preliminary LLM call tasked with analyzing the query and determining the most appropriate tool or sequence of tools to use.
 
-                Following dataset preparation, the experimental design incorporates a variety of agent architectures.
-                These include approaches where questions are routed to specialized agents, single-agent systems that centralize all reasoning and retrieval, and multi-agent frameworks that leverage collaboration among specialized agents under a supervisory structure. Each of these configurations is evaluated using different language models, allowing for a comprehensive assessment of how model choice and agent setup influence performance.
-                The agents are also provided with access to advanced retrieval tools and domain-specific knowledge bases, enabling them to draw on a broad foundation of operational expertise.
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.8\textwidth]{images_exp2/diagrams/diagrama_linear_w_router.png}
+            \caption{Linear-Flow with Router architecture.}
+            \label{fig:diagrama_linear_w_router}
+        \end{figure}
 
-            \subsubsection{Execution Loop}
+        This design enables the distribution of complex instruction prompts into smaller, more specialized nodes. Instead of one large prompt, several targeted sub-queries are generated, each dispatched to its respective tool. This approach offers two main advantages:
 
-                The core of the experimental workflow is an execution loop depicted in Algorithm~\ref{alg:execution_loop}. 
-                For each combination of question, agent setup, and language model, the system systematically loads the relevant data, configures the agent, and executes the workflow. 
-                Throughout this process, all responses and intermediate reasoning steps are meticulously logged. 
-                This approach not only ensures systematic coverage of all experimental conditions but also provides full traceability for subsequent analysis. 
-                The automation of these procedures guarantees consistency and reproducibility, while the comprehensive logging facilitates in-depth evaluation and comparison of agent performance across a range of operational scenarios.
+        \begin{itemize}
+            \item \textbf{Specialization:} Each tool receives a query tailored to its specific function, leading to more accurate and relevant retrieval results.
+            \item \textbf{Reduced Context:} By breaking down the master prompt, each LLM call operates on a smaller, more focused context, mitigating performance issues associated with long context windows.
+        \end{itemize}
 
-            
-                \begin{algorithm}
-                    \caption{Experiment Execution Loop}
-                    \begin{algorithmic}[1]
-                    \Require questions, setups, models
-                    \Ensure results                    
-                    \Function{RunExperiment}{}
-                        \State $results \gets \{\}$     
-                        \ForAll{$question \in questions$}
-                            \State $ground\_truth \gets question.ground\_truth$                            
-                            \ForAll{$setup \in setups$}
-                                \ForAll{$model \in models$}
-                                    \State $agent \gets \text{InitializeAgent}(setup, model)$
-                                    \State $response \gets agent.\text{ProcessQuestion}(question)$                                    
-                                    \State $metrics \gets \text{EvaluateResponse}(response, ground\_truth)$                                    
-                                    \State $results[question, setup, model] \gets \{$
-                                    \State \hspace{1cm} $"response": response,$
-                                    \State \hspace{1cm} $"metrics": metrics,$
-                                    \State \hspace{1cm} $"execution\_trace": agent.trace$
-                                    \State $\}$
-                                \EndFor
-                            \EndFor
+
+    \subsection{Artifact 3: Single-Agent}
+
+        The \textbf{Single-Agent} architecture (Figure \ref{fig:diagrama_single_agent}) embodies a centralized agentic approach, building on the lessons from the first experimental cycle. In this setup, a single LLM agent manages the entire question-answering process. It has access to the full suite of tools and autonomously makes decisions about which to invoke, in what order, and how to synthesize the retrieved information into a final answer.
+        
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\textwidth]{images_exp2/diagrams/diagrama_single_agent.png}
+            \caption{Single-Agent architecture.}
+            \label{fig:diagrama_single_agent}
+        \end{figure}    
+
+        The design emphasizes \textbf{end-to-end reasoning within a unified context}, allowing the model to maintain the same "thought process" from start to finish. This artifact tests the capability of a standalone LLM agent to manage a RAG workflow, balancing the tool calling for different knowledge sources, all without the communication overhead required by multi-agent systems.
+        
+
+    \subsection{Artifact 4: Multi-Agent Supervisor}
+    
+        The \textbf{Multi-Agent Supervisor} setup (Figure \ref{fig:diagrama_multiagente_supervisor}) implements a collaborative, hierarchical system to explore the benefits of distributed cognition. This architecture consists of two main components:        
+
+        \begin{enumerate}
+            \item \textbf{A Supervisor Agent:} This master agent receives the user's query, analyzes it, and orchestrates the workflow by delegating these tasks to the appropriate specialist agents.
+            \item \textbf{Specialist Agents:} A team of agents, each focusing on a specific domain of knowledge or reasoning skill. For this experiment, each specialist was tied to a single tool (e.g., a "Learned Lessons Agent," an "HSE Alert Agent").
+        \end{enumerate}
+        
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.6\textwidth]{images_exp2/diagrams/diagrama_multiagente_supervisor.png}
+            \caption{Multi-Agent Supervisor architecture with four specialist agents.}
+            \label{fig:diagrama_multiagente_supervisor}
+        \end{figure}
+
+        The supervisor orchestrates the collaboration, integrates the findings from each specialist, and synthesizes the potentially divergent information into a single, coherent final answer. This framework is designed to mimic real-world expert collaboration and tests whether decomposing a problem and assigning its parts to dedicated specialists yields a more accurate result.
+        
+        
+\section{Evaluation}
+
+    The evaluation phase was designed to be automated, scalable, and objective, addressing the limitations of the first experimental cycle.
+
+    \subsection{Evaluation Methodology}
+
+        The core of the evaluation is an automated execution loop (detailed in Algorithm \ref{alg:execution_loop}) that runs each of the 33 questions through every combination of artifact (4 setups) and model (2 models), repeating each run three times to account for stochasticity.
+
+        \begin{algorithm}[h]
+        \caption{Experiment Execution Loop}
+        \begin{algorithmic}[1]
+        \Require questions, setups, models
+        \Ensure results
+        \Function{RunExperiment}{}
+            \State $results \gets \{\}$
+            \ForAll{$question \in questions$}
+                \State $ground\_truth \gets question.ground\_truth$
+                \ForAll{$setup \in setups$}
+                    \ForAll{$model \in models$}
+                        \For{$i \in 1 \dots 3$} \Comment{Execute 3 times for consistency}
+                            \State $agent \gets \text{InitializeAgent}(setup, model)$
+                            \State $response \gets agent.\text{ProcessQuestion}(question)$
+                            \State $metrics \gets \text{EvaluateResponse}(response, ground\_truth)$
+                            \State Store $metrics$ and $response$ in $results$
                         \EndFor
-                        \State \Return $\text{AggregateResults}(results)$
-                    \EndFunction                    
-                    \end{algorithmic}
-                    \label{alg:execution_loop}
-                \end{algorithm}
-            
-            \subsubsection{Evaluation and Metrics}
+                    \EndFor
+                \EndFor
+            \EndFor
+            \State \Return $\text{AggregateResults}(results)$
+        \EndFunction
+        \end{algorithmic}
+        \label{alg:execution_loop}
+        \end{algorithm}
 
-                Following the execution of all experimental combinations, a comprehensive evaluation framework is applied to assess agent performance. 
-                The system calculates a suite of quantitative metrics for each question, setup, and model combination by comparing the generated answers against the established ground truth. 
-                These metrics include standard performance indicators such as accuracy, precision, recall, and F1 score, which provide a multifaceted view of response quality. For open-ended questions where binary correctness measures are insufficient, a confusion matrix approach is implemented to capture nuances in answer quality and content coverage. Additionally, the system measures answer size ratio relative to ground truth, offering insights into model verbosity and conciseness. 
-                These metrics are then aggregated across different dimensions to enable meaningful comparisons between agent architectures and language models, revealing patterns in performance across various operational scenarios and question types.
+        The quality of each generated response is assessed using the \textbf{LLM-as-a-Judge} approach. A powerful LLM (GPT-4) is prompted to act as an impartial evaluator, comparing the generated answer against the ground-truth answer. The judge decomposes both texts into atomic statements and classifies them to build a confusion matrix, from which the final metrics are calculated. The full prompt for the LLM-as-a-Judge can be found in Appendix \ref{code:llm-judge}.
 
-            \subsubsection{Reproducibility and Quality Control}
+    \subsection{Data Set Creation}
 
-                To ensure scientific rigor and reproducibility, the experimental methodology incorporates robust tracking of all environmental variables and configuration parameters. 
-                The system maintains detailed logs of the computational environment, including software versions, dependency specifications, and hardware characteristics that might influence results. 
-                All experimental parameters, from model identifiers to dataset specifications, are systematically recorded alongside the results they generate. Throughout the experimental process, periodic validation checks are performed to maintain data integrity and result consistency, with anomalies flagged for investigation. This comprehensive approach to reproducibility not only facilitates verification of findings but also enables future extensions of the research with comparable baselines. The quality control measures embedded in the workflow ensure that conclusions drawn from the experiments rest on a foundation of methodological soundness and data reliability.
-
-                \textit{<insert workflow diagram or pseudocode here to illustrate the above stages>}\xexeo{OPA! }
-
-        \subsection{Data Sources}
-
-                The experimental evaluation relies on a  curated collection of data sources that represent the diverse knowledge domains relevant to oil well operations. 
-                At the core of the experiment is a comprehensive questions dataset containing structured entries that simulate real-world queries an operator might encounter. 
-                This dataset was developed through extensive collaboration with domain experts and analysis of historical operational records.
-                Each entry in the dataset contains a question formulated in natural language, a unique identifier, categorical metadata to facilitate analysis, and a corresponding ground truth answer validated by subject matter experts. The questions span various complexity levels, from factual inquiries to complex reasoning scenarios that require integration of multiple knowledge sources.
-
-            To provide the language models with the necessary domain knowledge, the experiment incorporates several specialized knowledge bases that reflect different aspects of oil well operations:
-
+        The experiment utilizes a curated dataset developed in collaboration with domain experts.
+        \begin{itemize}
+            \item \textbf{Questions Dataset:} A set of 17 questions reflecting real-world information needs of well engineers. Each question is paired with a manually created, expert-validated "ground-truth" answer.
+            \item \textbf{Knowledge Bases:} The artifacts were given access to three distinct, pre-processed knowledge sources from within the organization, vectorized for semantic search:
             \begin{itemize}
-                \item \textbf{Knowledge Bases and Tools}:
-                \begin{itemize}
-                    \item \textbf{Lessons}: A repository of knowledge items capturing insights, best practices, and technical know-how from past oil well operations. These lessons represent institutional memory and expertise accumulated over years of operational experience.
-                    \item \textbf{Alertas SMS}: A collection of safety alerts and incident reports documenting past events, near-misses, and accidents, providing critical safety information and preventative measures.
-                    \item \textbf{SITOP}: Detailed daily operational logs from drilling rigs, containing technical parameters, operational decisions, and situational reports from active drilling operations.
-                \end{itemize}
+                \item \textbf{Learned Lessons:} A repository of learned lessons, best practices, and operational alerts.
+                \item \textbf{HSE Alerts:} A collection of ESG alerts and incident reports.
+                \item \textbf{Operational Reports:} A database of detailed daily operational reports from drilling rigs.
             \end{itemize}
+        \end{itemize}
 
-            These knowledge sources were preprocessed to ensure consistency, remove sensitive information, and optimize retrieval performance. The integration of these diverse data sources enables a holistic evaluation of how language model agents navigate the complex informational landscape of oil well operations, from technical specifications to safety protocols and historical precedents.
+    \subsection{Evaluation Metrics}
 
-            \textit{<insert table or image summarizing datasets and tools here>}
+        To provide a quantitative and objective assessment, the following information retrieval metrics, detailed in Section~\ref{sec:precision_recall_f1_review}, were calculated for each response based on the LLM-as-a-Judge's analysis:
+        \begin{itemize}
+            \item \textbf{Precision:} Measures the accuracy of the information presented in the generated answer. It is the ratio of correct statements (True Positives) to the total number of statements made. 
+            \item \textbf{Recall:} Measures the completeness of the answer. It is the ratio of correct statements retrieved to the total number of statements available in the ground truth.
+            \item \textbf{F1-Score:} The harmonic mean of Precision and Recall, providing a single, balanced measure of overall performance.
+        \end{itemize}
 
-        \subsection{System Architecture}
-
-                The experimental system was implemented using modern Python frameworks specialized for language model orchestration and agent workflows. 
-                The architecture leverages the LangChain and LangGraph ecosystems, which provide robust foundations for building complex language model applications with multiple components and state management.
-                This subsection details the modular design of the system, highlighting how different components interact to enable systematic evaluation of language model agents in oil well operations.
-
-            \subsubsection{Experiment Orchestration}
-
-                At the core of the system architecture is an experiment orchestration layer responsible for coordinating the entire evaluation process. 
-                This component manages the loading of questions from the dataset, systematically iterates through different model and setup combinations, and ensures proper logging of results. The orchestrator maintains experiment state across multiple runs, handles error recovery, and implements checkpointing to allow for resumption of long-running experiments. By centralizing control flow, this component ensures that all experimental conditions are tested consistently and that results are captured in a standardized format for subsequent analysis.
-
-            \subsubsection{Agent Workflow Frameworks}
-
-                The system implements multiple agent workflow frameworks to evaluate different approaches to question answering in the oil well domain. These frameworks define the flow of information and decision-making processes within and between language model agents. The implemented workflows include a Linear-Flow with Router (CORTEX) that directs questions to specialized processing paths, a Single-Agent approach that centralizes all reasoning and tool use, and a Multi-Agent Supervisor framework that coordinates multiple specialized agents. Each workflow is defined declaratively, specifying the sequence of operations, decision points, and information exchange patterns that govern agent behavior during question processing.
-
-            \subsubsection{Nodes and Tool Integration}
-
-                The system architecture includes specialized nodes that implement specific reasoning steps and tool-calling logic. These nodes serve as the building blocks of agent workflows, encapsulating discrete functionality such as question analysis, knowledge retrieval, and answer synthesis. The tool integration layer provides agents with access to external knowledge sources through a standardized interface, enabling semantic search over domain-specific corpora, structured data queries, and other specialized operations. This modular approach to tool integration allows for consistent evaluation of how different agent architectures leverage available tools and knowledge sources.
-
-            \subsubsection{Prompt Engineering and System Messages}
-
-                A critical component of the architecture is the prompt engineering layer, which defines the instructions and context provided to language models. This includes carefully crafted system messages that establish the role and capabilities of each agent, prompt templates that structure inputs consistently across experimental conditions, and few-shot examples that guide model behavior. The system maintains a library of prompt variants optimized for different tasks within the question-answering workflow, ensuring that each agent receives appropriate guidance while maintaining experimental control.
-
-            \subsubsection{State Management and Metrics}
-
-                The architecture incorporates a comprehensive state management system that tracks the progress of experiments, maintains contextual information across agent interactions, and captures intermediate reasoning steps. This component is tightly integrated with the metrics calculation subsystem, which computes performance indicators in real-time as experiments progress. The metrics framework implements various evaluation approaches, from simple accuracy measures to sophisticated semantic similarity calculations, providing multi-dimensional assessment of agent performance. All experimental data, including intermediate states and final results, is persisted in structured formats to enable both immediate feedback and in-depth post-experiment analysis.
-
-                \textit{<insert system architecture diagram here>}
-
-        \subsection{Experimental Setups}
-
-            To comprehensively evaluate language model performance in well construction operations, the experiment employed multiple agent architectures and model configurations. This subsection details the different experimental setups, highlighting their design principles, operational characteristics, and the rationale behind their selection. The experimental design deliberately incorporates contrasting approaches to agent architecture, enabling comparative analysis of different strategies for complex question answering in specialized domains.
-            
-
-            \subsubsection{Linear-Flow}
-
-                The Linear-Flow architecture represents the simplest RAG design, where user input is processed in a strictly sequential manner. In this setup, the userâ€™s query is handled by a single LLM step, which carries all the instructions (PT1, PT2, PT3 and PT4, as depicted in \ref{fig:diagrama_linear_flow}) required for the generation of various types of search queries. These instruction prompts are often quite long, as they are carefully crafted to produce high-quality queries for the vector store. Due to the aggregation of all instruction prompts within a single LLM invocation, the resulting context becomes notably extensive. This can lead to performance degradation as the context length increases [O QUE PODE SER VISTO NO GRAFICO TAL EM CONTRASTE COM O SETUP TAL QUE DIVIDE OS PROMPTS EM PARTES]. 
-            
-
-                \begin{figure}[h]
-                    \centering
-                    \includegraphics[width=0.8\textwidth]{images_exp2/diagrams/diagrama_linear_flow.png}
-                    \caption{Linear-Flow architecture. PT1 indicates Prompt for Tool 1 and so on.}
-                    \label{fig:diagrama_linear_flow}
-                \end{figure}
-           
-
-            \subsubsection{Linear-Flow with Router}
-
-                [VERSÃƒO 1]
-                The Linear-Flow with Router architecture implements a sequential processing pipeline with routing, in order to divide and reduce tool instruction prompts. In this setup, questions first pass through a router that analyzes the query content and determines the most appropriate specialized node for the user query at hand. 
-                
-                [VERSÃƒO 2]
-                The Linear-Flow with Router paradigm extends the basic linear flow by introducing a routing mechanism that enables the distribution of tool instruction prompts into specialized nodes with smaller prompts. User questions first pass through a router that determines the most appropriate specialized node. As illustrated in Figure~\ref{fig:diagrama_linear_w_router}, instead of a single node generating different types of retrieval queries, we have several nodes (or sub-queries), each with its own specialized tool. Each sub-query is then processed independently by separate tool invocations.
-                    
-                This approach offers several advantages:
-
-                \begin{itemize}
-
-                    \item \textbf{Increased Throughput:} By distributing sub-tasks across multiple tools, the system can handle more complex or multi-faceted user requests efficiently.
-                    
-                    \item \textbf{Specialization:} Each tool can be tailored to address a specific aspect of the user's query, allowing for more accurate and relevant results.
-                    
-                    \item \textbf{Scalability:} The architecture naturally supports scaling, as additional tools can be added to handle more sub-queries or specialized tasks.
-                    
-                \end{itemize}
-                
-                In practice, the router acts as an orchestrator, analyzing the user input and generating multiple targeted queries (PT1*, PT2*, PT3*, PT4* in the figure). These queries are dispatched to their respective tools, and the results are aggregated to form the final answer. This method is particularly effective for tasks that can be decomposed into independent components, such as multi-part questions or workflows requiring different types of expertise.
-                
-                Compared to the standard linear flow, the use of a router introduces additional complexity in query generation and result aggregation but enables a significant boost in system flexibility and performance.
-
-                \begin{figure}[h]
-                    \centering
-                    \includegraphics[width=0.8\textwidth]{images_exp2/diagrams/diagrama_linear_w_router.png}
-                    \caption{Linear-Flow with Router architecture.}
-                    \label{fig:diagrama_linear_w_router}
-                \end{figure}
-                
-                
-
-                
-            \subsubsection{Single-Agent}
-
-                The Single-Agent approach represents a centralized architecture where a single language model agent handles the entire question-answering process. This agent has access to the full suite of retrieval tools and knowledge sources, making independent decisions about which tools to invoke and how to synthesize information into coherent answers. The design emphasizes end-to-end reasoning within a unified context, allowing the model to maintain a consistent understanding throughout the process. This approach tests the capability of language models to manage complex workflows autonomously, balancing between exploration of different knowledge sources and focused answer generation without the overhead of inter-agent communication.
-                
-                \begin{figure}[h]
-                    \centering
-                    \includegraphics[width=0.5\textwidth]{images_exp2/diagrams/diagrama_single_agent.png}
-                    \caption{Single-Agent architecture}
-                    \label{fig:diagrama_single_agent}
-                \end{figure}
+    \subsection{Results}
 
 
-            \subsubsection{Multi-Agent Supervisor}
+        To ensure a robust evaluation and account for the inherent non-determinism of language models, each of the 17 questions in the dataset was processed three times for every model and configuration combination. This experimental design resulted in a total of 408 executions (17 questions $\times$ 2 models $\times$ 4 configurations $\times$ 3 runs). Each of the 408 generated answers was then compared to a ground truth answer to calculate performance metrics.
 
-                The Multi-Agent Supervisor setup implements a collaborative approach where multiple specialized agents work together under the coordination of a supervisor agent. Each specialized agent focuses on a specific domain of knowledge or reasoning skill, such as retrieval, analysis, or explanation generation. The supervisor agent orchestrates the collaboration, delegating subtasks to appropriate specialized agents, integrating their contributions, and ensuring coherence in the final answer. This architecture explores the potential benefits of distributed cognition, where complex reasoning is decomposed into manageable components handled by purpose-built agents. The framework includes mechanisms for resolving conflicts between agents and synthesizing potentially divergent perspectives into unified responses.
+        The results presented in this section are derived from this set of runs. For each of the 136 unique combinations of question, model, and configuration, the best-performing run (out of three) was selected based on the F1-Score. The final metrics reported in Table~\ref{tab:performance_metrics} represent the average of these best-run scores across all 17 questions for each of the eight model-configuration pairs. This approach presents a clear view of the potential of each setup, with the F1-Score serving as the primary metric for performance evaluation.
 
-                \begin{figure}[h]
-                    \centering
-                    \includegraphics[width=0.6\textwidth]{images_exp2/diagrams/diagrama_multiagente_supervisor.png}
-                    \caption{Multi-Agent setup with one supervisor and 4 specialist agents.}
-                    \label{fig:diagrama_multiagente_supervisor}
-                \end{figure}
-
-
-                \textit{<insert table summarizing experimental setups and models here>}
-
-        \subsection{Execution Details}
-
-            The experiment was driven by a script without manual intervention during the evaluation process. A main execution loop systematically iterated through all combinations of questions, agent setups, and language models defined in the experimental design. 
-
-            \subsubsection{Tool Integration and Knowledge Access}
-
-            During execution, the agent systems accessed domain-specific knowledge through a standardized tool interface layer. This layer provided consistent access patterns across all experimental configurations, ensuring that differences in performance could be attributed to agent architecture rather than variations in knowledge availability. The tool integration framework supported a diverse range of knowledge access methods, including semantic search over unstructured text corpora, structured queries against relational databases, and specialized information extraction routines tailored to the oil well operations domain. Each tool invocation was executed within a controlled environment that captured performance metrics such as latency and resource utilization, providing additional dimensions for analysis beyond answer correctness. The standardization of tool interfaces across agent architectures was a critical design decision that enabled fair comparison while still allowing each architecture to implement its own strategy for tool selection and result interpretation.
-
-            \subsubsection{Comprehensive Logging and Observability}
-
-            A cornerstone of the experimental methodology was the implementation of comprehensive logging throughout the execution process. The system captured detailed records of each step in the question-answering workflow, from initial question parsing to final answer generation. These logs included intermediate reasoning steps, tool invocations with their inputs and outputs, and internal state transitions within the agent systems. All experimental artifacts were persisted in structured formats that facilitated both automated analysis and manual inspection. The logging system implemented a hierarchical organization that linked high-level metrics to the detailed execution traces that produced them, enabling root cause analysis of performance patterns. This observability infrastructure was essential for understanding not just what results were produced, but how and why different agent architectures arrived at their answers, providing insights into their reasoning processes and failure modes.
-
-            \textit{<insert code snippet or pseudocode of main execution loop here>}
-
-        \subsection{Evaluation Metrics}
-
-            The evaluation of each experimental run is grounded in a comprehensive set of metrics designed to capture both the correctness and the quality of the systemâ€™s responses. Standard quantitative measures such as accuracy, precision, recall, and F1 score are calculated by comparing the answers generated by the agent systems to the established ground truth for each question. These metrics provide a multifaceted view of performance, indicating not only how often the system produces correct answers but also how well it balances false positives and false negatives.
-
-            For questions that are open-ended or less amenable to binary correctness, the evaluation framework employs a confusion matrix approach. This allows for a more nuanced assessment, capturing partial correctness and the degree to which the systemâ€™s response overlaps with the expected content. Additionally, the methodology includes the calculation of the answer size ratio, which measures the verbosity of the generated answer relative to the ground truth. This metric helps to identify tendencies toward overly concise or excessively verbose responses, offering further insight into the modelsâ€™ behavior and suitability for practical deployment.
-
-        \subsection{Limitations}
-
-            While the experimental methodology strives for rigor and comprehensiveness, several limitations must be acknowledged. One key limitation concerns the coverage of the dataset: although the question set is carefully curated to represent a broad range of operational scenarios, it may not capture the full diversity of real-world challenges encountered in oil well operations. Similarly, the models and agent architectures evaluated are constrained by the available computational resources and the current state of language modeling technology, which may limit their ability to generalize beyond the scenarios tested.
-
-            Another limitation arises from the reliance on ground truth answers, which, despite expert validation, may still reflect subjective judgments or incomplete information in certain cases. Furthermore, the evaluation metrics, while robust, may not fully capture qualitative aspects of answer usefulness or clarity, especially in highly technical or ambiguous situations. Recognizing these limitations is essential for interpreting the results and for guiding future research aimed at addressing these gaps.
-
-        \subsection{Summary}
-
-            This methodology provides a systematic framework for comparing different agent architectures and large language models in the context of complex question answering for oil well operations. By integrating rigorous evaluation metrics, robust reproducibility practices, and a clear acknowledgment of limitations, the approach enables meaningful insights into the strengths and weaknesses of various system designs. The findings derived from this methodology can inform both the deployment of language model agents in operational settings and the ongoing development of more capable and reliable AI systems for specialized industrial domains.
+        \begin{landscape}
+            \begin{table}[H]
+            \centering
+            \caption{Detailed performance metrics by model and agent configuration. The best result for each metric is highlighted in bold and underlined. For the inferior model, the best result is only underlined.}
+            \label{tab:performance_metrics}
+            % \resizebox{\textwidth}{!}{%
+            \begin{tabular}{@{}llcccccccccccc@{}}
+                \toprule
+                \multirow{2}{*}{\textbf{Model}} & \multirow{2}{*}{\textbf{Configuration}} & \multicolumn{4}{c}{\textbf{F1-Score}} & \multicolumn{4}{c}{\textbf{Precision}} & \multicolumn{4}{c}{\textbf{Recall}} \\
+                \cmidrule(l){3-6} \cmidrule(l){7-10} \cmidrule(l){11-14}
+                & & Mean & Std. Dev. & Min & Max & Mean & Std. Dev. & Min & Max & Mean & Std. Dev. & Min & Max \\
+                \midrule
+                \multirow{4}{*}{GPT-4o} & Linear-Flow (Baseline) & 0.581 & 0.204 & 0.000 & 1.000 & 0.656 & 0.262 & 0.000 & 1.000 & 0.548 & 0.201 & 0.000 & 1.000 \\
+                & Linear-Flow w/ Router & \textbf{\underline{0.702}} & 0.202 & 0.333 & 1.000 & \textbf{\underline{0.805}} & 0.185 & 0.400 & 1.000 & \textbf{\underline{0.674}} & 0.242 & 0.286 & 1.000 \\
+                & Single-Agent & 0.643 & 0.213 & 0.364 & 1.000 & 0.751 & 0.198 & 0.400 & 1.000 & 0.618 & 0.240 & 0.294 & 1.000 \\
+                & Multi-Agent & 0.664 & 0.214 & 0.286 & 1.000 & 0.746 & 0.221 & 0.286 & 1.000 & 0.630 & 0.231 & 0.286 & 1.000 \\
+                \midrule
+                \multirow{4}{*}{GPT-4o-mini} & Linear-Flow (Baseline) & 0.534 & 0.208 & 0.000 & 0.923 & 0.604 & 0.262 & 0.000 & 1.000 & 0.516 & 0.216 & 0.000 & 0.923 \\
+                & Linear-Flow w/ Router & \underline{0.604} & 0.155 & 0.333 & 1.000 & 0.676 & 0.196 & 0.300 & 1.000 & \underline{0.602} & 0.206 & 0.267 & 1.000 \\
+                & Single-Agent & 0.576 & 0.184 & 0.308 & 1.000 & 0.719 & 0.214 & 0.286 & 1.000 & 0.544 & 0.227 & 0.231 & 1.000 \\
+                & Multi-Agent & 0.596 & 0.182 & 0.348 & 1.000 & \underline{0.687} & 0.198 & 0.400 & 1.000 & 0.578 & 0.201 & 0.235 & 1.000 \\
+                \bottomrule
+            \end{tabular}%
+            % }
+            \end{table}
+        \end{landscape}
 
 
-        \subsection{Quality Assessment with LLM-as-a-Judge}
-            \label{sec:llm_judge_evaluation}
-
-            To evaluate the quality of the responses generated by the RAG system, an automated evaluation approach known as \textit{LLM-as-a-Judge} \citep{Zheng2023} was adopted. This method uses a large language model (LLM) as an impartial judge to compare the system-generated response with a reference response, known as the \textit{Ground Truth} (GT). Using an LLM for evaluation allows for a more granular and scalable analysis than manual human evaluation, while also capturing nuances of semantics and content.
-
-            The evaluation process was implemented through a structured \textit{prompt} that instructs the LLM-judge to perform an analysis based on the concepts of a confusion matrix. The evaluation flow for each question-answer pair is as follows:
-
-            \begin{enumerate}
-                \item \textbf{Decomposition into Statements:} The LLM-judge is instructed to decompose both the system's response and the \textit{Ground Truth} response into a set of atomic and objective statements. This allows for a detailed comparison, rather than a holistic and subjective evaluation.
-
-                \item \textbf{Classification of Statements:} Based on the comparison between the statements, the LLM-judge classifies them into three categories, following the logic of a confusion matrix:
-                \begin{itemize}
-                    \item \textbf{True Positive (TP):} Correct statements made by the system that are also present in the \textit{Ground Truth} response.
-                    \item \textbf{False Positive (FP):} Incorrect, irrelevant, or hallucinated statements made by the system that are not in the \textit{Ground Truth} response.
-                    \item \textbf{False Negative (FN):} Statements present in the \textit{Ground Truth} response that were omitted by the system.
-                \end{itemize}
-                The True Negative (TN) category is not applicable in this context, as the goal is to measure the precision and completeness of the information provided.
-
-                \item \textbf{Calculation of Metrics:} Based on the count of statements in each category (TP, FP, FN), the following information retrieval metrics are calculated:
-                \begin{itemize}
-                    \item \textbf{Precision:} Measures the proportion of correct statements among all statements made by the system. It is calculated as:
-                    $$ \text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}} $$
-                    \item \textbf{Recall:} Measures the proportion of correct statements that the system managed to retrieve compared to the total number of statements in the \textit{Ground Truth} response. It is calculated as:
-                    $$ \text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}} $$
-                    \item \textbf{F1-Score:} Is the harmonic mean of Precision and Recall, providing a single metric that balances both values:
-                    $$ \text{F1-Score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}} $$
-                \end{itemize}
-            \end{enumerate}
-
-            This methodology allows for a quantitative and objective evaluation of the accuracy and completeness of the system's responses, providing valuable \textit{insights} into its performance in different scenarios.
-
-
-
-            
-    \section{Results and Discussion}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.7\textwidth]{images_exp2/bar_best_f1_by_model_and_configuration.png}
+            \caption{Best F1-Score by model and configuration.}
+            \label{fig:best_f1_by_model_and_configuration}
+        \end{figure}
 
         
-        \subsection{Performance}
-        
-            In this section, the F1-score charts are presented, which is the main metric for performance evaluation in this work. The corresponding charts for the precision and recall metrics are available in Appendix~\ref{sec:exp2_appendix}.
-            
-            Ã‰ importante ressaltar que todos os resultados apresentados correspondem Ã  melhor performance obtida em trÃªs execuÃ§Ãµes independentes para cada configuraÃ§Ã£o de agente e modelo. A adoÃ§Ã£o desta metodologia visa mitigar a variabilidade inerente aos processos estocÃ¡sticos presentes em muitos algoritmos de aprendizado de mÃ¡quina. Fatores como a inicializaÃ§Ã£o aleatÃ³ria de pesos ou a aleatorizaÃ§Ã£o de dados podem levar a resultados distintos a cada execuÃ§Ã£o. Ao selecionar o melhor resultado, busca-se apresentar o potencial mÃ¡ximo de cada configuraÃ§Ã£o, reduzindo a chance de que uma performance inferior, causada por um Ã³timo local ou uma inicializaÃ§Ã£o desfavorÃ¡vel, seja erroneamente interpretada como a capacidade real do modelo.
+        The analysis of the results presented in Table~\ref{tab:performance_metrics} and visualized in Figure~\ref{fig:best_f1_by_model_and_configuration} reveals several insights into the performance of the different models and configurations. A primary observation is the consistent performance superiority of the GPT-4o model over its counterpart, GPT-4o-mini, across all tested configurations. The most capable configuration for GPT-4o, \textit{Linear-Flow w/ Router}, achieved a mean F1-Score of 0.702. This represents a significant performance uplift of approximately 16.2\% compared to the best score achieved by GPT-4o-mini (0.604), which was also with the \textit{Linear-Flow w/ Router} configuration. This gap underscores the impact that the model's reasoning and instruction-following capabilities have on the overall performance of the system.
 
-            \begin{figure}[h]
-                \centering              
-                \includegraphics[width=0.50\textwidth]{images_exp2/bar_best_f1_by_model_and_configuration.png}
-                \caption{F1 score by model and configuration.}
-                \label{fig:best_f1_by_model_and_configuration}
-            \end{figure}
+        Furthermore, the results show that more complex configurations brought a notable improvement over the \textit{Linear-Flow (Baseline)} for both models. The \textit{Linear-Flow w/ Router} configuration emerged as the most effective architecture overall. For the superior GPT-4o model, this configuration boosted the mean F1-Score by a relative 20.8\% over the baseline (from 0.581 to 0.702). It also increased the mean precision by 22.7\% (from 0.656 to 0.805), indicating that the router is highly effective at selecting the correct reasoning path or tool, thereby reducing incorrect or irrelevant responses.
 
+        While the \textit{Single-Agent} and \textit{Multi-Agent} configurations also outperformed the baseline, they did not reach the performance level of the router-enhanced linear flow. For GPT-4o, the \textit{Multi-Agent} setup (F1-Score 0.664) slightly outperformed the \textit{Single-Agent} (F1-Score 0.643), but both fell short of the \textit{Linear-Flow w/ Router}. This suggests that for the tasks in this experiment, the added complexity of reflective agent loops or multi-agent collaboration did not yield a proportional benefit over a more direct, intelligent tool-routing approach.
 
-            ...
-
-            ...
-        
-            \subsubsection{F1 Score}
-            
-                
-                ...
-
-                ...
-                
-                \begin{figure}
-                    % \centering
-                    \includegraphics[width=0.75\linewidth]{images_exp2/f1_score_by_model_and_configuration.png}
-                    \caption{F1 Score distribution by model and configuration of agents}
-                    \label{fig:f1_score_by_model_and_configuration}
-                \end{figure}
-                    
-                ...
-
-                ...
-                
-                
-                \begin{figure}
-                    \centering
-                    \includegraphics[width=0.75\linewidth]{images_exp2/best_f1_by_question_index_and_configuration.png}
-                    \caption{Best F1 score by question index and configuration.}
-                    \label{fig:best_f1_by_question_index_and_configuration}
-                \end{figure}
-                
-                ...
-
-                ...
-
-                
-                ...
-
-                
-                \begin{figure}
-                    \centering
-                    \includegraphics[width=0.75\linewidth]{images_exp2/best_f1_by_question_index_and_model.png}
-                    \caption{Best F1 score by question index and model.}
-                    \label{fig:best_f1_by_question_index_and_model}
-                \end{figure}
-
-
-            \subsubsection{PrecisÃ£o}
-
-                ...
-
-
-                ...
-
-            
-            \subsubsection{Recall}
-            
-                ...
-
-                ...
-
-                ...
-                
-                \begin{figure}[h!]
-                    \centering              
-                    \includegraphics[width=0.25\textwidth]{images_part_2/model_recall_model_configuration.png}
-                    \caption{Recall by model and configuration.}
-                    \label{fig:model_recall_model_configuration}
-                \end{figure}
-
-                ...
-
-                ...
-                
-                \begin{figure}[h!]
-                    \centering              
-                    \includegraphics[width=0.25\textwidth]{images_part_2/question_recall_question_index_configuration.png}
-                    \caption{Recall por pergunta e configuraÃ§Ã£o.}
-                    \label{fig:question_recall_question_index_configuration}
-                \end{figure}
-
-            
-                % \begin{figure}[H] 
-                %     \centering
-                %     \includegraphics[scale=0.75]{images_exp2/bar_avg_f1_by_configuration.png}
-                %     \caption{Average F1 score by configuration.}
-                %     \label{fig:bar_avg_f1_by_configuration}
-                % \end{figure}
-
-                % \begin{figure}[H]
-                %     \centering
-                %     \includegraphics[scale=0.75]{images_exp2/bar_avg_f1_by_model.png}
-                %     \caption{Average F1 score by model.}
-                %     \label{fig:bar_avg_f1_by_model}
-                % \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[scale=0.75]{images_exp2/bar_best_f1_by_model_and_configuration.png}
-                    \caption{Best F1 score by model and configuration.}
-                    \label{fig:bar_best_f1_by_model_and_configuration}
-                \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[scale=0.75]{images_exp2/best_f1_by_question_index_and_configuration.png}
-                    \caption{Best F1 score by question index and configuration.}
-                    \label{fig:best_f1_by_question_index_and_configuration}
-                \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[scale=0.75]{images_exp2/best_f1_by_question_index_and_model.png}
-                    \caption{Best F1 score by question index and model.}
-                    \label{fig:best_f1_by_question_index_and_model}
-                \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[scale=0.75]{images_exp2/f1_boxplot_by_model_and_configuration.png}
-                    \caption{F1 score boxplot by model and configuration.}
-                    \label{fig:f1_boxplot_by_model_and_configuration}
-                \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[scale=0.75]{images_exp2/f1_lineplot_by_question_index_and_configuration.png}
-                    \caption{F1 score line plot by question index and configuration.}
-                    \label{fig:f1_lineplot_by_question_index_and_configuration}
-                \end{figure}
-
-                % \begin{figure}[H]
-                %     \centering
-                %     \includegraphics[scale=0.75]{images_exp2/f1_score_by_model.png}
-                %     \caption{F1 score by model.}
-                %     \label{fig:f1_score_by_model}
-                % \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[scale=0.75]{images_exp2/f1_score_by_model_and_configuration.png}
-                    \caption{F1 score by model and configuration.}
-                    \label{fig:f1_score_by_model_and_configuration}
-                \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[width=0.75\linewidth]{images_exp2/facet_hist_f1_by_model.png}
-                    \caption{Faceted histogram of F1 score by model.}
-                    \label{fig:facet_hist_f1_by_model}
-                \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[width=0.75\linewidth]{images_exp2/facet_hist_f1_by_model_best_f1.png}
-                    \caption{Faceted histogram of best F1 score by model.}
-                    \label{fig:facet_hist_f1_by_model_best_f1}
-                \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[width=0.5\linewidth]{images_exp2/hist_f1_score_all.png}
-                    \caption{Histogram of all F1 scores.}
-                    \label{fig:hist_f1_score_all}
-                \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[width=0.75\linewidth]{images_exp2/line_f1_by_question_index_and_model.png}
-                    \caption{Line plot of F1 score by question index and model.}
-                    \label{fig:line_f1_by_question_index_and_model}
-                \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[scale=0.75]{images_exp2/scatter_f1_vs_total_time.png}
-                    \caption{Scatter plot of F1 score vs total time.}
-                    \label{fig:scatter_f1_vs_total_time}
-                \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[scale=0.75]{images_exp2/scatter_f1_vs_total_token_count_input.png}
-                    \caption{Scatter plot of F1 score vs total input token count.}
-                    \label{fig:scatter_f1_vs_total_token_count_input}
-                \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[scale=0.75]{images_exp2/swarm_f1_by_model_and_configuration.png}
-                    \caption{Swarm plot of F1 score by model and configuration.}
-                    \label{fig:swarm_f1_by_model_and_configuration}
-                \end{figure}
-
-
-            \subsection{Recall}
-
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[scale=0.75]{images_exp2/recall/bar_best_recall_by_model_and_configuration.png}
-                    \caption{Best recall by model and configuration.}
-                    \label{fig:bar_best_recall_by_model_and_configuration}
-                \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[scale=0.75]{images_exp2/recall/best_recall_by_question_index_and_configuration.png}
-                    \caption{Best recall by question index and configuration.}
-                    \label{fig:best_recall_by_question_index_and_configuration}
-                \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[scale=0.75]{images_exp2/recall/best_recall_by_question_index_and_model.png}
-                    \caption{Best recall by question index and model.}
-                    \label{fig:best_recall_by_question_index_and_model}
-                \end{figure}
-
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[width=0.75\linewidth]{images_exp2/recall/facet_hist_recall_by_model.png}
-                    \caption{Faceted histogram of recall by model.}
-                    \label{fig:facet_hist_recall_by_model}
-                \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[width=0.75\linewidth]{images_exp2/recall/facet_hist_recall_by_model_best_recall.png}
-                    \caption{Faceted histogram of best recall by model.}
-                    \label{fig:facet_hist_recall_by_model_best_recall}
-                \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[width=0.5\linewidth]{images_exp2/recall/hist_recall_all.png}
-                    \caption{Histogram of all recall.}
-                    \label{fig:hist_recall_all}
-                \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[width=0.75\linewidth]{images_exp2/recall/line_recall_by_question_index_and_model.png}
-                    \caption{Line plot of recall by question index and model.}
-                    \label{fig:line_recall_by_question_index_and_model}
-                \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[width=0.75\linewidth]{images_exp2/recall/recall_boxplot_by_model_and_configuration.png}
-                    \caption{Boxplot of recall by model and configuration.}
-                    \label{fig:recall_boxplot_by_model_and_configuration}
-                \end{figure}
+        A crucial aspect of the results is the high standard deviation observed across all configurations, typically around 0.20 for the F1-Score. The wide range between minimum and maximum scores indicates that performance is highly variable and question-dependent. This suggests that even the best-performing systems can fail completely on certain queries.
 
 
 
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[width=0.75\linewidth]{images_exp2/recall/recall_lineplot_by_question_index_and_configuration.png}
-                    \caption{Line plot of recall by question index and configuration.}
-                    \label{fig:recall_lineplot_by_question_index_and_configuration}
-                \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[scale=0.75]{images_exp2/recall/scatter_recall_vs_total_time.png}
-                    \caption{Scatter plot of recall vs total time.}
-                    \label{fig:scatter_recall_vs_total_time}
-                \end{figure} 
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[scale=0.75]{images_exp2/recall/scatter_recall_vs_total_token_count_input.png}
-                    \caption{Scatter plot of recall vs total token count input.}
-                    \label{fig:scatter_recall_vs_total_token_count_input}
-                \end{figure}
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[scale=0.75]{images_exp2/recall/swarm_recall_by_model_and_configuration.png}
-                    \caption{Swarm plot of recall by model and configuration.}
-                    \label{fig:swarm_recall_by_model_and_configuration}
-                \end{figure}
-
-                % \begin{figure}[H]
-                %     \centering
-                %     \includegraphics[scale=0.75]{images_exp2/recall/violin_recall_by_model_and_configuration.png}
-                %     \caption{Violin plot of recall by model and configuration.}
-                %     \label{fig:violin_recall_by_model_and_configuration}
-                % \end{figure}
-
+    \subsection{Discussion} \label{sec:exp2-discussion}
 \chapter{Conclusions}
 
     The results of this study highlight the potential of multi-agent architectures based on LLMs in the O\&G sector, particularly in the domain of well engineering. The ability to process and respond to complex queries paves the way for a significant digital transformation in the area.
@@ -1872,5 +1535,8 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
 
     Future research should focus on developing specialized models, advancing retrieval techniques, and exploring hybrid architectures. The lessons learned from this study have broader implications and can extend to other complex technical domains. By addressing the limitations identified in this study and embracing emerging trends in multi-agent systems and RAG technology, we can unlock their full potential, revolutionizing decision-making, knowledge management, and operational efficiency in complex industries worldwide.
 
+
+
+    [CONCLUSIONS FROM EXPERIMENT 2 ARE YET TO BE WRITTEN HERE]
 
     [INCLUIR: COMENTAR QUE OS PRECOS DE LLM ESTAO CAINDO MTO, MODELOS PEQUENOS COM EXCELENTE DESEMPENHO, O QUE TORNA A ANALISE FINANCEIRA DO 1o CICLO OBSOLETA]
