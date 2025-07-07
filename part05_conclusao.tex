@@ -1,19 +1,81 @@
-\chapter{Conclusions}
+\chapter{Conclusion}
+\label{chap:conclusion}
 
-    The results of this study highlight the potential of multi-agent architectures based on LLMs in the O\&G sector, particularly in the domain of well engineering. The ability to process and respond to complex queries paves the way for a significant digital transformation in the area.
+This dissertation embarked on a systematic investigation into the effectiveness, efficiency, and practical viability of various LLM architectures for domain-specific information retrieval in well construction engineering. Motivated by the transformative potential of Generative AI, this research sought to move beyond generalized benchmarks and provide empirical, actionable insights for the oil and gas industry. Through two distinct experimental cycles, detailed in Chapter~\ref{chap:first_experiment} and Chapter~\ref{chap:second_experiment}, this study compared non-agentic, single-agent, and multi-agent systems, culminating in a series of findings that both validate and challenge prevailing assumptions about the application of agentic AI in specialized technical domains.
 
-    Our comparative analysis of single-agent and multi-agent architectures, using GPT-3.5-turbo and GPT-4, reveals a detailed landscape of trade-offs between performance and economic efficiency. Multi-agent systems demonstrate 28\% greater factuality in question-and-answer (Q\&A) tasks, especially with GPT-4, compared to single-agent systems. However, they incur LLM costs that are, on average, 3.7 times higher due to the complexities of inter-agent communication. In contrast, single-agent systems excel in Text-to-SQL tasks, showing 15\% better performance than multi-agent setups. This cost-benefit dynamic requires careful consideration when implementing RAG in real-world scenarios, where accuracy and financial constraints must be balanced.
+This concluding chapter synthesizes the results of the research by directly addressing the research questions posed in the Introduction (Section~\ref{sec:research_questions}). It will then summarize the primary contributions of this work, acknowledge its limitations, and propose promising directions for future research.
 
-    We highlight several challenges encountered during our experiments, including issues with contextualization, the need for more refined information filtering, and the persistence of hallucinations. These challenges underscore the need for continuous research in areas such as domain-specific specialized models, advanced semantic search techniques, and hybrid architectures that combine the strengths of single-agent and multi-agent systems.
+\section{Answering the Research Questions}
+\label{sec:conclusion_rq}
 
-    The practical implications of this study extend beyond the O\&G sector. The insights gained here are applicable to any knowledge-intensive domain that deals with large volumes of technical data. By focusing on enhancing retrieval mechanisms, developing domain-specific LLMs, and optimizing interactions between agents and tools, we pave the way for more effective, reliable, and cost-efficient RAG solutions across various sectors.
+    The core of this investigation was structured around three central research questions. The evidence gathered from the two experimental cycles provides the following answers.
 
-    The main points of the study are as follows: multi-agent systems offer superior factuality in Q\&A tasks, albeit at a significantly higher cost. Single-agent architectures, on the other hand, excel at Text-to-SQL tasks. Despite the advantages, several challenges persist, including issues with contextualization, filtering, hallucination, and domain-specific vocabulary.
+    \vspace{\baselineskip}
+    \begin{tcolorbox}[colback=gray!10, colframe=gray!40, title=\textbf{RQ1: Performance and Task-Dependency}]
+    Which architecture (non-agentic, single-agent, or multi-agent) provides the highest factual accuracy and overall performance for different types of domain-specific tasks, specifically complex Q\&A and structured Text-to-SQL generation?
+    \end{tcolorbox}
+    \vspace{\baselineskip}
 
-    Future research should focus on developing specialized models, advancing retrieval techniques, and exploring hybrid architectures. The lessons learned from this study have broader implications and can extend to other complex technical domains. By addressing the limitations identified in this study and embracing emerging trends in multi-agent systems and RAG technology, we can unlock their full potential, revolutionizing decision-making, knowledge management, and operational efficiency in complex industries worldwide.
+    The answer to this question evolved significantly between the two experiments, highlighting the importance of rigorous, quantitative evaluation.
 
+    \begin{itemize}
+        \item For \textbf{complex Q\&A tasks}, the most effective architecture was decisively a \textbf{non-agentic \texttt{Linear-Flow with Router}}. The second, more rigorous experiment  (Chapter~\ref{chap:second_experiment}) demonstrated that this setup achieved the highest F1-Score (0.702 with GPT-4o), as shown in Table~\ref{tab:performance_metrics}, outperforming both single-agent (0.643) and multi-agent (0.664) systems. While the first experiment suggested that a multi-agent system yielded higher \textit{truthfulness} (Table~\ref{tab:tabela_resultados}), the more precise metrics of the second cycle revealed that accurately routing the query to the correct knowledge source from the outset was more effective than relying on complex, cyclical agentic reasoning.
 
+        \item For \textbf{Text-to-SQL tasks}, the first experiment revealed that a \textbf{single-agent architecture was surprisingly more effective} than a multi-agent one, as detailed in the results of Chapter~\ref{chap:first_experiment}. This suggests that for more structured, less ambiguous tasks, the communication and coordination overhead of a multi-agent system can be detrimental, introducing unnecessary complexity without a corresponding performance benefit.
+    \end{itemize}
 
-    [CONCLUSIONS FROM EXPERIMENT 2 ARE YET TO BE WRITTEN HERE]
+    \vspace{\baselineskip}
+    \begin{tcolorbox}[colback=gray!10, colframe=gray!40, title=\textbf{RQ2: Cost-Effectiveness}]
+    What is the relationship between architectural complexity and economic cost? How do the performance benefits of more complex systems (e.g., multi-agent) weigh against their significantly increased computational (API) costs, and what are the implications for practical deployment?
+    \end{tcolorbox}
+    \vspace{\baselineskip}
 
-    [INCLUIR: COMENTAR QUE OS PRECOS DE LLM ESTAO CAINDO MTO, MODELOS PEQUENOS COM EXCELENTE DESEMPENHO, O QUE TORNA A ANALISE FINANCEIRA DO 1o CICLO OBSOLETA]
+    There is a \textbf{direct and significant relationship between architectural complexity and economic cost}.
+
+    The first experiment quantified this trade-off clearly: the multi-agent architecture, while offering a 28\% increase in truthfulness for Q\&A tasks, was on average \textbf{3.7 times more expensive} in terms of LLM API costs (see Figure~\ref{fig:truthfulness_vs_cost_vs_config_model}). This increase is driven by the multiple intermediate LLM calls required for inter-agent communication, deliberation, and coordination.
+
+    The most critical finding for practical deployment comes from the second experiment: the \textbf{most cost-effective architecture (\texttt{Linear-Flow with Router}) was also the highest-performing}. This discovery, evidenced in Table~\ref{tab:performance_metrics}, resolves the cost-benefit dilemma in this specific context. There is no need to pay a premium for a complex agentic system when a simpler, more direct, and cheaper non-agentic architecture yields superior results. For organizations in the O\&G sector, the implication is clear: practical deployment should prioritize efficient, well-directed RAG pipelines over theoretically powerful but ultimately less effective agentic systems. While the absolute cost of LLM APIs continues to fall, architectural efficiency remains a dominant factor in the total cost of ownership.
+
+    \vspace{\baselineskip}
+    \begin{tcolorbox}[colback=gray!10, colframe=gray!40, title=\textbf{RQ3: Agentic Systems and Domain Specificity}]
+    Under what conditions do agentic architectures, with their capacity for cyclical reasoning and reflection, offer a tangible performance advantage over simpler, non-agentic RAG workflows in a highly specialized technical domain where the LLM has a significant "knowledge deficit"?
+    \end{tcolorbox}
+    \vspace{\baselineskip}
+
+    Agentic architectures offer a tangible performance advantage only when the underlying LLM possesses \textbf{sufficient foundational knowledge of the domain} to make its reflective capabilities meaningful.
+
+    This dissertation's central hypothesis, validated by the results of the second experiment (Chapter~\ref{chap:second_experiment}) and detailed in the discussion in Section~\ref{sec:exp2-discussion}, is the concept of the \textbf{"domain knowledge deficit"}. The primary strength of an agentic system is its ability to self-critique and iteratively refine its approach. However, this capability is fundamentally compromised when the LLM lacks the specialized, pre-existing knowledge to accurately judge the quality of retrieved information. In the domain of well construction engineering, the LLM cannot reliably discern subtle inaccuracies or assess the contextual relevance of technical data from proprietary documents.
+
+    Consequently, the agent's reflective loop becomes an exercise in futility, it cycles without true insight, adding computational cost and complexity for no performance gain. Therefore, the condition under which agentic systems are likely to excel is the \textbf{absence of a severe knowledge deficit}. In domains where the LLM is already a competent "junior analyst" (e.g., general programming, finance), agentic reflection is powerful. In highly niche industrial domains, a streamlined, non-agentic workflow that focuses on perfecting the retrieval step is the superior strategy.
+
+\section{Summary of Contributions}
+\label{sec:conclusion_contributions}
+
+    This dissertation makes several contributions to the field of applied AI:
+
+    \begin{enumerate}
+        \item \textbf{Primary Theoretical Contribution:} The most significant contribution is the empirical evidence that, contrary to the prevailing hype, \textbf{non-agentic architectures can outperform more complex agentic systems in specialized domains}. This work introduces and validates the \textbf{"domain knowledge deficit"} as a key explanatory framework (Section~\ref{sec:exp2-discussion}) for why the reflective capabilities of current LLM agents fail in niche technical contexts.
+
+        \item \textbf{Methodological Contribution:} This research developed and executed a \textbf{robust, automated evaluation pipeline using an "LLM-as-a-judge"}, a concept explored by \citet{Zheng2023}. This methodology, detailed in Chapter~\ref{chap:second_experiment}, provides a scalable and objective alternative to manual expert evaluation, enabling the calculation of quantitative metrics (Precision, Recall, F1-Score) and facilitating more rigorous comparisons of RAG systems.
+
+        \item \textbf{Practical Contribution:} The findings provide \textbf{clear, evidence-based guidance for the O\&G industry}. Instead of defaulting to complex and costly agentic frameworks, organizations should focus their efforts on building highly efficient retrieval and routing mechanisms. The \texttt{Linear-Flow with Router} architecture, described in Chapter~\ref{chap:second_experiment}, serves as a powerful and practical template for developing high-performing, cost-effective information retrieval solutions.
+    \end{enumerate}
+
+\section{Limitations and Future Work}
+\label{sec:conclusion_future_work}
+
+    No research is without limitations. The findings of this study are based on a specific dataset and a set of knowledge bases within the well construction domain. While the "domain knowledge deficit" is a generalizable concept, its specific impact may vary in other domains. Furthermore, the "LLM-as-a-judge" approach, while scalable, has its own potential biases, as noted by \citet{Gu2025}. Finally, the LLM landscape is evolving at an extraordinary pace; the specific performance of the models used is a snapshot in time, though the architectural insights are likely more enduring.
+
+    These limitations pave the way for several exciting avenues for future research:
+
+    \begin{itemize}
+        \item \textbf{Mitigating the Knowledge Deficit:} Future work should focus on strategies to "upskill" the LLM, such as extensive fine-tuning on proprietary corporate data. This aligns with the trend toward specialized models \citep{Shah2024, Meena2023, Ghosh2023} and could determine if the knowledge deficit can be reduced to a point where agentic reflection becomes effective.
+        \item \textbf{Advanced Routing:} Research into more sophisticated, dynamic routing mechanisms that can handle multi-tool dependencies and conditional logic without the full overhead of an agentic loop could yield further performance gains.
+        \item \textbf{Hybrid Architectures:} Exploring hybrid systems that use an efficient router for initial tool selection but grant selective, minimal agentic capabilities for specific, well-defined sub-tasks could offer a compelling balance of efficiency and power.
+        \item \textbf{Generalizability:} Applying this dissertation's evaluation framework to other specialized domains (e.g., legal, aerospace, pharmaceuticals) would be invaluable for testing the generalizability of the "domain knowledge deficit" hypothesis.
+    \end{itemize}
+
+\section{Final Remarks}
+\label{sec:conclusion_final}
+
+    The journey to effectively harness the power of LLMs within specialized industries is just beginning. This dissertation demonstrates that the path to success is not necessarily paved with greater complexity. For the unique challenges of well construction engineering, and likely many other technical fields, the most effective AI systems are not those that attempt to replicate human cognition in a domain they do not understand, but those that are engineered for maximal efficiency at the crucial interface between the user's query and the organization's knowledge. The counter-intuitive success of a simple, non-agentic router over its more complex agentic cousins, as demonstrated in Chapter~\ref{chap:second_experiment}, provides a crucial lesson: in the world of applied AI, architectural choices must be guided by a sober assessment of a model's real-world capabilities, where well-directed simplicity often triumphs over unguided complexity.

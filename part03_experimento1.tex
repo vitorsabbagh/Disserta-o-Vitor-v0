@@ -69,7 +69,7 @@
 
             To address the problem, we designed, built, and tested two distinct artifacts: a single-agent solution and a multi-agent solution. Both are goal-based agents designed to accurately respond to user queries by leveraging a suite of tools.
 
-        \subsection{Single-Agent Architecture.}
+        \subsection{Artifact 1: Single-Agent Architecture.}
 
             In this work, a goal-based agent \citep{Russell2020} was implemented with the goal of accurately responding to various queries. 
             The agent operates within an environment equipped with multiple tools for task-specific operations, as shown in Figure~\ref{fig:agent_environment}, and interfaces with users to receive queries.
@@ -108,7 +108,7 @@
                 \label{fig:diagrama_agente_1}
             \end{figure}
 
-        \subsection{Multi-Agent Architecture}
+        \subsection{Artifact 2: Multi-Agent Architecture}
 
             The second artifact is a multi-agent system where responsibility is distributed among several specialized agents, coordinated by a Chat Manager, as shown in Figure~\ref{fig:agent_config_2}. This architecture is designed to handle queries by routing them to the agent best equipped for the task. As depicted in the decision process in Figure~\ref{fig:diagrama_agente_MultiAgente_2}, a \enquote{speaker selection} step determines the most suitable agent to act at each turn, promoting a more focused and contextualized approach to problem-solving.
 

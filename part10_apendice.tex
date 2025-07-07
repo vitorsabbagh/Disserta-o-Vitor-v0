@@ -7,6 +7,15 @@
 
 \chapter{Experiment 2}
     
+    \section{Artifacts}
+
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width=\textwidth]{images_exp2/diagrams/diagrama_todos.png}
+            \caption{Comparison between the implemented RAG configurations.}
+            \label{fig:diagrama_todos}
+        \end{figure}
+
     \section{Dataset}
 
     \begin{landscape}
@@ -246,22 +255,8 @@ def calculate_metrics(llm, question, history):
     \section{Results}
     \label{sec:exp2_appendix}
 
-        % \subsection{Precision}
+        \subsection{Precision}
 
-            % \subsubsection{Average Precision by Configuration}            % \begin{figure}[H]
-            %     \centering
-            %     \includegraphics{images_exp2/precision/bar_avg_precision_by_configuration.png}
-            %     \caption{Average precision by configuration.}
-            %     \label{fig:bar_avg_precision_by_configuration}
-            % \end{figure}
-
-            % \subsubsection{Average Precision by Model}
-            % \begin{figure}[H]
-            %     \centering
-            %     \includegraphics{images_exp2/precision/bar_avg_precision_by_model.png}
-            %     \caption{Average precision by model.}
-            %     \label{fig:bar_avg_precision_by_model}
-            % \end{figure}
 
             \subsubsection{Best Precision by Model and Configuration}
             \begin{figure}[H]
@@ -295,21 +290,6 @@ def calculate_metrics(llm, question, history):
                 \label{fig:facet_hist_precision_by_model}
             \end{figure}
 
-            \subsubsection{Facet Histogram of Precision by Model (best of 3)}
-            \begin{figure}[H]
-                \centering
-                \includegraphics[width=\textwidth]{images_exp2/precision/facet_hist_precision_by_model_best_precision.png}
-                \caption{Facet histogram of precision by model (best of 3).}
-                \label{fig:facet_hist_precision_by_model_best_precision}
-            \end{figure}
-
-            % \subsubsection{Heatmap of Precision by Question and Model}
-            % \begin{figure}[H]
-            %     \centering
-            %     \includegraphics[scale=0.75]{images_exp2/precision/heatmap_precision_by_question_and_model.png}
-            %     \caption{Heatmap of precision by question and model.}
-            %     \label{fig:heatmap_precision_by_question_and_model}
-            % \end{figure}
 
             \subsubsection{Histogram of All Precisions}
             \begin{figure}[H]
@@ -327,21 +307,6 @@ def calculate_metrics(llm, question, history):
                 \label{fig:line_precision_by_question_index_and_model}
             \end{figure}
 
-            \subsubsection{Boxplot of Precision by Model and Configuration}
-            \begin{figure}[H]
-                \centering
-                \includegraphics[scale=0.75]{images_exp2/precision/precision_boxplot_by_model_and_configuration.png}
-                \caption{Boxplot of precision by model and configuration.}
-                \label{fig:precision_boxplot_by_model_and_configuration}
-            \end{figure}
-
-            \subsubsection{Precision by Model}
-            \begin{figure}[H]
-                \centering
-                \includegraphics[scale=0.75]{images_exp2/precision/precision_by_model.png}
-                \caption{Precision by model.}
-                \label{fig:precision_by_model}
-            \end{figure}
 
             \subsubsection{Precision by Model and Configuration}
             \begin{figure}[H]
@@ -375,21 +340,92 @@ def calculate_metrics(llm, question, history):
                 \label{fig:scatter_precision_vs_total_token_count_input}
             \end{figure}
 
-            \subsubsection{Swarm Plot of Precision by Model and Configuration}
+            
+        \subsection{Recall}
+
+
+            \subsubsection{Best Recall by Model and Configuration}
             \begin{figure}[H]
                 \centering
-                \includegraphics[scale=0.75]{images_exp2/precision/swarm_precision_by_model_and_configuration.png}
-                \caption{Swarm plot of precision by model and configuration.}
-                \label{fig:swarm_precision_by_model_and_configuration}
+                \includegraphics[scale=0.75]{images_exp2/recall/bar_best_recall_by_model_and_configuration.png}
+                \caption{Best recall by model and configuration.}
+                \label{fig:bar_best_recall_by_model_and_configuration}
             \end{figure}
 
-            \subsubsection{Violin Plot of Precision by Model and Configuration}
+            \subsubsection{Best Recall by Question Index and Configuration}
             \begin{figure}[H]
                 \centering
-                \includegraphics[scale=0.75]{images_exp2/precision/violin_precision_by_model_and_configuration.png}
-                \caption{Violin plot of precision by model and configuration.}
-                \label{fig:violin_precision_by_model_and_configuration}
+                \includegraphics[scale=0.75]{images_exp2/recall/best_recall_by_question_index_and_configuration.png}
+                \caption{Best recall by question index and configuration.}
+                \label{fig:best_recall_by_question_index_and_configuration}
             \end{figure}
+
+            \subsubsection{Best Recall by Question Index and Model}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.75]{images_exp2/recall/best_recall_by_question_index_and_model.png}
+                \caption{Best recall by question index and model.}
+                \label{fig:best_recall_by_question_index_and_model}
+            \end{figure}
+
+            \subsubsection{Facet Histogram of Recall by Model}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\textwidth]{images_exp2/recall/facet_hist_recall_by_model.png}
+                \caption{Facet histogram of recall by model.}
+                \label{fig:facet_hist_recall_by_model}
+            \end{figure}
+
+
+            \subsubsection{Histogram of All Recalls}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.75]{images_exp2/recall/hist_recall_all.png}
+                \caption{Histogram of all recalls.}
+                \label{fig:hist_recall_all}
+            \end{figure}
+
+            \subsubsection{Line Plot of Recall by Question Index and Model}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\textwidth]{images_exp2/recall/line_recall_by_question_index_and_model.png}
+                \caption{Line plot of recall by question index and model.}
+                \label{fig:line_recall_by_question_index_and_model}
+            \end{figure}
+
+
+            % \subsubsection{Recall by Model and Configuration}
+            % \begin{figure}[H]
+            %     \centering
+            %     \includegraphics[scale=0.75]{images_exp2/recall/recall_by_model_and_configuration.png}
+            %     \caption{Recall by model and configuration.}
+            %     \label{fig:recall_by_model_and_configuration}
+            % \end{figure}
+
+            \subsubsection{Line Plot of Recall by Question Index and Configuration}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\textwidth]{images_exp2/recall/recall_lineplot_by_question_index_and_configuration.png}
+                \caption{Line plot of recall by question index and configuration.}
+                \label{fig:recall_lineplot_by_question_index_and_configuration}
+            \end{figure}
+
+            \subsubsection{Scatter Plot of Recall vs. Total Time}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.75]{images_exp2/recall/scatter_recall_vs_total_time.png}
+                \caption{Scatter plot of recall vs. total time.}
+                \label{fig:scatter_recall_vs_total_time}
+            \end{figure}
+
+            \subsubsection{Scatter Plot of Recall vs. Total Token Count Input}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.75]{images_exp2/recall/scatter_recall_vs_total_token_count_input.png}
+                \caption{Scatter plot of recall vs. total token count input.}
+                \label{fig:scatter_recall_vs_total_token_count_input}
+            \end{figure}
+
 
         % \subsection{Recall}
 

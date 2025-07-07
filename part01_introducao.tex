@@ -7,11 +7,11 @@
 
     % [IA-GEN NA INDUSTRIA] 
     In the dynamic and ever-changing oil and gas (O\&G) industry,
-    \xexeo{eu acho que aqui falta alto. TEm um pouco há ver com o uso do "in the dynamic changing of the" não ser realmente muito adequado a "oil and gas industry", falta algo, um qualificador a mais (mercado? . Minha IA sugeriu mudar para "In the dynamic and ever-changing oil and gas (O\&G) industry", o que eu achei muito melhor}
-    \vitor{feito}
+    % \xexeo{eu acho que aqui falta alto. TEm um pouco há ver com o uso do "in the dynamic changing of the" não ser realmente muito adequado a "oil and gas industry", falta algo, um qualificador a mais (mercado? . Minha IA sugeriu mudar para "In the dynamic and ever-changing oil and gas (O\&G) industry", o que eu achei muito melhor}
+    % \vitor{feito}
     \abbrev{O\&G}{oil and gas} 
     digital transformation has emerged as a key element to achieve operational efficiency, sustainability, and competitiveness. 
-    At the forefront of this transformation are Large Language Models (LLMs), which have the potential to process unstructured queries, map out alternatives, and advise users on possible actions \citep{Kar2023}. 
+    At the forefront of this transformation are Large Language Models \abbrev{LLM}{Large Language Model}(LLM), which have the potential to process unstructured queries, map out alternatives, and advise users on possible actions \citep{Kar2023}. 
     We also note the advantage of increased engagement, cooperation, accessibility, and ultimately profitability. 
     These models redefine paradigms in knowledge management and information retrieval and impact a variety of other areas \citep{Eckroth2023}, making it crucial to adopt these technologies to remain competitive.    
     
@@ -79,17 +79,34 @@
 
 \section{Objectives}
 
-    This research directly addresses the challenges facing major oil companies. 
-    By investigating the comparative advantages and limitations of various Gen-AI architectures, including single and multi-agent systems, for Q\&A and Text-to-SQL tasks, this study aims to identify the most efficient and cost-effective solutions.
+    % This research directly addresses the challenges facing major oil companies. 
+    % By investigating the comparative advantages and limitations of various Gen-AI architectures, including single and multi-agent systems, for Q\&A and Text-to-SQL tasks, this study aims to identify the most efficient and cost-effective solutions.
     
-    The specific objectives of this research are to assess the suitability and effectiveness of multi-agent systems based on LLMs for complex, domain-specific tasks in well engineering, aiming to streamline information access and decision-making.
+    % The specific objectives of this research are to assess the suitability and effectiveness of multi-agent systems based on LLMs for complex, domain-specific tasks in well engineering, aiming to streamline information access and decision-making.
     
-    The study will compare single-agent and multi-agent AI systems in terms of their ability to address well engineering queries. Finally, it will map the potential obstacles and limitations associated with deploying Gen-AI applications.
+    % The study will compare single-agent and multi-agent AI systems in terms of their ability to address well engineering queries. Finally, it will map the potential obstacles and limitations associated with deploying Gen-AI applications.
             
-    The insights gained from this research will directly contribute to O\&G companies strategic goals by improving access to well engineering information and automated data analysis tasks. 
-    A comprehensive understanding of the challenges and limitations associated with Gen-AI will enable informed decisions about its adoption, maximizing the return on investment. 
+    % The insights gained from this research will directly contribute to O\&G companies strategic goals by improving access to well engineering information and automated data analysis tasks. 
+    % A comprehensive understanding of the challenges and limitations associated with Gen-AI will enable informed decisions about its adoption, maximizing the return on investment. 
 
-    To achieve these objectives, this research was conducted through two distinct experimental phases. The first, carried out in 2024, focused on a foundational comparison between single and multi-agent architectures, which revealed that, although the multi-agent architecture achieved 28\% higher truthfulness in Q\&A tasks, its cost was on average 3.7 times higher. Furthermore, the single-agent architecture proved to be surprisingly more effective in Text-to-SQL tasks. The rapid evolution of generative AI frameworks and models prompted a second, more advanced experiment in 2025. This second phase built upon the initial findings, also employing non-agentic workflows as baseline and a more rigorous, quantitative evaluation methodology to address the challenges identified in the first experiment and automated evaluation based on the concept commonly reffered to as "LLM-as-judge" (\citep{Gu2025}).
+    The primary goal of this dissertation is to systematically evaluate and compare the effectiveness, efficiency, and practical viability of different LLM-based architectures for resolving domain-specific information retrieval challenges in well construction engineering. 
+    This research aims to move beyond generalized performance metrics to provide specific, empirical insights into how architectural choices impact outcomes in a industrial setting.
+
+    To achieve this overarching goal, the following specific objectives have been defined:
+
+    \begin{enumerate}
+        \item \textbf{Design and Implement LLM Artifacts:} To design and implement a set of distinct RAG architectures, including non-agentic (baseline and router-based) and agentic (single-agent and multi-agent) systems, tailored to the operational context of well construction.
+
+        \item \textbf{Evaluate Performance Quantitatively:} To evaluate the performance of these artifacts on domain-specific tasks using both expert-led qualitative assessments and automated quantitative metrics, including truthfulness, precision, recall, and F1-score.
+
+        \item \textbf{Analyze Cost-Effectiveness:} To conduct a comparative analysis of the economic efficiency of each architecture, focusing on the trade-offs between performance gains and the computational costs associated with LLM API usage.
+
+        \item \textbf{Derive Actionable Guidance:} To identify the key challenges, limitations, and failure modes of each architecture within a specialized technical domain, and to derive practical, evidence-based guidelines for the strategic adoption of these technologies in the oil and gas industry.
+    \end{enumerate}
+
+    % To achieve these objectives, this research was conducted through two distinct experimental phases. The first, carried out in 2024, focused on a foundational comparison between single and multi-agent architectures, which revealed that, although the multi-agent architecture achieved 28\% higher truthfulness in Q\&A tasks, its cost was on average 3.7 times higher. Furthermore, the single-agent architecture proved to be surprisingly more effective in Text-to-SQL tasks. 
+    
+    % The rapid evolution of generative AI frameworks and models prompted a second, more advanced experiment in 2025. This second phase built upon the initial findings, also employing non-agentic workflows as baseline and a more rigorous, quantitative evaluation methodology to address the challenges identified in the first experiment and automated evaluation based on the concept commonly reffered to as "LLM-as-judge" (\citep{Gu2025}).
     
     \xexeo{Acho que pode aumentar um pouco isso, já falar dos resultados (dissertação tem spoiler), motivar o segundo a partir dos resutlados do primeiro e botar depois das questões de pesquisa (leia o todo), sempre alinhando tudo (questão de pesquisa - experimento - conclusões}
     \vitor{Incluído spoiler e ponte do 1o justificando o 2o experimento.}
@@ -127,6 +144,31 @@
 %     \textbf{Relevância prática + rigor científico}: O trabalho visa resolver um problema concreto de empresas do setor de petróleo e gás, mas com critérios e métricas de avaliação quantitativas rigorosas.
 %     \textbf{Conclusão}: Mesmo sem ter sido explicitamente rotulada como DSR na dissertação, a estrutura e objetivos da pesquisa indicam fortemente que ela segue os princípios dessa metodologia.
 %     \newline \newline \textbf{VITOR: CONCLUÍDO}}
+
+
+\section{Research Questions}
+
+    To guide this investigation and structure the research, the study addresses a central research question, which is broken down into three specific sub-questions. These questions will be formally answered in the conclusion, based on the evidence gathered from the two experimental cycles.
+
+    \vspace{\baselineskip}
+    \begin{tcolorbox}[colback=gray!10, colframe=gray!40, title=\textbf{Main Research Question}]
+    How do different LLM based architectures, ranging from non-agentic Retrieval-Augmented Generation (RAG) pipelines to multi-agent systems, compare in terms of performance, efficiency, and practical viability when applied to domain-specific information retrieval tasks in well construction engineering?
+    \end{tcolorbox}
+    \vspace{\baselineskip}
+
+    \paragraph{RQ1: Performance and Task-Dependency} Which architecture (non-agentic, single-agent, or multi-agent) provides the highest factual accuracy and overall performance for different types of domain-specific tasks, specifically complex Question-Answering (Q\&A) and structured Text-to-SQL generation?
+
+    \paragraph{RQ2: Cost-Effectiveness} What is the relationship between architectural complexity and economic cost? How do the performance benefits of more complex systems (e.g., multi-agent) weigh against their significantly increased computational (API) costs, and what are the implications for practical deployment?
+
+    \paragraph{RQ3: Agentic Systems and Domain Specificity} Under what conditions do agentic architectures, with their capacity for cyclical reasoning and reflection, offer a tangible performance advantage over simpler, non-agentic RAG workflows in a highly specialized technical domain where the LLM has a significant "knowledge deficit"?
+
+    \vspace{\baselineskip}
+
+    To answer these questions, this research was conducted through two distinct experimental cycles. The first, carried out in 2024, established a foundational comparison, revealing that while a multi-agent architecture achieved 28\% higher truthfulness in Q\&A tasks, its cost was on average 3.7 times higher. Furthermore, a single-agent architecture proved to be surprisingly more effective in Text-to-SQL tasks.
+
+    The rapid evolution of generative AI frameworks and models prompted a second, more advanced experiment in 2025. This second phase built upon the initial findings, employing non-agentic workflows as a baseline and a more rigorous, automated evaluation methodology based on the "LLM-as-judge" concept \citep{Gu2025}. This led to a crucial and counter-intuitive discovery: a non-agentic architecture using an intelligent router to select the correct knowledge source decisively outperformed both single and multi-agent systems. This finding suggests that in specialized domains where the LLM lacks deep pre-trained knowledge, the reflective capabilities of agentic systems are less effective than a streamlined, well-directed retrieval process, fundamentally shaping the answers to our research questions.
+
+
 
 \section{Research Methodology}
   

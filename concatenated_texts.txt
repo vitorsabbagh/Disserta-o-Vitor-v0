@@ -119,15 +119,14 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
 
 \begin{abstract}
 
-    Esta dissertaÃ§Ã£o apresenta a aplicaÃ§Ã£o de modelos de linguagem (LLM) no setor de petrÃ³leo e gÃ¡s, especificamente em tarefas de construÃ§Ã£o e manutenÃ§Ã£o de poÃ§os. O estudo avalia o desempenho de uma arquitetura baseada em LLM de agente Ãºnico e de mÃºltiplos agentes no processamento de diferentes tarefas, oferecendo uma perspectiva comparativa sobre sua precisÃ£o e as implicaÃ§Ãµes de custo de sua implementaÃ§Ã£o. Os resultados indicam que sistemas multiagentes oferecem desempenho melhorado em tarefas de perguntas e respostas, com uma medida de veracidade 28\% maior do que os sistemas de agente Ãºnico, mas a um custo financeiro mais alto. Especificamente, a arquitetura multiagente incorre em custos que sÃ£o, em mÃ©dia, 3,7 vezes maiores do que os da configuraÃ§Ã£o de agente Ãºnico, devido ao aumento do nÃºmero de tokens processados. Por outro lado, os sistemas de agente Ãºnico se destacam em tarefas de texto para SQL (Linguagem de Consulta Estruturada), especialmente ao usar o Transformador PrÃ©-Treinado Generativo 4 (GPT-4), alcanÃ§ando uma pontuaÃ§Ã£o 15\% maior em comparaÃ§Ã£o com as configuraÃ§Ãµes multiagentes, sugerindo que arquiteturas mais simples podem, Ã s vezes, superar a complexidade. A novidade deste trabalho reside em seu exame original dos desafios especÃ­ficos apresentados pelos dados complexos, tÃ©cnicos e nÃ£o estruturados inerentes Ã s operaÃ§Ãµes de construÃ§Ã£o de poÃ§os, contribuindo para o planejamento estratÃ©gico da adoÃ§Ã£o de aplicaÃ§Ãµes de IA generativa, fornecendo uma base para otimizar soluÃ§Ãµes contra parÃ¢metros econÃ´micos e tecnolÃ³gicos.
-    
-    \end{abstract}
+[PENDENTE]
+
+\end{abstract}
     
 \begin{foreignabstract}
 
+[PENDENTE]
 
-    This article explores the application of large language models (LLM) in the oil and gas  sector, specifically within well construction and maintenance tasks. The study evaluates the performances of a single-agent and a multi-agent LLM-based architecture in processing different tasks, offering a comparative perspective on their accuracy and the cost implications of their implementation. The results indicate that multi-agent systems offer improved performance in question and answer tasks, with a truthfulness measure 28\% higher than single-agent systems, but at a higher financial cost. Specifically, the multi-agent architecture incurs costs that are, on average, 3.7 times higher than those of the single-agent setup due to the increased number of tokens processed. Conversely, single-agent systems excel in text-to-SQL (Structured Query Language) tasks, particularly when using Generative Pre-Trained Transformer 4 (GPT-4), achieving a 15\% higher score compared to multi-agent configurations, suggesting that simpler architectures can sometimes outpace complexity. The novelty of this work lies in its original examination of the specific challenges presented by the complex, technical, unstructured data inherent in well construction operations, contributing to strategic planning for adopting generative AI applications, providing a basis for optimizing solutions against economic and technological parameters. 
-    
 \end{foreignabstract}
 
 
@@ -253,17 +252,34 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
 
 \section{Objectives}
 
-    This research directly addresses the challenges facing major oil companies. 
-    By investigating the comparative advantages and limitations of various Gen-AI architectures, including single and multi-agent systems, for Q\&A and Text-to-SQL tasks, this study aims to identify the most efficient and cost-effective solutions.
+    % This research directly addresses the challenges facing major oil companies. 
+    % By investigating the comparative advantages and limitations of various Gen-AI architectures, including single and multi-agent systems, for Q\&A and Text-to-SQL tasks, this study aims to identify the most efficient and cost-effective solutions.
     
-    The specific objectives of this research are to assess the suitability and effectiveness of multi-agent systems based on LLMs for complex, domain-specific tasks in well engineering, aiming to streamline information access and decision-making.
+    % The specific objectives of this research are to assess the suitability and effectiveness of multi-agent systems based on LLMs for complex, domain-specific tasks in well engineering, aiming to streamline information access and decision-making.
     
-    The study will compare single-agent and multi-agent AI systems in terms of their ability to address well engineering queries. Finally, it will map the potential obstacles and limitations associated with deploying Gen-AI applications.
+    % The study will compare single-agent and multi-agent AI systems in terms of their ability to address well engineering queries. Finally, it will map the potential obstacles and limitations associated with deploying Gen-AI applications.
             
-    The insights gained from this research will directly contribute to O\&G companies strategic goals by improving access to well engineering information and automated data analysis tasks. 
-    A comprehensive understanding of the challenges and limitations associated with Gen-AI will enable informed decisions about its adoption, maximizing the return on investment. 
+    % The insights gained from this research will directly contribute to O\&G companies strategic goals by improving access to well engineering information and automated data analysis tasks. 
+    % A comprehensive understanding of the challenges and limitations associated with Gen-AI will enable informed decisions about its adoption, maximizing the return on investment. 
 
-    To achieve these objectives, this research was conducted through two distinct experimental phases. The first, carried out in 2024, focused on a foundational comparison between single and multi-agent architectures, which revealed that, although the multi-agent architecture achieved 28\% higher truthfulness in Q\&A tasks, its cost was on average 3.7 times higher. Furthermore, the single-agent architecture proved to be surprisingly more effective in Text-to-SQL tasks. The rapid evolution of generative AI frameworks and models prompted a second, more advanced experiment in 2025. This second phase built upon the initial findings, also employing non-agentic workflows as baseline and a more rigorous, quantitative evaluation methodology to address the challenges identified in the first experiment and automated evaluation based on the concept commonly reffered to as "LLM-as-judge" (\citep{Gu2025}).
+    The primary goal of this dissertation is to systematically evaluate and compare the effectiveness, efficiency, and practical viability of different LLM-based architectures for resolving domain-specific information retrieval challenges in well construction engineering. 
+    This research aims to move beyond generalized performance metrics to provide specific, empirical insights into how architectural choices impact outcomes in a industrial setting.
+
+    To achieve this overarching goal, the following specific objectives have been defined:
+
+    \begin{enumerate}
+        \item \textbf{Design and Implement LLM Artifacts:} To design and implement a set of distinct RAG architectures, including non-agentic (baseline and router-based) and agentic (single-agent and multi-agent) systems, tailored to the operational context of well construction.
+
+        \item \textbf{Evaluate Performance Quantitatively:} To evaluate the performance of these artifacts on domain-specific tasks (Q\&A and Text-to-SQL) using both expert-led qualitative assessments and automated quantitative metrics, including truthfulness, precision, recall, and F1-score.
+
+        \item \textbf{Analyze Cost-Effectiveness:} To conduct a comparative analysis of the economic efficiency of each architecture, focusing on the trade-offs between performance gains and the computational costs associated with LLM API usage.
+
+        \item \textbf{Derive Actionable Guidance:} To identify the key challenges, limitations, and failure modes of each architecture within a specialized technical domain, and to derive practical, evidence-based guidelines for the strategic adoption of these technologies in the oil and gas industry.
+    \end{enumerate}
+
+    % To achieve these objectives, this research was conducted through two distinct experimental phases. The first, carried out in 2024, focused on a foundational comparison between single and multi-agent architectures, which revealed that, although the multi-agent architecture achieved 28\% higher truthfulness in Q\&A tasks, its cost was on average 3.7 times higher. Furthermore, the single-agent architecture proved to be surprisingly more effective in Text-to-SQL tasks. 
+    
+    % The rapid evolution of generative AI frameworks and models prompted a second, more advanced experiment in 2025. This second phase built upon the initial findings, also employing non-agentic workflows as baseline and a more rigorous, quantitative evaluation methodology to address the challenges identified in the first experiment and automated evaluation based on the concept commonly reffered to as "LLM-as-judge" (\citep{Gu2025}).
     
     \xexeo{Acho que pode aumentar um pouco isso, jÃ¡ falar dos resultados (dissertaÃ§Ã£o tem spoiler), motivar o segundo a partir dos resutlados do primeiro e botar depois das questÃµes de pesquisa (leia o todo), sempre alinhando tudo (questÃ£o de pesquisa - experimento - conclusÃµes}
     \vitor{IncluÃ­do spoiler e ponte do 1o justificando o 2o experimento.}
@@ -301,6 +317,31 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
 %     \textbf{RelevÃ¢ncia prÃ¡tica + rigor cientÃ­fico}: O trabalho visa resolver um problema concreto de empresas do setor de petrÃ³leo e gÃ¡s, mas com critÃ©rios e mÃ©tricas de avaliaÃ§Ã£o quantitativas rigorosas.
 %     \textbf{ConclusÃ£o}: Mesmo sem ter sido explicitamente rotulada como DSR na dissertaÃ§Ã£o, a estrutura e objetivos da pesquisa indicam fortemente que ela segue os princÃ­pios dessa metodologia.
 %     \newline \newline \textbf{VITOR: CONCLUÃDO}}
+
+
+\section{Research Questions}
+
+    To guide this investigation and structure the research, the study addresses a central research question, which is broken down into three specific sub-questions. These questions will be formally answered in the conclusion, based on the evidence gathered from the two experimental cycles.
+
+    \vspace{\baselineskip}
+    \begin{tcolorbox}[colback=gray!10, colframe=gray!40, title=\textbf{Main Research Question}]
+    How do different LLM based architectures, ranging from non-agentic Retrieval-Augmented Generation (RAG) pipelines to multi-agent systems, compare in terms of performance, efficiency, and practical viability when applied to domain-specific information retrieval tasks in well construction engineering?
+    \end{tcolorbox}
+    \vspace{\baselineskip}
+
+    \paragraph{RQ1: Performance and Task-Dependency} Which architecture (non-agentic, single-agent, or multi-agent) provides the highest factual accuracy and overall performance for different types of domain-specific tasks, specifically complex Question-Answering (Q\&A) and structured Text-to-SQL generation?
+
+    \paragraph{RQ2: Cost-Effectiveness} What is the relationship between architectural complexity and economic cost? How do the performance benefits of more complex systems (e.g., multi-agent) weigh against their significantly increased computational (API) costs, and what are the implications for practical deployment?
+
+    \paragraph{RQ3: Agentic Systems and Domain Specificity} Under what conditions do agentic architectures, with their capacity for cyclical reasoning and reflection, offer a tangible performance advantage over simpler, non-agentic RAG workflows in a highly specialized technical domain where the LLM has a significant "knowledge deficit"?
+
+    \vspace{\baselineskip}
+
+    To answer these questions, this research was conducted through two distinct experimental cycles. The first, carried out in 2024, established a foundational comparison, revealing that while a multi-agent architecture achieved 28\% higher truthfulness in Q\&A tasks, its cost was on average 3.7 times higher. Furthermore, a single-agent architecture proved to be surprisingly more effective in Text-to-SQL tasks.
+
+    The rapid evolution of generative AI frameworks and models prompted a second, more advanced experiment in 2025. This second phase built upon the initial findings, employing non-agentic workflows as a baseline and a more rigorous, automated evaluation methodology based on the "LLM-as-judge" concept \citep{Gu2025}. This led to a crucial and counter-intuitive discovery: a non-agentic architecture using an intelligent router to select the correct knowledge source decisively outperformed both single and multi-agent systems. This finding suggests that in specialized domains where the LLM lacks deep pre-trained knowledge, the reflective capabilities of agentic systems are less effective than a streamlined, well-directed retrieval process, fundamentally shaping the answers to our research questions.
+
+
 
 \section{Research Methodology}
   
@@ -738,7 +779,7 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
 
             To address the problem, we designed, built, and tested two distinct artifacts: a single-agent solution and a multi-agent solution. Both are goal-based agents designed to accurately respond to user queries by leveraging a suite of tools.
 
-        \subsection{Single-Agent Architecture.}
+        \subsection{Artifact 1: Single-Agent Architecture.}
 
             In this work, a goal-based agent \citep{Russell2020} was implemented with the goal of accurately responding to various queries. 
             The agent operates within an environment equipped with multiple tools for task-specific operations, as shown in Figure~\ref{fig:agent_environment}, and interfaces with users to receive queries.
@@ -777,7 +818,7 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
                 \label{fig:diagrama_agente_1}
             \end{figure}
 
-        \subsection{Multi-Agent Architecture}
+        \subsection{Artifact 2: Multi-Agent Architecture}
 
             The second artifact is a multi-agent system where responsibility is distributed among several specialized agents, coordinated by a Chat Manager, as shown in Figure~\ref{fig:agent_config_2}. This architecture is designed to handle queries by routing them to the agent best equipped for the task. As depicted in the decision process in Figure~\ref{fig:diagrama_agente_MultiAgente_2}, a \enquote{speaker selection} step determines the most suitable agent to act at each turn, promoting a more focused and contextualized approach to problem-solving.
 
@@ -1521,6 +1562,41 @@ The use of "LLM-as-a-judge" was driven by the sheer volume of responses requirin
 
 
     \subsection{Discussion} \label{sec:exp2-discussion}
+
+        % [DISCUSSION WILL ENTER HERE]
+        The results from this second experimental cycle present a series of compelling, and in some aspects, counter-intuitive insights into the application of LLM-based architectures in specialized technical domains. The most significant finding, which stands in contrast to the prevailing trends in agentic AI and some initial findings from our first experiment, is the superior performance of a non-agentic configuration (\textit{Linear-Flow w/ Router}) over its more complex, cyclical agentic counterparts. This outcome challenges the assumption that increased agent complexity, with its capacity for reflection and iterative refinement, universally leads to better performance. This discussion will explore the primary hypothesis for this phenomenon, explore other contributing factors, and consider the broader implications for designing AI systems in niche domains.
+
+        \subsubsection{The Domain Knowledge Deficit: Why Agentic Reflection Fails}
+
+            The core benefit of an agentic architecture, whether single or multi-agent, lies in its ability to perform cyclical reasoning. An agent can call a tool, assess the output, reflect on its progress, and decide on a new course of action, potentially correcting earlier mistakes or refining its strategy. This iterative process is a form of simulated cognition. However, we hypothesize that the effectiveness of this reflective capability is fundamentally contingent on the Large Language Model's pre-existing, foundational knowledge of the subject matter.
+            
+            For an LLM to effectively judge the output of a tool or the partial answer from a sub-agent, it must have a robust internal model of what constitutes a "good" or "correct" answer in that domain. Consider, for example, the domain of software engineering. LLMs like GPT-4o are extensively trained on vast repositories of code, documentation, and programming discussions. When an agent generates a piece of code, the LLM can "read" it, understand its logic, identify bugs, and suggest improvements because it has been trained on countless similar examples. In this context, a cyclical, reflective flow is highly effective because the LLM is a competent judge of its own (or its peers') output.
+            
+            The domain of this study, well construction engineering, presents a starkly different scenario. The knowledge is highly specialized, filled with niche terminology, and often contained within proprietary corporate documents that do not form a significant part of the public web crawl used to train general-purpose LLMs. Consequently, when an agent in our experiment retrieves a technical snippet from a lessons-learned document, the LLM lacks the deep, specialized knowledge required to effectively critique it. It cannot reliably discern subtle inaccuracies, determine if the context is fully appropriate, or judge whether a sub-agent's reasoning is sound from an engineering perspective.
+            
+            In this context of a "domain knowledge deficit", the cyclical flow of an agentic system becomes a liability rather than an asset. The reflective loop introduces computational and cost overhead (more LLM calls, more complex state management) without a corresponding improvement in the quality of reasoning. The agent may cycle, but it does so without true insight, making the additional complexity ineffective. This leads to the observed result: the more straightforward, non-agentic approach outperforms it.
+        
+        \subsubsection{The Unsurprising Efficacy of Intelligent Routing}
+            
+            While the agentic systems underperformed, the success of the \textit{Linear-Flow w/ Router} configuration is, in itself, a significant finding. Its superior performance can be attributed to its focused efficiency. Rather than engaging in a complex, multi-step reasoning process, this architecture excels at a single, critical task: intent classification and tool selection.
+            
+            The initial "router" call is a highly targeted use of the LLM's reasoning power. Its sole purpose is to analyze the user's query and map it to the most appropriate knowledge base (tool). This is a task that even a general-purpose LLM can perform well, as it relies on semantic understanding rather than deep domain expertise. By correctly identifying the right tool from the outset, the router ensures that the subsequent retrieval step is already on the right path.
+            
+            This approach of "decide once, execute well" proved more effective for this dataset than the agents' "execute, reflect, re-execute" loop. It avoids the risk of error propagation inherent in cyclical systems. In an agentic loop, a minor misinterpretation in an early step can be amplified in subsequent cycles as the agent doubles down on a flawed path. The linear flow of the router configuration is immune to this, as there are no subsequent cycles to compound an error. The simplicity of its prompt and execution logic also reduces the chance of "meta-errors", where the LLM becomes confused by the complex state and instructions of a multi-turn agentic conversation.
+        
+        \subsubsection{Other Plausible Contributing Factors}
+        
+            Beyond the primary hypothesis of the domain knowledge deficit, several other factors likely contributed to the observed results:
+            
+            \begin{itemize}
+                \item \textbf{Nature of the Task}: The questions in the experimental dataset, while technically complex, are primarily information retrieval tasks. They demand finding the correct facts from the knowledge base and synthesizing them into an answer. They do not necessarily require the kind of complex, multi-step deliberation or creative problem-solving where a reflective agent might theoretically excel. For such "retrieve-and-synthesize" queries, optimizing the retrieval step, as the router does, yields the greatest performance gain.
+                
+                \item \textbf{Model Capabilities (GPT-4o vs. GPT-4o-mini)}: The consistent and significant performance gap between GPT-4o and GPT-4o-mini across all configurations underscores the critical importance of the underlying model's reasoning and instruction-following capabilities. The superior performance of the \textit{Linear-Flow w/ Router} on GPT-4o (F1-Score 0.702) compared to the same configuration on GPT-4o-mini (F1-Score 0.604) highlights that even the most effective architecture is gated by the power of the engine driving it.
+                
+                \item \textbf{High Performance Variance}: A crucial observation is the high standard deviation across all configurations. This indicates that performance is highly dependent on the specific question being asked. Even the best-performing system failed completely on some queries (minimum F1-Score of 0.333), while succeeding perfectly on others (maximum F1-Score of 1.000). This suggests that no single architecture is a panacea. Certain query structures or topics may inherently favor one approach over another, reinforcing the conclusion that the optimal architecture is task- and domain-dependent.
+            \end{itemize}
+            
+            In conclusion, this experiment provides strong evidence that for specialized domains where LLMs lack deep pre-existing knowledge, the architectural focus should be on optimizing the interface between the query and the external knowledge tools. A simple, intelligent routing mechanism that accurately directs a query to the correct source can be more robust and effective than a complex, cyclical agentic system that attempts to "reason" in a domain it does not truly understand. The assumption that more complexity equals better performance is a fallacy; true effectiveness comes from aligning the architectural design with both the nature of the task and the inherent capabilities and limitations of the language model itself.
 \chapter{Conclusions}
 
     The results of this study highlight the potential of multi-agent architectures based on LLMs in the O\&G sector, particularly in the domain of well engineering. The ability to process and respond to complex queries paves the way for a significant digital transformation in the area.
@@ -1540,3 +1616,448 @@ The use of "LLM-as-a-judge" was driven by the sheer volume of responses requirin
     [CONCLUSIONS FROM EXPERIMENT 2 ARE YET TO BE WRITTEN HERE]
 
     [INCLUIR: COMENTAR QUE OS PRECOS DE LLM ESTAO CAINDO MTO, MODELOS PEQUENOS COM EXCELENTE DESEMPENHO, O QUE TORNA A ANALISE FINANCEIRA DO 1o CICLO OBSOLETA]
+
+% \chapter{Um apÃªndice}
+
+    % Segundo a norma da ABNT (AssociaÃ§Ã£o Brasileira de Normas TÃ©cnicas), a definiÃ§Ã£o e utilizaÃ§Ã£o de apÃªndices e anexos seguem critÃ©rios especÃ­ficos para a organizaÃ§Ã£o de documentos acadÃªmicos e tÃ©cnicos.
+    
+    % ApÃªndice: O apÃªndice Ã© um texto ou documento elaborado pelo autor do trabalho com o objetivo de complementar sua argumentaÃ§Ã£o, sem que seja essencial para a compreensÃ£o do conteÃºdo principal do documento. O uso de apÃªndices Ã© indicado para incluir dados detalhados como questionÃ¡rios, modelos de formulÃ¡rios utilizados na pesquisa, descriÃ§Ãµes extensas de mÃ©todos ou tÃ©cnicas, entre outros. Os apÃªndices sÃ£o identificados por letras maiÃºsculas consecutivas, travessÃ£o e pelos respectivos tÃ­tulos. A inclusÃ£o de apÃªndices visa a fornecer informaÃ§Ãµes adicionais que possam ajudar na compreensÃ£o do estudo, mas cuja presenÃ§a no texto principal poderia distrair ou desviar a atenÃ§Ã£o do leitor dos argumentos principais.
+
+\chapter{Experiment 2}
+    
+    \section{Artifacts}
+
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width=\textwidth]{images_exp2/diagrams/diagrama_todos.png}
+            \caption{Comparison between the implemented RAG configurations.}
+            \label{fig:diagrama_todos}
+        \end{figure}
+
+    \section{Dataset}
+
+    \begin{landscape}
+    \scriptsize
+        \begin{longtable}{|p{3cm}|p{22cm}|}
+        \caption{Dataset used in the thesis experiments (Landscape).}\label{tab:dataset_landscape} \\
+        \hline \textbf{Question} & \textbf{Ground Truth} \\ \hline
+        \endfirsthead
+        \multicolumn{2}{c}%
+        {{\tablename\ \thetable{} -- Continued from previous page}} \\
+        \hline \textbf{Question} & \textbf{Ground Truth} \\ \hline
+        \endhead
+        \hline \multicolumn{2}{|r|}{{Continued on next page}} \\ \hline
+        \endfoot
+        \hline \hline
+        \endlastfoot
+        % --- Data Starts Here ---
+        Cite acidentes envolvendo colisÃ£o entre top drive e outros equipamentos. & 
+        1. ColisÃ£o do Top Drive com Coluna de ProduÃ§Ã£o na Mesa Auxiliar
+        Durante a montagem de coluna de produÃ§Ã£o 6 5/8" na mesa auxiliar, o top drive colidiu com o Ãºltimo tubo acunhado na mesa rotativa, causando empenamento do tubo. A causa foi falha de planejamento e avaliaÃ§Ã£o de risco, pois o top drive nÃ£o foi retraÃ­do totalmente antes da descida. 
+        \newline 2. ColisÃ£o entre o Top Drive e a Hydraracker
+        Durante manobra de descida de coluna de Drill Pipe 5", o top drive colidiu com o braÃ§o principal da Hydra Racker que estava sendo estendido. A colisÃ£o provocou o desprendimento entre o braÃ§o principal e o braÃ§o inferior da Hydra Racker, com queda de uma peÃ§a de 2,7kg de altura de 27m. Causas incluÃ­ram operaÃ§Ã£o em modo manual e configuraÃ§Ã£o inadequada do sistema anticolisÃ£o.
+        \newline 3. ColisÃ£o do Top Drive com SeÃ§Ã£o de Drill Pipe
+        Durante manobra de retirada do BHA de 8 7/8", o top drive colidiu com a seÃ§Ã£o de Drill Pipe sustentada pelo PRS (Pipe Racking System). Com o impacto, a carenagem frontal do top drive foi cisalhada e caiu no piso do rigfloor de uma altura de 20m, pesando aproximadamente 85kg. 
+        \newline 4. InteraÃ§Ã£o do Top Drive Auxiliar com Equipamentos de SeguranÃ§a
+        Durante conexÃ£o de mangueira MPD, o cabo da trava quedas de um plataformista ficou preso no arranjo de iÃ§amento do top drive auxiliar, provocando a suspensÃ£o do trabalhador. O incidente ocorreu por falha na anÃ¡lise de risco e comunicaÃ§Ã£o inadequada. \\ \hline        
+        Quais as causas e falhas tÃ­picas de acidentes ou incidentes envolvendo guarda corpo?  Cite alertas que retratem isso. & 
+        Os acidentes ou incidentes envolvendo guarda-corpo geralmente ocorrem devido a falhas de projeto, gestÃ£o de processos, especificaÃ§Ã£o inadequada do serviÃ§o, e falta de procedimentos especÃ­ficos. Aqui estÃ£o algumas causas e falhas tÃ­picas.
+        \newline 1. Falha de Equipamentos e Projeto de Engenharia Deficiente: O projeto do guarda-corpo pode nÃ£o ser adequado para a operaÃ§Ã£o, levando a deslocamentos inesperados e acidentes. (Fonte: Definitivo - LesÃ£o no dorso do pÃ© direito devido ao choque com guarda corpo\_ POCOS SM \_Abrange+2023-000154)         
+        \newline 2. Falha na GestÃ£o de Processos e Pessoas: Inclui falhas no processo de qualificaÃ§Ã£o da empresa contratada, violaÃ§Ã£o de procedimentos por supervisores, e falta de documentos especÃ­ficos para avaliaÃ§Ã£o de operaÃ§Ãµes. (Fonte: Definitivo - LesÃ£o no dorso do pÃ© direito devido ao choque com guarda corpo\_ POCOS SM \_Abrange+2023-000154)         
+        \newline 3. Falha de IdentificaÃ§Ã£o de Risco Adicional de Queda: NÃ£o identificar riscos adicionais, como vÃ£os entre a gaiola da escada e o guarda-corpo, pode resultar em quedas fatais. (Fonte: Acidente fatal-Queda de altura - REVAP-MA-PM\_ Abrange 2023-000279)         
+        \newline 4. Movimento Irregular da Carga e Falha no Freio do Guindaste: Durante movimentaÃ§Ãµes de carga, falhas no equipamento podem causar impactos que danificam o guarda-corpo e resultam em quedas de objetos. (Fonte: Alerta Definitivo - Vermelho - Descida descontrolada de carga - DivulgaÃ§Ã£o equipe movimentaÃ§Ã£o carga) \\ \hline
+Quais foram as principais falhas identificadas em acidentes com pÃ©s, de acordo com os Alertas de SMS? & As principais falhas identificadas em acidentes envolvendo pÃ©s incluem:        
+        \newline 1. Planejamento inadequado e falta de anÃ¡lise de risco: Muitos acidentes ocorreram devido Ã  falta de planejamento adequado e anÃ¡lise de risco antes de realizar atividades, como movimentaÃ§Ã£o de cargas e iÃ§amento de peÃ§as. Isso foi observado em acidentes como o de fratura em trÃªs metatarsos do pÃ© esquerdo durante a fabricaÃ§Ã£o de um corrimÃ£o na oficina de solda ("Preliminar AMARELO - Acidente com LesÃ£o - Fratura - Geral - POCOS SM 055 2022").        
+        \newline 2. Uso inadequado de Equipamentos de ProteÃ§Ã£o Individual (EPI): Em alguns casos, o uso inadequado ou a falta de EPI apropriado, como botas de seguranÃ§a com proteÃ§Ã£o para metatarso, contribuiu para a ocorrÃªncia de acidentes. Isso foi destacado em acidentes como o corte contuso no pÃ© esquerdo durante a manutenÃ§Ã£o de um gerador ("Definitivo AMARELO - Corte contuso no pÃ©\_ Geral\_ POCOS SM 019\_rev01").        
+        \newline 3. Falta de percepÃ§Ã£o de riscos e consciÃªncia situacional: A falta de percepÃ§Ã£o de riscos e a escolha de caminhos mais curtos sem avaliar o ambiente contribuÃ­ram para acidentes, como a torÃ§Ã£o no tornozelo ao pisar em uma madeira de apoio de carga ("Definitivo -TorÃ§Ã£o no tornozelo ao pisar sobre uma peÃ§a de madeira - POCOS SM 025 2023").        
+        \newline 4. Falhas na supervisÃ£o e no cumprimento de diretrizes: A supervisÃ£o inadequada e o nÃ£o cumprimento de diretrizes e procedimentos de seguranÃ§a foram fatores em acidentes, como o de fratura no tornozelo ao tropeÃ§ar em um umbilical no convÃ©s ("Definitivo VERMELHO - Fratura no tornozelo\_Geral\_ POCOS SM 016 2021").
+        \newline 5. EPI Inadequado: Uso de botas sem caracterÃ­sticas anti-torÃ§Ã£o e solado adequado para ambientes offshore, como mencionado no acidente de torÃ§Ã£o de tornozelo ao descer escada (POCOS SM 009 2021). \\ \hline  
+Como a presenÃ§a de sÃ­lica na composiÃ§Ã£o da pasta de cimento afeta sua estabilidade tÃ©rmica em altas temperaturas, de acordo com as liÃ§Ãµes aprendidas? & A sÃ­lica Ã© adicionada ao cimento na proporÃ§Ã£o de 35\% por peso de cimento com o objetivo de mitigar a retrogressÃ£o (perda da resistÃªncia compressiva) do cimento no poÃ§o quando submetido a temperaturas superiores a 230Â°F (110Â°C). Esta prÃ¡tica Ã© comum em poÃ§os profundos ou com gradiente geotÃ©rmico elevado que, em suas fases finais, ultrapassam a temperatura limite. A presenÃ§a de sÃ­lica na pasta de cimento tambÃ©m pode ser necessÃ¡ria em situaÃ§Ãµes onde a temperatura nos anulares dos revestimentos durante a produÃ§Ã£o do poÃ§o seja bastante elevada, mesmo em menores profundidades.
+        \newline        A ausÃªncia de sÃ­lica no cimento sujeito a temperaturas superiores a 230Â°F pode resultar numa perda de resistÃªncia compressiva no cimento, levando a problemas de isolamento.
+        \newline        Entretanto, Ã© importante observar que a mÃ¡ preparaÃ§Ã£o da pasta de cimento pode resultar em propriedades da pasta inhomogÃªneas durante a fabricaÃ§Ã£o e bombeamento. Isso pode levar a gelificaÃ§Ã£o prematura e possÃ­vel prisÃ£o da coluna. Em caso de anormalidades na preparaÃ§Ã£o da pasta, recomenda-se a realizaÃ§Ã£o da cimentaÃ§Ã£o em bateladas.
+        
+        ReferÃªncias:
+        \newline        Alerta TÃ©cnico AT5533: UtilizaÃ§Ã£o de cimento com sÃ­lica na cimentaÃ§Ã£o de revestimentos de superfÃ­cie. Autor: Jan Fernandes Aslan. Data: 16/11/2020.
+        \newline        Alerta TÃ©cnico AT10479: SubstituiÃ§Ã£o indevida de cimento com sÃ­lica por cimento puro em cimentaÃ§Ã£o de revestimento de superfÃ­cie em poÃ§o com temperatura elevada. Autor: Rafael Peralta Muniz Moreira. Data: 14/02/2021.
+        \\ \hline
+
+De acordo com as liÃ§Ãµes aprendidas, como a inclinaÃ§Ã£o do poÃ§o afeta a eficÃ¡cia da cimentaÃ§Ã£o durante o tamponamento through tubing? & Durante o tamponamento through tubing em poÃ§os de alta inclinaÃ§Ã£o (maior que 45 graus), a eficÃ¡cia da cimentaÃ§Ã£o pode ser afetada por fatores advindos da inclinaÃ§Ã£o do poÃ§o. Segundo um Alerta TÃ©cnico (AT9613), essa situaÃ§Ã£o aumenta a complexidade das operaÃ§Ãµes de tamponamento devido ao fato de a coluna de produÃ§Ã£o/injeÃ§Ã£o estar descentralizada dentro do revestimento de produÃ§Ã£o. 
+        \newline        AlÃ©m disso, outras dificuldades surgem, como:
+        \newline        - Dificuldade no assentamento de cement retainer inflÃ¡vel
+        - Dificuldade na descida de ferramentas de perfilagem e plugs para isolamento preliminar abaixo do trecho do poÃ§o a ser tamponado
+        \newline        Estes fatores podem resultar em poÃ§os com qualidade mÃ©dia ou falha na cimentaÃ§Ã£o. Recomenda-se por agora, atÃ© que estudos mais aprofundados sejam realizados, uma anÃ¡lise criteriosa de cada cenÃ¡rio e a escolha de alternativas mais robustas para o abandono de poÃ§os de alta inclinaÃ§Ã£o e a seleÃ§Ã£o de escopo de projeto executivo de abandono, detalhamento operacional e estimativa dos riscos e tempos da intervenÃ§Ã£o.
+        \newline        Por outro lado, existem algumas alternativas como o Bombeio Direto de Cimento (BDC) para abandono permanente through tubing (TT). Isso permite o bombeio de pasta de cimento diretamente pelo riser dual bore, passando pela COP/COI atÃ© ser posicionada em anular â€œAâ€ (COP x revestimento). No entanto, essa tÃ©cnica tambÃ©m tem suas restriÃ§Ãµes e premissas, como necessidade de emprego de Riser Dual Bore e menor tolerÃ¢ncia ao erro no deslocamento de pasta.
+        \newline        Em resumo, a inclinaÃ§Ã£o do poÃ§o pode afetar a eficÃ¡cia da cimentaÃ§Ã£o durante o tamponamento atravÃ©s do tubo, tornando a operaÃ§Ã£o mais complexa e aumentando o risco de falhas na cimentaÃ§Ã£o. Diferentes abordagens e tecnologias estÃ£o sendo estudadas para otimizar essas operaÃ§Ãµes e minimizar os riscos. \\ \hline
+
+De acordo com as liÃ§Ãµes aprendidas, quais sÃ£o os riscos associados Ã  substituiÃ§Ã£o de cimento com sÃ­lica por cimento puro em cimentaÃ§Ãµes de revestimento de superfÃ­cie em poÃ§os com temperatura elevada? & Estes sÃ£o os principais riscos associados Ã  substituiÃ§Ã£o indevida de cimento com sÃ­lica por cimento puro em poÃ§os de alta temperatura:
+        \newline        1. O cimento puro, quando submetido a altas temperaturas (acima de 110Â°C), sofre uma regressÃ£o de sua resistÃªncia compressiva ao longo do tempo, podendo comprometer sua funÃ§Ã£o em poÃ§os de petrÃ³leo como elemento de barreira.
+        \newline        2. Falhas na cimentaÃ§Ã£o do revestimento de superfÃ­cie podem levar a custos e impactos adicionais, como o vazamento de fluidos de perfuraÃ§Ã£o para o fundo do mar e o aumento das cargas hidrostÃ¡ticas sobre o revestimento de superfÃ­cie e os revestimentos subsequentes instalados.
+        \newline        3. Em alguns casos, a bainha de cimento pode ser exposta a temperaturas acima de 110Â°C em algum momento do ciclo de vida do poÃ§o. Nesses casos, o uso de cimento com sÃ­lica deve ser mantido para garantir a estabilidade tÃ©rmica da pasta de cimento.
+        \newline        4. A substituiÃ§Ã£o indevida pode levar a outros riscos como escape de fluidos de perfuraÃ§Ã£o do anular C para o fundo do mar, alteraÃ§Ãµes no dimensionamento do revestimento, alteraÃ§Ãµes no desenho de projeto de inÃ­cio de poÃ§o, entre outros.
+        \newline        Deve-se ressaltar que a intenÃ§Ã£o de reduzir o tempo de aguardo de cura do cimento nÃ£o justifica a substituiÃ§Ã£o do cimento com sÃ­lica por cimento puro, pois existem outros mÃ©todos para alcanÃ§ar uma cura mais rÃ¡pida, como o aumento da densidade da pasta ou o uso de aditivos.
+        \newline        Esse fenÃ´meno Ã© conhecido na indÃºstria do petrÃ³leo desde 1954 e foi mitigado pela introduÃ§Ã£o de sÃ­lica cristalina na composiÃ§Ã£o da pasta de cimento para garantir a estabilidade tÃ©rmica. \\ \hline
+
+Quais estratÃ©gias podem ser adotadas para melhorar a qualidade da cimentaÃ§Ã£o em poÃ§os de alta inclinaÃ§Ã£o durante o tamponamento through tubing, de acordo com as liÃ§Ãµes aprendidas? & Com base nos itens de conhecimento obtidos, algumas estratÃ©gias para melhorar a qualidade da cimentaÃ§Ã£o em poÃ§os de alta inclinaÃ§Ã£o durante o tamponamento through tubing incluem:
+        \newline        1. Aumento das vazÃµes no deslocamento quando a cimentaÃ§Ã£o Ã© executada com flexitubo. Este procedimento auxilia na melhor distribuiÃ§Ã£o do cimento no espaÃ§o anular e contribui para uma melhor qualidade de cimentaÃ§Ã£o.
+        \newline        2. UtilizaÃ§Ã£o de dispositivos para vibraÃ§Ã£o da coluna durante a cimentaÃ§Ã£o. A vibraÃ§Ã£o pode ajudar a melhorar a aderÃªncia do cimento no espaÃ§o anular tornando a cimentaÃ§Ã£o mais eficaz.
+        \newline        3. UtilizaÃ§Ã£o de volumes de excesso de pasta de cimento compatÃ­veis com uma operaÃ§Ã£o que busque robustez mÃ¡xima. Este procedimento garante que haja cimento suficiente para preencher o espaÃ§o anular ao longo de todo o comprimento da coluna.
+        \newline        4. AnÃ¡lise criteriosa de cada cenÃ¡rio e seleÃ§Ã£o de uma alternativa mais robusta para o abandono (preferencialmente com a retirada da coluna). Isso Ã© particularmente importante para poÃ§os de alta inclinaÃ§Ã£o e outros cenÃ¡rios que adicionem complexidade ao tamponamento.
+        \newline        5. PrevisÃ£o no cronograma da intervenÃ§Ã£o da perfilagem de avaliaÃ§Ã£o da cimentaÃ§Ã£o como mÃ©todo de verificaÃ§Ã£o. Isso permite a identificaÃ§Ã£o de possÃ­veis falhas ou Ã¡reas de cimentaÃ§Ã£o insatisfatÃ³ria para um possÃ­vel retoque da cimentaÃ§Ã£o.
+        \newline        6. Uso do Bombeio Direto de Cimento (BDC) para abandono permanente through tubing, uma tÃ©cnica que pode otimizar o tempo e reduzir os riscos operacionais, embora com restriÃ§Ãµes especÃ­ficas.
+        \newline        Por Ãºltimo, Ã© importante lembrar que toda situaÃ§Ã£o Ã© Ãºnica e deve ser avaliada individualmente de acordo com as suas caracterÃ­sticas especÃ­ficas. \\ \hline
+
+Quais sÃ£o as alternativas para acelerar o tempo de cura da pasta de cimento sem comprometer sua integridade em condiÃ§Ãµes de temperatura elevada, de acordo com as liÃ§Ãµes aprendidas? & As melhores prÃ¡ticas incluem o aumento da densidade da pasta, o uso de aditivos e a consideraÃ§Ã£o da rampa de cura, mas Ã© importante manter a utilizaÃ§Ã£o de cimento com sÃ­lica para garantir a integridade da cimentaÃ§Ã£o em condiÃ§Ãµes de temperatura elevada. \\ \hline
+
+Quais sÃ£o os principais desafios e riscos associados ao tamponamento through tubing em poÃ§os de alta inclinaÃ§Ã£o, de acordo com as liÃ§Ãµes aprendidas? & Existem vÃ¡rios desafios e riscos associados ao tamponamento through tubing em poÃ§os de alta inclinaÃ§Ã£o, conforme revelado no Alerta TÃ©cnico "Risco de falha de cimentaÃ§Ã£o em tamponamento through tubing em poÃ§os de alta inclinaÃ§Ã£o (45 graus)". Os principais problemas incluem:
+        \newline        - Maior complexidade nas operaÃ§Ãµes de tamponamento devido Ã  descentralizaÃ§Ã£o da coluna de produÃ§Ã£o/injeÃ§Ã£o dentro do revestimento de produÃ§Ã£o em poÃ§os com alta inclinaÃ§Ã£o.
+        - Dificuldade no assentamento de cement retainer inflÃ¡vel em poÃ§os inclinados.
+        - Dificuldade na descida de ferramentas de perfilagem e plugs para isolamento preliminar abaixo do trecho do poÃ§o a ser tamponado.
+        \newline        AlÃ©m disso, foi observado que em poÃ§os de alta inclinaÃ§Ã£o (> 45 graus), a qualidade da cimentaÃ§Ã£o Ã©, muitas vezes, apenas mÃ©dia, cumprindo apenas os requisitos mÃ­nimos e, em alguns casos, levando a falhas na cimentaÃ§Ã£o.
+        \newline        No atual cenÃ¡rio, para melhorar os resultados, Ã© sugerido o uso de vazÃµes no deslocamento superiores quando a cimentaÃ§Ã£o Ã© realizada com flexitubo, a realizaÃ§Ã£o do uso de dispositivos para vibraÃ§Ã£o da coluna durante a cimentaÃ§Ã£o e o uso de volumes excedentes de pasta compatÃ­veis com uma operaÃ§Ã£o da maior robustez possÃ­vel.
+        \newline        Destaca-se tambÃ©m a importÃ¢ncia do controle de circulaÃ§Ã£o e perda de fluido durante a perfuraÃ§Ã£o da fase do reservatÃ³rio. Em situaÃ§Ãµes de perda de circulaÃ§Ã£o severa, a perfuraÃ§Ã£o com Ã¡gua do mar e tampÃµes viscosos pode ser uma alternativa segura para evitar custos e riscos adicionais.
+        \newline        Ã‰ relevante mencionar tambÃ©m o uso de mÃ©todos sustentÃ¡veis e eficientes de combate Ã  perda de fluido pÃ³s-teste de formaÃ§Ã£o, em que um tampÃ£o especial de filtrado relaxado pode ser uma soluÃ§Ã£o viÃ¡vel, trazendo economia e eficiÃªncia operacional.
+        \newline        No entanto, atÃ© que um estudo mais aprofundado sobre as causas desses problemas seja realizado e medidas de melhoria sejam implementadas, recomenda-se a seleÃ§Ã£o cuidadosa do plano de abandono e a anÃ¡lise prÃ©via de cada cenÃ¡rio para poÃ§os de alta inclinaÃ§Ã£o. \\ \hline
+Cite problemas operacionais ocorridos na sonda NS-48 em 2024, de acordo com o SITOP? Liste todas as ocorrÃªncias que encontrar. & 1. Falha no Sistema de RotaÃ§Ã£o do Top Drive: Houve uma investigaÃ§Ã£o contÃ­nua sobre uma falha no sistema de rotaÃ§Ã£o do top drive, que impossibilitou a conexÃ£o Ã  coluna. Durante o perÃ­odo de espera, o ponto de acunhamento da cunha foi alterado duas vezes. Fonte: <a href="https://wellsom.petrobras.com.br/sitopi/sonda/NS-48/2024-07-19/M" target="blank">Documento da sonda NS-48 - 2024-07-19 11:50</a>
+        \newline        2. CondiÃ§Ãµes Ambientais Adversas: Em vÃ¡rias ocasiÃµes, as operaÃ§Ãµes foram interrompidas devido a condiÃ§Ãµes ambientais adversas, como ventos fortes, que impediram a montagem de equipamentos de arame e a retirada de plugues. Fonte: <a href="https://wellsom.petrobras.com.br/sitopi/sonda/NS-48/2024-05-09/M" target="blank">Documento da sonda NS-48 - 2024-05-09 07:30</a>
+        \newline        3. Atrasos na InstalaÃ§Ã£o de Equipamentos: Houve atrasos na instalaÃ§Ã£o de equipamentos, como a ANM CCB-462, devido Ã  espera por embarcaÃ§Ãµes de apoio, o que impactou o cronograma das operaÃ§Ãµes. Fonte: <a href="https://wellsom.petrobras.com.br/sitopi/sonda/NS-48/2024-05-21/M" target="blank">Documento da sonda NS-48 - 2024-05-21 05:24</a>
+        \newline        4. Problemas com o WSSV Blue Marlim: A sonda enfrentou problemas operacionais devido Ã  indisponibilidade do WSSV Blue Marlim para operar conectado, causada por condiÃ§Ãµes de mar adversas e problemas no gerador do barco. Fonte: <a href="https://wellsom.petrobras.com.br/sitopi/sonda/NS-48/2024-04-13/T" target="blank">Documento da sonda NS-48 - 2024-04-13 13:29</a>
+        \newline        5. Falha no sistema de rotaÃ§Ã£o do top drive: Houve uma investigaÃ§Ã£o sobre a falha no sistema de rotaÃ§Ã£o do top drive, que impossibilitou a conexÃ£o Ã  coluna. Durante o perÃ­odo de aguardo, o ponto de acunhamento da cunha foi alterado duas vezes. Fonte: <a href="https://wellsom.petrobras.com.br/sitopi/sonda/NS-48/2024-07-19/M" target="blank">NS-48 - 2024-07-19</a>
+        \newline        6. Aguardando troca de turma: Houve um perÃ­odo de espera para troca de turma do WSSV Blue Marlim, durante o qual foram realizadas operaÃ§Ãµes de mini-TI e recalcamento de fluidos. Fonte: <a href="https://wellsom.petrobras.com.br/sitopi/sonda/NS-48/2024-04-12/M" target="blank">NS-48 - 2024-04-12</a> \\ \hline
+
+Em quais poÃ§os foi utilizado Well Stroker para abertura e fechamento de VIF, de acordo com o SITOP? Liste todas as ocorrÃªncias que encontrar. & Foram encontrados 6 poÃ§os com ocorrÃªncia de uso de Well Stroker para abertura e fechamento de VIF
+        1. 8-BUZ-55-RJS
+        2. 7-BAZ-3-ESS 
+        3. 8-RO-146HP-RJS
+        4. 7-CRT-52-RJS
+        5. 8-BUZ-58D-RJS
+        6. 7-JUB-61D-ESS
+        7. 8-ATP-7D-RJS
+        8. 3-RJS-688A \\ \hline
+
+Em quais poÃ§os haverÃ¡ cimentaÃ§Ã£o de revestimento entre as prÃ³ximas operaÃ§Ãµes, de acordo com o SITOP do dia 13/05/2025? Informe somente a lista de nomes dos poÃ§os. Liste todos os poÃ§os que encontrar, nÃ£o tente resumir. & Nos prÃ³ximos dias, haverÃ¡ operaÃ§Ãµes de cimentaÃ§Ã£o de revestimento nos seguintes poÃ§os:
+        \newline        1. PoÃ§o 7-BUZ-95-RJS
+        \newline        2. PoÃ§o 7-JUB-81H-ESS
+        \newline        3. PoÃ§o 7-BUZ-94D-RJS
+        \newline        4. PoÃ§o 8-MRO-36-RJS
+        \newline        5. PoÃ§o 8-BUZ-101-RJS
+        \newline        6. PoÃ§o 9-AB-138D-RJS
+        \newline        7. PoÃ§o Buena Suerte-1
+        \newline        8. PoÃ§o 7-BUZ-94D-RJS \\ \hline
+
+Em qual poÃ§o estÃ¡ a sonda NS-39, de acordo com o SITOP? Considere que a data de hoje Ã© 05/01/2025.  & A sonda NS-39 estÃ¡ operando no poÃ§o 7-MRO-37-RJS. \\ \hline
+
+Quais as Ãºltimas operaÃ§Ãµes efetuadas no poÃ§o 7-MRL-244H-RJS, de acordo com o SITOP do dia 05/01/2025? & OperaÃ§Ã£o Principal:
+        MP: Circulado FPBNA 9,4 ppg via coluna a 8 bpm / 270 psi.
+        MP: Bombeado 50 bbl de colchÃ£o espaÃ§ador 11,0 ppg via bomba da sonda 6 bpm / 230 psi e deslocado com 10 bbl de FPBNA 9,4 ppg a 6 bpm / 230 psi pela bomba da sonda.
+        MP: Bombeado 96 bbl de pasta de cimento 15,8 ppg a 4 bpm e deslocado com 6,9 bbl de colchÃ£o espaÃ§ador 11 ppg e com 59 bbl de FPBNA 9,4 ppg.
+        MP: Retirada coluna atÃ© 939 m (mais de 200 m acima do TOC), circulado para limpeza da coluna com FPBNA 9,4 ppg e fechado BOP anular.
+        MP: Bombeado via UC 68 bbl de FPBNA 9,4 ppg pela coluna e efetuando squeeze do cimento no overlap liner 10,75" x revestimento 13,626" a 1 bpm/ 260 psi, 2 bpm/ 330 psi, 3 bpm/ 340 psi e a 4 bpm/ 410 psi.  
+        MP: Iniciado aguardo de pega de 11 h do cimento Ã s 21:30 h.
+        \newline        OperaÃ§Ã£o Paralela:
+        MA: Continuada montagem e estaleiramento do BHA 8 1/2". 
+        MA: Iniciada montagem do Djar e de ferramenta de condicionamento do topo do liner.  \\ \hline
+
+Quais foram as operaÃ§Ãµes executadas na NS-42 em 22/06/2024, de acordo com o SITOP?  & 
+        Descido conjunto FDR/TRT com coluna de DPR 6 5/8" atÃ© 936 m.
+        Efetuado dummy run com coluna de DPR e ajustado balanceio.
+        Conectada coflex na SFT.
+        Efetuada plumbagem da SFT.
+        Verticalizado arranjo de superfÃ­cie com SFF, EBE, links articulados e conectado DPR 6 5/8" da SFT na coluna.
+        Em paralelo, limpado TMF da ANM pelo ROV.
+        Montado BOP de arame sobre a SFT.
+        \newline        Finalizada montagem das linhas de superfÃ­cie e manifold auxiliar.
+        Efetuado teste de estanqueidade das linhas de superfÃ­cie com 300 psi / 4500 psi por 5 min / 10 min.
+        Efetuado teste de estanqueidade do DPR atÃ© as valvulas VG5 e XO da FDR com 3500 psi por 10 min. Hold Point aprovado pelo CSD-EQSB
+        Efetuado flush do DPR e HCR para limpeza.
+        Posicionado FCBA inibido com MEG 10% no interior do DPR e HCR.
+        \newline        \\ \hline
+
+Qual  o SITOP de hoje da NS-45? Considere que a data de hoje Ã© 05/01/2025. & A situaÃ§Ã£o operacional da sonda NS-45 em 05/01/2025 Ã© a seguinte:
+        \newline         OperaÃ§Ã£o Principal
+        - **ManutenÃ§Ã£o do BOP**: As manutenÃ§Ãµes do BOP estÃ£o 63% concluÃ­das. As atividades incluem a limpeza dos receptÃ¡culos, stabs, troca das vedaÃ§Ãµes da interface LMRP/Stack, troca dos packers seals do POD azul, manutenÃ§Ã£o das reguladoras do POD azul e amarelo, e lubrificaÃ§Ã£o do riser connector.
+        - **SituaÃ§Ã£o Atual**: A operaÃ§Ã£o estÃ¡ aguardando a substituiÃ§Ã£o do conector para 16 3/4" e a troca da gaveta de tubos fixa do BOP, alÃ©m de manutenÃ§Ãµes e testes. A previsÃ£o de conclusÃ£o dessas atividades Ã© para 07/01.
+        - **PrÃ³ximas OperaÃ§Ãµes**: Prosseguir com a substituiÃ§Ã£o do conector e gaveta de tubos do BOP, manutenÃ§Ãµes e testes (em andamento). EstÃ¡ previsto descer o BOP em 07/01.
+        \newline         OperaÃ§Ã£o Paralela
+        - **Atividades**: Atualmente, nÃ£o hÃ¡ operaÃ§Ãµes em andamento. EstÃ£o sendo programadas ferramentas MLWD para montagem do BHA e fabricado fluido FPBA para perfuraÃ§Ã£o BHD.
+        - **PrÃ³ximas OperaÃ§Ãµes**: EstÃ¡ prevista a montagem do BHA de perfuraÃ§Ã£o com Broca PDC 8 1/2", RSS, Ferramentas MLWDs e Alargador 9 1/2" para 06/01.
+        \\ \hline
+
+Qual sonda completou o poÃ§o 7-JUB-62DA-ESS, de acordo com o SITOP?  & A sonda que completou o poÃ§o 7-JUB-62DA-ESS foi a NS-40 \\ \hline
+
+ 
+        \end{longtable}
+    \end{landscape}
+
+    \section{Evaluation Prompt}
+
+\begin{lstlisting}[style=mystyle, language=Python, caption={C\'{o}digo para LLM-as-a-Judge}, label={code:llm-judge}]
+class Confusion_Matrix(TypedDict):  # type: ignore
+    true_positive: list[str]
+    false_positive: list[str]
+    true_negative: list[str]
+    false_negative: list[str]
+
+def calculate_metrics(llm, question, history):
+    if type(question['Ground Truth']) == str:
+        prompt_confusion_matrix = f""                
+            Voce recebera os seguintes parametros:
+            Pergunta: a pergunta do usuario
+            Resposta Ideal: a resposta considerada correta por um humano
+            Resposta do sistema: a resposta fornecida pelo sistema baseado em IA
+
+            Pegue a resposta do sistema, separe em afirmacoes e classifique cada afirmacao entre as opcoes abaixo:
+            True Positive (TP): as afirmacoes corretas feitas pelo sistema, ou seja, que estao presentes na resposta ideal.
+            False Positive (FP): as afirmacoes incorretas ou irrelevantes feitas pelo sistema, ou seja, que nao estao presentes na resposta ideal.
+
+            Pegue a resposta ideal, separe em afirmacoes e classifique cada afirmacao entre as opcoes abaixo:
+            True Negative (TN): Nao se aplica, deixar vazio.
+            False Negative (FN): as afirmacoes que constam na resposta ideal, mas nao foram feitas pelo sistema.
+
+            Importante:
+            - Voce deve gerar listas de afirmacoes para cada categoria. 
+            - Voce deve quebrar as respostas do sistema e a ideal em afirmacoes objetivas.
+            - Se as respostas do sistema ou a ideal contiverem frases grandes com mtas afirmacoes, analisar cada afirmacao separadamente.
+            - Uma afirmacao nao pode estar em mais de uma categoria.
+            - Ignore coisas na resposta do sistema que nao sao afirmacoes objetivas, como por exemplo citacoes de fontes e links.
+
+            Vamos la!
+
+            ############
+
+            Pergunta: {{{{
+            {question['Question']}
+            }}}}
+
+            Resposta ideal: {{{{
+            {question['Ground Truth']}
+            }}}}
+
+            Resposta do sistema: {{{{
+            {history[-1].content}
+            }}}}"
+        response = llm.with_structured_output(Confusion_Matrix).invoke(prompt_confusion_matrix)
+
+        true_positive_count = len(response.get('true_positive', []))
+        false_positive_count = len(response.get('false_positive', []))
+        true_negative_count = len(response.get('true_negative', []))
+        false_negative_count = len(response.get('false_negative', []))
+
+        try:
+            precision = true_positive_count / (true_positive_count + false_positive_count)
+        except ZeroDivisionError:
+            precision = 0
+        
+        try:
+            recall = true_positive_count / (true_positive_count + false_negative_count)
+        except ZeroDivisionError:
+            recall = 0
+
+        try:
+            f1_score = 2 * (precision * recall) / (precision + recall)
+        except ZeroDivisionError:
+            f1_score = 0
+            
+        print("\\n\\nPrecision: "+str(precision))
+        print("Recall: "+str(recall))
+        print("F1 Score: "+str(f1_score))
+
+        print("\\nAnswer Size Ratio: "+str(question['Answer Size (% of GT)']))
+
+        state.precision = precision
+        state.recall = recall
+        state.f1_score = f1_score
+        state.ground_truth = question['Ground Truth']
+        state.statements = response
+\end{lstlisting}
+
+    \section{Results}
+    \label{sec:exp2_appendix}
+
+        \subsection{Precision}
+
+
+            \subsubsection{Best Precision by Model and Configuration}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.75]{images_exp2/precision/bar_best_precision_by_model_and_configuration.png}
+                \caption{Best precision by model and configuration.}
+                \label{fig:bar_best_precision_by_model_and_configuration}
+            \end{figure}
+
+            \subsubsection{Best Precision by Question Index and Configuration}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.75]{images_exp2/precision/best_precision_by_question_index_and_configuration.png}
+                \caption{Best precision by question index and configuration.}
+                \label{fig:best_precision_by_question_index_and_configuration}
+            \end{figure}
+
+            \subsubsection{Best Precision by Question Index and Model}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.75]{images_exp2/precision/best_precision_by_question_index_and_model.png}
+                \caption{Best precision by question index and model.}
+                \label{fig:best_precision_by_question_index_and_model}
+            \end{figure}
+
+            \subsubsection{Facet Histogram of Precision by Model}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\textwidth]{images_exp2/precision/facet_hist_precision_by_model.png}
+                \caption{Facet histogram of precision by model.}
+                \label{fig:facet_hist_precision_by_model}
+            \end{figure}
+
+
+            \subsubsection{Histogram of All Precisions}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.75]{images_exp2/precision/hist_precision_all.png}
+                \caption{Histogram of all precisions.}
+                \label{fig:hist_precision_all}
+            \end{figure}
+
+            \subsubsection{Line Plot of Precision by Question Index and Model}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\textwidth]{images_exp2/precision/line_precision_by_question_index_and_model.png}
+                \caption{Line plot of precision by question index and model.}
+                \label{fig:line_precision_by_question_index_and_model}
+            \end{figure}
+
+
+            \subsubsection{Precision by Model and Configuration}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.75]{images_exp2/precision/precision_by_model_and_configuration.png}
+                \caption{Precision by model and configuration.}
+                \label{fig:precision_by_model_and_configuration}
+            \end{figure}
+
+            \subsubsection{Line Plot of Precision by Question Index and Configuration}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\textwidth]{images_exp2/precision/precision_lineplot_by_question_index_and_configuration.png}
+                \caption{Line plot of precision by question index and configuration.}
+                \label{fig:precision_lineplot_by_question_index_and_configuration}
+            \end{figure}
+
+            \subsubsection{Scatter Plot of Precision vs. Total Time}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.75]{images_exp2/precision/scatter_precision_vs_total_time.png}
+                \caption{Scatter plot of precision vs. total time.}
+                \label{fig:scatter_precision_vs_total_time}
+            \end{figure}
+
+            \subsubsection{Scatter Plot of Precision vs. Total Token Count Input}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.75]{images_exp2/precision/scatter_precision_vs_total_token_count_input.png}
+                \caption{Scatter plot of precision vs. total token count input.}
+                \label{fig:scatter_precision_vs_total_token_count_input}
+            \end{figure}
+
+            
+        \subsection{Recall}
+
+
+            \subsubsection{Best Recall by Model and Configuration}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.75]{images_exp2/recall/bar_best_recall_by_model_and_configuration.png}
+                \caption{Best recall by model and configuration.}
+                \label{fig:bar_best_recall_by_model_and_configuration}
+            \end{figure}
+
+            \subsubsection{Best Recall by Question Index and Configuration}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.75]{images_exp2/recall/best_recall_by_question_index_and_configuration.png}
+                \caption{Best recall by question index and configuration.}
+                \label{fig:best_recall_by_question_index_and_configuration}
+            \end{figure}
+
+            \subsubsection{Best Recall by Question Index and Model}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.75]{images_exp2/recall/best_recall_by_question_index_and_model.png}
+                \caption{Best recall by question index and model.}
+                \label{fig:best_recall_by_question_index_and_model}
+            \end{figure}
+
+            \subsubsection{Facet Histogram of Recall by Model}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\textwidth]{images_exp2/recall/facet_hist_recall_by_model.png}
+                \caption{Facet histogram of recall by model.}
+                \label{fig:facet_hist_recall_by_model}
+            \end{figure}
+
+
+            \subsubsection{Histogram of All Recalls}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.75]{images_exp2/recall/hist_recall_all.png}
+                \caption{Histogram of all recalls.}
+                \label{fig:hist_recall_all}
+            \end{figure}
+
+            \subsubsection{Line Plot of Recall by Question Index and Model}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\textwidth]{images_exp2/recall/line_recall_by_question_index_and_model.png}
+                \caption{Line plot of recall by question index and model.}
+                \label{fig:line_recall_by_question_index_and_model}
+            \end{figure}
+
+
+            % \subsubsection{Recall by Model and Configuration}
+            % \begin{figure}[H]
+            %     \centering
+            %     \includegraphics[scale=0.75]{images_exp2/recall/recall_by_model_and_configuration.png}
+            %     \caption{Recall by model and configuration.}
+            %     \label{fig:recall_by_model_and_configuration}
+            % \end{figure}
+
+            \subsubsection{Line Plot of Recall by Question Index and Configuration}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\textwidth]{images_exp2/recall/recall_lineplot_by_question_index_and_configuration.png}
+                \caption{Line plot of recall by question index and configuration.}
+                \label{fig:recall_lineplot_by_question_index_and_configuration}
+            \end{figure}
+
+            \subsubsection{Scatter Plot of Recall vs. Total Time}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.75]{images_exp2/recall/scatter_recall_vs_total_time.png}
+                \caption{Scatter plot of recall vs. total time.}
+                \label{fig:scatter_recall_vs_total_time}
+            \end{figure}
+
+            \subsubsection{Scatter Plot of Recall vs. Total Token Count Input}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.75]{images_exp2/recall/scatter_recall_vs_total_token_count_input.png}
+                \caption{Scatter plot of recall vs. total token count input.}
+                \label{fig:scatter_recall_vs_total_token_count_input}
+            \end{figure}
+
+
+        % \subsection{Recall}
+
+        %     TEXT
+
+        %     ...
+
+        %     ... 
+
+            
+        %     TEXT
+
+        %     ...
+
+        %     ... 
+
+        
