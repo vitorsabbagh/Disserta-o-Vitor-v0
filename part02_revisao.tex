@@ -3,7 +3,7 @@
 
 % \todo[inline]{Todo capítulo deve ter uma introdução explanatória. "This chapter describes"}
 
-    This chapter provides a comprehensive literature review of the key technologies and concepts that form the foundation of this dissertation. It begins with an overview of the applications of Artificial Intelligence (AI) in the Exploration and Production (E\&P) industry. The focus then narrows to LLMs, discussing their architecture and impact. Subsequently, the chapter delves into the Retrieval-Augmented Generation (RAG) technique, which enhances LLMs with external knowledge. It also explores the use of single and multi-agent setups. Finally, the chapter concludes by examining the 'LLM-as-judge' paradigm for evaluating the performance of generative models.
+    This chapter provides a comprehensive literature review of the key technologies and concepts that form the foundation of this dissertation. It begins with an overview of the applications of Artificial Intelligence (AI) in the Exploration and Production (E\&P) industry. The focus then narrows to LLMs, discussing their architecture and impact. Subsequently, the chapter delves into the RAG technique, which enhances LLMs with external knowledge. It also explores the use of single and multi-agent setups. Finally, the chapter concludes by examining the 'LLM-as-judge' paradigm for evaluating the performance of generative models.
 
 
     \section{AI in the Exploration and Production (E\&P) industry}
@@ -110,11 +110,11 @@
             
             The spectrum of LLM-based applications is broad and continually expanding. Early applications focused on tasks such as text summarization, translation, and sentiment analysis. However, the current generation of LLMs powers a much wider range of tools. These can be broadly categorized into several key areas. Conversational AI, in the form of advanced chatbots and virtual assistants, represents a significant segment of the market, enhancing customer service and user engagement \citep{GrandViewResearch2025}. Content creation is another major application area, where LLMs are employed to generate a variety of materials, from marketing copy and social media posts to technical documentation and even creative writing \citep{V7Labs2025}.            
             
-            Furthermore, LLMs are being integrated into more specialized and high-stakes domains. In the legal field, they assist with tasks like contract analysis and legal research. The financial sector utilizes them for fraud detection and market analysis \citep{V7Labs2025}. In software development, LLM-powered tools for code generation and debugging are becoming increasingly prevalent, accelerating development cycles and improving programmer productivity. A key innovation driving the utility of these applications is the advent of techniques like Retrieval-Augmented Generation (RAG), which allows LLMs to retrieve and incorporate information from external knowledge bases, thereby improving the accuracy and relevance of their outputs \citep{KeywordsAI2025}. The ongoing development of multimodal LLMs is further pushing the boundaries of what is possible, enabling applications that can understand and reason about the world in a more holistic manner \citep{Kaddour2023}.
+            Furthermore, LLMs are being integrated into more specialized and high-stakes domains. In the legal field, they assist with tasks like contract analysis and legal research. The financial sector utilizes them for fraud detection and market analysis \citep{V7Labs2025}. In software development, LLM-powered tools for code generation and debugging are becoming increasingly prevalent, accelerating development cycles and improving programmer productivity. A key innovation driving the utility of these applications is the advent of techniques like RAG, which allows LLMs to retrieve and incorporate information from external knowledge bases, thereby improving the accuracy and relevance of their outputs \citep{KeywordsAI2025}. The ongoing development of multimodal LLMs is further pushing the boundaries of what is possible, enabling applications that can understand and reason about the world in a more holistic manner \citep{Kaddour2023}.
         
-        \subsection{Retrieval-Augmented Generation (RAG)} 
+        \subsection{RAG} 
 
-            Retrieval-Augmented Generation (RAG) technique combines LLMs with information retrieval to generate accurate and up-to-date responses, as introduced by \citet{Lewis2020}. 
+            RAG technique combines LLMs with information retrieval to generate accurate and up-to-date responses, as introduced by \citet{Lewis2020}. 
             \xexeo{Aqui merece um desenho ilustrativo, até para quebrar tanto texto}
             \vitor{Feito}
             It employs a search in a database to find relevant information, overcoming the inherent limitations of LLMs that rely solely on the prior knowledge embedded in the language model during the training phase. 
@@ -208,7 +208,7 @@
             By providing a "judge" LLM with a clear rubric and context, it can perform assessments of qualities like coherence, relevance, and factual accuracy (\citep{li2024llmsasjudgescomprehensivesurveyllmbased}).
             This method has proven effective for complex, open-ended tasks where simple string matching is insufficient, with models like GPT-4 demonstrating over 80\% agreement with human preferences in benchmarking studies \citep{Zheng2023}.
 
-            For evaluating Retrieval-Augmented Generation (RAG) systems, the LLM-as-Judge framework can be adapted to produce structured, quantitative assessments. 
+            For evaluating RAG systems, the LLM-as-Judge framework can be adapted to produce structured, quantitative assessments. 
             In this application, the judge LLM is tasked with comparing the RAG-generated answer against a ground-truth dataset.
             By using a crafted prompt that defines the classification criteria, the judge can systematically categorize each output into classes such as True Positive (TP) (factually consistent with the ground truth), False Positive (FP) (introduces unsupported information), True Negative (TN) (a correct refusal to answer), or False Negative (FN) (missing relevant information). This approach moves beyond subjective scoring towards a more objective evaluation. The prompt used in this work is presented in the code in Appendix~\ref{code:llm-judge}.
 

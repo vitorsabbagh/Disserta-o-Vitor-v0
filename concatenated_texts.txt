@@ -119,14 +119,10 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
 
 \begin{abstract}
 
-[PENDENTE]
-
 \end{abstract}
     
 \begin{foreignabstract}
-
-[PENDENTE]
-
+    
 \end{foreignabstract}
 
 
@@ -180,11 +176,11 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
 
     % [IA-GEN NA INDUSTRIA] 
     In the dynamic and ever-changing oil and gas (O\&G) industry,
-    \xexeo{eu acho que aqui falta alto. TEm um pouco hÃ¡ ver com o uso do "in the dynamic changing of the" nÃ£o ser realmente muito adequado a "oil and gas industry", falta algo, um qualificador a mais (mercado? . Minha IA sugeriu mudar para "In the dynamic and ever-changing oil and gas (O\&G) industry", o que eu achei muito melhor}
-    \vitor{feito}
+    % \xexeo{eu acho que aqui falta alto. TEm um pouco hÃ¡ ver com o uso do "in the dynamic changing of the" nÃ£o ser realmente muito adequado a "oil and gas industry", falta algo, um qualificador a mais (mercado? . Minha IA sugeriu mudar para "In the dynamic and ever-changing oil and gas (O\&G) industry", o que eu achei muito melhor}
+    % \vitor{feito}
     \abbrev{O\&G}{oil and gas} 
     digital transformation has emerged as a key element to achieve operational efficiency, sustainability, and competitiveness. 
-    At the forefront of this transformation are Large Language Models (LLMs), which have the potential to process unstructured queries, map out alternatives, and advise users on possible actions \citep{Kar2023}. 
+    At the forefront of this transformation are Large Language Models \abbrev{LLM}{Large Language Model}(LLM), which have the potential to process unstructured queries, map out alternatives, and advise users on possible actions \citep{Kar2023}. 
     We also note the advantage of increased engagement, cooperation, accessibility, and ultimately profitability. 
     These models redefine paradigms in knowledge management and information retrieval and impact a variety of other areas \citep{Eckroth2023}, making it crucial to adopt these technologies to remain competitive.    
     
@@ -268,9 +264,11 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
     To achieve this overarching goal, the following specific objectives have been defined:
 
     \begin{enumerate}
-        \item \textbf{Design and Implement LLM Artifacts:} To design and implement a set of distinct RAG architectures, including non-agentic (baseline and router-based) and agentic (single-agent and multi-agent) systems, tailored to the operational context of well construction.
+        \item \textbf{Design and Implement LLM Artifacts:} To design and implement a set of distinct retrieval-augmented generation (RAG)
+        \abbrev{RAG}{Retrieval-Augmented Generation} 
+        architectures, including non-agentic (baseline and router-based) and agentic (single-agent and multi-agent) systems, tailored to the operational context of well construction.
 
-        \item \textbf{Evaluate Performance Quantitatively:} To evaluate the performance of these artifacts on domain-specific tasks (Q\&A and Text-to-SQL) using both expert-led qualitative assessments and automated quantitative metrics, including truthfulness, precision, recall, and F1-score.
+        \item \textbf{Evaluate Performance Quantitatively:} To evaluate the performance of these artifacts on domain-specific tasks using both expert-led qualitative assessments and automated quantitative metrics, including truthfulness, precision, recall, and F1-score.
 
         \item \textbf{Analyze Cost-Effectiveness:} To conduct a comparative analysis of the economic efficiency of each architecture, focusing on the trade-offs between performance gains and the computational costs associated with LLM API usage.
 
@@ -284,25 +282,25 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
     \xexeo{Acho que pode aumentar um pouco isso, jÃ¡ falar dos resultados (dissertaÃ§Ã£o tem spoiler), motivar o segundo a partir dos resutlados do primeiro e botar depois das questÃµes de pesquisa (leia o todo), sempre alinhando tudo (questÃ£o de pesquisa - experimento - conclusÃµes}
     \vitor{IncluÃ­do spoiler e ponte do 1o justificando o 2o experimento.}
 
-    <<<<PENDENTE>>>>
+    % <<<<PENDENTE>>>>
 
-    FAZER ALINHAMENTO FINAL (QUESTÃƒO DE PESQUISA - EXPERIMENTO - CONCLUSÃ•ES)
+    % FAZER ALINHAMENTO FINAL (QUESTÃƒO DE PESQUISA - EXPERIMENTO - CONCLUSÃ•ES)
     
-    DETALHAMENTO LLM: "BOTAR DEPOIS DAS QUESTÃ•ES DE PESQUISA" E "SEMPRE ALINHANDO TUDO"
-    ESTA Ã‰ A "LINHA DE OURO" (GOLDEN THREAD) DE UMA DISSERTAÃ‡ÃƒO. TUDO PRECISA ESTAR CONECTADO. A ESTRUTURA QUE ELE SUGERE CRIA UM FLUXO MUITO LÃ“GICO PARA O LEITOR:
+    % DETALHAMENTO LLM: "BOTAR DEPOIS DAS QUESTÃ•ES DE PESQUISA" E "SEMPRE ALINHANDO TUDO"
+    % ESTA Ã‰ A "LINHA DE OURO" (GOLDEN THREAD) DE UMA DISSERTAÃ‡ÃƒO. TUDO PRECISA ESTAR CONECTADO. A ESTRUTURA QUE ELE SUGERE CRIA UM FLUXO MUITO LÃ“GICO PARA O LEITOR:
     
-    OBJETIVOS: O QUE VOCÃŠ QUER ALCANÃ‡AR (VISÃƒO GERAL).
+    % OBJETIVOS: O QUE VOCÃŠ QUER ALCANÃ‡AR (VISÃƒO GERAL).
     
-    QUESTÃ•ES DE PESQUISA (A SEREM ADICIONADAS): AS PERGUNTAS ESPECÃFICAS E FOCADAS QUE SUA PESQUISA VAI RESPONDER.
+    % QUESTÃ•ES DE PESQUISA (A SEREM ADICIONADAS): AS PERGUNTAS ESPECÃFICAS E FOCADAS QUE SUA PESQUISA VAI RESPONDER.
     
-    PARÃGRAFO COM "SPOILER" (O QUE ESTAMOS DISCUTINDO): UM RESUMO DE COMO VOCÃŠ RESPONDEU A ESSAS PERGUNTAS E O QUE ENCONTROU.
+    % PARÃGRAFO COM "SPOILER" (O QUE ESTAMOS DISCUTINDO): UM RESUMO DE COMO VOCÃŠ RESPONDEU A ESSAS PERGUNTAS E O QUE ENCONTROU.
     
-    CONCLUSÃ•ES (NO FINAL DA DISSERTAÃ‡ÃƒO): ONDE VOCÃŠ RESPONDE FORMALMENTE Ã€S QUESTÃ•ES DE PESQUISA, USANDO OS RESULTADOS DETALHADOS DOS EXPERIMENTOS.
+    % CONCLUSÃ•ES (NO FINAL DA DISSERTAÃ‡ÃƒO): ONDE VOCÃŠ RESPONDE FORMALMENTE Ã€S QUESTÃ•ES DE PESQUISA, USANDO OS RESULTADOS DETALHADOS DOS EXPERIMENTOS.
 
-    AO COLOCAR O PARÃGRAFO DE "SPOILER" DEPOIS DAS QUESTÃ•ES DE PESQUISA, VOCÃŠ CRIA UMA CONEXÃƒO DIRETA: "PARA RESPONDER A ESTAS PERGUNTAS (QUESTÃƒO 1, QUESTÃƒO 2...), EU CONDUZI ESTES EXPERIMENTOS (EXPERIMENTO 1, EXPERIMENTO 2), QUE ME LEVARAM A ESTAS DESCOBERTAS PRINCIPAIS (RESULTADO A, RESULTADO B)."
+    % AO COLOCAR O PARÃGRAFO DE "SPOILER" DEPOIS DAS QUESTÃ•ES DE PESQUISA, VOCÃŠ CRIA UMA CONEXÃƒO DIRETA: "PARA RESPONDER A ESTAS PERGUNTAS (QUESTÃƒO 1, QUESTÃƒO 2...), EU CONDUZI ESTES EXPERIMENTOS (EXPERIMENTO 1, EXPERIMENTO 2), QUE ME LEVARAM A ESTAS DESCOBERTAS PRINCIPAIS (RESULTADO A, RESULTADO B)."
 
-    ESSA ESTRUTURA AMARRA TODA A SUA DISSERTAÃ‡ÃƒO, TORNANDO-A COESA, LÃ“GICA E FÃCIL DE ACOMPANHAR.
-    <<<<FIM>>>>
+    % ESSA ESTRUTURA AMARRA TODA A SUA DISSERTAÃ‡ÃƒO, TORNANDO-A COESA, LÃ“GICA E FÃCIL DE ACOMPANHAR.
+    % <<<<FIM>>>>
 
     \todo[inline]{Ok, estÃ¡ bom, porÃ©m seria melhor para dissertaÃ§Ã£o se agora vocÃª definisse questÃµes de pesquisa. Essas questÃµes de pesquisa serÃ£o respondidas na conclusÃ£o, a partir do que vocÃª fez. Eu sÃ³ li atÃ© aqui, entÃ£o nÃ£o tenho sugestÃµes fortes agora, mas as questÃµes podem ser coisas coisa: Qual a eficÃ¡cia e eficiÃªncia de LLMs para extrair dados de bases .... Como sistemas single e multi agentes se comparam... Elas podem ser bem melhores e bem mais objetivas e ao longo do texto, se eu detectar alguma , escrevo. A questÃ£o Ã© perguntar aqui no fim da introduÃ§Ã£o e responder na conclusÃ£o, caracterizando a colaboraÃ§Ã£o
     \newline \newline SERÃ FEITO NO FIM}
@@ -325,7 +323,7 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
 
     \vspace{\baselineskip}
     \begin{tcolorbox}[colback=gray!10, colframe=gray!40, title=\textbf{Main Research Question}]
-    How do different LLM based architectures, ranging from non-agentic Retrieval-Augmented Generation (RAG) pipelines to multi-agent systems, compare in terms of performance, efficiency, and practical viability when applied to domain-specific information retrieval tasks in well construction engineering?
+    How do different LLM based architectures, ranging from non-agentic RAG pipelines to multi-agent systems, compare in terms of performance, efficiency, and practical viability when applied to domain-specific information retrieval tasks in well construction engineering?
     \end{tcolorbox}
     \vspace{\baselineskip}
 
@@ -345,7 +343,7 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
 
 \section{Research Methodology}
   
-    This research follows the Design Science Research (DSR) methodology, a framework particularly suited for studies that develop and evaluate technological artifacts to address specific organizational problems. DSR provides a structured approach for creating innovative solutions while maintaining scientific rigor through empirical validation \citep{hevner2007three}.
+    This research follows the Design Science Research (DSR)\abbrev{DSR}{Design Science Research} methodology, a framework particularly suited for studies that develop and evaluate technological artifacts to address specific organizational problems. DSR provides a structured approach for creating innovative solutions while maintaining scientific rigor through empirical validation \citep{hevner2007three}.
     
     \begin{figure}[h]
     \centering
@@ -485,14 +483,29 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
 \section{Thesis Structure}
 
 
+\section{Thesis Structure}
 
-    ****SERÃ FEITO POR ÃšLTIMO****
+    This dissertation is organized into five main chapters, followed by appendices, to present the research in a logical and structured manner.
+
+    \begin{itemize}
+        \item \textbf{Chapter 1 - Introduction:} This chapter introduces the research context within the oil and gas industry, highlighting the challenges of knowledge management in well construction. It defines the business scope, establishes the research objectives and guiding research questions, and outlines the DSR methodology that structures the study.
+
+        \item \textbf{Chapter 2 - Literature Review:} This chapter provides the theoretical foundation for the research. It reviews the key concepts of LLMs, RAG, and the architecture of both single and multi-agent systems. It also covers the evaluation methodologies pertinent to this work, including traditional metrics and the "LLM-as-judge" paradigm.
+
+        \item \textbf{Chapter 3 - First Experimental Evaluation Cycle:} This chapter details the initial experiment comparing single-agent and multi-agent architectures. It follows the DSR framework to describe the artifact design, the expert-led evaluation process, and the results based on metrics of truthfulness, performance, and cost. The findings from this cycle reveal the initial trade-offs and limitations that motivate the second experiment.
+
+        \item \textbf{Chapter 4 - Second Experimental Evaluation Cycle:} This chapter presents a more rigorous and extensive evaluation. It introduces non-agentic workflows as baselines and employs an automated, quantitative evaluation methodology using an "LLM-as-a-judge." The results from this cycle provide crucial insights into the performance of different architectures, leading to the central hypothesis of the "domain knowledge deficit."
+
+        \item \textbf{Chapter 5 - Conclusion:} This final chapter synthesizes the findings of the entire study. It provides direct answers to the research questions, summarizes the main contributions to theory and practice, acknowledges the limitations of the work, and proposes promising directions for future research.
+    \end{itemize}
+
+    Finally, the \textbf{Appendices} provide supplementary material, including the detailed dataset used in the experiments and the source code for the evaluation prompts, to ensure transparency and facilitate reproducibility.
    
 \chapter{Literature Review} 
 
 % \todo[inline]{Todo capÃ­tulo deve ter uma introduÃ§Ã£o explanatÃ³ria. "This chapter describes"}
 
-    This chapter provides a comprehensive literature review of the key technologies and concepts that form the foundation of this dissertation. It begins with an overview of the applications of Artificial Intelligence (AI) in the Exploration and Production (E\&P) industry. The focus then narrows to Large Language Models (LLMs), discussing their architecture and impact. Subsequently, the chapter delves into the Retrieval-Augmented Generation (RAG) technique, which enhances LLMs with external knowledge. It also explores the use of single and multi-agent setups. Finally, the chapter concludes by examining the 'LLM-as-judge' paradigm for evaluating the performance of generative models.
+    This chapter provides a comprehensive literature review of the key technologies and concepts that form the foundation of this dissertation. It begins with an overview of the applications of Artificial Intelligence (AI) in the Exploration and Production (E\&P) industry. The focus then narrows to LLMs, discussing their architecture and impact. Subsequently, the chapter delves into the RAG technique, which enhances LLMs with external knowledge. It also explores the use of single and multi-agent setups. Finally, the chapter concludes by examining the 'LLM-as-judge' paradigm for evaluating the performance of generative models.
 
 
     \section{AI in the Exploration and Production (E\&P) industry}
@@ -511,11 +524,11 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
     
     \section{Natural Language Processing} \label{sec:nlp-review}
 
-        NLP (Natural Language Processing) is a broad field that covers various tasks to enable computers to process and understand human language. These tasks, which represent specific problems or applications, have been the focus of research for decades, predating the recent surge in Large Language Models. They range from fundamental challenges like part-of-speech tagging to complex applications like machine translation. This section explores two tasks particularly relevant to this dissertation: Question Answering (Q\&A) and Text-to-SQL, both of which have been significantly advanced by recent developments in the field.
+        NLP (Natural Language Processing) is a broad field that covers various tasks to enable computers to process and understand human language. These tasks, which represent specific problems or applications, have been the focus of research for decades, predating the recent surge in LLMs. They range from fundamental challenges like part-of-speech tagging to complex applications like machine translation. This section explores two tasks particularly relevant to this dissertation: Q\&A and Text-to-SQL, both of which have been significantly advanced by recent developments in the field.
 
         \subsection{Q\&A tasks}     
 
-            Question and Answer (Q\&A) represent a method to facilitate knowledge transfer between individuals within organizations \citep{Iske2005}. 
+            Q\&A represent a method to facilitate knowledge transfer between individuals within organizations \citep{Iske2005}. 
             \xexeo{As tasks vem antes das LLMs, elas sempre existiram como problemas da Ã¡rea de NLP. Inclusive acho que na seÃ§Ã£o de NLP vocÃª pode fazer um parÃ¡grafo sobre a existÃªncia de vÃ¡rias tasks e usar essas como subseÃ§Ãµes}
             \vitor{Feito}
             Conceptually, Q\&A systems are designed to connect individuals who possess specific knowledge with those seeking that knowledge through a structured question-and-answer format. 
@@ -556,7 +569,7 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
 
     \section{Large Language Models}         
 
-        Large Language Models (LLMs) are advanced neural network-based models designed to understand and generate human-like text. 
+        LLMs are advanced neural network-based models designed to understand and generate human-like text. 
         They leverage the Transformer architecture introduced in the seminal paper \enquote{Attention is All You Need} by \citet{Vaswani2017}. 
         This architecture relies on self-attention mechanisms, allowing the model to weigh the importance of different words in a sentence effectively. 
 
@@ -599,11 +612,11 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
             
             The spectrum of LLM-based applications is broad and continually expanding. Early applications focused on tasks such as text summarization, translation, and sentiment analysis. However, the current generation of LLMs powers a much wider range of tools. These can be broadly categorized into several key areas. Conversational AI, in the form of advanced chatbots and virtual assistants, represents a significant segment of the market, enhancing customer service and user engagement \citep{GrandViewResearch2025}. Content creation is another major application area, where LLMs are employed to generate a variety of materials, from marketing copy and social media posts to technical documentation and even creative writing \citep{V7Labs2025}.            
             
-            Furthermore, LLMs are being integrated into more specialized and high-stakes domains. In the legal field, they assist with tasks like contract analysis and legal research. The financial sector utilizes them for fraud detection and market analysis \citep{V7Labs2025}. In software development, LLM-powered tools for code generation and debugging are becoming increasingly prevalent, accelerating development cycles and improving programmer productivity. A key innovation driving the utility of these applications is the advent of techniques like Retrieval-Augmented Generation (RAG), which allows LLMs to retrieve and incorporate information from external knowledge bases, thereby improving the accuracy and relevance of their outputs \citep{KeywordsAI2025}. The ongoing development of multimodal LLMs is further pushing the boundaries of what is possible, enabling applications that can understand and reason about the world in a more holistic manner \citep{Kaddour2023}.
+            Furthermore, LLMs are being integrated into more specialized and high-stakes domains. In the legal field, they assist with tasks like contract analysis and legal research. The financial sector utilizes them for fraud detection and market analysis \citep{V7Labs2025}. In software development, LLM-powered tools for code generation and debugging are becoming increasingly prevalent, accelerating development cycles and improving programmer productivity. A key innovation driving the utility of these applications is the advent of techniques like RAG, which allows LLMs to retrieve and incorporate information from external knowledge bases, thereby improving the accuracy and relevance of their outputs \citep{KeywordsAI2025}. The ongoing development of multimodal LLMs is further pushing the boundaries of what is possible, enabling applications that can understand and reason about the world in a more holistic manner \citep{Kaddour2023}.
         
-        \subsection{Retrieval-Augmented Generation (RAG)} 
+        \subsection{RAG} 
 
-            Retrieval-Augmented Generation (RAG) technique combines LLMs with information retrieval to generate accurate and up-to-date responses, as introduced by \citet{Lewis2020}. 
+            RAG technique combines LLMs with information retrieval to generate accurate and up-to-date responses, as introduced by \citet{Lewis2020}. 
             \xexeo{Aqui merece um desenho ilustrativo, atÃ© para quebrar tanto texto}
             \vitor{Feito}
             It employs a search in a database to find relevant information, overcoming the inherent limitations of LLMs that rely solely on the prior knowledge embedded in the language model during the training phase. 
@@ -697,7 +710,7 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
             By providing a "judge" LLM with a clear rubric and context, it can perform assessments of qualities like coherence, relevance, and factual accuracy (\citep{li2024llmsasjudgescomprehensivesurveyllmbased}).
             This method has proven effective for complex, open-ended tasks where simple string matching is insufficient, with models like GPT-4 demonstrating over 80\% agreement with human preferences in benchmarking studies \citep{Zheng2023}.
 
-            For evaluating Retrieval-Augmented Generation (RAG) systems, the LLM-as-Judge framework can be adapted to produce structured, quantitative assessments. 
+            For evaluating RAG systems, the LLM-as-Judge framework can be adapted to produce structured, quantitative assessments. 
             In this application, the judge LLM is tasked with comparing the RAG-generated answer against a ground-truth dataset.
             By using a crafted prompt that defines the classification criteria, the judge can systematically categorize each output into classes such as True Positive (TP) (factually consistent with the ground truth), False Positive (FP) (introduces unsupported information), True Negative (TN) (a correct refusal to answer), or False Negative (FN) (missing relevant information). This approach moves beyond subjective scoring towards a more objective evaluation. The prompt used in this work is presented in the code in Appendix~\ref{code:llm-judge}.
 
@@ -741,7 +754,7 @@ Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Instit
 
             \item[Supposition] Our core supposition is that LLM-based agent systems can improve the efficiency and accuracy of information retrieval for specialized tasks, but that the choice of architecture (single-agent vs. multi-agent) will have a measurable impact on performance and cost.
 
-            \item[Theoretical Frameworks] This work is grounded in the theories of Intelligent Agents, Retrieval-Augmented Generation (RAG), and multi-agent systems, as detailed in the Literature Review.
+            \item[Theoretical Frameworks] This work is grounded in the theories of Intelligent Agents, RAG, and multi-agent systems, as detailed in the Literature Review.
 
             \item[Proposed Artifacts] Two distinct LLM-based agent systems are proposed and built:
             \begin{itemize}
@@ -1568,7 +1581,7 @@ The use of "LLM-as-a-judge" was driven by the sheer volume of responses requirin
 
         \subsubsection{The Domain Knowledge Deficit: Why Agentic Reflection Fails}
 
-            The core benefit of an agentic architecture, whether single or multi-agent, lies in its ability to perform cyclical reasoning. An agent can call a tool, assess the output, reflect on its progress, and decide on a new course of action, potentially correcting earlier mistakes or refining its strategy. This iterative process is a form of simulated cognition. However, we hypothesize that the effectiveness of this reflective capability is fundamentally contingent on the Large Language Model's pre-existing, foundational knowledge of the subject matter.
+            The core benefit of an agentic architecture, whether single or multi-agent, lies in its ability to perform cyclical reasoning. An agent can call a tool, assess the output, reflect on its progress, and decide on a new course of action, potentially correcting earlier mistakes or refining its strategy. This iterative process is a form of simulated cognition. However, we hypothesize that the effectiveness of this reflective capability is fundamentally contingent on the LLM's pre-existing, foundational knowledge of the subject matter.
             
             For an LLM to effectively judge the output of a tool or the partial answer from a sub-agent, it must have a robust internal model of what constitutes a "good" or "correct" answer in that domain. Consider, for example, the domain of software engineering. LLMs like GPT-4o are extensively trained on vast repositories of code, documentation, and programming discussions. When an agent generates a piece of code, the LLM can "read" it, understand its logic, identify bugs, and suggest improvements because it has been trained on countless similar examples. In this context, a cyclical, reflective flow is highly effective because the LLM is a competent judge of its own (or its peers') output.
             
@@ -1597,25 +1610,87 @@ The use of "LLM-as-a-judge" was driven by the sheer volume of responses requirin
             \end{itemize}
             
             In conclusion, this experiment provides strong evidence that for specialized domains where LLMs lack deep pre-existing knowledge, the architectural focus should be on optimizing the interface between the query and the external knowledge tools. A simple, intelligent routing mechanism that accurately directs a query to the correct source can be more robust and effective than a complex, cyclical agentic system that attempts to "reason" in a domain it does not truly understand. The assumption that more complexity equals better performance is a fallacy; true effectiveness comes from aligning the architectural design with both the nature of the task and the inherent capabilities and limitations of the language model itself.
-\chapter{Conclusions}
+\chapter{Conclusion}
+\label{chap:conclusion}
 
-    The results of this study highlight the potential of multi-agent architectures based on LLMs in the O\&G sector, particularly in the domain of well engineering. The ability to process and respond to complex queries paves the way for a significant digital transformation in the area.
+This dissertation embarked on a systematic investigation into the effectiveness, efficiency, and practical viability of various LLM architectures for domain-specific information retrieval in well construction engineering. Motivated by the transformative potential of Generative AI, this research sought to move beyond generalized benchmarks and provide empirical, actionable insights for the oil and gas industry. Through two distinct experimental cycles, detailed in Chapter~\ref{chap:first_experiment} and Chapter~\ref{chap:second_experiment}, this study compared non-agentic, single-agent, and multi-agent systems, culminating in a series of findings that both validate and challenge prevailing assumptions about the application of agentic AI in specialized technical domains.
 
-    Our comparative analysis of single-agent and multi-agent architectures, using GPT-3.5-turbo and GPT-4, reveals a detailed landscape of trade-offs between performance and economic efficiency. Multi-agent systems demonstrate 28\% greater factuality in question-and-answer (Q\&A) tasks, especially with GPT-4, compared to single-agent systems. However, they incur LLM costs that are, on average, 3.7 times higher due to the complexities of inter-agent communication. In contrast, single-agent systems excel in Text-to-SQL tasks, showing 15\% better performance than multi-agent setups. This cost-benefit dynamic requires careful consideration when implementing RAG in real-world scenarios, where accuracy and financial constraints must be balanced.
+This concluding chapter synthesizes the results of the research by directly addressing the research questions posed in the Introduction (Section~\ref{sec:research_questions}). It will then summarize the primary contributions of this work, acknowledge its limitations, and propose promising directions for future research.
 
-    We highlight several challenges encountered during our experiments, including issues with contextualization, the need for more refined information filtering, and the persistence of hallucinations. These challenges underscore the need for continuous research in areas such as domain-specific specialized models, advanced semantic search techniques, and hybrid architectures that combine the strengths of single-agent and multi-agent systems.
+\section{Answering the Research Questions}
+\label{sec:conclusion_rq}
 
-    The practical implications of this study extend beyond the O\&G sector. The insights gained here are applicable to any knowledge-intensive domain that deals with large volumes of technical data. By focusing on enhancing retrieval mechanisms, developing domain-specific LLMs, and optimizing interactions between agents and tools, we pave the way for more effective, reliable, and cost-efficient RAG solutions across various sectors.
+    The core of this investigation was structured around three central research questions. The evidence gathered from the two experimental cycles provides the following answers.
 
-    The main points of the study are as follows: multi-agent systems offer superior factuality in Q\&A tasks, albeit at a significantly higher cost. Single-agent architectures, on the other hand, excel at Text-to-SQL tasks. Despite the advantages, several challenges persist, including issues with contextualization, filtering, hallucination, and domain-specific vocabulary.
+    \vspace{\baselineskip}
+    \begin{tcolorbox}[colback=gray!10, colframe=gray!40, title=\textbf{RQ1: Performance and Task-Dependency}]
+    Which architecture (non-agentic, single-agent, or multi-agent) provides the highest factual accuracy and overall performance for different types of domain-specific tasks, specifically complex Q\&A and structured Text-to-SQL generation?
+    \end{tcolorbox}
+    \vspace{\baselineskip}
 
-    Future research should focus on developing specialized models, advancing retrieval techniques, and exploring hybrid architectures. The lessons learned from this study have broader implications and can extend to other complex technical domains. By addressing the limitations identified in this study and embracing emerging trends in multi-agent systems and RAG technology, we can unlock their full potential, revolutionizing decision-making, knowledge management, and operational efficiency in complex industries worldwide.
+    The answer to this question evolved significantly between the two experiments, highlighting the importance of rigorous, quantitative evaluation.
 
+    \begin{itemize}
+        \item For \textbf{complex Q\&A tasks}, the most effective architecture was decisively a \textbf{non-agentic \texttt{Linear-Flow with Router}}. The second, more rigorous experiment  (Chapter~\ref{chap:second_experiment}) demonstrated that this setup achieved the highest F1-Score (0.702 with GPT-4o), as shown in Table~\ref{tab:performance_metrics}, outperforming both single-agent (0.643) and multi-agent (0.664) systems. While the first experiment suggested that a multi-agent system yielded higher \textit{truthfulness} (Table~\ref{tab:tabela_resultados}), the more precise metrics of the second cycle revealed that accurately routing the query to the correct knowledge source from the outset was more effective than relying on complex, cyclical agentic reasoning.
 
+        \item For \textbf{Text-to-SQL tasks}, the first experiment revealed that a \textbf{single-agent architecture was surprisingly more effective} than a multi-agent one, as detailed in the results of Chapter~\ref{chap:first_experiment}. This suggests that for more structured, less ambiguous tasks, the communication and coordination overhead of a multi-agent system can be detrimental, introducing unnecessary complexity without a corresponding performance benefit.
+    \end{itemize}
 
-    [CONCLUSIONS FROM EXPERIMENT 2 ARE YET TO BE WRITTEN HERE]
+    \vspace{\baselineskip}
+    \begin{tcolorbox}[colback=gray!10, colframe=gray!40, title=\textbf{RQ2: Cost-Effectiveness}]
+    What is the relationship between architectural complexity and economic cost? How do the performance benefits of more complex systems (e.g., multi-agent) weigh against their significantly increased computational (API) costs, and what are the implications for practical deployment?
+    \end{tcolorbox}
+    \vspace{\baselineskip}
 
-    [INCLUIR: COMENTAR QUE OS PRECOS DE LLM ESTAO CAINDO MTO, MODELOS PEQUENOS COM EXCELENTE DESEMPENHO, O QUE TORNA A ANALISE FINANCEIRA DO 1o CICLO OBSOLETA]
+    There is a \textbf{direct and significant relationship between architectural complexity and economic cost}.
+
+    The first experiment quantified this trade-off clearly: the multi-agent architecture, while offering a 28\% increase in truthfulness for Q\&A tasks, was on average \textbf{3.7 times more expensive} in terms of LLM API costs (see Figure~\ref{fig:truthfulness_vs_cost_vs_config_model}). This increase is driven by the multiple intermediate LLM calls required for inter-agent communication, deliberation, and coordination.
+
+    The most critical finding for practical deployment comes from the second experiment: the \textbf{most cost-effective architecture (\texttt{Linear-Flow with Router}) was also the highest-performing}. This discovery, evidenced in Table~\ref{tab:performance_metrics}, resolves the cost-benefit dilemma in this specific context. There is no need to pay a premium for a complex agentic system when a simpler, more direct, and cheaper non-agentic architecture yields superior results. For organizations in the O\&G sector, the implication is clear: practical deployment should prioritize efficient, well-directed RAG pipelines over theoretically powerful but ultimately less effective agentic systems. While the absolute cost of LLM APIs continues to fall, architectural efficiency remains a dominant factor in the total cost of ownership.
+
+    \vspace{\baselineskip}
+    \begin{tcolorbox}[colback=gray!10, colframe=gray!40, title=\textbf{RQ3: Agentic Systems and Domain Specificity}]
+    Under what conditions do agentic architectures, with their capacity for cyclical reasoning and reflection, offer a tangible performance advantage over simpler, non-agentic RAG workflows in a highly specialized technical domain where the LLM has a significant "knowledge deficit"?
+    \end{tcolorbox}
+    \vspace{\baselineskip}
+
+    Agentic architectures offer a tangible performance advantage only when the underlying LLM possesses \textbf{sufficient foundational knowledge of the domain} to make its reflective capabilities meaningful.
+
+    This dissertation's central hypothesis, validated by the results of the second experiment (Chapter~\ref{chap:second_experiment}) and detailed in the discussion in Section~\ref{sec:exp2-discussion}, is the concept of the \textbf{"domain knowledge deficit"}. The primary strength of an agentic system is its ability to self-critique and iteratively refine its approach. However, this capability is fundamentally compromised when the LLM lacks the specialized, pre-existing knowledge to accurately judge the quality of retrieved information. In the domain of well construction engineering, the LLM cannot reliably discern subtle inaccuracies or assess the contextual relevance of technical data from proprietary documents.
+
+    Consequently, the agent's reflective loop becomes an exercise in futility, it cycles without true insight, adding computational cost and complexity for no performance gain. Therefore, the condition under which agentic systems are likely to excel is the \textbf{absence of a severe knowledge deficit}. In domains where the LLM is already a competent "junior analyst" (e.g., general programming, finance), agentic reflection is powerful. In highly niche industrial domains, a streamlined, non-agentic workflow that focuses on perfecting the retrieval step is the superior strategy.
+
+\section{Summary of Contributions}
+\label{sec:conclusion_contributions}
+
+    This dissertation makes several contributions to the field of applied AI:
+
+    \begin{enumerate}
+        \item \textbf{Primary Theoretical Contribution:} The most significant contribution is the empirical evidence that, contrary to the prevailing hype, \textbf{non-agentic architectures can outperform more complex agentic systems in specialized domains}. This work introduces and validates the \textbf{"domain knowledge deficit"} as a key explanatory framework (Section~\ref{sec:exp2-discussion}) for why the reflective capabilities of current LLM agents fail in niche technical contexts.
+
+        \item \textbf{Methodological Contribution:} This research developed and executed a \textbf{robust, automated evaluation pipeline using an "LLM-as-a-judge"}, a concept explored by \citet{Zheng2023}. This methodology, detailed in Chapter~\ref{chap:second_experiment}, provides a scalable and objective alternative to manual expert evaluation, enabling the calculation of quantitative metrics (Precision, Recall, F1-Score) and facilitating more rigorous comparisons of RAG systems.
+
+        \item \textbf{Practical Contribution:} The findings provide \textbf{clear, evidence-based guidance for the O\&G industry}. Instead of defaulting to complex and costly agentic frameworks, organizations should focus their efforts on building highly efficient retrieval and routing mechanisms. The \texttt{Linear-Flow with Router} architecture, described in Chapter~\ref{chap:second_experiment}, serves as a powerful and practical template for developing high-performing, cost-effective information retrieval solutions.
+    \end{enumerate}
+
+\section{Limitations and Future Work}
+\label{sec:conclusion_future_work}
+
+    No research is without limitations. The findings of this study are based on a specific dataset and a set of knowledge bases within the well construction domain. While the "domain knowledge deficit" is a generalizable concept, its specific impact may vary in other domains. Furthermore, the "LLM-as-a-judge" approach, while scalable, has its own potential biases, as noted by \citet{Gu2025}. Finally, the LLM landscape is evolving at an extraordinary pace; the specific performance of the models used is a snapshot in time, though the architectural insights are likely more enduring.
+
+    These limitations pave the way for several exciting avenues for future research:
+
+    \begin{itemize}
+        \item \textbf{Mitigating the Knowledge Deficit:} Future work should focus on strategies to "upskill" the LLM, such as extensive fine-tuning on proprietary corporate data. This aligns with the trend toward specialized models \citep{Shah2024, Meena2023, Ghosh2023} and could determine if the knowledge deficit can be reduced to a point where agentic reflection becomes effective.
+        \item \textbf{Advanced Routing:} Research into more sophisticated, dynamic routing mechanisms that can handle multi-tool dependencies and conditional logic without the full overhead of an agentic loop could yield further performance gains.
+        \item \textbf{Hybrid Architectures:} Exploring hybrid systems that use an efficient router for initial tool selection but grant selective, minimal agentic capabilities for specific, well-defined sub-tasks could offer a compelling balance of efficiency and power.
+        \item \textbf{Generalizability:} Applying this dissertation's evaluation framework to other specialized domains (e.g., legal, aerospace, pharmaceuticals) would be invaluable for testing the generalizability of the "domain knowledge deficit" hypothesis.
+    \end{itemize}
+
+\section{Final Remarks}
+\label{sec:conclusion_final}
+
+    The journey to effectively harness the power of LLMs within specialized industries is just beginning. This dissertation demonstrates that the path to success is not necessarily paved with greater complexity. For the unique challenges of well construction engineering, and likely many other technical fields, the most effective AI systems are not those that attempt to replicate human cognition in a domain they do not understand, but those that are engineered for maximal efficiency at the crucial interface between the user's query and the organization's knowledge. The counter-intuitive success of a simple, non-agentic router over its more complex agentic cousins, as demonstrated in Chapter~\ref{chap:second_experiment}, provides a crucial lesson: in the world of applied AI, architectural choices must be guided by a sober assessment of a model's real-world capabilities, where well-directed simplicity often triumphs over unguided complexity.
 
 % \chapter{Um apÃªndice}
 
@@ -2044,20 +2119,5 @@ def calculate_metrics(llm, question, history):
                 \label{fig:scatter_recall_vs_total_token_count_input}
             \end{figure}
 
-
-        % \subsection{Recall}
-
-        %     TEXT
-
-        %     ...
-
-        %     ... 
-
-            
-        %     TEXT
-
-        %     ...
-
-        %     ... 
 
         

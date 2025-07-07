@@ -95,7 +95,9 @@
     To achieve this overarching goal, the following specific objectives have been defined:
 
     \begin{enumerate}
-        \item \textbf{Design and Implement LLM Artifacts:} To design and implement a set of distinct RAG architectures, including non-agentic (baseline and router-based) and agentic (single-agent and multi-agent) systems, tailored to the operational context of well construction.
+        \item \textbf{Design and Implement LLM Artifacts:} To design and implement a set of distinct retrieval-augmented generation (RAG)
+        \abbrev{RAG}{Retrieval-Augmented Generation} 
+        architectures, including non-agentic (baseline and router-based) and agentic (single-agent and multi-agent) systems, tailored to the operational context of well construction.
 
         \item \textbf{Evaluate Performance Quantitatively:} To evaluate the performance of these artifacts on domain-specific tasks using both expert-led qualitative assessments and automated quantitative metrics, including truthfulness, precision, recall, and F1-score.
 
@@ -111,25 +113,25 @@
     \xexeo{Acho que pode aumentar um pouco isso, já falar dos resultados (dissertação tem spoiler), motivar o segundo a partir dos resutlados do primeiro e botar depois das questões de pesquisa (leia o todo), sempre alinhando tudo (questão de pesquisa - experimento - conclusões}
     \vitor{Incluído spoiler e ponte do 1o justificando o 2o experimento.}
 
-    <<<<PENDENTE>>>>
+    % <<<<PENDENTE>>>>
 
-    FAZER ALINHAMENTO FINAL (QUESTÃO DE PESQUISA - EXPERIMENTO - CONCLUSÕES)
+    % FAZER ALINHAMENTO FINAL (QUESTÃO DE PESQUISA - EXPERIMENTO - CONCLUSÕES)
     
-    DETALHAMENTO LLM: "BOTAR DEPOIS DAS QUESTÕES DE PESQUISA" E "SEMPRE ALINHANDO TUDO"
-    ESTA É A "LINHA DE OURO" (GOLDEN THREAD) DE UMA DISSERTAÇÃO. TUDO PRECISA ESTAR CONECTADO. A ESTRUTURA QUE ELE SUGERE CRIA UM FLUXO MUITO LÓGICO PARA O LEITOR:
+    % DETALHAMENTO LLM: "BOTAR DEPOIS DAS QUESTÕES DE PESQUISA" E "SEMPRE ALINHANDO TUDO"
+    % ESTA É A "LINHA DE OURO" (GOLDEN THREAD) DE UMA DISSERTAÇÃO. TUDO PRECISA ESTAR CONECTADO. A ESTRUTURA QUE ELE SUGERE CRIA UM FLUXO MUITO LÓGICO PARA O LEITOR:
     
-    OBJETIVOS: O QUE VOCÊ QUER ALCANÇAR (VISÃO GERAL).
+    % OBJETIVOS: O QUE VOCÊ QUER ALCANÇAR (VISÃO GERAL).
     
-    QUESTÕES DE PESQUISA (A SEREM ADICIONADAS): AS PERGUNTAS ESPECÍFICAS E FOCADAS QUE SUA PESQUISA VAI RESPONDER.
+    % QUESTÕES DE PESQUISA (A SEREM ADICIONADAS): AS PERGUNTAS ESPECÍFICAS E FOCADAS QUE SUA PESQUISA VAI RESPONDER.
     
-    PARÁGRAFO COM "SPOILER" (O QUE ESTAMOS DISCUTINDO): UM RESUMO DE COMO VOCÊ RESPONDEU A ESSAS PERGUNTAS E O QUE ENCONTROU.
+    % PARÁGRAFO COM "SPOILER" (O QUE ESTAMOS DISCUTINDO): UM RESUMO DE COMO VOCÊ RESPONDEU A ESSAS PERGUNTAS E O QUE ENCONTROU.
     
-    CONCLUSÕES (NO FINAL DA DISSERTAÇÃO): ONDE VOCÊ RESPONDE FORMALMENTE ÀS QUESTÕES DE PESQUISA, USANDO OS RESULTADOS DETALHADOS DOS EXPERIMENTOS.
+    % CONCLUSÕES (NO FINAL DA DISSERTAÇÃO): ONDE VOCÊ RESPONDE FORMALMENTE ÀS QUESTÕES DE PESQUISA, USANDO OS RESULTADOS DETALHADOS DOS EXPERIMENTOS.
 
-    AO COLOCAR O PARÁGRAFO DE "SPOILER" DEPOIS DAS QUESTÕES DE PESQUISA, VOCÊ CRIA UMA CONEXÃO DIRETA: "PARA RESPONDER A ESTAS PERGUNTAS (QUESTÃO 1, QUESTÃO 2...), EU CONDUZI ESTES EXPERIMENTOS (EXPERIMENTO 1, EXPERIMENTO 2), QUE ME LEVARAM A ESTAS DESCOBERTAS PRINCIPAIS (RESULTADO A, RESULTADO B)."
+    % AO COLOCAR O PARÁGRAFO DE "SPOILER" DEPOIS DAS QUESTÕES DE PESQUISA, VOCÊ CRIA UMA CONEXÃO DIRETA: "PARA RESPONDER A ESTAS PERGUNTAS (QUESTÃO 1, QUESTÃO 2...), EU CONDUZI ESTES EXPERIMENTOS (EXPERIMENTO 1, EXPERIMENTO 2), QUE ME LEVARAM A ESTAS DESCOBERTAS PRINCIPAIS (RESULTADO A, RESULTADO B)."
 
-    ESSA ESTRUTURA AMARRA TODA A SUA DISSERTAÇÃO, TORNANDO-A COESA, LÓGICA E FÁCIL DE ACOMPANHAR.
-    <<<<FIM>>>>
+    % ESSA ESTRUTURA AMARRA TODA A SUA DISSERTAÇÃO, TORNANDO-A COESA, LÓGICA E FÁCIL DE ACOMPANHAR.
+    % <<<<FIM>>>>
 
     \todo[inline]{Ok, está bom, porém seria melhor para dissertação se agora você definisse questões de pesquisa. Essas questões de pesquisa serão respondidas na conclusão, a partir do que você fez. Eu só li até aqui, então não tenho sugestões fortes agora, mas as questões podem ser coisas coisa: Qual a eficácia e eficiência de LLMs para extrair dados de bases .... Como sistemas single e multi agentes se comparam... Elas podem ser bem melhores e bem mais objetivas e ao longo do texto, se eu detectar alguma , escrevo. A questão é perguntar aqui no fim da introdução e responder na conclusão, caracterizando a colaboração
     \newline \newline SERÁ FEITO NO FIM}
@@ -152,7 +154,7 @@
 
     \vspace{\baselineskip}
     \begin{tcolorbox}[colback=gray!10, colframe=gray!40, title=\textbf{Main Research Question}]
-    How do different LLM based architectures, ranging from non-agentic Retrieval-Augmented Generation (RAG) pipelines to multi-agent systems, compare in terms of performance, efficiency, and practical viability when applied to domain-specific information retrieval tasks in well construction engineering?
+    How do different LLM based architectures, ranging from non-agentic RAG pipelines to multi-agent systems, compare in terms of performance, efficiency, and practical viability when applied to domain-specific information retrieval tasks in well construction engineering?
     \end{tcolorbox}
     \vspace{\baselineskip}
 
@@ -172,7 +174,7 @@
 
 \section{Research Methodology}
   
-    This research follows the Design Science Research (DSR) methodology, a framework particularly suited for studies that develop and evaluate technological artifacts to address specific organizational problems. DSR provides a structured approach for creating innovative solutions while maintaining scientific rigor through empirical validation \citep{hevner2007three}.
+    This research follows the Design Science Research (DSR)\abbrev{DSR}{Design Science Research} methodology, a framework particularly suited for studies that develop and evaluate technological artifacts to address specific organizational problems. DSR provides a structured approach for creating innovative solutions while maintaining scientific rigor through empirical validation \citep{hevner2007three}.
     
     \begin{figure}[h]
     \centering
@@ -312,5 +314,20 @@
 \section{Thesis Structure}
 
 
+\section{Thesis Structure}
 
-    ****SERÁ FEITO POR ÚLTIMO****
+    This dissertation is organized into five main chapters, followed by appendices, to present the research in a logical and structured manner.
+
+    \begin{itemize}
+        \item \textbf{Chapter 1 - Introduction:} This chapter introduces the research context within the oil and gas industry, highlighting the challenges of knowledge management in well construction. It defines the business scope, establishes the research objectives and guiding research questions, and outlines the DSR methodology that structures the study.
+
+        \item \textbf{Chapter 2 - Literature Review:} This chapter provides the theoretical foundation for the research. It reviews the key concepts of LLMs, RAG, and the architecture of both single and multi-agent systems. It also covers the evaluation methodologies pertinent to this work, including traditional metrics and the "LLM-as-judge" paradigm.
+
+        \item \textbf{Chapter 3 - First Experimental Evaluation Cycle:} This chapter details the initial experiment comparing single-agent and multi-agent architectures. It follows the DSR framework to describe the artifact design, the expert-led evaluation process, and the results based on metrics of truthfulness, performance, and cost. The findings from this cycle reveal the initial trade-offs and limitations that motivate the second experiment.
+
+        \item \textbf{Chapter 4 - Second Experimental Evaluation Cycle:} This chapter presents a more rigorous and extensive evaluation. It introduces non-agentic workflows as baselines and employs an automated, quantitative evaluation methodology using an "LLM-as-a-judge." The results from this cycle provide crucial insights into the performance of different architectures, leading to the central hypothesis of the "domain knowledge deficit."
+
+        \item \textbf{Chapter 5 - Conclusion:} This final chapter synthesizes the findings of the entire study. It provides direct answers to the research questions, summarizes the main contributions to theory and practice, acknowledges the limitations of the work, and proposes promising directions for future research.
+    \end{itemize}
+
+    Finally, the \textbf{Appendices} provide supplementary material, including the detailed dataset used in the experiments and the source code for the evaluation prompts, to ensure transparency and facilitate reproducibility.
