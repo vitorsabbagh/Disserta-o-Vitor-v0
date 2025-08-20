@@ -7,11 +7,9 @@
 
     % [IA-GEN NA INDUSTRIA] 
     In the dynamic and ever-changing oil and gas (O\&G) industry,
-    % \xexeo{eu acho que aqui falta alto. TEm um pouco há ver com o uso do "in the dynamic changing of the" não ser realmente muito adequado a "oil and gas industry", falta algo, um qualificador a mais (mercado? . Minha IA sugeriu mudar para "In the dynamic and ever-changing oil and gas (O\&G) industry", o que eu achei muito melhor}
-    % \vitor{feito}
     \abbrev{O\&G}{oil and gas} 
     digital transformation has emerged as a key element to achieve operational efficiency, sustainability, and competitiveness. 
-    At the forefront of this transformation are Large Language Models \abbrev{LLM}{Large Language Model}(LLM), which have the potential to process unstructured queries, map out alternatives, and advise users on possible actions \citep{Kar2023}. 
+    At the forefront of this transformation are Large Language Models \abbrev{LLM}{Large Language Model}(LLM), which have the potential to process unstructured queries, map out courses of action, and advise users on possible solutions to industrial problems \citep{Kar2023}. 
     We also note the advantage of increased engagement, cooperation, accessibility, and ultimately profitability. 
     These models redefine paradigms in knowledge management and information retrieval and impact a variety of other areas \citep{Eckroth2023}, making it crucial to adopt these technologies to remain competitive.    
     
@@ -39,9 +37,9 @@
     
     % [PROBLEMA DE DADOS NO O\&G] 
     Focusing specifically on the activities of drilling and completion of offshore and onshore wells, a major challenge lies in the inherently complex and technical nature of the data involved, which can be from various types: operations, projects, technologies, supply chains, and others. 
-    Inefficiency in leveraging large volumes of unstructured data worsens these challenges, as observed by \citet{Singh2023}. 
+    Inefficiency in leveraging large volumes of unstructured data increases these challenges, as observed by \citet{Singh2023}. 
     A significant amount of the data generated and collected in this sector is unstructured, ranging from text reports and emails to images and videos of exploration and production activities. 
-    Examples include hundreds of daily operational reports from drilling rigs, well execution projects, nonproductive time (NPT) reports, and operational lessons learned documents, as illustrated in Figure \ref{fig:report_example}. 
+    Examples include hundreds of daily operational reports from drilling rigs, well execution projects, nonproductive time (NPT) reports, and documents of operational lessons learned, as illustrated in Figure \ref{fig:report_example}. 
     As a result, valuable information can remain untapped, and the potential to find insights, informed decision-making, and innovation is significantly compromised.
     \citet{Singh2023} showcases the capabilities and potential of Generative AI-enabled chatbots for the O\&G sector, particularly in enhancing drilling and production analytics to achieve better business results. The author concludes that companies that adopt these technologies in the coming years will see clear advantages.     
     
@@ -52,7 +50,7 @@
         \label{fig:report_example}
     \end{figure}           
     
-    However, the deployment of such technologies presents limitations and introduces challenges, including biased data, hallucinations, lack of explainability, and logical reasoning errors, among others \citep{Hadi2023}, which require a balanced approach to harness their potential in a responsible manner.    
+    However, the deployment of such technologies presents limitations and introduces challenges, including biased data, hallucinations\footnote{Information that is incorrect or simply fictional.}, lack of explainability, and logical reasoning errors, among others \citep{Hadi2023}, which require a balanced approach to harness their potential in a responsible manner.    
     Although previous research has focused mainly on the broader applications of AI in industry, the novelty of our research lies in its original examination of the specific challenges and solutions presented by the complex, technical and unstructured data inherent in O\&G operations. 
     By comparing single- and multi-agent systems, this study fills a knowledge gap, providing empirical insights into the effectiveness of different Gen-AI architectures in a domain where such studies are scarce. 
     
@@ -60,7 +58,7 @@
 
 \section{Business Scope Delimitation}
 
-    To contextualize the scope of this study, it is necessary to understand the life cycle of an oil field, which begins with Exploration and progresses to the Development of Production, followed by effective production, and culminates in decommissioning \citep{Badiru2016}. Gen-AI has the potential to impact each of these phases, but the focus of this work lies in the operations of the development and maintenance stages.
+    To contextualize the scope of this study, it is necessary to understand the life cycle of an oil field, which begins with Exploration and progresses to the Development of Production, followed by effective Production, and culminates in Decommissioning \citep{Badiru2016}. Gen-AI has the potential to impact each of these phases, but the focus of this work lies in the operations of the development and maintenance stages.
             
     Well construction is a highly specialized activity that involves drilling and completion of wells for hydrocarbon extraction \citep{Thomas2004}. In this context, Gen-AI can be applied in various ways. 
     For example, a chatbot could manage knowledge by answering queries about operations and well projects by retrieving information from the organization's databases. 
@@ -71,23 +69,13 @@
 
         To fully appreciate the challenges in this domain, it is important to understand the primary data sources that specialists interact with daily. The following sources, used in this research's experiments, exemplify the complex information landscape of well engineering:
 
-        \paragraph{Operational Learned Lessons} During drilling, completion, and workover interventions, documents called Knowledge Items are written by specialists, as depicted in Fig~\ref{fig:report_example}. These can be of four types: Technical Alert, Learned Lesson, Good Practice, and Well Observation. This system serves as a critical tool for knowledge management, considering the large number and variety of specialists involved and well operations performed.
+        \paragraph{Operational Learned Lessons.} During drilling, completion, and workover interventions, documents called Knowledge Items are written by specialists, as depicted in Fig~\ref{fig:report_example}. These can be of four types: Technical Alert, Learned Lesson, Good Practice, and Well Observation. This system serves as a critical tool for knowledge management, considering the large number and variety of specialists involved and well operations performed.
 
-        \paragraph{Operational NPTs (Non-Productive Time)} This data source contains structured records of anomalies that occurred during well interventions, detailing the title, description, location, operation type, responsible sector, rig involved, time lost, and event dates. These data are critical for the industry, as NPTs represent periods when operations are interrupted. The identification and analysis of these events are essential for continuous process improvement, cost reduction, and increased operational efficiency.
+        \paragraph{Operational NPTs (Non-Productive Time).} This data source contains structured records of anomalies that occurred during well interventions, detailing the title, description, location, operation type, responsible sector, rig involved, time lost, and event dates. These data are critical for the industry, as NPTs represent periods when operations are interrupted. The identification and analysis of these events are essential for continuous process improvement, cost reduction, and increased operational efficiency.
 
-        \paragraph{Collaborator Finder} The third data source is a collaborator finder, an important internal tool for consulting and managing employee data. This system allows for the quick identification of employees through information such as name, workplace, and role. The importance of this tool lies in the ability to cross-reference employee data with operational events, enabling a more complete analysis by an intelligent agent.
+        \paragraph{Collaborator Finder.} The third data source is a collaborator finder, an important internal tool for consulting and managing employee data. This system allows for the quick identification of employees through information such as name, workplace, and role. The importance of this tool lies in the ability to cross-reference employee data with operational events, enabling a more complete analysis by an intelligent agent.
 
 \section{Objectives}
-
-    % This research directly addresses the challenges facing major oil companies. 
-    % By investigating the comparative advantages and limitations of various Gen-AI architectures, including single and multi-agent systems, for Q\&A and Text-to-SQL tasks, this study aims to identify the most efficient and cost-effective solutions.
-    
-    % The specific objectives of this research are to assess the suitability and effectiveness of multi-agent systems based on LLMs for complex, domain-specific tasks in well engineering, aiming to streamline information access and decision-making.
-    
-    % The study will compare single-agent and multi-agent AI systems in terms of their ability to address well engineering queries. Finally, it will map the potential obstacles and limitations associated with deploying Gen-AI applications.
-            
-    % The insights gained from this research will directly contribute to O\&G companies strategic goals by improving access to well engineering information and automated data analysis tasks. 
-    % A comprehensive understanding of the challenges and limitations associated with Gen-AI will enable informed decisions about its adoption, maximizing the return on investment. 
 
     The primary goal of this dissertation is to systematically evaluate and compare the effectiveness, efficiency, and practical viability of different LLM-based architectures for resolving domain-specific information retrieval challenges in well construction engineering. 
     This research aims to move beyond generalized performance metrics to provide specific, empirical insights into how architectural choices impact outcomes in a industrial setting.
@@ -95,60 +83,21 @@
     To achieve this overarching goal, the following specific objectives have been defined:
 
     \begin{enumerate}
-        \item \textbf{Design and Implement LLM Artifacts:} To design and implement a set of distinct retrieval-augmented generation (RAG)
+        \item \textbf{Design and Implement LLM Artifacts:} designing and implementing a set of distinct retrieval-augmented generation (RAG)
         \abbrev{RAG}{Retrieval-Augmented Generation} 
         architectures, including non-agentic (baseline and router-based) and agentic (single-agent and multi-agent) systems, tailored to the operational context of well construction.
 
-        \item \textbf{Evaluate Performance Quantitatively:} To evaluate the performance of these artifacts on domain-specific tasks using both expert-led qualitative assessments and automated quantitative metrics, including truthfulness, precision, recall, and F1-score.
+        \item \textbf{Evaluate Performance Quantitatively:} evaluating the performance of these artifacts on domain-specific tasks using both expert-led qualitative assessments and automated quantitative metrics, including truthfulness, precision, recall, and F1-score.
 
-        \item \textbf{Analyze Cost-Effectiveness:} To conduct a comparative analysis of the economic efficiency of each architecture, focusing on the trade-offs between performance gains and the computational costs associated with LLM API usage.
+        \item \textbf{Analyze Cost-Effectiveness:} conducting a comparative analysis of the economic efficiency of each architecture, focusing on the trade-offs between performance gains and the computational costs associated with LLM API usage.
 
-        \item \textbf{Derive Actionable Guidance:} To identify the key challenges, limitations, and failure modes of each architecture within a specialized technical domain, and to derive practical, evidence-based guidelines for the strategic adoption of these technologies in the oil and gas industry.
+        \item \textbf{Derive Actionable Guidance:} identifying the key challenges, limitations, and failure modes of each architecture within a specialized technical domain, and to derive practical, evidence-based guidelines for the strategic adoption of these technologies in the oil and gas industry.
     \end{enumerate}
 
-    % To achieve these objectives, this research was conducted through two distinct experimental phases. The first, carried out in 2024, focused on a foundational comparison between single and multi-agent architectures, which revealed that, although the multi-agent architecture achieved 28\% higher truthfulness in Q\&A tasks, its cost was on average 3.7 times higher. Furthermore, the single-agent architecture proved to be surprisingly more effective in Text-to-SQL tasks. 
-    
-    % The rapid evolution of generative AI frameworks and models prompted a second, more advanced experiment in 2025. This second phase built upon the initial findings, also employing non-agentic workflows as baseline and a more rigorous, quantitative evaluation methodology to address the challenges identified in the first experiment and automated evaluation based on the concept commonly reffered to as "LLM-as-judge" (\citep{Gu2025}).
-    
-    \xexeo{Acho que pode aumentar um pouco isso, já falar dos resultados (dissertação tem spoiler), motivar o segundo a partir dos resutlados do primeiro e botar depois das questões de pesquisa (leia o todo), sempre alinhando tudo (questão de pesquisa - experimento - conclusões}
-    \vitor{Incluído spoiler e ponte do 1o justificando o 2o experimento.}
-
-    % <<<<PENDENTE>>>>
-
-    % FAZER ALINHAMENTO FINAL (QUESTÃO DE PESQUISA - EXPERIMENTO - CONCLUSÕES)
-    
-    % DETALHAMENTO LLM: "BOTAR DEPOIS DAS QUESTÕES DE PESQUISA" E "SEMPRE ALINHANDO TUDO"
-    % ESTA É A "LINHA DE OURO" (GOLDEN THREAD) DE UMA DISSERTAÇÃO. TUDO PRECISA ESTAR CONECTADO. A ESTRUTURA QUE ELE SUGERE CRIA UM FLUXO MUITO LÓGICO PARA O LEITOR:
-    
-    % OBJETIVOS: O QUE VOCÊ QUER ALCANÇAR (VISÃO GERAL).
-    
-    % QUESTÕES DE PESQUISA (A SEREM ADICIONADAS): AS PERGUNTAS ESPECÍFICAS E FOCADAS QUE SUA PESQUISA VAI RESPONDER.
-    
-    % PARÁGRAFO COM "SPOILER" (O QUE ESTAMOS DISCUTINDO): UM RESUMO DE COMO VOCÊ RESPONDEU A ESSAS PERGUNTAS E O QUE ENCONTROU.
-    
-    % CONCLUSÕES (NO FINAL DA DISSERTAÇÃO): ONDE VOCÊ RESPONDE FORMALMENTE ÀS QUESTÕES DE PESQUISA, USANDO OS RESULTADOS DETALHADOS DOS EXPERIMENTOS.
-
-    % AO COLOCAR O PARÁGRAFO DE "SPOILER" DEPOIS DAS QUESTÕES DE PESQUISA, VOCÊ CRIA UMA CONEXÃO DIRETA: "PARA RESPONDER A ESTAS PERGUNTAS (QUESTÃO 1, QUESTÃO 2...), EU CONDUZI ESTES EXPERIMENTOS (EXPERIMENTO 1, EXPERIMENTO 2), QUE ME LEVARAM A ESTAS DESCOBERTAS PRINCIPAIS (RESULTADO A, RESULTADO B)."
-
-    % ESSA ESTRUTURA AMARRA TODA A SUA DISSERTAÇÃO, TORNANDO-A COESA, LÓGICA E FÁCIL DE ACOMPANHAR.
-    % <<<<FIM>>>>
-
-    \todo[inline]{Ok, está bom, porém seria melhor para dissertação se agora você definisse questões de pesquisa. Essas questões de pesquisa serão respondidas na conclusão, a partir do que você fez. Eu só li até aqui, então não tenho sugestões fortes agora, mas as questões podem ser coisas coisa: Qual a eficácia e eficiência de LLMs para extrair dados de bases .... Como sistemas single e multi agentes se comparam... Elas podem ser bem melhores e bem mais objetivas e ao longo do texto, se eu detectar alguma , escrevo. A questão é perguntar aqui no fim da introdução e responder na conclusão, caracterizando a colaboração
-    \newline \newline SERÁ FEITO NO FIM}
 
 
-% \todo[inline]{\textbf{VITOR: CONCLUÍDO} \newline \newline 
-%     Ok, faltou a metodologia e tem que ter. Tem que explicar a metodologia genérica de sua pesquisa. Eu agora não sei bem o que se ajeita, mas vejo que talvez possa descrever como DSR ou outro método que implique em ações reais em um local. É importante notar que você descreve uma metodologia nos seus experimentos que é um processo de pesquisa (e isso não está errado), porém aqui há deve ser usado um conceito de metodologia mais amplo, ligado a epistemologia. Argumentos em função da DSR: Design Science Research (DSR) [sim, pedi para o ChatGPT, mas eu já meio que concordava]
-%     A Design Science Research é a classificação mais apropriada para a metodologia empregada, pelos seguintes motivos:
-%     \textbf{Artefato proposto}: A pesquisa visa comparar e melhorar arquiteturas de sistemas baseadas em LLMs aplicadas a tarefas específicas de engenharia de poços, o que se alinha à criação e avaliação de artefatos — elemento central da DSR.
-%     \textbf{Avaliação empírica}: Foram realizados dois ciclos de experimentos com diferentes configurações de agente único e multiagente, com dados reais da indústria de O\&G e validação por especialistas.
-%     \textbf{Ciclos iterativos}: O segundo experimento se baseia explicitamente nos resultados do primeiro, sugerindo um processo iterativo de refinamento de artefatos — outro elemento típico de DSR.
-%     \textbf{Relevância prática + rigor científico}: O trabalho visa resolver um problema concreto de empresas do setor de petróleo e gás, mas com critérios e métricas de avaliação quantitativas rigorosas.
-%     \textbf{Conclusão}: Mesmo sem ter sido explicitamente rotulada como DSR na dissertação, a estrutura e objetivos da pesquisa indicam fortemente que ela segue os princípios dessa metodologia.
-%     \newline \newline \textbf{VITOR: CONCLUÍDO}}
 
-
-\section{Research Questions}
+\section{Research Questions} \label{sec:research_questions}
 
     To guide this investigation and structure the research, the study addresses a central research question, which is broken down into three specific sub-questions. These questions will be formally answered in the conclusion, based on the evidence gathered from the two experimental cycles.
 
@@ -162,13 +111,13 @@
 
     \paragraph{RQ2: Cost-Effectiveness} What is the relationship between architectural complexity and economic cost? How do the performance benefits of more complex systems (e.g., multi-agent) weigh against their significantly increased computational (API) costs, and what are the implications for practical deployment?
 
-    \paragraph{RQ3: Agentic Systems and Domain Specificity} Under what conditions do agentic architectures, with their capacity for cyclical reasoning and reflection, offer a tangible performance advantage over simpler, non-agentic RAG workflows in a highly specialized technical domain where the LLM has a significant "knowledge deficit"?
+    \paragraph{RQ3: Agentic Systems and Domain Specificity} Under what conditions do agentic architectures, with their capacity for cyclical reasoning and reflection, offer a tangible performance advantage over simpler, non-agentic RAG workflows in a highly specialized technical domain where the LLM has a significant ``knowledge deficit''?
 
     \vspace{\baselineskip}
 
     To answer these questions, this research was conducted through two distinct experimental cycles. The first, carried out in 2024, established a foundational comparison, revealing that while a multi-agent architecture achieved 28\% higher truthfulness in Q\&A tasks, its cost was on average 3.7 times higher. Furthermore, a single-agent architecture proved to be surprisingly more effective in Text-to-SQL tasks.
 
-    The rapid evolution of generative AI frameworks and models prompted a second, more advanced experiment in 2025. This second phase built upon the initial findings, employing non-agentic workflows as a baseline and a more rigorous, automated evaluation methodology based on the "LLM-as-judge" concept \citep{Gu2025}. This led to a crucial and counter-intuitive discovery: a non-agentic architecture using an intelligent router to select the correct knowledge source decisively outperformed both single and multi-agent systems. This finding suggests that in specialized domains where the LLM lacks deep pre-trained knowledge, the reflective capabilities of agentic systems are less effective than a streamlined, well-directed retrieval process, fundamentally shaping the answers to our research questions.
+    The rapid evolution of generative AI frameworks and models prompted a second, more advanced experiment in 2025. This second phase built upon the initial findings, employing non-agentic workflows as a baseline and a more rigorous, automated evaluation methodology based on the ``LLM-as-a-Judge'' concept \citep{Gu2025}. This led to a crucial and counter-intuitive discovery: a non-agentic architecture using an intelligent router to select the correct knowledge source decisively outperformed both single and multi-agent systems. This finding suggests that in specialized domains where the LLM lacks deep pre-trained knowledge, the reflective capabilities of agentic systems are less effective than a streamlined, well-directed retrieval process, fundamentally shaping the answers to our research questions.
 
 
 
@@ -177,10 +126,10 @@
     This research follows the Design Science Research (DSR)\abbrev{DSR}{Design Science Research} methodology, a framework particularly suited for studies that develop and evaluate technological artifacts to address specific organizational problems. DSR provides a structured approach for creating innovative solutions while maintaining scientific rigor through empirical validation \citep{hevner2007three}.
     
     \begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/dsr-model.png}
-    \caption{Main elements of DSR-Model, translated from \citet{Oswald2023}.}
-    \label{fig:dsr-model}
+        \centering
+        \includegraphics[width=0.8\textwidth]{images/dsr-model.png}
+        \caption{Main elements of DSR-Model, translated from \citet{Oswald2023}.}
+        \label{fig:dsr-model}
     \end{figure}
     
     \subsection{Design Science Research Framework}
@@ -200,7 +149,7 @@
         
         \subsubsection{Problem in Context}
         
-        This study addresses the challenge of efficiently extracting relevant information from extensive technical databases in the oil and gas industry, specifically in well construction and maintenance operations. 
+        This study addresses the challenge of efficiently extracting relevant information from extensive technical databases in the oil and gas industry, specifically in well construction and maintenance operations, as listed in Table~\ref{tab:problem-context}. 
         
         \begin{table}[h]
             \centering
@@ -211,7 +160,7 @@
             \hline
             Data Structure & Large volumes of unstructured data (operational reports, lessons learned documents, NPT reports) \\
             \hline
-            Technical Complexity & Domain-specific terminology and complex relationships \\
+            Technical Complexity & Domain-specific terminology, complex relationships and tacit knowledge \\
             \hline
             Business Impact & Significant potential economic impact from improved knowledge access \\
             \hline
@@ -221,32 +170,50 @@
         
         \subsubsection{Artifacts}
         
-        Two primary artifacts were designed and implemented, illustrated in Figure~\ref{fig:artifacts}, using state-of-the-art language models (GPT-3.5-turbo and GPT-4) and integrated with domain-specific knowledge bases through various retrieval mechanisms.
+        Four primary artifacts were designed and implemented across the two experimental cycles, illustrated in Figure~\ref{fig:artifacts}, using state-of-the-art language models and integrated with domain-specific knowledge bases through various retrieval mechanisms.
         
         \begin{figure}[h]
         \centering
+        
         \begin{minipage}{0.45\textwidth}
             \centering
-            \fbox{\begin{tabular}{c}
-            \textbf{Single-Agent LLM System} \\
-            \small A centralized architecture where one \\
-            \small language model agent handles the entire \\
-            \small question-answering process with \\
-            \small access to multiple tools
-            \end{tabular}}
+            \fbox{\parbox[c][3.8cm][c]{\linewidth}{\centering
+                \textbf{Linear-Flow (Baseline)} \\
+                \small Non-agentic RAG pipeline with a \\
+                \small single sequential LLM step that \\
+                \small queries all tools and synthesizes\\
+                \small the answer}}
         \end{minipage}
         \hfill
         \begin{minipage}{0.45\textwidth}
             \centering
-            \fbox{\begin{tabular}{c}
+            \fbox{\parbox[c][3.8cm][c]{\linewidth}{\centering
+                \textbf{Linear-Flow with Router} \\
+                \small Non-agentic pipeline with an initial \\
+                \small routing LLM call that selects the most \\
+                \small appropriate tool(s) before retrieval}}
+        \end{minipage}
+        \vspace{0.6em}
+        
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \fbox{\parbox[c][3.8cm][c]{\linewidth}{\centering
+            \textbf{Single-Agent LLM System} \\
+            \small A centralized architecture where one \\
+            \small language model agent handles the entire \\
+            \small question-answering process with \\
+            \small access to multiple tools}}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \fbox{\parbox[c][3.8cm][c]{\linewidth}{\centering
             \textbf{Multi-Agent LLM System} \\
             \small A collaborative architecture where \\
             \small multiple specialized agents work together \\
-            \small under coordination to process queries \\
-            \small  
-            \end{tabular}}
+            \small under coordination to process queries}}
         \end{minipage}
-        \caption{Primary Artifacts Developed in This Research}
+        \caption{Primary artifacts developed and evaluated across the two experimental cycles.}
         \label{fig:artifacts}
         \end{figure}
         
@@ -277,7 +244,7 @@
         \hline
         Focus & Comparative analysis of single and multi-agent architectures & Extended evaluation incorporating non-agentic workflows as baseline \\
         \hline
-        Evaluation Methods & Expert validation by domain specialists & Automated assessment using "LLM-as-judge" approach \\
+        Evaluation Methods & Expert validation by domain specialists & Automated assessment using LLM-as-a-Judge approach \\
         \hline
         Metrics & Truthfulness, performance, and LLM cost & Precision, recall, and F1-score \\
         \hline
@@ -288,44 +255,20 @@
         \end{table}
 
     
-    % \subsection{Research Quality and Validity}
-    
-    %     To ensure research quality and validity, several measures were implemented, as shown in Figure~\ref{fig:research-quality}. 
-    %     By adhering to the DSR methodology, this research maintains a balance between practical utility and scientific rigor, producing artifacts that address real organizational needs while contributing to the theoretical understanding of multi-agent LLM systems in specialized technical domains.
-        
-    %     \begin{figure}[h]
-    %         \centering
-    %         \begin{tikzpicture}
-    %         \node[draw, rounded corners, fill=blue!10, text width=0.3\textwidth, align=center] (a) at (0,0) {\textbf{Triangulation}\\\small Using multiple data sources, evaluation methods, and expert perspectives};
-    %         \node[draw, rounded corners, fill=blue!10, text width=0.3\textwidth, align=center] (b) at (6,0) {\textbf{Reproducibility}\\\small Detailed documentation of experimental procedures, prompts, and configurations};
-    %         \node[draw, rounded corners, fill=blue!10, text width=0.3\textwidth, align=center] (c) at (0,-4) {\textbf{Practical Relevance}\\\small Direct application to real-world operational challenges};
-    %         \node[draw, rounded corners, fill=blue!10, text width=0.3\textwidth, align=center] (d) at (6,-4) {\textbf{Theoretical Contribution}\\\small Insights into comparative advantages of different agent architectures};
-    %         \draw[->] (a) -- (b);
-    %         \draw[->] (b) -- (d);
-    %         \draw[->] (a) -- (c);
-    %         \draw[->] (c) -- (d);
-    %         \end{tikzpicture}
-    %         \caption{Research Quality Assurance Framework}
-    %         \label{fig:research-quality}
-    %     \end{figure}
-        
-        
 
 \section{Thesis Structure}
 
-
-\section{Thesis Structure}
 
     This dissertation is organized into five main chapters, followed by appendices, to present the research in a logical and structured manner.
 
     \begin{itemize}
         \item \textbf{Chapter 1 - Introduction:} This chapter introduces the research context within the oil and gas industry, highlighting the challenges of knowledge management in well construction. It defines the business scope, establishes the research objectives and guiding research questions, and outlines the DSR methodology that structures the study.
 
-        \item \textbf{Chapter 2 - Literature Review:} This chapter provides the theoretical foundation for the research. It reviews the key concepts of LLMs, RAG, and the architecture of both single and multi-agent systems. It also covers the evaluation methodologies pertinent to this work, including traditional metrics and the "LLM-as-judge" paradigm.
+        \item \textbf{Chapter 2 - Literature Review:} This chapter provides the theoretical foundation for the research. It reviews the key concepts of LLMs, RAG, and the architecture of both single and multi-agent systems. It also covers the evaluation methodologies pertinent to this work, including traditional metrics and the LLM-as-a-Judge paradigm.
 
         \item \textbf{Chapter 3 - First Experimental Evaluation Cycle:} This chapter details the initial experiment comparing single-agent and multi-agent architectures. It follows the DSR framework to describe the artifact design, the expert-led evaluation process, and the results based on metrics of truthfulness, performance, and cost. The findings from this cycle reveal the initial trade-offs and limitations that motivate the second experiment.
 
-        \item \textbf{Chapter 4 - Second Experimental Evaluation Cycle:} This chapter presents a more rigorous and extensive evaluation. It introduces non-agentic workflows as baselines and employs an automated, quantitative evaluation methodology using an "LLM-as-a-judge." The results from this cycle provide crucial insights into the performance of different architectures, leading to the central hypothesis of the "domain knowledge deficit."
+        \item \textbf{Chapter 4 - Second Experimental Evaluation Cycle:} This chapter presents a more rigorous and extensive evaluation. It introduces non-agentic workflows as baselines and employs an automated, quantitative evaluation methodology using an LLM-as-a-Judge approach. The results from this cycle provide crucial insights into the performance of different architectures, leading to the central hypothesis of the ``domain knowledge deficit''.
 
         \item \textbf{Chapter 5 - Conclusion:} This final chapter synthesizes the findings of the entire study. It provides direct answers to the research questions, summarizes the main contributions to theory and practice, acknowledges the limitations of the work, and proposes promising directions for future research.
     \end{itemize}

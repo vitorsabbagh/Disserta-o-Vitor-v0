@@ -3,11 +3,8 @@
 \chapter{Second Experimental Evaluation Cycle}
 \label{chap:second_experiment}
 
-This chapter describes the second experimental cycle of this research, building upon the findings of the first cycle detailed in Chapter 3. The rapid evolution of generative AI frameworks and models, along with the insights gained previously, prompted a more advanced and rigorous evaluation. This second phase employs non-agentic workflows as a baseline, introduces a more quantitative evaluation methodology, and leverages an automated assessment process based on the "LLM-as-judge" concept \citep{Gu2025}.
+This chapter describes the second experimental cycle of this research, building upon the findings of the first cycle detailed in Chapter 3. The rapid evolution of generative AI frameworks and models, along with the insights gained previously, prompted a more advanced and rigorous evaluation. This second phase employs non-agentic workflows as a baseline, introduces a more quantitative evaluation methodology, and leverages an automated assessment process based on the LLM-as-a-Judge concept \citep{Gu2025}. It's use was driven by the sheer volume of responses requiring evaluation. With four configurations, two models, and three executions for each of the 33 questions, a total of 792 responses were generated. Manually assessing this volume of data would have been impractical. Furthermore, previously used metrics like `truthfulness` had become less critical. This metric was highly relevant when models frequently hallucinated, a problem that is far less prevalent in the current generation of LLMs, shifting the focus to precision and recall of factual information.
 
-The use of "LLM-as-a-judge" was driven by the sheer volume of responses requiring evaluation. With four configurations, two models, and three executions for each of the 33 [AJUSTAR] questions, a total of 792 [AJUSTAR] responses were generated. Manually assessing this volume of data would have been impractical. Furthermore, previously used metrics like `truthfulness` had become less critical. This metric was highly relevant when models frequently hallucinated, a problem that is far less prevalent in the current generation of LLMs, shifting the focus to precision and recall of factual information.
-
-[TODO: GERAR BPMN!!]
 
 \section{Design Science Research Framework}
 
@@ -26,7 +23,7 @@ The use of "LLM-as-a-judge" was driven by the sheer volume of responses requirin
             \item A \textbf{Multi-Agent Supervisor} architecture for distributed reasoning.
         \end{itemize}
 
-        \item[Evaluation] The artifacts are evaluated using an automated pipeline. An "LLM-as-a-judge" assesses the generated answers against a ground-truth dataset. The evaluation is based on quantitative information retrieval metrics: \textbf{Precision}, \textbf{Recall}, and \textbf{F1-Score}.
+        \item[Evaluation] The artifacts are evaluated using an automated pipeline. An LLM-as-a-Judge assesses the generated answers against a ground-truth dataset. The evaluation is based on quantitative information retrieval metrics: \textbf{Precision}, \textbf{Recall}, and \textbf{F1-Score}.
     \end{description}
 
 \section{Context and Problem Statement}
@@ -73,7 +70,7 @@ The use of "LLM-as-a-judge" was driven by the sheer volume of responses requirin
 
     \subsection{Artifact 2: Linear-Flow with Router}
     
-        The \textbf{Linear-Flow with Router} paradigm (Figure \ref{fig:diagrama_linear_w_router}) extends the basic pipeline by introducing a routing mechanism to create a descentralized, non-agentic workflow. This architecture first directs a user's question to a "router" node, which is a preliminary LLM call tasked with analyzing the query and determining the most appropriate tool or sequence of tools to use.
+        The \textbf{Linear-Flow with Router} paradigm (Figure \ref{fig:diagrama_linear_w_router}) extends the basic pipeline by introducing a routing mechanism to create a descentralized, non-agentic workflow. This architecture first directs a user's question to a \textbf{router node}, which is a preliminary LLM call tasked with analyzing the query and determining the most appropriate tool or sequence of tools to use.
 
         \begin{figure}[h]
             \centering
@@ -101,7 +98,7 @@ The use of "LLM-as-a-judge" was driven by the sheer volume of responses requirin
             \label{fig:diagrama_single_agent}
         \end{figure}    
 
-        The design emphasizes \textbf{end-to-end reasoning within a unified context}, allowing the model to maintain the same "thought process" from start to finish. This artifact tests the capability of a standalone LLM agent to manage a RAG workflow, balancing the tool calling for different knowledge sources, all without the communication overhead required by multi-agent systems.
+        The design emphasizes \textbf{end-to-end reasoning within a unified context}, allowing the model to maintain the same ``thought process'' from start to finish. This artifact tests the capability of a standalone LLM agent to manage a RAG workflow, balancing the tool calling for different knowledge sources, all without the communication overhead required by multi-agent systems.
         
 
     \subsection{Artifact 4: Multi-Agent Supervisor}
@@ -110,7 +107,7 @@ The use of "LLM-as-a-judge" was driven by the sheer volume of responses requirin
 
         \begin{enumerate}
             \item \textbf{A Supervisor Agent:} This master agent receives the user's query, analyzes it, and orchestrates the workflow by delegating these tasks to the appropriate specialist agents.
-            \item \textbf{Specialist Agents:} A team of agents, each focusing on a specific domain of knowledge or reasoning skill. For this experiment, each specialist was tied to a single tool (e.g., a "Learned Lessons Agent," an "HSE Alert Agent").
+            \item \textbf{Specialist Agents:} A team of agents, each focusing on a specific domain of knowledge or reasoning skill. For this experiment, each specialist was tied to a single tool (e.g., a Learned Lessons Agent, an HSE Alert Agent).
         \end{enumerate}
         
         \begin{figure}[h]
@@ -157,13 +154,13 @@ The use of "LLM-as-a-judge" was driven by the sheer volume of responses requirin
         \label{alg:execution_loop}
         \end{algorithm}
 
-        The quality of each generated response is assessed using the \textbf{LLM-as-a-Judge} approach. A powerful LLM (GPT-4) is prompted to act as an impartial evaluator, comparing the generated answer against the ground-truth answer. The judge decomposes both texts into atomic statements and classifies them to build a confusion matrix, from which the final metrics are calculated. The full prompt for the LLM-as-a-Judge can be found in Appendix \ref{code:llm-judge}.
+        The quality of each generated response is assessed using the LLM-as-a-Judge approach. A powerful LLM (GPT-4) is prompted to act as an impartial evaluator, comparing the generated answer against the ground-truth answer. The judge decomposes both texts into atomic statements and classifies them to build a confusion matrix, from which the final metrics are calculated. The full prompt for the LLM-as-a-Judge can be found in Appendix \ref{code:llm-judge}.
 
     \subsection{Data Set Creation}
 
         The experiment utilizes a curated dataset developed in collaboration with domain experts.
         \begin{itemize}
-            \item \textbf{Questions Dataset:} A set of 17 questions reflecting real-world information needs of well engineers. Each question is paired with a manually created, expert-validated "ground-truth" answer.
+            \item \textbf{Questions Dataset:} A set of 17 questions reflecting real-world information needs of well engineers. Each question is paired with a manually created, expert-validated ground-truth answer.
             \item \textbf{Knowledge Bases:} The artifacts were given access to three distinct, pre-processed knowledge sources from within the organization, vectorized for semantic search:
             \begin{itemize}
                 \item \textbf{Learned Lessons:} A repository of learned lessons, best practices, and operational alerts.
@@ -243,30 +240,30 @@ The use of "LLM-as-a-judge" was driven by the sheer volume of responses requirin
 
             The core benefit of an agentic architecture, whether single or multi-agent, lies in its ability to perform cyclical reasoning. An agent can call a tool, assess the output, reflect on its progress, and decide on a new course of action, potentially correcting earlier mistakes or refining its strategy. This iterative process is a form of simulated cognition. However, we hypothesize that the effectiveness of this reflective capability is fundamentally contingent on the LLM's pre-existing, foundational knowledge of the subject matter.
             
-            For an LLM to effectively judge the output of a tool or the partial answer from a sub-agent, it must have a robust internal model of what constitutes a "good" or "correct" answer in that domain. Consider, for example, the domain of software engineering. LLMs like GPT-4o are extensively trained on vast repositories of code, documentation, and programming discussions. When an agent generates a piece of code, the LLM can "read" it, understand its logic, identify bugs, and suggest improvements because it has been trained on countless similar examples. In this context, a cyclical, reflective flow is highly effective because the LLM is a competent judge of its own (or its peers') output.
+            For an LLM to effectively judge the output of a tool or the partial answer from a sub-agent, it must have a robust internal model of what constitutes a \textit{good} or \textit{correct} answer in that domain. Consider, for example, the domain of software engineering. LLMs like GPT-4o are extensively trained on vast repositories of code, documentation, and programming discussions. When an agent generates a piece of code, the LLM can \textit{read} it, understand its logic, identify bugs, and suggest improvements because it has been trained on countless similar examples. In this context, a cyclical, reflective flow is highly effective because the LLM is a competent judge of its own (or its peers') output.
             
             The domain of this study, well construction engineering, presents a starkly different scenario. The knowledge is highly specialized, filled with niche terminology, and often contained within proprietary corporate documents that do not form a significant part of the public web crawl used to train general-purpose LLMs. Consequently, when an agent in our experiment retrieves a technical snippet from a lessons-learned document, the LLM lacks the deep, specialized knowledge required to effectively critique it. It cannot reliably discern subtle inaccuracies, determine if the context is fully appropriate, or judge whether a sub-agent's reasoning is sound from an engineering perspective.
             
-            In this context of a "domain knowledge deficit", the cyclical flow of an agentic system becomes a liability rather than an asset. The reflective loop introduces computational and cost overhead (more LLM calls, more complex state management) without a corresponding improvement in the quality of reasoning. The agent may cycle, but it does so without true insight, making the additional complexity ineffective. This leads to the observed result: the more straightforward, non-agentic approach outperforms it.
+            In this context of a \textit{domain knowledge deficit}, the cyclical flow of an agentic system becomes a liability rather than an asset. The reflective loop introduces computational and cost overhead (more LLM calls, more complex state management) without a corresponding improvement in the quality of reasoning. The agent may cycle, but it does so without true insight, making the additional complexity ineffective. This leads to the observed result: the more straightforward, non-agentic approach outperforms it.
         
         \subsubsection{The Unsurprising Efficacy of Intelligent Routing}
             
             While the agentic systems underperformed, the success of the \textit{Linear-Flow w/ Router} configuration is, in itself, a significant finding. Its superior performance can be attributed to its focused efficiency. Rather than engaging in a complex, multi-step reasoning process, this architecture excels at a single, critical task: intent classification and tool selection.
             
-            The initial "router" call is a highly targeted use of the LLM's reasoning power. Its sole purpose is to analyze the user's query and map it to the most appropriate knowledge base (tool). This is a task that even a general-purpose LLM can perform well, as it relies on semantic understanding rather than deep domain expertise. By correctly identifying the right tool from the outset, the router ensures that the subsequent retrieval step is already on the right path.
+            The initial ``router'' call is a highly targeted use of the LLM's reasoning power. Its sole purpose is to analyze the user's query and map it to the most appropriate knowledge base (tool). This is a task that even a general-purpose LLM can perform well, as it relies on semantic understanding rather than deep domain expertise. By correctly identifying the right tool from the outset, the router ensures that the subsequent retrieval step is already on the right path.
             
-            This approach of "decide once, execute well" proved more effective for this dataset than the agents' "execute, reflect, re-execute" loop. It avoids the risk of error propagation inherent in cyclical systems. In an agentic loop, a minor misinterpretation in an early step can be amplified in subsequent cycles as the agent doubles down on a flawed path. The linear flow of the router configuration is immune to this, as there are no subsequent cycles to compound an error. The simplicity of its prompt and execution logic also reduces the chance of "meta-errors", where the LLM becomes confused by the complex state and instructions of a multi-turn agentic conversation.
+            This approach of ``decide once, execute well'' proved more effective for this dataset than the agents' ``execute, reflect, re-execute'' loop. It avoids the risk of error propagation inherent in cyclical systems. In an agentic loop, a minor misinterpretation in an early step can be amplified in subsequent cycles as the agent doubles down on a flawed path. The linear flow of the router configuration is immune to this, as there are no subsequent cycles to compound an error. The simplicity of its prompt and execution logic also reduces the chance of ``meta-errors'', where the LLM becomes confused by the complex state and instructions of a multi-turn agentic conversation.
         
         \subsubsection{Other Plausible Contributing Factors}
         
             Beyond the primary hypothesis of the domain knowledge deficit, several other factors likely contributed to the observed results:
             
             \begin{itemize}
-                \item \textbf{Nature of the Task}: The questions in the experimental dataset, while technically complex, are primarily information retrieval tasks. They demand finding the correct facts from the knowledge base and synthesizing them into an answer. They do not necessarily require the kind of complex, multi-step deliberation or creative problem-solving where a reflective agent might theoretically excel. For such "retrieve-and-synthesize" queries, optimizing the retrieval step, as the router does, yields the greatest performance gain.
+                \item \textbf{Nature of the Task}: The questions in the experimental dataset, while technically complex, are primarily information retrieval tasks. They demand finding the correct facts from the knowledge base and synthesizing them into an answer. They do not necessarily require the kind of complex, multi-step deliberation or creative problem-solving where a reflective agent might theoretically excel. For such ``retrieve-and-synthesize'' queries, optimizing the retrieval step, as the router does, yields the greatest performance gain.
                 
                 \item \textbf{Model Capabilities (GPT-4o vs. GPT-4o-mini)}: The consistent and significant performance gap between GPT-4o and GPT-4o-mini across all configurations underscores the critical importance of the underlying model's reasoning and instruction-following capabilities. The superior performance of the \textit{Linear-Flow w/ Router} on GPT-4o (F1-Score 0.702) compared to the same configuration on GPT-4o-mini (F1-Score 0.604) highlights that even the most effective architecture is gated by the power of the engine driving it.
                 
                 \item \textbf{High Performance Variance}: A crucial observation is the high standard deviation across all configurations. This indicates that performance is highly dependent on the specific question being asked. Even the best-performing system failed completely on some queries (minimum F1-Score of 0.333), while succeeding perfectly on others (maximum F1-Score of 1.000). This suggests that no single architecture is a panacea. Certain query structures or topics may inherently favor one approach over another, reinforcing the conclusion that the optimal architecture is task- and domain-dependent.
             \end{itemize}
             
-            In conclusion, this experiment provides strong evidence that for specialized domains where LLMs lack deep pre-existing knowledge, the architectural focus should be on optimizing the interface between the query and the external knowledge tools. A simple, intelligent routing mechanism that accurately directs a query to the correct source can be more robust and effective than a complex, cyclical agentic system that attempts to "reason" in a domain it does not truly understand. The assumption that more complexity equals better performance is a fallacy; true effectiveness comes from aligning the architectural design with both the nature of the task and the inherent capabilities and limitations of the language model itself.
+            In conclusion, this experiment provides strong evidence that for specialized domains where LLMs lack deep pre-existing knowledge, the architectural focus should be on optimizing the interface between the query and the external knowledge tools. A simple, intelligent routing mechanism that accurately directs a query to the correct source can be more robust and effective than a complex, cyclical agentic system that attempts to ``reason'' in a domain it does not truly understand. The assumption that more complexity equals better performance is a fallacy; true effectiveness comes from aligning the architectural design with both the nature of the task and the inherent capabilities and limitations of the language model itself.

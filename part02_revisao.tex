@@ -1,10 +1,7 @@
-   
+    
 \chapter{Literature Review} 
 
-% \todo[inline]{Todo capítulo deve ter uma introdução explanatória. "This chapter describes"}
-
-    This chapter provides a comprehensive literature review of the key technologies and concepts that form the foundation of this dissertation. It begins with an overview of the applications of Artificial Intelligence (AI) in the Exploration and Production (E\&P) industry. The focus then narrows to LLMs, discussing their architecture and impact. Subsequently, the chapter delves into the RAG technique, which enhances LLMs with external knowledge. It also explores the use of single and multi-agent setups. Finally, the chapter concludes by examining the 'LLM-as-judge' paradigm for evaluating the performance of generative models.
-
+    This chapter provides a comprehensive literature review of the key technologies and concepts that form the foundation of this dissertation. It begins with an overview of the applications of Artificial Intelligence (AI) in the Exploration and Production (E\&P) industry. The focus then narrows to LLMs, discussing their architecture and impact. Subsequently, the chapter delves into the RAG technique, which enhances LLMs with external knowledge. It also explores the use of single and multi-agent setups. Finally, the chapter concludes by examining the LLM-as-a-Judge paradigm for evaluating the performance of generative models.
 
     \section{AI in the Exploration and Production (E\&P) industry}
 
@@ -13,54 +10,61 @@
         An example is the work by \citep{Gudala2021} on optimization of the properties of the heavy oil flow, through the use of neural networks to optimize flow-influencing parameters.
         Another development was a deep learning workflow proposed by \citep{Gohari2024}, with the generation of synthetic graphic well logs through the application of transfer learning. 
         These developments illustrate the potential of AI to improve processes and the accuracy and efficiency of data analysis \citep{Rahmani2021}.
+
+        Recent studies highlight domain-specific advances in textual AI for geosciences, particularly in Named Entity Recognition (NER) under low-resource conditions. \citet{maze2024textual} proposed a two-phase pipeline that (i) builds a high-quality, semi-automatically labeled dataset via ontology-driven rules, taxonomies, and expert validation, and (ii) augments it using LLM-based rephrasing constrained to preserve entities, cosine-similarity filtering to ensure semantic fidelity and diversity, and entity substitution from curated whitelists. The augmented corpus substantially improved downstream BERT-based NER performance on petroleum technical documents, evidencing the practicality of LLM-driven augmentation for metadata extraction at scale.
     
         Natural Language Processing (NLP) stands at the intersection of computer science and linguistics, representing a domain within artificial intelligence aimed at enabling computers to understand and process human language in a way that is both meaningful and effective \citep{Liddy2001}. 
         This field integrates a diverse range of computational techniques to analyze and represent text at various levels of linguistic detail, striving to emulate human-like language understanding. 
         As an active area of research, traditionally NLP employs multiple layers of language analysis, each contributing uniquely to the interpretation and generation of language, which finds practical applications in various sectors \citep{Liddy2001}.      
-        In the O\&G industry, the management of unstructured data, such as texts, images, and documents, is crucial, with Natural Language Processing (NLP) and Machine Learning playing key roles.
+        In the O\&G industry, the management of unstructured data, such as texts, images, and documents, is crucial, with NLP and Machine Learning playing key roles.
         Research by \citet{Antoniak2016} and \citet{Castineira2018} has explored the use of NLP to analyze risks and drilling reports.           
-    
+        
+        Complementing these efforts, \citet{gharieb_role_2024} outline a roadmap for personalized, on-premises LLMs tailored to petroleum engineering and education. Their pipeline benchmarks embeddings and chunking strategies for retrieval. Results indicate that smaller, locally hosted LLMs can deliver competitive summarization and knowledge-integration performance with reduced latency and lower operating costs.
+        Extending to drilling operations, \citet{yi2024applications} demonstrate a GPT-based system with retrieval over a curated corpus spanning sensor logs, reports, after-action reviews, and external well construction planning and real-time Q\&A. Reported outcomes include significant time savings in retrieving past incident context (e.g., stuck pipe) and benchmarking parameters (e.g., lateral-section ROP).
+
     \section{Natural Language Processing} \label{sec:nlp-review}
 
-        NLP (Natural Language Processing) is a broad field that covers various tasks to enable computers to process and understand human language. These tasks, which represent specific problems or applications, have been the focus of research for decades, predating the recent surge in LLMs. They range from fundamental challenges like part-of-speech tagging to complex applications like machine translation. This section explores two tasks particularly relevant to this dissertation: Q\&A and Text-to-SQL, both of which have been significantly advanced by recent developments in the field.
+        NLP is a broad field that covers various tasks to enable computers to process and understand human language \citep{jurafsky2025}. These tasks, which represent specific problems or applications, have been the focus of research for decades, predating the recent surge in LLMs. They range from fundamental challenges like part-of-speech tagging to complex applications like machine translation. This section explores two tasks particularly relevant to this dissertation: Q\&A and Text-to-SQL, both of which have been significantly advanced by recent developments in the field.
 
-        \subsection{Q\&A tasks}     
+        \subsection{Q\&A tasks}    
 
-            Q\&A represent a method to facilitate knowledge transfer between individuals within organizations \citep{Iske2005}. 
-            \xexeo{As tasks vem antes das LLMs, elas sempre existiram como problemas da área de NLP. Inclusive acho que na seção de NLP você pode fazer um parágrafo sobre a existência de várias tasks e usar essas como subseções}
-            \vitor{Feito}
-            Conceptually, Q\&A systems are designed to connect individuals who possess specific knowledge with those seeking that knowledge through a structured question-and-answer format. 
-            The role of Q\&A in the documentation landscape, as exemplified by platforms such as Stack Overflow, highlights their significance in technical disciplines \citep{Treude2011}. 
-            This understanding can guide organizations in making more informed decisions about implementing such systems to enhance knowledge transfer and organizational learning \citep{Iske2005}.
+            Q\&A can be viewed from two complementary perspectives. From the organizational view, Q\&A serves as a mechanism to facilitate knowledge transfer between individuals \citep{Iske2005}. Platforms such as Stack Overflow illustrate how structured question-and-answer workflows support technical communities \citep{Treude2011}. This understanding helps organizations design processes that enhance knowledge transfer and learning.
+
+            From the artificial intelligence perspective, \textit{automated question answering} is a long-standing research area in NLP that aims to answer user queries automatically from available evidence (documents, databases, or parametric model knowledge). 
+            % Typical task taxonomies include: (i) \textbf{closed-domain} vs. \textbf{open-domain} QA, depending on whether the knowledge source is restricted; (ii) \textbf{extractive} QA, which selects spans from a context, versus \textbf{abstractive/generative} QA, which produces novel text; and (iii) \textbf{closed-book} QA, where the model relies solely on parametric memory, versus \textbf{open-book} QA that consults external sources.
+            % Modern open-domain QA systems commonly follow a \textit{retriever–reader} (or retriever–generator) architecture: a retriever selects candidate passages, and a reader/generator produces the answer. Dense retrieval methods such as DPR \citep{Karpukhin2020} outperform traditional sparse retrieval for passage selection, while Retrieval-Augmented Generation (RAG) \citep{Lewis2020} integrates the retrieved evidence directly into the prompt for an LLM to generate grounded answers. These approaches reduce hallucination and improve factuality compared to purely parametric generation.
+            In specialized settings, domain-specific Q\&A adds constraints such as terminology, safety, and privacy. 
+            Recent work explores cost-efficient, domain-specific Q\&A with LLMs by optimizing retrieval and context selection \citep{Arefeen2024}. 
+            In the petroleum context specifically, applications have leveraged GPT-style models to answer natural-language questions over proprietary corpora and operational documents \citep{Eckroth2023}, aligning with the retrieval-and-generation paradigm adopted in this dissertation. 
+            Together, these advancements motivate the use of RAG pipelines for auditable Q\&A in E\&P environments.
 
         \subsection{Text-to-SQL tasks} 
 
-            Text-to-SQL tasks in the context of artificial intelligence involve the automatic translation of natural language questions or commands into structured SQL (Structured Query Language) queries \citep{Qin2022}. This is an important area in natural language processing (NLP), allowing users to interact with databases using plain language rather than needing to know how to write complex SQL queries.         
+            Text-to-SQL tasks in the context of artificial intelligence involve the automatic translation of natural language questions or commands into structured SQL (Structured Query Language) queries \citep{Qin2022}. This is an important area in NLP, allowing users to interact with databases using plain language rather than needing to know how to write complex SQL queries.         
                 
             The arrival of advanced language models like GPT-3 and GPT-4 \citep{OpenAImodels} has marked a significant leap in Text-to-SQL applications \citep{Singh2023}, demonstrating remarkable capabilities in handling these tasks. This can be attributed to their extensive training on diverse datasets \citep{Deng2021}, which include not only large amounts of text but also structured data like tables and code, enabling the model to understand the intricate relationships between language and data structures. The study by \citep{Deng2023} introduces a pre-training framework for text to SQL translation, emphasizing the alignment between text and tables in Text-to-SQL tasks.
 
 
 
-
-
-
     \section{Intelligent Agents}         
-        % \xexeo{Agentes existem antes das LLMs, logo essa seção deve vir antes, inclusive já transformei em seção}
-        % \vitor{feito}
-        According to \citet{Russell2020}, an agent is something that performs actions. When it comes to computerized agents (in our case, AI-based), these agents are expected to do more: operate autonomously, perceive the environment, persist over time, adapt to changes, create, and strive to achieve goals.
-        The agent program implements the agent function.
-        There is a variety of basic agent program designs that vary in efficiency, compactness, and flexibility. The appropriate design of the agent program depends on the nature of the environment. In this work, a goal-based agent design was implemented, which acts to achieve defined goals \citep{Russell2020}.
-        Other possible types include simple reflex agents, which directly respond to perceptions, while model-based reflex agents maintain an internal state to track aspects of the world that are not evident in the current perception. Finally, there are utility-based agents, which try to maximize their expected "happiness" \citep{Russell2020}.
+
+        According to \citet{Russell2020}, an agent is something that performs actions. When it comes to computerized agents (in our case, AI-based), these agents are expected to do more: operate autonomously, perceive the environment, persist over time, adapt to changes, create, and strive to achieve goals. The agent program implements the agent function.
+
+        \citet{Russell2020} present a taxonomy of agent programs that we adopt here in \textit{increasing order of complexity}:
+        \begin{enumerate}[label=(\alph*)]
+            \item \textbf{Simple reflex}: act based solely on the current percept using condition–action rules.
+            \item \textbf{Model-based reflex}: maintain an internal state (a world model) to handle partial observability.
+            \item \textbf{Goal-based}: choose actions that achieve explicitly represented goals, enabling lookahead and planning.
+            \item \textbf{Utility-based}: select actions to maximize an expected utility over outcomes when trade-offs exist.
+            \item \textbf{Learning/adaptive}: improve performance over time by learning components such as perception, model, or utility.
+        \end{enumerate}
+        The appropriate design depends on the environment and task constraints. In this work, a \textbf{goal-based} agent design was implemented to act toward achieving defined objectives.
 
 
         \subsection{Multi-Agent Systems}
 
             A Multi-Agent System (MAS) extends the concept of a single agent to a collection of agents that interact within a shared environment \citep{Gokulan2010}. A MAS is defined as a loosely coupled network of autonomous problem-solving entities that collaborate to find solutions to problems that are beyond the individual capabilities or knowledge of any single entity \citep{FloresMendez1999}. 
-            % These systems are characterized by having no global system control, decentralized data, and asynchronous computation, with each agent possessing only incomplete information or capabilities to solve the overall problem \citep{FloresMendez1999}. This distributed nature provides several advantages, including increased speed and efficiency through parallel computation, enhanced reliability and robustness due to graceful degradation if an agent fails, and greater scalability and flexibility, as new agents can be added to the system when necessary \citep{Gokulan2010}.
-            
-            % Despite these benefits, 
-            % The design of a MAS presents significant challenges, with coordination being the central issue \citep{Gokulan2010}. In a multi-agent environment, the action of one agent can modify the environment for others, necessitating that each agent attempts to predict the actions of its neighbors to make optimal, goal-directed decisions. This creates a complex dynamic where coordination is essential to prevent chaos, manage conflicts arising from limited individual perspectives, and meet global constraints \citep{Gokulan2010}. Effective interaction is therefore critical and typically requires mechanisms for agents to find each other, such as facilitators or brokers, and the use of a common agent communication language (ACL) and shared ontologies to ensure mutual understanding \citep{FloresMendez1999}.
-            
+
             The structure of a MAS can vary, with different organizational paradigms such as hierarchical structures or coalitions being employed depending on the application \citep{Gokulan2010}. A practical example of a MAS architecture is demonstrated in power system restoration, where a system can be composed of multiple "bus agents" and a single "facilitator agent" \citep{Nagata2002}. In this setup, each bus agent works to restore its local area by negotiating with neighboring agents based on locally available information, while the facilitator agent manages the overall decision-making process, showcasing how a collection of agents with simple, local strategies can cooperate to achieve a complex, global goal \citep{Nagata2002}.
 
 
@@ -71,11 +75,10 @@
         They leverage the Transformer architecture introduced in the seminal paper \enquote{Attention is All You Need} by \citet{Vaswani2017}. 
         This architecture relies on self-attention mechanisms, allowing the model to weigh the importance of different words in a sentence effectively. 
 
+        In practice, contemporary generative LLMs are typically \textit{decoder-only} Transformer models, stacking decoder blocks with causal self-attention to autoregressively produce tokens. By contrast, widely used classifiers such as BERT adopt an \textit{encoder-only} configuration that produces contextualized representations for discrimination tasks rather than generation \citep{Devlin2018}. 
+
         The emergence of LLMs has made it possible to understand and produce textual information. 
         These systems are expected to revolutionize various industries by supporting complex decision-making processes. GPT models \citep{OpenAI2023}, in particular, take advantage of its vast training data to provide human-like responses \citep{Mosser2024}, which can be highly beneficial in contexts requiring natural language understanding and generation. The exponential growth in the size and capability of LLMs in recent years has been remarkable. Models like OpenAI's GPT series have shown significant advancements, moving from millions to hundreds of billions of parameters, which gives them increasingly sophisticated natural language understanding and generation. This advancement is illustrated in Figure~\ref{fig:llm_evolution}. For new models (released after jan/2025), including OpenAI's o3 series and GPT-4.5, Anthropic's Claude 3.7 and 4, and Google's Gemini 2.5 Pro, the exact parameter counts have not been publicly disclosed. 
-
-        \xexeo{Acho que aqui merecia um gráfico do crescimento do tamanho das LLMs e um parágrafo sobre esse crescimento}
-        \vitor{Feito}
 
         \begin{figure}[ht]
             \centering
@@ -99,11 +102,6 @@
     
         \subsection{LLM applications}
 
-        \xexeo{Precisa de um texto aqui}
-        \vitor{Feito}
-
-            % LLM applications have witnessed a dramatic surge in development and adoption, reshaping the landscape of AI. 
-            % This growth is fueled by continuous advancements in model architectures, training techniques, and the availability of vast datasets. 
             The proliferation of LLMs has led to a diverse array of applications that leverage their ability to understand, generate, and process human language.
 
             The expansion of the LLM application ecosystem is evident in the significant market growth projections. For instance, one report projects the global LLM market to grow from \$5.62 billion in 2024 to \$35.43 billion by 2030, with a compound annual growth rate (CAGR) of 36.9\% \citep{GrandViewResearch2025}. This rapid expansion is indicative of the immense value and potential that organizations across industries see in these technologies. The applications themselves are becoming increasingly sophisticated, evolving from simple text generation to complex, multimodal systems capable of processing and integrating text, images, and other data formats \citep{Kaddour2023}.
@@ -115,10 +113,8 @@
         \subsection{RAG} 
 
             RAG technique combines LLMs with information retrieval to generate accurate and up-to-date responses, as introduced by \citet{Lewis2020}. 
-            \xexeo{Aqui merece um desenho ilustrativo, até para quebrar tanto texto}
-            \vitor{Feito}
             It employs a search in a database to find relevant information, overcoming the inherent limitations of LLMs that rely solely on the prior knowledge embedded in the language model during the training phase. 
-            With the ongoing evolution of information retrieval, which has moved from term-based methods to more semantic approaches leveraging deep learning and large datasets to tackle more complex challenges.
+            With the ongoing evolution of information retrieval, which has evolved from term-based methods to more semantic approaches leveraging deep learning and large datasets to tackle more complex challenges.
             
             A RAG consists of two main components: a retriever and a generator, as illustrated in Figure~\ref{fig:rag_diagram}. The retriever is responsible for finding relevant information from a knowledge base, and the generator uses that information to create a human-like response. 
             
@@ -137,15 +133,12 @@
             
         \subsection{Multi-Agent Setup} 
 
-            \xexeo{Isso aqui seria uma seção de multi agentes dentro da LLM, mas você precisa escrever pelo menos um parágrafo de multi agentes gerais na seção agentes}      
-            \vitor{Feito. Inclui uma subseção sobre MAS.}
-
-            As demonstrated by \citet{xi2023rise}, the pursuit of Artificial General Intelligence (AGI) has significantly benefited from the development of LLM-based agents, capable of sensing, decision-making, and acting across diverse scenarios.  
-            His study outline a foundational framework for such agents, consisting of brain, perception, and action components, which can be customized for various applications including single-agent scenarios, multi-agent systems, and human-agent collaboration . 
+            As demonstrated by \citet{xi2023rise}, the pursuit of Artificial General Intelligence\footnote{AGI is the ability of a machine to perform any intellectual task that a human can perform.} (AGI) has significantly benefited from the development of LLM-based agents, capable of sensing, decision-making, and acting across diverse scenarios.  
+            His study outline a foundational framework for such agents, consisting of brain, perception, and action components, which can be customized for various applications including single-agent scenarios, multi-agent systems, and human-agent collaboration. 
             The comprehensive survey underscores the crucial role of LLMs in moving towards AGI, suggesting a promising horizon for operational efficiency and decision-making processes in complex organizational settings \citep{xi2023rise}.
 
             \citet{Li2024} demonstrated that, through a sampling and voting method, the performance of LLMs scales with the number of instantiated agents.
-            Another open-source framework is AutoGen \citep{Wu2023}, that enables the creation of LLM multi-agent applications, allowing for customization across various modes including. It supports diverse applications in fields such as mathematics, coding, and operations research, demonstrating its effectiveness through empirical studies \citep{Wu2023}.
+            Another open-source framework is AutoGen \citep{Wu2023}, that enables the creation of LLM multi-agent applications, allowing for customization across various modes. It supports diverse applications in fields such as mathematics, coding, and operations research, demonstrating its effectiveness through empirical studies \citep{Wu2023}.
 
             
         \section{Evaluation} \label{sec:evaluation-review}
@@ -177,7 +170,9 @@
                 \end{quoting}
 
             \subsection{Precision, Recall, and F1-Score} \label{sec:precision_recall_f1_review}
-                Precision, recall, and F1-score are fundamental metrics for evaluating classification tasks, particularly in scenarios with imbalanced datasets. These metrics provide a more nuanced understanding of a model's performance than accuracy alone.
+            Precision, recall, and F1-score are fundamental metrics for evaluating classification tasks, particularly in scenarios with imbalanced datasets. These metrics provide a more nuanced understanding of a model's performance than accuracy alone.
+
+            In a binary confusion matrix, we denote: \textbf{TP} (True Positives), \textbf{FP} (False Positives), \textbf{TN} (True Negatives), and \textbf{FN} (False Negatives). The formulas below use these standard abbreviations.
 
                 \textbf{Precision} measures the accuracy of positive predictions. It is the ratio of correctly predicted positive observations to the total predicted positive observations. A high precision relates to a low false positive rate.
                 \begin{equation}
@@ -191,31 +186,22 @@
                     \label{eq:recall}
                 \end{equation}
 
-                The \textbf{F1-score} is the weighted average of Precision and Recall. Therefore, this score takes both false positives and false negatives into account. It is the harmonic mean of the two and is a good way to show that a model has a good performance on both metrics.
+                The \textbf{F1-score} is the harmonic mean of Precision and Recall. Therefore, this score takes both false positives and false negatives into account. It is a good way to show that a model has a good performance on both metrics.
                 \begin{equation}
                     \text{F1-score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
                     \label{eq:f1-score}
                 \end{equation}
 
 
-        \subsection{LLM-as-judge}
+        \subsection{LLM-as-a-Judge}
 
-            \xexeo{Òk, essa seção eu não gostei muito, apesar de não ter nenhum erro. Primeiro tem que fazer uma seção de avaliação com as medidas, onde devem estar todas as medidas que você usar na dissertação (não li ainda, estou indo na ordem). Aí então você pode falar disso, mas apenas se usou}
-            \vitor{Enxuguei esta seção e fiz a inclusão das demais métricas utilizadas antes desta seção. Veja se está melhor.}
-
-            The LLM-as-Judge paradigm represents a significant shift in the evaluation of NLP systems in general, using a language model as a scalable proxy for human evaluators (\citep{li2024llmsasjudgescomprehensivesurveyllmbased}). 
-            This approach was developed to overcome the semantic shallowness of traditional metrics like BLEU or ROUGE and the logistical challenges of extensive human annotation (\citep{Zheng2023}). 
-            By providing a "judge" LLM with a clear rubric and context, it can perform assessments of qualities like coherence, relevance, and factual accuracy (\citep{li2024llmsasjudgescomprehensivesurveyllmbased}).
+            The LLM-as-a-Judge paradigm represents a significant shift in the evaluation of NLP systems in general, using a language model as a scalable proxy for human evaluators \citep{li2024llmsasjudgescomprehensivesurveyllmbased}. 
+            This approach was developed to overcome the semantic shallowness of traditional metrics like BLEU or ROUGE and the logistical challenges of extensive human annotation \citep{Zheng2023}. 
+            By providing a "judge" LLM with a clear rubric and context, it can perform assessments of qualities like coherence, relevance, and factual accuracy \citep{li2024llmsasjudgescomprehensivesurveyllmbased}. 
             This method has proven effective for complex, open-ended tasks where simple string matching is insufficient, with models like GPT-4 demonstrating over 80\% agreement with human preferences in benchmarking studies \citep{Zheng2023}.
 
-            For evaluating RAG systems, the LLM-as-Judge framework can be adapted to produce structured, quantitative assessments. 
+            For evaluating RAG systems, the LLM-as-a-Judge framework can be adapted to produce structured, quantitative assessments. 
             In this application, the judge LLM is tasked with comparing the RAG-generated answer against a ground-truth dataset.
             By using a crafted prompt that defines the classification criteria, the judge can systematically categorize each output into classes such as True Positive (TP) (factually consistent with the ground truth), False Positive (FP) (introduces unsupported information), True Negative (TN) (a correct refusal to answer), or False Negative (FN) (missing relevant information). This approach moves beyond subjective scoring towards a more objective evaluation. The prompt used in this work is presented in the code in Appendix~\ref{code:llm-judge}.
 
-            The advantage of this methodology is its ability to translate qualitative judgments directly into a confusion matrix, allowing the calculation of standard metrics such as precision (Equation~\ref{eq:precision}), recall (Equation~\ref{eq:recall}), and F1-score (Equation~\ref{eq:f1-score}). This process establishes a replicable pipeline for benchmarking the factual accuracy of a RAG system at scale. While it is important to acknowledge the potential for inherent biases in LLM judges (\citep{Gu2025}), studies show high correlation with human-expert evaluations (\citep{li2024llmsasjudgescomprehensivesurveyllmbased}), making it a useful tool for iterative development and system comparison.
-
-\todo[inline]{Como você criou um dataset de teste para uma tarefa, seria bom falar disso. Mas essa é uma coisa adicional a outras mudanças que pedi, seria bom, mas se não der tempo, não deu.
-\newline \newline VITOR: O DATASET ENTRARIA NO CAP. 3 E 4 OU AQUI MESMO?}
-
-\xexeo{Você usou no prmeiro experimento outras métricas, tem que descreve-las aqui: Truthfulness, Performance, LLMCost}
-\vitor{Feito}
+            The advantage of this methodology is its ability to translate qualitative judgments directly into a confusion matrix, allowing the calculation of standard metrics such as precision (Equation~\ref{eq:precision}), recall (Equation~\ref{eq:recall}), and F1-score (Equation~\ref{eq:f1-score}). This process establishes a replicable pipeline for benchmarking the factual accuracy of a RAG system at scale. While it is important to acknowledge the potential for inherent biases in LLM judges \citep{Gu2025}, studies show high correlation with human-expert evaluations \citep{li2024llmsasjudgescomprehensivesurveyllmbased}, making it a useful tool for iterative development and system comparison.

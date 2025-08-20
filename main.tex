@@ -7,8 +7,8 @@
 \usepackage[most]{tcolorbox} % caixas de texto
 \usepackage{amsmath,amssymb}
 
-\usepackage[editing]{coop-writing}
-% \usepackage[publish]{coop-writing}
+% \usepackage[editing]{coop-writing}
+\usepackage[publish]{coop-writing}
 
 \usepackage{marvosym}
 \cwsetcommwarn{\Lightning}
@@ -28,6 +28,8 @@
 \usepackage{algorithm}
 % \usepackage{algorithmic}
 \usepackage{algpseudocode}
+
+\usepackage{enumitem} % for custom enumerate labels and spacing
 
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
@@ -113,27 +115,23 @@ To my advisor, Xexéo, thank you for the wise guidance, academic rigor, and pati
 
 I extend my gratitude to the well construction engineering experts, Marcelo Grimberg, Rafael Peralta, and Lorenzo Simonassi, whose expertise and dedication significantly contributed to this research.
 
-I also want to thank Ashish Vaswani. His work on "Attention Is All You Need" paved the way for the Large Language Models that were not only the subject of this dissertation but also an invaluable tool that helped me put ideas into words.
+I also want to thank Ashish Vaswani. His work on ``Attention Is All You Need'' paved the way for the Large Language Models that were not only the subject of this dissertation but also an invaluable tool that helped me put ideas into words.
 
-Finally, a special thanks to my colleagues from Petrobras and the Tecgraf Institute. Our daily discussions about Gen-AI were an inexhaustible source of inspiration and knowledge, immensely enriching this dissertation.
+Finally, a special thanks to my colleagues from Petrobras, Tecgraf Institute, and the UNESP team. Our daily discussions about Gen-AI were an inexhaustible source of inspiration and knowledge, immensely enriching this dissertation.
 
 \begin{abstract}
     
-    The oil and gas industry, particularly in the domain of well construction, faces significant challenges in efficiently extracting knowledge from vast repositories of unstructured and semi-structured technical data. This dissertation evaluates and compares the effectiveness, efficiency, and practical viability of different Retrieval-Augmented Generation (RAG) architectures, ranging from non-agentic pipelines to single and multi-agent setups, for resolving domain-specific information retrieval challenges.
+    A indústria de óleo e gás, particularmente no domínio da construção de poços, enfrenta desafios significativos para extrair eficientemente conhecimento de vastos repositórios de dados técnicos não estruturados e semiestruturados. Esta dissertação avalia e compara a eficácia, a eficiência e a viabilidade prática de diferentes arquiteturas de Geração Aumentada por Recuperação (RAG), abrangendo desde \textit{pipelines} não-agênticos até configurações de agente único e multiagente, para a resolução de desafios de recuperação de informação em domínios específicos.
+    Adotando a metodologia de \textit{Design Science Research} (DSR), este estudo foi conduzido através de dois ciclos experimentais distintos. O primeiro ciclo (2024) forneceu uma comparação fundamental, revelando que, embora uma arquitetura multiagente tenha alcançado 28\% mais veracidade (\textit{truthfulness}) em tarefas de Pergunta e Resposta (Q\&A), seu custo operacional foi, em média, 3,7 vezes maior, e um sistema de agente único foi surpreendentemente mais eficaz para tarefas de Texto-para-SQL (\textit{Text-to-SQL}). O segundo experimento, mais rigoroso (2025), introduziu \textit{workflows} não-agênticos como linha de base (\textit{baseline}) e empregou uma metodologia de avaliação quantitativa e automatizada, utilizando um ``LLM-como-juiz'' (\textit{LLM-as-a-judge}), para avaliar o desempenho com base em precisão, revocação (\textit{recall}) e F1-score.
+    Este segundo ciclo produziu uma descoberta crucial e contraintuitiva: uma arquitetura RAG não-agêntica, utilizando um roteador inteligente para selecionar a fonte de conhecimento apropriada, superou tanto os sistemas de agente único quanto os multiagente. Este resultado levou à hipótese central do ``déficit de conhecimento de domínio'' (\textit{domain knowledge deficit}), que postula que, em domínios técnicos altamente especializados onde o LLM carece de conhecimento profundo pré-treinado, as capacidades de raciocínio cíclico e reflexivo dos sistemas agênticos são menos eficazes do que um processo de recuperação otimizado e bem direcionado. A pesquisa conclui que, para aplicações industriais práticas, o foco arquitetônico deve estar na otimização dos mecanismos de recuperação e roteamento, em vez de recorrer a \textit{frameworks} agênticos mais complexos e dispendiosos, fornecendo uma orientação clara e baseada em evidências para a adoção estratégica dessas tecnologias.
 
-    Adopting a Design Science Research (DSR) methodology, this study was conducted through two distinct experimental cycles. The first cycle (2024) provided a foundational comparison, revealing that while a multi-agent architecture achieved 28\% higher truthfulness in Question-Answering (Q\&A) tasks, its operational cost was, on average, 3.7 times higher, and a single-agent system was surprisingly more effective for Text-to-SQL tasks. The second, more rigorous experiment (2025) introduced non-agentic workflows as a baseline and employed an automated, quantitative evaluation methodology using an "LLM-as-a-judge" to assess performance based on precision, recall, and F1-score.
-    
-    This second cycle produced a crucial and counter-intuitive discovery: a non-agentic RAG architecture using an intelligent router to select the appropriate knowledge source outperformed both single and multi-agent systems. This finding led to the central hypothesis of the "domain knowledge deficit", which postulates that in highly specialized technical domains where the LLM lacks deep pre-trained knowledge, the cyclical reasoning and reflective capabilities of agentic systems are less effective than a streamlined, well-directed retrieval process. The research concludes that for practical industrial applications, architectural focus should be on optimizing the retrieval and routing mechanisms rather than defaulting to more complex and costly agentic frameworks, providing clear, evidence-based guidance for the strategic adoption of these technologies.
-    
 \end{abstract}
     
 \begin{foreignabstract}
     
-    A indústria de óleo e gás, particularmente no domínio da construção de poços, enfrenta desafios significativos para extrair eficientemente conhecimento de vastos repositórios de dados técnicos não estruturados e semiestruturados. Esta dissertação avalia e compara a eficácia, a eficiência e a viabilidade prática de diferentes arquiteturas de Geração Aumentada por Recuperação (RAG), abrangendo desde \textit{pipelines} não-agênticos até configurações de agente único e multiagente, para a resolução de desafios de recuperação de informação em domínios específicos.
-
-    Adotando a metodologia de \textit{Design Science Research} (DSR), este estudo foi conduzido através de dois ciclos experimentais distintos. O primeiro ciclo (2024) forneceu uma comparação fundamental, revelando que, embora uma arquitetura multiagente tenha alcançado 28\% mais veracidade (\textit{truthfulness}) em tarefas de Pergunta e Resposta (Q\&A), seu custo operacional foi, em média, 3,7 vezes maior, e um sistema de agente único foi surpreendentemente mais eficaz para tarefas de Texto-para-SQL (\textit{Text-to-SQL}). O segundo experimento, mais rigoroso (2025), introduziu \textit{workflows} não-agênticos como linha de base (\textit{baseline}) e empregou uma metodologia de avaliação quantitativa e automatizada, utilizando um "LLM-como-juiz" (\textit{LLM-as-a-judge}), para avaliar o desempenho com base em precisão, revocação (\textit{recall}) e F1-score.
-    
-    Este segundo ciclo produziu uma descoberta crucial e contraintuitiva: uma arquitetura RAG não-agêntica, utilizando um roteador inteligente para selecionar a fonte de conhecimento apropriada, superou tanto os sistemas de agente único quanto os multiagente. Este resultado levou à hipótese central do "déficit de conhecimento de domínio" (\textit{domain knowledge deficit}), que postula que, em domínios técnicos altamente especializados onde o LLM carece de conhecimento profundo pré-treinado, as capacidades de raciocínio cíclico e reflexivo dos sistemas agênticos são menos eficazes do que um processo de recuperação otimizado e bem direcionado. A pesquisa conclui que, para aplicações industriais práticas, o foco arquitetônico deve estar na otimização dos mecanismos de recuperação e roteamento, em vez de recorrer a \textit{frameworks} agênticos mais complexos e dispendiosos, fornecendo uma orientação clara e baseada em evidências para a adoção estratégica dessas tecnologias.
+    The oil and gas industry, particularly in the domain of well construction, faces significant challenges in efficiently extracting knowledge from vast repositories of unstructured and semi-structured technical data. This dissertation evaluates and compares the effectiveness, efficiency, and practical viability of different Retrieval-Augmented Generation (RAG) architectures, ranging from non-agentic pipelines to single and multi-agent setups, for resolving domain-specific information retrieval challenges.
+    Adopting a Design Science Research (DSR) methodology, this study was conducted through two distinct experimental cycles. The first cycle (2024) provided a foundational comparison, revealing that while a multi-agent architecture achieved 28\% higher truthfulness in Question-Answering (Q\&A) tasks, its operational cost was, on average, 3.7 times higher, and a single-agent system was surprisingly more effective for Text-to-SQL tasks. The second, more rigorous experiment (2025) introduced non-agentic workflows as a baseline and employed an automated, quantitative evaluation methodology using an LLM-as-a-Judge to assess performance based on precision, recall, and F1-score.
+    This second cycle produced a crucial and counter-intuitive discovery: a non-agentic RAG architecture using an intelligent router to select the appropriate knowledge source outperformed both single and multi-agent systems. This finding led to the central hypothesis of the ``domain knowledge deficit'', which postulates that in highly specialized technical domains where the LLM lacks deep pre-trained knowledge, the cyclical reasoning and reflective capabilities of agentic systems are less effective than a streamlined, well-directed retrieval process. The research concludes that for practical industrial applications, architectural focus should be on optimizing the retrieval and routing mechanisms rather than defaulting to more complex and costly agentic frameworks, providing clear, evidence-based guidance for the strategic adoption of these technologies.
     
 \end{foreignabstract}
 

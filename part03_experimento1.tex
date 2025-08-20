@@ -1,20 +1,4 @@
-
-\chapter{First Experimental Evaluation Cycle}
-
-    \xexeo{Todo capítulo deve ter uma introdução explanatória. "This chapter describes"}
-    \vitor{Feito.}
-
-    % This chapter describes the first experimental cycle of this research, structured according to the DSR methodology, as detailed in Section~\ref{sec:dsr-application}. It situates the experiment within the established \textbf{context} of knowledge management in the well construction and maintenance domain of a major oil company. The core \textbf{problem} this experiment addresses is the need for an effective mechanism to query complex technical and operational information within large volumes of unstructured data. As a solution, this experiment proposes and implements two distinct \textbf{artifacts}: a single-agent system and a multi-agent architecture, both designed to leverage LLMs for responding to specialized user queries. Finally, the chapter details the \textbf{evaluation} of these artifacts, outlining the methodology, the dataset creation process, and the metrics (Truthfulness, Performance, and LLM Cost) used to assess their capabilities and limitations.
-
-    \xexeo{Acho que pode até ser Primeiro Ciclo, ou pode ter um nome como ``Efetividada das LLMs na Solução..''  vai ter que quebrar esse capítulo, que tem muita informação nos conceitos da DSR: no mínimo nos quatro principais: Contexto, Problema, Artefato, Avaliação. Grande parte do contexto e problema já devem ser descritos no capitulo que eu pedi para criar e aqui só faz referência.}
-    \vitor{O Capítulo foi refatorado para ficar alinhado com a DSR.}
-
-    \xexeo{Ok, você foi direto para o experimento mas não disse o que ia fazer. Aqui exatamente cabe o quadro da DSR que eu te mandei: qual o contexto, qual o problema, qual a suposição (de utilidade ou de mundança de contexto), qual os quadro teóricos, qual o(s) artefato(s) proposto(s) e como serão avaliados, vai fechar muito bem.}
-    \vitor{O Capítulo foi refatorado para ficar alinhado com a DSR.}
-
-    
-    \xexeo{isso aqui é a validação, mas qual é o problema, qual a proposta, são essas informações que faltam para ficar bem organizado} 
-    \vitor{O Capítulo foi refatorado para ficar alinhado com a DSR.}
+\chapter{First Experimental Evaluation Cycle} \label{chap:first_experiment}
 
     This chapter describes the first experimental cycle of this research, as introduced in Section~\ref{sec:dsr-application}, conducted to investigate the effectiveness of different LLM based agent architectures. The primary objective is to address complex, domain-specific queries within the field of well construction and maintenance. This initial cycle serves as a foundational study, comparing single-agent and multi-agent systems to generate empirical insights into their performance, cost, and inherent limitations. The findings from this cycle will inform the more advanced, quantitative evaluation performed in the second experiment.
 
@@ -197,13 +181,6 @@
                 \multirow{17}{*}{Q\&A} & How does the presence of silica in the composition of cement 
                 paste affect its thermal stability at high temperatures? \\ \cline{2-2}
                 & What are the main challenges and risks associated with through tubing plug and abandonment in highly deviated wells? \\ \cline{2-2}
-                % & What can cause hydrate formation in the Tree Running Tool  connector during the HCR (High Collapse Resistance) hose flush  before connecting to the Wet Christmas Tree? \\ \cline{2-2}
-                % & What can cause the Down Hole Safety Valve to remain open  due to hydrate formation in the control lines? \\ \cline{2-2}
-                % & What can cause damage to thread protectors and sealing  areas of pin ends of pipes stored at the coating yard? \\ \cline{2-2}
-                % & What can cause high drag and torque off-bottom during  the drilling of a well with high deviation? \\ \cline{2-2}
-                % & What precautions should be taken when performing a top check  of the abandonment plug in wells with higher inclination? \\ \cline{2-2}
-                % & What are the critical factors to consider when choosing a base  fluid for manufacturing a viscous support plug? \\ \cline{2-2}
-                % & What are the best practices for managing drilling parameters  during cement cutting to avoid premature bit wear? \\ \cline{2-2}
                 & Give me all the information about employee BFD1. \\ \cline{2-2}
                 & Who are the employees of the POCOS/EP/SASD team? \\ \cline{2-2}
                 & How many advisors do we have in the POCOS/SPO department? \\ \cline{2-2}
@@ -302,29 +279,8 @@
             \end{table}
         \end{landscape}
             
-
-        % \subsection{Results and Discussion}
-
-            % (This section would contain the complete text from your original "Results" and "Discussion" sections. The content is good, but it logically belongs here as the final part of the DSR evaluation phase. You can simply move that text here, ensuring it flows from the description of the metrics.)
-
-
-        \subsection{Results} % NEW SUBSECTION for your results
-            % The results table and the sections analyzing each metric go here.
-            % The original \subsection{Truthfulness}, \subsection{Performance},
-            % and \subsection{LLM Cost} become \subsubsections.
-
-            % The third metric, LLM Cost
-            \xexeo{Isso aqui é uma pergunta de pesquisa tem que entrar de alguma maneira na definição do DSR, lembrando que as avaliações do DSR podem ser mais de uma}
-            \vitor{Feito. Movido p/ definição do DSR}
-            % , is
-            \xexeo{Não é represents, já que é o custo mesmo, acho que  corresponds to, ou mesmo só is }
-            \vitor{Feito} 
-            % the financial cost associated with using OpenAI's API for the language models in each configuration. This metric is measured in US dollars and reflects the computational resources required for each task.
-            \xexeo{Tem que falar alguma coisa que não é o único custo, e quais são os outros e porque esse é importante, isso pode estar descrito no modelo DSR, antes}
-            \vitor{Feito}
-            \xexeo{Esse parágrafo tipicamente aparece na revisão}
-
-
+        \subsection{Results}
+        
             This section provides an analysis of the data collected during the first experimental cycle. The aggregated results are presented in Table~\ref{tab:tabela_resultados}, followed by a discussion of each evaluation metric established in our DSR framework: Truthfulness, Performance, and LLM Cost.
 
             \begin{table}[h]
@@ -383,18 +339,14 @@
                     \centering
                     \begin{minipage}{.48\textwidth}
                         \centering                
-                        % \framebox{
-                            \includegraphics[width=1\linewidth]{images/performance_QA.png}
-                        % }
+                        \includegraphics[width=1\linewidth]{images/performance_QA.png}
                         \caption{Performance and standard deviation in Q\&A tasks by LLM model and agent configuration.}
                         \label{fig:performance_QA}
                     \end{minipage}
                     \hspace{0.2cm}
                     \begin{minipage}{.48\textwidth}
                         \centering
-                        % \framebox{
-                        % \includegraphics[width=1\linewidth]{images/performance_text2sql.png}
-                        % }
+                        \includegraphics[width=1\linewidth]{images/performance_text2sql.png}
                         \caption{Performance and standard deviation in Text-to-SQL tasks by LLM model and agent configuration.}
                         \label{fig:performance_text2sql}
                     \end{minipage}%
@@ -418,11 +370,8 @@
                 
                 
 
-        \subsection{Discussion} % NEW SUBSECTION for your discussion
-            % The original \section{Discussion} and all its content go here.
-            % The original \subsections become \subsubsections.
-
-            
+        \subsection{Discussion} 
+        
             The comparison between single and multi-agent systems revealed significant differences in terms of performance and cost:
             
             \subsubsection{General Performance.}     
@@ -436,11 +385,6 @@
             \subsubsection{Cost-Performance Analysis.}
                 While the multi-agent system shows higher truthfulness in Q\&A tasks, it is crucial to consider the associated costs. 
                 To provide a clearer comparison, let us consider the score/cost ratios. For Q\&A tasks using GPT-4, the single-agent configuration yields a ratio of 32.33 truthfulness points per dollar, compared to 10.16 for the multi-agent setup. This indicates that while the multi-agent system shows a 17.8\% improvement in truthfulness, it comes at a 275\% increase in cost.
-                
-                % Based on our analysis, we recommend using a multi-agent system for Q\&A tasks when the budget allows for it and accuracy is a critical factor. 
-                % However, decision-makers should consider setting a cost-performance threshold to guide the choice of system configuration, ensuring that the benefits justify the expenses involved.
-                \xexeo{TEm que deduzir a necessidade de fazer um experimento antes levando essas coisas em consideração}
-                \vitor{Feito abaixo.}
 
                 This trade-off highlights an important implication for any organization considering the adoption of these technologies. The optimal architecture is not universal; it is highly dependent on specific task requirements and budget constraints. 
                 This reality underscores the necessity of conducting a preliminary, cost-performance evaluation. Rather than simply selecting a model, decision-makers must first perform a targeted analysis to establish a cost-benefit threshold. 
