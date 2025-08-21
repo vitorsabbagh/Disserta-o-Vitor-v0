@@ -1,4 +1,5 @@
-\chapter{First Experimental Evaluation Cycle} \label{chap:first_experiment}
+\chapter{First Experimental Evaluation Cycle} 
+\label{chap:first_experiment}
 
     This chapter describes the first experimental cycle of this research, as introduced in Section~\ref{sec:dsr-application}, conducted to investigate the effectiveness of different LLM based agent architectures. The primary objective is to address complex, domain-specific queries within the field of well construction and maintenance. This initial cycle serves as a foundational study, comparing single-agent and multi-agent systems to generate empirical insights into their performance, cost, and inherent limitations. The findings from this cycle will inform the more advanced, quantitative evaluation performed in the second experiment.
 
@@ -9,21 +10,21 @@
         To provide a clear and organized structure for this experiment, we adopt the DSR framework. The key components of this research cycle are outlined as follows:
 
         \begin{description}
-            \item[Context] The operational environment of the well construction department within a major oil company, where efficient access to technical knowledge is critical.
+            \item[Context:] The operational environment of the well construction department within a major oil company, where efficient access to technical knowledge is critical.
 
-            \item[Problem] The challenge faced by engineers and specialists in effectively querying and retrieving accurate information from vast, unstructured, and domain-specific knowledge bases (e.g., operational reports, lessons learned).
+            \item[Problem:] The challenge faced by engineers and specialists in effectively querying and retrieving accurate information from vast, unstructured, and domain-specific knowledge bases (e.g., operational reports, lessons learned).
 
-            \item[Supposition] Our core supposition is that LLM-based agent systems can improve the efficiency and accuracy of information retrieval for specialized tasks, but that the choice of architecture (single-agent vs. multi-agent) will have a measurable impact on performance and cost.
+            \item[Behavioral Conjectures:] Our core supposition is that LLM-based agent systems can improve the efficiency and accuracy of information retrieval for specialized tasks, but that the choice of architecture (single-agent vs. multi-agent) will have a measurable impact on performance and cost.
 
-            \item[Theoretical Frameworks] This work is grounded in the theories of Intelligent Agents, RAG, and multi-agent systems, as detailed in the Literature Review.
+            \item[Theoretical Frameworks:] This work is grounded in the theories of Intelligent Agents, RAG, and multi-agent systems, as detailed in the Literature Review.
 
-            \item[Proposed Artifacts] Two distinct LLM-based agent systems are proposed and built:
+            \item[Proposed Artifacts:] Two distinct LLM-based agent systems are proposed and built:
             \begin{itemize}
                 \item A Single-Agent Architecture.
                 \item A Multi-Agent Architecture.
             \end{itemize}
 
-            \item[Evaluation] The artifacts are evaluated by a panel of domain experts who assess the quality of their responses to a curated set of real-world queries. The evaluation is based on predefined metrics for truthfulness, performance, and cost.
+            \item[Evaluation:] The artifacts are evaluated by a panel of domain experts who assess the quality of their responses to a curated set of real-world queries. The evaluation is based on predefined metrics for truthfulness, performance, and cost.
         \end{description}
 
     \section{Context and Problem Statement}
@@ -32,9 +33,7 @@
 
             As established in the Introduction, this research is situated within the oil and gas industry, a sector characterized by complex, expensive operations. This experiment was carried out specifically within the well construction department of a major oil company. In this environment, engineers and technical staff frequently need to access specialized information from a variety of internal data sources, including operational reports, learned lessons, and safety alerts. The efficiency and accuracy of this information retrieval process directly impact operational decision-making, safety, and cost-effectiveness.
 
-            The set of queries used to test the systems
-            % , listed in Appendix~\ref{app:dataset}, 
-            provides a concrete exemplification of the problem space.
+            The set of queries used to test the systems, listed in Appendix~\ref{app:dataset}, provides a concrete exemplification of the problem space.
 
         \subsection{Problem}
 
@@ -120,12 +119,12 @@
 
             \begin{itemize}            
                 
-                \item \textbf{Tool 1 - Learned Lessons Search:} a tool to search for learned lessons that may be relevant to the query. 
-                \label{Tool1}
+                \item \label{Tool1} \textbf{Tool 1 - Learned Lessons Search:} a tool to search for learned lessons that may be relevant to the query. 
+                
         
                 \item \label{Tool2} \textbf{Tool 2 - Employee Search:} functionality that allows the search for information related to collaborators of an organization.
         
-                \item \label{Tool3} \textbf{Tool 3 - NPT SQL Query:} Interface for executing SQL queries on a database of operational NPTs.    
+                \item \label{Tool3} \textbf{Tool 3 - NPT SQL Query (text-to-sql):} Interface for executing SQL queries on a database of operational NPTs.    
                 
             \end{itemize}
 
@@ -139,22 +138,21 @@
         
             The evaluation was conducted by presenting a standardized set of questions to both the single-agent and multi-agent systems, using both GPT-3.5-turbo and GPT-4 models. The responses generated by each configuration were then collected and anonymized.
 
-            A panel of three specialist engineers from the well construction department was tasked with analyzing the generated answers. Each specialist independently scored the responses based on the metrics described in Section~\ref{sec:evaluation_metrics}. The final score for each response was calculated by averaging the scores from the three experts, ensuring a robust and comprehensive assessment.
-            
-            \xexeo{Aqui seria bom fazer um BPMN do passo a passo do seu experimento, veja a figura 4.1 de\url{https://www.cos.ufrj.br/uploadfile/publicacao/3172.pdf}}
-            \vitor{Feito}
+            A panel of three specialist engineers from the well construction department was tasked with analyzing the generated answers. Each specialist independently scored the responses based on the metrics described in Section~\ref{sec:evaluation_metrics}. The final score for each response was calculated by averaging the scores from the three experts, ensuring a robust and comprehensive assessment.            
 
-            To provide a clear visual representation of the experimental workflow, a Business Process Model and Notation (BPMN) diagram is presented in Figure~\ref{fig:experimental_workflow}. This diagram illustrates the step-by-step process, from query submission to expert evaluation.
+            To provide a clear visual representation of the experimental workflow, a Business Process Model and Notation (BPMN)\abbrev{BPMN}{Business Process Model and Notation} diagram is presented in Figure~\ref{fig:experimental_workflow}. This diagram illustrates the step-by-step process, from query submission to expert evaluation.
 
-            \begin{figure}[h]
+            \begin{landscape}
+            \begin{figure}[p]
                 \centering
-                \includegraphics[width=\textwidth]{images/bpmn_experimento_1.png}
+                \includegraphics[width=1.5\textwidth]{images/bpmn_experimento_1.png}
                 \caption{Experimental workflow.}
                 \label{fig:experimental_workflow}
             \end{figure}
+            \end{landscape}
 
             
-        \subsection{Data Set Creation}
+        \subsection{Dataset Creation}
 
             A critical component of this evaluation is the test dataset. The dataset was meticulously created to reflect authentic information needs within the well construction domain. The process was as follows:
 
@@ -167,13 +165,11 @@
 
             This approach to dataset creation, grounded in author experience and real-world documents, provides a valid basis for evaluating the artifacts. Table~\ref{table:question_examples} presents a sample of the queries formulated for the experiment.
 
-            \xexeo{Coloca todas na tabela! E faz uma seção de criação de perguntas, ou subseção}
-            \vitor{Feito}
-
             
             \begin{table}[h]
                 \centering
-                \scriptsize
+                % \scriptsize
+                \footnotesize
                 \sloppy
                 \begin{tabular}{|p{.1\linewidth}|p{.9\linewidth}|}
                 \hline
@@ -220,6 +216,8 @@
                 \label{table:question_examples}
             \end{table}
 
+            The dataset used for the experiments in this dissertation consists of proprietary and confidential information. In accordance with information security policies and confidentiality agreements, the raw data and source documents cannot be made public. The access services to these sources, implemented via APIs\abbrev{API}{Application Programming Interface}, are likewise private and protected
+
         \subsection{Evaluation Metrics} \label{sec:evaluation_metrics}
 
             To ensure a comprehensive assessment, the expert panel evaluated the artifacts' responses using the following metrics, which are based on the definitions presented in Section~\ref{sec:evaluation-review}:
@@ -230,20 +228,12 @@
 
                 \item \textbf{Performance}: A 1-5 Likert scale score assessing the overall quality of the response, including its linguistic coherence, logical structure, relevance, and conciseness.
 
-                \item \textbf{LLM Cost}: A quantitative metric representing the financial cost in US dollars (USD) to generate a response for a given query using the OpenAI API. This reflects the computational expense and efficiency of each configuration. While other costs exist (development, infrastructure, maintenance), the API cost is a primary operational expenditure that scales directly with usage and is therefore a key metric for evaluating the economic viability of the artifacts, as established in our DSR framework.
+                \item \textbf{LLM Cost}: A quantitative metric representing the financial cost in US dollars (USD)\abbrev{USD}{US dollars} to generate a response for a given query using the OpenAI API. This reflects the computational expense and efficiency of each configuration. While other costs exist (development, infrastructure, maintenance), the API cost is a primary operational expenditure that scales directly with usage and is therefore a key metric for evaluating the economic viability of the artifacts, as established in our DSR framework.
             
             \end{itemize}
 
             To illustrate the application of the first two metrics, an example of an expert evaluation is provided in Table~\ref{tab:tabela_inputs_example}. The table shows the responses of different models to the query: "How does the presence of silica in the composition of cement paste affect its thermal stability at high temperatures?". It details the scores for Truthfulness and Performance, along with the specialists' comments that justify the ratings.
 
-            \xexeo{Por que essa pergunta? Isso é um exemplo? Como o multi agente entrou aqui se ainda não falou de multi agente? Melhor deixar para mais tarde ou mostrar só para single-agent?} 
-            \vitor{Refatorado pra deixar claro q esse eh um exemplo e inserido após a explicação das arquiteturas.}
-            % This 
-            \xexeorem[comprehensive]{OLHA UMA PALAVRA INÚTIL TÍPICA DE LLM} 
-            % comparison allows for an 
-            \xexeorem[in-depth]{Outra} 
-            % assessment of the models' capabilities in generating accurate and relevant responses to technical questions.
-            \vitor{Essa parte com palavras típicas de llm foi escrita no artigo, início do ano passado, quando essas expressões ainda não eram indesejáveis kkkk estou retirando tudo. Se ainda tiver passado algo, me avise pfv.}
 
 
         \begin{landscape}
@@ -254,8 +244,8 @@
             \label{tab:tabela_inputs_example}
             \begin{tabular}{| m{3cm} | m{1.5cm} | m{1.5cm} |>{\scriptsize}m{9cm} | m{1.3cm} | m{1.2cm} |>{\scriptsize}m{4cm} |}                    
             \toprule
-            % \textbf{Input query} & \textbf{Model} & \textbf{Setup} & \textbf{Final output} & \textbf{Truthfulness} & \textbf{Performance} & \textbf{Specialist \ Comments} \\
-            Input query & Model & Setup & Final output & Truth. \newline fulness & Perfor- \newline mance & Specialist \ Comments \\
+            \rowcolor{gray!20}
+            \multicolumn{1}{|c|}{Input query} & \multicolumn{1}{c|}{Model} & \multicolumn{1}{c|}{Setup} & \multicolumn{1}{c|}{Final output} & \multicolumn{1}{c|}{Truth. \newline fulness} & \multicolumn{1}{c|}{Perfor- \newline mance} & \multicolumn{1}{c|}{Specialist \ Comments} \\
             \midrule
             How does the presence of silica in the composition of cement paste affect its thermal stability at high temperatures? & GPT-3.5-turbo & Single-Agent & The presence of silica in the composition of cement paste can affect its thermal stability at high temperatures due to some characteristics of silica. Silica is an inorganic material that has a stable crystalline structure at high temperatures. When exposed to high temperatures, the silica present in the cement paste can undergo structural transformations, resulting in changes in the properties of the paste.
 
@@ -396,13 +386,11 @@
                 This unexpected performance could be attributed to several factors. 
                 First, GPT-3.5-turbo may have undergone more specific fine-tuning for structured query tasks, allowing it to excel in Text-to-SQL scenarios. 
                 Additionally, GPT-3.5-turbo's training data might be more recent or more relevant to the specific domain of our study. 
-                Another possibility is that the smaller model size of GPT-3.5-turbo allows for faster processing and more efficient handling of the multi-agent setup, resulting in better performance in some contexts.
+                Another possibility is that the smaller model size of GPT-3.5-turbo allows for faster processing and more efficient handling of the multi-agent setup, resulting in better performance in some contexts. Additionally, given the observed standard deviations, part of this difference may be attributable to statistical noise rather than a systematic advantage.
 
                 However, it is important to note that GPT-4, when used in a multi-agent setup, demonstrated more consistent truthfulness and performance, as evidenced by its reduced standard deviation in results. 
                 This consistency can be particularly advantageous in applications where reliability and accuracy are critical. 
                 Multi-agent systems have the advantage of maintaining separate contexts for different aspects of a task \citep{Langchain2025blogmultiagent}. 
-                \xexeo{Você pode suportar essa afirmação com uma citação?}
-                \vitor{Feito.}
                 This compartmentalization can lead to better handling of complex, multi-faceted queries, as each agent can focus on its specific context without being overwhelmed by irrelevant information. However, this advantage may be offset in tasks like Text-to-SQL, where maintaining a unified context of the database schema and query structure is crucial, possibly explaining the better performance of single-agent setups in this task.
                 Furthermore, the multi-agent architecture inherently involves multiple stages of information processing, which can serve as natural filtering mechanisms.
                 As information passes from one agent to another, irrelevant or low-quality data may be naturally filtered out, leading to more refined and accurate final outputs. 
@@ -434,7 +422,8 @@
                 \end{tabular}
                 \end{table}
 
-                To illustrate the financial implications of adopting different models and architectures, we estimate the annual costs for a large company with 40,000 knowledge workers. Our calculations are based on an average of 5 queries per worker per day, over 250 working days per year.
+                To illustrate the financial implications of adopting different models and architectures, we estimate the annual costs for a large company with 40,000 knowledge workers. Our calculations are based on an average of 5 queries per worker per day, over 250 working days per year.               
+                These estimates assume homogeneous usage patterns; they do not account for variations in workload, query complexity, or adoption levels across different knowledge worker roles or departments.
                 
                 Under these assumptions, the total annual query volume is 50 million (40,000 workers $\times$ 5 queries/day $\times$ 250 days). For a single-agent configuration, this results in an annual cost of approximately \$337,843 for GPT-3.5 and \$5.47 million for GPT-4.
                 
@@ -486,10 +475,7 @@
                 
                 \textbf{\textit{Queries Involving Proper Names:}}
                     In queries involving people's names, it was not possible to retrieve relevant documents using semantic search. 
-                    For example, when asked to identify the employee associated with a specific key and list knowledge items they registered in the system, the LLM incorrectly attributed such documents to the wrong author
-                    \xexeo{O RAG ou a LLM usando o RAG, não ficou claro}
-                    \vitor{Corrigido}
-                    . 
+                    For example, when asked to identify the employee associated with a specific key and list knowledge items they registered in the system, the LLM incorrectly attributed such documents to the wrong author. 
                     This highlights the difficulty in accurately retrieving information based on proper names, which can be complicated by variations in accentuation, abbreviation, and formatting.
                     \xexeo{tem evidências disso em outros artigos?}
                     \vitor{não encontrei}

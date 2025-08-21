@@ -11,7 +11,7 @@ This chapter describes the second experimental cycle of this research, building 
     This second experimental cycle adheres to the Design Science Research (DSR) methodology, focusing on refining the artifacts and evaluation based on the outcomes of the first cycle.
 
     \begin{description}
-        \item[Context] The operational environment of well construction engineering, where practitioners require efficient and reliable access to vast amounts of technical and ESG-related information.
+        \item[Context] The operational environment of well construction engineering, where practitioners require efficient and reliable access to vast amounts of technical and HSE-related\abbrev{HSE}{Health, Safety, and Environment} information.
 
         \item[Problem] The first experimental cycle revealed several limitations, including the subjective nature and scalability issues of expert-based evaluation, the need to compare agentic systems against simpler non-agentic baselines, and the challenge of ensuring consistent performance. This second cycle addresses the problem of developing a more robust, scalable, and objective method for evaluating and comparing different LLM-based architectures for domain-specific Q\&A.
 
@@ -30,7 +30,7 @@ This chapter describes the second experimental cycle of this research, building 
 
     \subsection{Context}
 
-    As established in the previous chapters, this research is situated within the oil and gas industry, specifically in the domain of well construction and maintenance. Engineers and specialists in this field must navigate a complex information landscape, drawing from operational reports, ESG alerts, and documented best practices (Learned Lessons) to make critical decisions. The effectiveness of these decisions hinges on the speed and accuracy with which relevant information can be retrieved and synthesized.
+    As established in the previous chapters, this research is situated within the oil and gas industry, specifically in the domain of well construction and maintenance. Engineers and specialists in this field must navigate a complex information landscape, drawing from operational reports, HSE alerts, and documented best practices (Learned Lessons) to make critical decisions. The effectiveness of these decisions hinges on the speed and accuracy with which relevant information can be retrieved and synthesized.
 
     \subsection{Problem}
 
@@ -43,7 +43,7 @@ This chapter describes the second experimental cycle of this research, building 
     
     \subsection{System Architecture Overview}
 
-    The experimental system was implemented using \citet{Langchain2025} and \citet{Langgraph2025} frameworks specialized in language model orchestration. This modular design allows for the systematic and reproducible evaluation of different components and workflows. Key layers of the architecture include:
+    The experimental system was implemented using \citet{Langchain2025} and \citet{Langgraph2025}, frameworks specialized in language model orchestration. This modular design allows for the systematic and reproducible evaluation of different components and workflows. Key layers of the architecture include:
 
     \begin{itemize}
         \item \textbf{Experiment Orchestration:} Manages the execution loop, iterating through all combinations of questions, models, and setups.
@@ -160,11 +160,11 @@ This chapter describes the second experimental cycle of this research, building 
 
         The experiment utilizes a curated dataset developed in collaboration with domain experts.
         \begin{itemize}
-            \item \textbf{Questions Dataset:} A set of 17 questions reflecting real-world information needs of well engineers. Each question is paired with a manually created, expert-validated ground-truth answer.
+            \item \textbf{Questions Dataset:} A set of 17 questions (10 questions from the first experimental cycle and 7 new questions) reflecting real-world information needs of well engineers. Each question is paired with a manually created, expert-validated ground-truth answer.
             \item \textbf{Knowledge Bases:} The artifacts were given access to three distinct, pre-processed knowledge sources from within the organization, vectorized for semantic search:
             \begin{itemize}
                 \item \textbf{Learned Lessons:} A repository of learned lessons, best practices, and operational alerts.
-                \item \textbf{HSE Alerts:} A collection of ESG alerts and incident reports.
+                \item \textbf{HSE Alerts:} A collection of HSE alerts and incident reports.
                 \item \textbf{Operational Reports:} A database of detailed daily operational reports from drilling rigs.
             \end{itemize}
         \end{itemize}
@@ -245,7 +245,9 @@ This chapter describes the second experimental cycle of this research, building 
             The domain of this study, well construction engineering, presents a starkly different scenario. The knowledge is highly specialized, filled with niche terminology, and often contained within proprietary corporate documents that do not form a significant part of the public web crawl used to train general-purpose LLMs. Consequently, when an agent in our experiment retrieves a technical snippet from a lessons-learned document, the LLM lacks the deep, specialized knowledge required to effectively critique it. It cannot reliably discern subtle inaccuracies, determine if the context is fully appropriate, or judge whether a sub-agent's reasoning is sound from an engineering perspective.
             
             In this context of a \textit{domain knowledge deficit}, the cyclical flow of an agentic system becomes a liability rather than an asset. The reflective loop introduces computational and cost overhead (more LLM calls, more complex state management) without a corresponding improvement in the quality of reasoning. The agent may cycle, but it does so without true insight, making the additional complexity ineffective. This leads to the observed result: the more straightforward, non-agentic approach outperforms it.
-        
+
+            It is important to stress that this does not dismiss the value of multi-agent architectures in general. They are plausibly advantageous for: (i) questions with inherent uncertainty or subjectivity that benefit from debate (e.g., investment decisions) and (ii) complex, multi-phase reasoning workflows where specialized agents contribute distinct skills across stages. Our dataset, centered on retrieve-and-synthesize questions over technical documents, may not fully elicit these strengths, which suggests that task selection strongly mediates the benefits of agentic reasoning.
+
         \subsubsection{The Unsurprising Efficacy of Intelligent Routing}
             
             While the agentic systems underperformed, the success of the \textit{Linear-Flow w/ Router} configuration is, in itself, a significant finding. Its superior performance can be attributed to its focused efficiency. Rather than engaging in a complex, multi-step reasoning process, this architecture excels at a single, critical task: intent classification and tool selection.
@@ -263,7 +265,7 @@ This chapter describes the second experimental cycle of this research, building 
                 
                 \item \textbf{Model Capabilities (GPT-4o vs. GPT-4o-mini)}: The consistent and significant performance gap between GPT-4o and GPT-4o-mini across all configurations underscores the critical importance of the underlying model's reasoning and instruction-following capabilities. The superior performance of the \textit{Linear-Flow w/ Router} on GPT-4o (F1-Score 0.702) compared to the same configuration on GPT-4o-mini (F1-Score 0.604) highlights that even the most effective architecture is gated by the power of the engine driving it.
                 
-                \item \textbf{High Performance Variance}: A crucial observation is the high standard deviation across all configurations. This indicates that performance is highly dependent on the specific question being asked. Even the best-performing system failed completely on some queries (minimum F1-Score of 0.333), while succeeding perfectly on others (maximum F1-Score of 1.000). This suggests that no single architecture is a panacea. Certain query structures or topics may inherently favor one approach over another, reinforcing the conclusion that the optimal architecture is task- and domain-dependent.
+                \item \textbf{High Performance Variance}: A crucial observation is the high standard deviation across all configurations. This indicates that performance is highly dependent on the specific question being asked. Even the best-performing system failed completely on some queries (minimum F1-Score of 0.333), while succeeding perfectly on others (maximum F1-Score of 1.000). This suggests that no single architecture is universally optimal. Certain query structures or topics may inherently favor one approach over another, reinforcing the conclusion that the optimal architecture is task- and domain-dependent.
             \end{itemize}
             
             In conclusion, this experiment provides strong evidence that for specialized domains where LLMs lack deep pre-existing knowledge, the architectural focus should be on optimizing the interface between the query and the external knowledge tools. A simple, intelligent routing mechanism that accurately directs a query to the correct source can be more robust and effective than a complex, cyclical agentic system that attempts to ``reason'' in a domain it does not truly understand. The assumption that more complexity equals better performance is a fallacy; true effectiveness comes from aligning the architectural design with both the nature of the task and the inherent capabilities and limitations of the language model itself.
